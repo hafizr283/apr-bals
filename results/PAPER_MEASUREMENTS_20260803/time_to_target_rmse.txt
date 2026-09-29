@@ -1,0 +1,40 @@
+TIME-TO-TARGET-RMSE  (justapr APR-BALS vs cuMF-ALS, same frozen split, GPU1 3060)
+Source archive: results/logs_justapr_vs_cumf_20260721_045838
+Method: per-iteration wall = total wall / converged iters (both systems log test RMSE every 5 it).
+        time-to-target = (first checkpoint iter with test RMSE <= target) x per-iter wall.
+
+=== netflix  APR K=96  vs  cuMF F=100 ===
+  common target test RMSE = 0.817559  (worse of the two finals -> both actually reach it)
+  APR   : converged 20 it, wall   7.753 s ( 0.388 s/it) | reaches target at it 20 ->   7.753 s
+  cuMF  : converged 20 it, wall  41.991 s ( 2.100 s/it) | reaches target at it 20 ->  41.991 s
+  >> TIME-TO-TARGET SPEEDUP =  5.42x     (per-iteration ratio =  5.42x)
+  finals: APR test 0.817559 | cuMF test 0.817483
+
+=== netflix  APR K=64  vs  cuMF F=60 ===
+  common target test RMSE = 0.819547  (worse of the two finals -> both actually reach it)
+  APR   : converged 20 it, wall   4.604 s ( 0.230 s/it) | reaches target at it 15 ->   3.453 s
+  cuMF  : converged 20 it, wall  21.373 s ( 1.069 s/it) | reaches target at it 20 ->  21.373 s
+  >> TIME-TO-TARGET SPEEDUP =  6.19x     (per-iteration ratio =  4.64x)
+  finals: APR test 0.819080 | cuMF test 0.819547
+
+=== netflix  APR K=48  vs  cuMF F=50 ===
+  common target test RMSE = 0.820556  (worse of the two finals -> both actually reach it)
+  APR   : converged 20 it, wall   2.684 s ( 0.134 s/it) | reaches target at it 20 ->   2.684 s
+  cuMF  : converged 20 it, wall  16.521 s ( 0.826 s/it) | reaches target at it 20 ->  16.521 s
+  >> TIME-TO-TARGET SPEEDUP =  6.15x     (per-iteration ratio =  6.15x)
+  finals: APR test 0.820479 | cuMF test 0.820556
+
+=== netflix  APR K=32  vs  cuMF F=30 ===
+  common target test RMSE = 0.824093  (worse of the two finals -> both actually reach it)
+  APR   : converged 20 it, wall   1.854 s ( 0.093 s/it) | reaches target at it 15 ->   1.390 s
+  cuMF  : converged 20 it, wall   9.967 s ( 0.498 s/it) | reaches target at it 20 ->   9.967 s
+  >> TIME-TO-TARGET SPEEDUP =  7.17x     (per-iteration ratio =  5.38x)
+  finals: APR test 0.823283 | cuMF test 0.824093
+
+=== netflix  APR K=16  vs  cuMF F=20 ===
+  common target test RMSE = 0.831057  (worse of the two finals -> both actually reach it)
+  APR   : converged 20 it, wall   1.154 s ( 0.058 s/it) | reaches target at it 20 ->   1.154 s
+  cuMF  : converged 15 it, wall   5.474 s ( 0.365 s/it) | reaches target at it 10 ->   3.649 s
+  >> TIME-TO-TARGET SPEEDUP =  3.16x     (per-iteration ratio =  6.33x)
+  finals: APR test 0.831057 | cuMF test 0.828840
+

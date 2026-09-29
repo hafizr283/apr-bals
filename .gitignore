@@ -7,3 +7,21 @@ cumf_sgd-master/singleGPU/cumf_sgd
 cumf_sgd-master/test/mf-train
 cumf_sgd-master/test/mf-predict
 cumf_sgd-master/train.bin.model
+
+# Not for publication: compiled profiling binary, local tool state, old draft
+results/PAPER_MEASUREMENTS_20260803/ncu/bin/
+.agent/
+__pycache__/
+tpds_latex/
+
+# Not for publication: compiled profiling binary, local tool state, old draft
+results/PAPER_MEASUREMENTS_20260803/ncu/bin/
+.agent/
+__pycache__/
+tpds_latex/
+
+# Not for publication: compiled profiling binary, local tool state, old draft
+results/PAPER_MEASUREMENTS_20260803/ncu/bin/
+.agent/
+__pycache__/
+tpds_latex/

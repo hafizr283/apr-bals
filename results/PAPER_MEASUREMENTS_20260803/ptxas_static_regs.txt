@@ -1,0 +1,80 @@
+===== K=16  FLAGS=-DK_DIM=16 -DWEIGHTED_LAMBDA=1 -DCUMF_INIT=1 -DMOMENTUM=1 =====
+ptxas info    : Compiling entry function '_Z20cholesky_solve_tiledILi96ELi128EEvPKfPfPK4int2iiifPKi' for 'sm_86'
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 56 registers, 400 bytes cmem[0]
+ptxas info    : Compiling entry function '_Z20cholesky_solve_tiledILi64ELi128EEvPKfPfPK4int2iiifPKi' for 'sm_86'
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 56 registers, 400 bytes cmem[0]
+ptxas info    : Compiling entry function '_Z20cholesky_solve_tiledILi48ELi96EEvPKfPfPK4int2iiifPKi' for 'sm_86'
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 56 registers, 400 bytes cmem[0]
+ptxas info    : Compiling entry function '_Z20cholesky_solve_tiledILi32ELi64EEvPKfPfPK4int2iiifPKi' for 'sm_86'
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 56 registers, 400 bytes cmem[0]
+ptxas info    : Compiling entry function '_Z20compute_LHS_RHS_wmmaILi6EEviiPKiS1_PKfPK6__halfPfS7_i' for 'sm_86'
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 240 registers, 12544 bytes smem, 412 bytes cmem[0]
+ptxas info    : Compiling entry function '_Z20compute_LHS_RHS_wmmaILi4EEviiPKiS1_PKfPK6__halfPfS7_i' for 'sm_86'
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 163 registers, 8448 bytes smem, 412 bytes cmem[0]
+ptxas info    : Compiling entry function '_Z20compute_LHS_RHS_wmmaILi3EEviiPKiS1_PKfPK6__halfPfS7_i' for 'sm_86'
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 141 registers, 6400 bytes smem, 412 bytes cmem[0]
+ptxas info    : Compiling entry function '_Z20compute_LHS_RHS_wmmaILi2EEviiPKiS1_PKfPK6__halfPfS7_i' for 'sm_86'
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 100 registers, 4352 bytes smem, 412 bytes cmem[0]
+ptxas info    : Compiling entry function '_Z26compute_LHS_RHS_wmma_giantILi6ELi4EEviPKiS1_PKfPK6__halfPfS7_ii' for 'sm_86'
+    32 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 255 registers, 31744 bytes smem, 416 bytes cmem[0]
+ptxas info    : Compiling entry function '_Z26compute_LHS_RHS_wmma_giantILi4ELi4EEviPKiS1_PKfPK6__halfPfS7_ii' for 'sm_86'
+    32 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 191 registers, 23040 bytes smem, 416 bytes cmem[0]
+ptxas info    : Compiling entry function '_Z26compute_LHS_RHS_wmma_giantILi3ELi4EEviPKiS1_PKfPK6__halfPfS7_ii' for 'sm_86'
+    32 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 133 registers, 18688 bytes smem, 416 bytes cmem[0]
+ptxas info    : Compiling entry function '_Z26compute_LHS_RHS_wmma_giantILi2ELi4EEviPKiS1_PKfPK6__halfPfS7_ii' for 'sm_86'
+    32 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 96 registers, 14336 bytes smem, 416 bytes cmem[0]
+ptxas info    : Compiling entry function '_Z26compute_LHS_RHS_wmma_giantILi1ELi4EEviPKiS1_PKfPK6__halfPfS7_ii' for 'sm_86'
+    32 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 62 registers, 9984 bytes smem, 416 bytes cmem[0]
+ptxas info    : Compiling entry function '_Z20compute_LHS_RHS_wmmaILi1EEviiPKiS1_PKfPK6__halfPfS7_i' for 'sm_86'
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 60 registers, 2304 bytes smem, 412 bytes cmem[0]
+===== K=32  FLAGS=-DK_DIM=32 -DWEIGHTED_LAMBDA=1 -DCUMF_INIT=1 -DMOMENTUM=1 =====
+ptxas info    : Compiling entry function '_Z20cholesky_solve_tiledILi96ELi128EEvPKfPfPK4int2iiifPKi' for 'sm_86'
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 56 registers, 400 bytes cmem[0]
+ptxas info    : Compiling entry function '_Z20cholesky_solve_tiledILi64ELi128EEvPKfPfPK4int2iiifPKi' for 'sm_86'
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 56 registers, 400 bytes cmem[0]
+ptxas info    : Compiling entry function '_Z20cholesky_solve_tiledILi48ELi96EEvPKfPfPK4int2iiifPKi' for 'sm_86'
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 56 registers, 400 bytes cmem[0]
+ptxas info    : Compiling entry function '_Z20compute_LHS_RHS_wmmaILi6EEviiPKiS1_PKfPK6__halfPfS7_i' for 'sm_86'
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 240 registers, 12544 bytes smem, 412 bytes cmem[0]
+ptxas info    : Compiling entry function '_Z20compute_LHS_RHS_wmmaILi4EEviiPKiS1_PKfPK6__halfPfS7_i' for 'sm_86'
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 163 registers, 8448 bytes smem, 412 bytes cmem[0]
+ptxas info    : Compiling entry function '_Z20compute_LHS_RHS_wmmaILi3EEviiPKiS1_PKfPK6__halfPfS7_i' for 'sm_86'
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 141 registers, 6400 bytes smem, 412 bytes cmem[0]
+ptxas info    : Compiling entry function '_Z20compute_LHS_RHS_wmmaILi1EEviiPKiS1_PKfPK6__halfPfS7_i' for 'sm_86'
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 60 registers, 2304 bytes smem, 412 bytes cmem[0]
+ptxas info    : Compiling entry function '_Z26compute_LHS_RHS_wmma_giantILi6ELi4EEviPKiS1_PKfPK6__halfPfS7_ii' for 'sm_86'
+    32 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 255 registers, 31744 bytes smem, 416 bytes cmem[0]
+ptxas info    : Compiling entry function '_Z26compute_LHS_RHS_wmma_giantILi4ELi4EEviPKiS1_PKfPK6__halfPfS7_ii' for 'sm_86'
+    32 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 191 registers, 23040 bytes smem, 416 bytes cmem[0]
+ptxas info    : Compiling entry function '_Z26compute_LHS_RHS_wmma_giantILi3ELi4EEviPKiS1_PKfPK6__halfPfS7_ii' for 'sm_86'
+    32 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 133 registers, 18688 bytes smem, 416 bytes cmem[0]
+ptxas info    : Compiling entry function '_Z26compute_LHS_RHS_wmma_giantILi1ELi4EEviPKiS1_PKfPK6__halfPfS7_ii' for 'sm_86'
+    32 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 62 registers, 9984 bytes smem, 416 bytes cmem[0]
+ptxas info    : Compiling entry function '_Z20cholesky_solve_tiledILi32ELi64EEvPKfPfPK4int2iiifPKi' for 'sm_86'
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 56 registers, 400 bytes cmem[0]

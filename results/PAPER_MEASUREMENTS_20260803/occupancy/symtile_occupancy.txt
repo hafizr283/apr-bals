@@ -1,0 +1,55 @@
+SYMTILE vs REORDER-ONLY theoretical occupancy — auditing the '25-37% occupancy loss'
+claim I drafted for sec/5_extended.tex from BLOCK SIZE ALONE. sm_86, netflix banners.
+smem is DYNAMIC (yb_eff*K*4) and IDENTICAL on both legs, so it cannot explain a gap.
+========================================================================================================
+  K   leg  blk thr  regs   smem B  blk/SM  byreg  bysmem  warps     occ  limit
+ 16  base     1024    64    16384       1      1       6     32   66.7%  registers
+ 16   sym     1024    64    16384       1      1       6     32   66.7%  registers
+ 32  base     1024    64    32768       1      1       3     32   66.7%  registers
+ 32   sym     1024    63    32768       1      1       3     32   66.7%  registers
+ 48  base     1024    64    24576       1      1       4     32   66.7%  registers
+ 48   sym      768    63    24576       1      1       4     24   50.0%  registers
+ 64  base     1024    64    32768       1      1       3     32   66.7%  registers
+ 64   sym      640    63    32768       1      1       3     20   41.7%  registers
+ 96  base     1024    64    49152       1      1       2     32   66.7%  registers
+ 96   sym      640    63    49152       1      1       2     20   41.7%  registers
+========================================================================================================
+
+  K  base occ   sym occ  occ loss   measured reorder/sym   verdict
+ 16     66.7%     66.7%      0.0%   0.878-0.930x (LOSES)   sym pays NO occupancy penalty
+ 32     66.7%     66.7%      0.0%    1.077-1.209x (WINS)   sym pays NO occupancy penalty
+ 48     66.7%     50.0%     25.0%   0.772-0.839x (LOSES)   sym gives up 25.0% of occupancy
+ 64     66.7%     41.7%     37.5% 0.950-1.062x (neutral)   sym gives up 37.5% of occupancy
+ 96     66.7%     41.7%     37.5%   0.898-0.916x (LOSES)   sym gives up 37.5% of occupancy
+
+Padding waste (padded_threads / tiles-per-row, from the symtile banner):
+   K=16    32 threads for   10 live tiles = 3.20x thread waste
+   K=32    64 threads for   36 live tiles = 1.78x thread waste
+   K=48    96 threads for   78 live tiles = 1.23x thread waste
+   K=64   160 threads for  136 live tiles = 1.18x thread waste
+   K=96   320 threads for  300 live tiles = 1.07x thread waste
+
+CONCLUSION (2026-08-04)
+========================================================================================================
+1. The "25-37% occupancy loss" is CONFIRMED exactly: 0 / 0 / 25.0 / 37.5 / 37.5%.
+   BUT it holds only because BOTH legs are register-limited to exactly ONE resident block
+   per SM (~64 regs x 1024 threads), which is what makes block size pass straight through
+   to resident warps. Quote the number only with that condition stated -- "smaller block
+   => lower occupancy" is NOT true in general, and asserting it is the same error that was
+   made for TF32 and withdrawn (see ../theoretical_occupancy.txt / SUMMARY.md Item 3).
+
+2. Occupancy is only HALF the mechanism. It explains K>=48, but FAILS at K=16, where the
+   penalty is exactly ZERO and symtile still loses 0.878-0.930x.
+
+3. The other half is triangular padding waste, which runs the OPPOSITE way with rank:
+   3.20x at K=16 falling monotonically to 1.07x at K=96, while the occupancy loss rises
+   monotonically from 0% to 37.5%.
+
+4. K=32 is the ONLY rank where neither penalty bites -- block still full (0% occupancy
+   loss) and waste already down to 1.78x -- and it is the ONLY rank where symmetric
+   tiling wins. The published K=32 row is therefore not a representative sample of the
+   sweep; it is the single point where both penalties happen to be small.
+
+Inputs: nvcc -Xptxas -v (regs), only_scalar_fp32.cu:480 (dynamic smem = yb_eff*K*4),
+run banners (block, yb_eff, tile counts), sm_86 limits per ../occupancy_calc.py.
+No code was changed to produce this.

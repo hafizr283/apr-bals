@@ -629,6 +629,9 @@ int main(int argc, char* argv[]) {
     set_max_shared((const void*)compute_LHS_RHS_BALS_block<16, RR_C, RC_C>);
     set_max_shared((const void*)compute_LHS_RHS_BALS_block<32, RR_C, RC_C>);
     set_max_shared((const void*)compute_LHS_RHS_wmma<K_DIM/16>);
+#if WMMA_TF32
+    set_max_shared((const void*)compute_LHS_RHS_wmma_tf32<K_DIM/16>);
+#endif
     set_max_shared((const void*)compute_LHS_RHS_wmma_giant<K_DIM/16, GIANT_WARPS>);
     set_max_shared((const void*)convert_fp32_to_fp16);
     set_max_shared((const void*)compute_RMSE_kernel);
@@ -741,11 +744,22 @@ int main(int argc, char* argv[]) {
                     if (d1 > d0) {
                         int nn_b = d1 - d0;
                         int wblocks = (nn_b + WARPS_PER_BLOCK - 1) / WARPS_PER_BLOCK;
+#if WMMA_TF32
+                        // TF32 ablation leg (item 2, 2026-08-04): same tiles/order,
+                        // 16x16x8 MMA, staged from the FP32 factor array d_Y (not
+                        // d_Y_half) so inputs are not pre-rounded to fp16.
+                        if      (K == 16) compute_LHS_RHS_wmma_tf32<1><<<wblocks, WARPS_PER_BLOCK*32, 0, sC>>>(d1, d0, d_u_offsets, d_u_colidx, d_u_csr_vals, d_Y, lhs_b, d_X, bstart);
+                        else if (K == 32) compute_LHS_RHS_wmma_tf32<2><<<wblocks, WARPS_PER_BLOCK*32, 0, sC>>>(d1, d0, d_u_offsets, d_u_colidx, d_u_csr_vals, d_Y, lhs_b, d_X, bstart);
+                        else if (K == 48) compute_LHS_RHS_wmma_tf32<3><<<wblocks, WARPS_PER_BLOCK*32, 0, sC>>>(d1, d0, d_u_offsets, d_u_colidx, d_u_csr_vals, d_Y, lhs_b, d_X, bstart);
+                        else if (K == 64) compute_LHS_RHS_wmma_tf32<4><<<wblocks, WARPS_PER_BLOCK*32, 0, sC>>>(d1, d0, d_u_offsets, d_u_colidx, d_u_csr_vals, d_Y, lhs_b, d_X, bstart);
+                        else if (K == 96) compute_LHS_RHS_wmma_tf32<6><<<wblocks, WARPS_PER_BLOCK*32, 0, sC>>>(d1, d0, d_u_offsets, d_u_colidx, d_u_csr_vals, d_Y, lhs_b, d_X, bstart);
+#else
                         if      (K == 16) compute_LHS_RHS_wmma<1><<<wblocks, WARPS_PER_BLOCK*32, 0, sC>>>(d1, d0, d_u_offsets, d_u_colidx, d_u_csr_vals, d_Y_half, lhs_b, d_X, bstart);
                         else if (K == 32) compute_LHS_RHS_wmma<2><<<wblocks, WARPS_PER_BLOCK*32, 0, sC>>>(d1, d0, d_u_offsets, d_u_colidx, d_u_csr_vals, d_Y_half, lhs_b, d_X, bstart);
                         else if (K == 48) compute_LHS_RHS_wmma<3><<<wblocks, WARPS_PER_BLOCK*32, 0, sC>>>(d1, d0, d_u_offsets, d_u_colidx, d_u_csr_vals, d_Y_half, lhs_b, d_X, bstart);
                         else if (K == 64) compute_LHS_RHS_wmma<4><<<wblocks, WARPS_PER_BLOCK*32, 0, sC>>>(d1, d0, d_u_offsets, d_u_colidx, d_u_csr_vals, d_Y_half, lhs_b, d_X, bstart);
                         else if (K == 96) compute_LHS_RHS_wmma<6><<<wblocks, WARPS_PER_BLOCK*32, 0, sC>>>(d1, d0, d_u_offsets, d_u_colidx, d_u_csr_vals, d_Y_half, lhs_b, d_X, bstart);
+#endif
                     }
                 }
                 // Scalar tile kernel — writes to local batch row indices
@@ -845,11 +859,20 @@ int main(int argc, char* argv[]) {
                     if (d1 > d0) {
                         int nn_b = d1 - d0;
                         int wblocks = (nn_b + WARPS_PER_BLOCK - 1) / WARPS_PER_BLOCK;
+#if WMMA_TF32
+                        // TF32 ablation leg (item side) — staged from FP32 d_X.
+                        if      (K == 16) compute_LHS_RHS_wmma_tf32<1><<<wblocks, WARPS_PER_BLOCK*32, 0, sC>>>(d1, d0, d_i_offsets, d_i_colidx, d_i_csr_vals, d_X, lhs_b, d_Y, bstart);
+                        else if (K == 32) compute_LHS_RHS_wmma_tf32<2><<<wblocks, WARPS_PER_BLOCK*32, 0, sC>>>(d1, d0, d_i_offsets, d_i_colidx, d_i_csr_vals, d_X, lhs_b, d_Y, bstart);
+                        else if (K == 48) compute_LHS_RHS_wmma_tf32<3><<<wblocks, WARPS_PER_BLOCK*32, 0, sC>>>(d1, d0, d_i_offsets, d_i_colidx, d_i_csr_vals, d_X, lhs_b, d_Y, bstart);
+                        else if (K == 64) compute_LHS_RHS_wmma_tf32<4><<<wblocks, WARPS_PER_BLOCK*32, 0, sC>>>(d1, d0, d_i_offsets, d_i_colidx, d_i_csr_vals, d_X, lhs_b, d_Y, bstart);
+                        else if (K == 96) compute_LHS_RHS_wmma_tf32<6><<<wblocks, WARPS_PER_BLOCK*32, 0, sC>>>(d1, d0, d_i_offsets, d_i_colidx, d_i_csr_vals, d_X, lhs_b, d_Y, bstart);
+#else
                         if      (K == 16) compute_LHS_RHS_wmma<1><<<wblocks, WARPS_PER_BLOCK*32, 0, sC>>>(d1, d0, d_i_offsets, d_i_colidx, d_i_csr_vals, d_X_half, lhs_b, d_Y, bstart);
                         else if (K == 32) compute_LHS_RHS_wmma<2><<<wblocks, WARPS_PER_BLOCK*32, 0, sC>>>(d1, d0, d_i_offsets, d_i_colidx, d_i_csr_vals, d_X_half, lhs_b, d_Y, bstart);
                         else if (K == 48) compute_LHS_RHS_wmma<3><<<wblocks, WARPS_PER_BLOCK*32, 0, sC>>>(d1, d0, d_i_offsets, d_i_colidx, d_i_csr_vals, d_X_half, lhs_b, d_Y, bstart);
                         else if (K == 64) compute_LHS_RHS_wmma<4><<<wblocks, WARPS_PER_BLOCK*32, 0, sC>>>(d1, d0, d_i_offsets, d_i_colidx, d_i_csr_vals, d_X_half, lhs_b, d_Y, bstart);
                         else if (K == 96) compute_LHS_RHS_wmma<6><<<wblocks, WARPS_PER_BLOCK*32, 0, sC>>>(d1, d0, d_i_offsets, d_i_colidx, d_i_csr_vals, d_X_half, lhs_b, d_Y, bstart);
+#endif
                     }
                 }
                 

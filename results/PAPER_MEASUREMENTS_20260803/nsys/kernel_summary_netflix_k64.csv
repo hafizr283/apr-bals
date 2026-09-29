@@ -1,0 +1,12 @@
+Generating SQLite file /tmp/claude-1000/-home-pc-Desktop-2007080-latent-factorr-experimen/2cd2ce92-0adb-3e1d-7b93-d93d7ba5baec/scratchpad/nsys_netflix_k64.sqlite from /tmp/claude-1000/-home-pc-Desktop-2007080-latent-factorr-experimen/2cd2ce92-0adb-3e1d-7b93-d93d7ba5baec/scratchpad/nsys_netflix_k64.nsys-rep
+Processing [/tmp/claude-1000/-home-pc-Desktop-2007080-latent-factorr-experimen/2cd2ce92-0adb-3e1d-7b93-d93d7ba5baec/scratchpad/nsys_netflix_k64.sqlite] with [/usr/local/cuda-12.9/nsight-systems-2025.1.3/host-linux-x64/reports/cuda_gpu_kern_sum.py]... 
+Time (%),Total Time (ns),Instances,Avg (ns),Med (ns),Min (ns),Max (ns),StdDev (ns),Name
+39.7,1756849933,135,13013703.2,14156969.0,1852784,22661601,7116057.0,"void compute_LHS_RHS_wmma<(int)4>(int, int, const int *, const int *, const float *, const __half *, float *, float *, int)"
+30.3,1338172987,150,8921153.2,10731972.5,44736,10862788,3731143.8,"void cholesky_solve_tiled<(int)64, (int)128>(const float *, float *, const int2 *, int, int, int, float, const int *)"
+17.8,788239391,30,26274646.4,26265810.0,5676208,47004723,20944660.4,"void compute_LHS_RHS_wmma_giant<(int)4, (int)4>(int, const int *, const int *, const float *, const __half *, float *, float *, int, int)"
+5.5,242129925,2,121064962.5,121064962.5,47656302,194473623,103815523.3,"compute_RMSE_kernel(const int *, const int *, const float *, int, const float *, const float *, int, double *)"
+4.7,207872744,6,34645457.3,34625500.5,13865131,55564268,22742125.6,"void compute_RMSE_csr_half<(int)64>(const int *, const int *, const float *, int, const __half *, const __half *, double *)"
+1.2,54709621,45,1215769.4,142143.0,34848,3479139,1612645.1,"void compute_LHS_RHS_BALS_block<(int)4, (int)2, (int)2>(int, int, float, const int *, const int *, const int *, const int *, const float *, const float *, float *, float *, const float *, const int *, const int *, const int *, const int *, const int *, int, int)"
+0.5,22911165,30,763705.5,763497.5,52735,1475060,722894.3,"momentum_extrapolate(float *, float *, long long, float)"
+0.2,10694406,36,297066.8,296925.5,22688,571099,277340.9,"convert_fp32_to_fp16(const float *, __half *, int)"
+

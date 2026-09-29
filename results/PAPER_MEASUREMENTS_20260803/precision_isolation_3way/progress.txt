@@ -1,0 +1,29 @@
+netflix K=96 fp16ng DONE 02:29:58
+netflix K=96 tf32 DONE 02:30:24
+netflix K=96 simtng DONE 02:33:14
+netflix K=32 fp16ng DONE 02:33:31
+netflix K=32 tf32 DONE 02:33:48
+netflix K=32 simtng DONE 02:34:18
+ml20m K=96 fp16ng DONE 02:34:25
+ml20m K=96 tf32 DONE 02:34:32
+ml20m K=96 simtng DONE 02:35:15
+ml20m K=32 fp16ng DONE 02:35:19
+ml20m K=32 tf32 DONE 02:35:23
+ml20m K=32 simtng DONE 02:35:30
+ml10m K=96 fp16ng DONE 02:35:33
+ml10m K=96 tf32 DONE 02:35:37
+ml10m K=96 simtng DONE 02:35:55
+ml10m K=32 fp16ng DONE 02:35:57
+ml10m K=32 tf32 DONE 02:35:59
+ml10m K=32 simtng DONE 02:36:02
+TF32_ABLATION_DONE 02:36:02
+netflix K=16 fp16ng DONE 02:51:26
+netflix K=16 tf32 DONE 02:51:42
+netflix K=16 simtng DONE 02:52:02
+netflix K=48 fp16ng DONE 02:52:20
+netflix K=48 tf32 DONE 02:52:39
+netflix K=48 simtng DONE 02:53:26
+netflix K=64 fp16ng DONE 02:53:46
+netflix K=64 tf32 DONE 02:54:07
+netflix K=64 simtng DONE 02:55:37
+TF32_RANKS_DONE 02:55:37

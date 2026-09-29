@@ -2,7 +2,7 @@
 
 > **Note:** This repository is the baseline-comparison extension of [Accelerating-ALS-Matrix-Factorization-on-GPUs-via-Mixed-Precision-Tensor-Cores](https://github.com/hafizr283/Accelerating-ALS-Matrix-Factorization-on-GPUs-via-Mixed-Precision-Tensor-Cores). It measures **APR-BALS ("justapr")** — a mixed-precision (tensor-core) ALS matrix-factorization solver — against a faithful FP32 re-implementation of BALS and three external CUDA baselines: **cuMF_ALS**, **cuMF_CCD**, and **cuMF_SGD**.
 
-Most numbers in this document are measured on **2× RTX 3060 (sm_86, 12 GB), CUDA 12.0**; §6.7 cross-validates every comparison on a **Tesla T4 (Colab, sm_75, Turing)** to confirm the results aren't an Ampere-specific artifact. All runs use identical frozen train/test splits shared by every method, and every table is backed by a raw-output file committed under [`results/`](results/) — file names are cited next to each table so you can check the source yourself.
+*Last updated 2026-09-30.* Most numbers in this document are measured on **2× RTX 3060 (sm_86, 12 GB)** — the July 2026 runs with **CUDA 12.0, driver 580.159.03**, the August 2026 runs (§6.8) with **CUDA 12.9, driver 580.173.02** (the August 100-run variance study reproduces every July two-path speedup within 0.50%, so the toolchain change does not move the results); §6.7 cross-validates every comparison on a **Tesla T4 (Colab, sm_75, Turing)** to confirm the results aren't an Ampere-specific artifact. All runs use identical frozen train/test splits shared by every method, and every table is backed by a raw-output file committed under [`results/`](results/) — file names are cited next to each table so you can check the source yourself.
 
 ---
 
@@ -13,7 +13,7 @@ This folder has **three home-grown `.cu` binaries**. They look similar but answe
 | Binary | What it is | Bare-default build | Flags for the results in this README |
 |---|---|---|---|
 | **`justapr.cu`** | The shipped mixed-precision APR-BALS solver (tensor cores + optional FP16 Cholesky + momentum) | Legacy 2026-07-06 path: plain λ·I, legacy init, FP32 solver, **no momentum** | **`-DWEIGHTED_LAMBDA=1 -DCUMF_INIT=1 -DMOMENTUM=1`** always, **add `-DCHOL_MP=2` only at `K_DIM=96`** |
-| **`only_scalar_fp32.cu`** | Faithful scalar-FP32 BALS re-implementation (tiled storage + Y-column reuse, no tensor cores) — the honest "BALS-equivalent" baseline | Weighted-λ ON, legacy init, **no** Alg.3 reordering | `-DBALS_REORDER=1` (Alg. 3 row/col reordering); add `-DBALS_SYMTILE=1` for the symmetry-exploiting Gram kernel (closer to real BALS, and the fastest FP32 variant we have) |
+| **`only_scalar_fp32.cu`** | Faithful scalar-FP32 BALS re-implementation (tiled storage + Y-column reuse, no tensor cores) — the faithful "BALS-equivalent" baseline | Weighted-λ ON, legacy init, **no** Alg.3 reordering | `-DBALS_REORDER=1` (Alg. 3 row/col reordering); add `-DBALS_SYMTILE=1` for the symmetry-exploiting Gram kernel (closer to real BALS, and the fastest FP32 variant we have) |
 | **`main_experiment.cu`** | A single binary that runs **both** an FP32 baseline leg and the mixed-precision (WMMA) leg back-to-back, same process, same data — the controlled "what does tensor-core dispatch alone buy you" harness | Weighted-λ ON, legacy init, `CHOL_MP=0` | `-DCUMF_INIT=1` (matches the released-cuMF-style init used in the headline runs). `-DCHOL_MP` compiles but is deliberately left at `0` in every headline run — the flag applies identically to both legs, so leaving it off keeps the Gram-kernel precision (WMMA vs scalar) the *only* variable that differs between the two legs. No `MOMENTUM` support in this binary at all. |
 
 If you only want to reproduce the paper's tables, skip straight to **[Reproducing the results](#reproducing-the-results)** and run the provided shell scripts — they already bake in the right flags per binary.
@@ -42,15 +42,18 @@ comparing_baseline/
 ├── run_justapr_vs_cumf.sh    # justapr (ship recipe) vs cuMF_ALS, all datasets, one command
 ├── run_ccd_sgd_comparison.py # justapr vs cuMF_CCD vs cuMF_SGD, all datasets, one command
 ├── run_t4_everything.sh      # reproduces every table in this doc on a fresh machine (e.g. Colab T4) end-to-end
+├── count_empty_entities.py   # cold-item census (items with no training rating) + optional masked-RMSE check
 ├── FIXLOG.md                 # full chronological engineering log (every optimization, every dead end, every measurement)
 └── results/                  # archived raw output of every run cited in this README
+    ├── PAPER_MEASUREMENTS_20260803/  # Aug 2026 paper-revision measurements (§6.8); overview in its SUMMARY.md
+    └── PAPER_CHECKS_20260929/        # Sep 2026 dataset checks (tier shares, cold-item census)
 ```
 
 ---
 
 ## 2. Requirements
 
-- An NVIDIA GPU, CUDA toolkit + `nvcc` (validated on CUDA 12.0, `sm_86`; the scripts auto-detect your GPU's compute capability via `nvidia-smi`).
+- An NVIDIA GPU, CUDA toolkit + `nvcc` (validated on CUDA 12.0 and 12.9, `sm_86`; the scripts auto-detect your GPU's compute capability via `nvidia-smi`).
 - `g++` (for `preprocess.cpp`).
 - Python 3 + `numpy` + `scipy` (only needed for the cuMF_CCD/cuMF_SGD comparison — `convert_bin_for_ccd_sgd.py` and `run_ccd_sgd_comparison.py`).
 - ~5–10 GB free disk per large dataset (Netflix/ML-32M `.bin` files are multi-GB).
@@ -66,7 +69,7 @@ g++ -O3 preprocess.cpp -o preprocess
 ./preprocess path/to/your/ratings.csv my_dataset.bin
 ```
 
-`preprocess` reorders users/items to be dense-indexed, does an 80/20 train/test split, and writes the frozen split. The `.bin` format is documented at the top of `convert_bin_for_ccd_sgd.py` if you need to write your own reader.
+`preprocess` reorders users/items to be dense-indexed, does an 80/20 train/test split (fixed seed: `mt19937` seeded with 42 in `preprocess.cpp`), and writes the frozen split. The factor initialization is also fixed (`srand(42)` in `justapr.cu` and `main_experiment.cu`), so every run of the same build and `.bin` starts from the same point. The `.bin` format is documented at the top of `convert_bin_for_ccd_sgd.py` if you need to write your own reader.
 
 **Note on the shipped scripts:** `run_justapr_vs_cumf.sh` and `run_ccd_sgd_comparison.py` both ship with a hardcoded dataset registry (absolute paths from the machine these results were measured on). On a fresh clone you have two options:
 - Pass an explicit `.bin` path as an argument (`run_justapr_vs_cumf.sh` supports this: `./run_justapr_vs_cumf.sh /path/to/my_dataset.bin`), or
@@ -95,7 +98,8 @@ Datasets used for every measurement in this README:
 Mixed-precision APR-BALS: BALS-style tiled storage + Y-column reuse, WMMA (tensor-core) Gram computation for dense/giant tiles, a custom blocked-tiled Cholesky solver, and two **optional, independently-flagged** accelerations layered on top:
 
 - **`-DCHOL_MP=2`** (K=96 only): stores the Cholesky solver's factor tiles in FP16 instead of FP32 (no iterative refinement — the "YOLO" variant). Cuts smem pressure, raising occupancy 4→8 blocks/SM. Solve time **−23%**, and at K=96 under the weighted-λ protocol the final test RMSE lands **bit-for-bit identical** to the FP32 solver (0 non-finite solves). **Do not use at K≤64** — measured: K=32 is destroyed by giant-item FP16 overflow (test RMSE 1.17 vs the 0.82 record), K=48 costs more convergence iterations than it saves, K=64 saves only ~4% with some overflow risk. `common.cuh` `#error`s if you pass `CHOL_MP` at `K_DIM=16` (no effect there — K=16 uses the batched solver).
-- **`-DMOMENTUM=1`** (all K): heavy-ball extrapolation of the factor sequence between ALS sweeps (`X_used = X_raw + β(X_raw − X_raw_prev)`, β=0.3 default, override with `MBETA` env var at runtime). Converges in ~15 iterations instead of 20–25, test RMSE equal-or-better at every measured (dataset, K) pair, 0 non-finite solves. Precision-independent (works with the FP32 solver too).
+- **`-DMOMENTUM=1`** (all K): heavy-ball extrapolation of the factor sequence between ALS sweeps (`X_used = X_raw + β(X_raw − X_raw_prev)`, β=0.3 default, override with `MBETA` env var at runtime). Converges in 15 iterations instead of 20–25; test RMSE is equal or better at 19 of the 20 large-dataset (dataset, K) pairs (the exception, Netflix K=16, is 4×10⁻⁵ worse, confirmed by 5 repeat runs); 0 non-finite solves. β was chosen by wall time and stability, not test error (β=0.4 oscillates, β=0.5 overflows the FP16 solver tiles). Precision-independent (works with the FP32 solver too).
+- **`-DWMMA_TF32=1`** (ablation only, added 2026-08-04): swaps the FP16 WMMA Gram kernel for a TF32 WMMA kernel on the same dataflow, staged from the FP32 factors. Used only for the precision-isolating ablation (§6.8). Default OFF; with the flag off the build is SASS-identical to the shipped kernel.
 
 Build the ship recipe:
 ```bash
@@ -110,13 +114,13 @@ nvcc -O3 -arch=sm_86 -std=c++14 -DK_DIM=96 -DWEIGHTED_LAMBDA=1 -DCUMF_INIT=1 -DM
 
 **Why the bare default isn't the ship recipe:** `justapr.cu` predates the weighted-λ/momentum/CHOL_MP work and originally shipped every legacy Netflix trajectory at plain λ=0.1. Rather than break reproducibility of those old runs, every new feature defaults OFF (`WEIGHTED_LAMBDA 0`, `CUMF_INIT 0`, `MOMENTUM 0`, `CHOL_MP 0` in the source). A bare `nvcc -DK_DIM=96 justapr.cu` still compiles and runs — it just runs the 2026-07-06 code path, not the paper's.
 
-### 4.2 `only_scalar_fp32.cu` — the honest BALS-equivalent baseline
+### 4.2 `only_scalar_fp32.cu` — the faithful BALS-equivalent baseline
 
 Same BALS tiled-storage format, job lists, entity batching, and Cholesky dispatch as `justapr.cu`, but **all tiles run the FP32 scalar kernel** — no WMMA, no tensor cores, exactly what the BALS paper specifies. It is, by construction, `main_experiment.cu`'s baseline leg extracted into its own binary (see §5 for the proof).
 
 Two optional flags make it match BALS **more** faithfully instead of less:
 - **`-DBALS_REORDER=1`** — BALS Algorithm 3: rows/columns pre-sorted by descending nnz before tiling (skips more vacant tiles up front). RMSE-neutral (permutation is a bijection), speed-neutral on this kernel (vacant tiles are already skipped via the job/nz-tile list here, so reordering doesn't buy what it buys in BALS's own kernel).
-- **`-DBALS_SYMTILE=1`** — replaces the FP32 Gram kernel with the actual BALS/cuMF register-tile mapping (`compute_LHS_RHS_BALS_symtile`, faithful to `jingchen95/BALS`'s `magma_sals_kernel_lower2` and cuMF's `get_hermitian`): only lower-triangular tiles are computed, exploiting Gram symmetry. Bit-identical RMSE trajectory to the baseline (verified digit-for-digit); **1.0–1.21× faster** wall time (real but modest — the FP32 Gram here is memory/latency-bound at ~3% of the GPU's FP32 peak, so halving compute barely moves the needle).
+- **`-DBALS_SYMTILE=1`** — replaces the FP32 Gram kernel with the actual BALS/cuMF register-tile mapping (`compute_LHS_RHS_BALS_symtile`, faithful to `jingchen95/BALS`'s `magma_sals_kernel_lower2` and cuMF's `get_hermitian`): only lower-triangular tiles are computed, exploiting Gram symmetry. Bit-identical RMSE trajectory to the baseline (verified digit-for-digit). Its effect is **rank-dependent**: across all 20 (dataset, K) pairs it ranges 0.77–1.21× versus the reorder-only kernel, winning only at K=32 (1.08–1.21×) and losing at 13 of 20 pairs (§6.8). The triangular mapping wastes threads at small K and lowers the occupancy ceiling at K≥48, and the FP32 Gram here is latency-bound, so halving arithmetic does not pay.
 
 Build:
 ```bash
@@ -156,13 +160,13 @@ Before trusting any speed/accuracy comparison, we checked that `justapr.cu`'s FP
 - `justapr.cu` with **no flags** reproduces the pre-2026-07-12 legacy trajectory digit-for-digit (train RMSE 0.545780 @ iter 45 — the original record).
 - `justapr.cu -DWEIGHTED_LAMBDA=1 -DCUMF_INIT=1` (FP32 solver, `CHOL_MP=0`) at K=96 lands on **test RMSE 0.817558 exactly**, matching the `main_experiment.cu` APR-leg record from `results/RMSE_COMPARISON_20260712_225827.txt` (also 0.817558) and reconfirmed in the newer `results/MAIN3060_WL_20260721_225757/netflix_k96.txt` run (APR-BALS test RMSE 0.817558, iter 20).
 
-So the chain `only_scalar_fp32.cu` → `main_experiment.cu` baseline leg → `main_experiment.cu` APR leg (FP32) → `justapr.cu` FP32+weighted-λ path is one verified, numerically-consistent computation. Everything downstream (`CHOL_MP`, `MOMENTUM`) is then layered on top of that same verified base and independently gated (see §4.1: `CHOL_MP=2` at K=96 reproduces this exact RMSE bit-for-bit; only iteration *count* changes under momentum, not the converged answer).
+So the chain `only_scalar_fp32.cu` → `main_experiment.cu` baseline leg → `main_experiment.cu` APR leg (FP32) → `justapr.cu` FP32+weighted-λ path is one verified, numerically-consistent computation. Everything downstream (`CHOL_MP`, `MOMENTUM`) is then layered on top of that same verified base and independently gated (see §4.1: `CHOL_MP=2` at K=96 reproduces this exact RMSE bit-for-bit; momentum changes the iteration count and moves the final test RMSE by at most a few ×10⁻⁴).
 
 ---
 
 ## 6. Results (measured, RTX 3060 sm_86, weighted-λ ALS-WR everywhere, λ=0.048)
 
-Every table below cites the exact `results/` file it was read from. The cuMF_ALS comparison (§6.1–6.2) was **re-measured on 2026-07-22** specifically for this document — the previous archive (`results/JUSTAPR_VS_CUMF_20260721_045838.txt`) predates the momentum feature landing in the ship recipe and is kept only for the record.
+Every table below cites the exact `results/` file it was read from. The cuMF_ALS comparison (§6.1–6.2) was **re-measured on 2026-07-22 with momentum on** for this document. The momentum-OFF archive (`results/JUSTAPR_VS_CUMF_20260721_045838.txt`) is the one the TPDS paper's per-sweep ratios (3.0–6.4×) and time-to-target analysis are computed from, because cuMF has no momentum.
 
 ### 6.1 justapr (ship recipe) vs cuMF_ALS — Netflix, per rank
 
@@ -176,11 +180,11 @@ Source: `results/JUSTAPR_VS_CUMF_20260722_031959.txt`.
 | 64 | 60  | 235 | 1069 | **4.55×** | 3.525 s | 21.381 s | **6.07×** | 0.818655 | 0.819548 |
 | 96 | 100 | 396 | 2099 | **5.30×** | 5.943 s | 41.982 s | **7.06×** | 0.817145 | 0.817487 |
 
-justapr matches or beats cuMF's test RMSE at every rank on Netflix except K=96/F=100 (0.03% worse — cuMF uses one more effective factor per the F=100 vs K=96 rank mismatch), while running 4.5–6.3× faster per iteration and 6.1–8.0× faster wall-clock to convergence.
+justapr matches or beats cuMF's test RMSE at every rank on Netflix except K=16/F=20, where cuMF's 25% larger rank gives it a 0.27% lower test RMSE (0.828840 vs 0.831099), while running 4.5–6.3× faster per iteration and 6.1–8.0× faster wall-clock to convergence.
 
 ### 6.2 Cross-dataset summary at the top rank (K=96 vs F=100)
 
-Source: same file, all 5 datasets. cuMF_ALS produces `nan` test RMSE on every dataset except Netflix — cuMF's kernel has no guard against zero-train-rating entities, which the four MovieLens sets contain and Netflix does not (this is cuMF's limitation, not a comparison artifact; wall-time is still valid since training completes).
+Source: same file, all 5 datasets. cuMF_ALS produces `nan` test RMSE on every dataset except Netflix. Cause (verified in cuMF's source): under the weighted regularizer an item with no training rating has an all-zero system (`diag += nnz·λ = 0`, `als.cu`), so cuMF's CG step computes `alpha = 0/0` (`cg.cu`) and that item's factor becomes NaN; the NaN guard in cuMF's RMSE kernel (`SURPASS_NAN`) is compiled out by default. The MovieLens splits contain such items (30 / 909 / 4,182 in ML-10M / 20M / 32M, counted by `count_empty_entities.py`) and Netflix contains none. Training error and wall time are unaffected, so they remain valid.
 
 | Dataset | justapr K=96 wall (iters) | cuMF F=100 wall (iters) | wall speedup | justapr test RMSE | cuMF test RMSE |
 |---|---:|---:|---:|---:|---:|
@@ -190,7 +194,7 @@ Source: same file, all 5 datasets. cuMF_ALS produces `nan` test RMSE on every da
 | ml32m   | 3.636 s (15) | 14.426 s (20) | 4.0×  | 0.757443 | nan |
 | netflix | 5.943 s (15) | 41.982 s (20) | 7.1×  | 0.817145 | 0.817487 |
 
-Full per-K grid for every dataset (25 justapr rows + 25 cuMF rows) is in `results/JUSTAPR_VS_CUMF_20260722_031959.txt`; per-iteration speedups range **3.0×–6.6×** across every (dataset, K) pair measured.
+Full per-K grid for every dataset (25 justapr rows + 25 cuMF rows) is in `results/JUSTAPR_VS_CUMF_20260722_031959.txt`; per-iteration speedups in this momentum-on run range **3.0×–6.5×** over the 20 large-dataset pairs (2.2× at the smallest case, ml100k K=64).
 
 ### 6.3 Our own FP32 baseline vs cuMF_ALS (no tensor cores on either side)
 
@@ -204,7 +208,7 @@ Source: `results/RMSE_COMPARISON_20260712_225827.txt` (Netflix; `main_experiment
 | 60  | 64 | 1071 | 3708 | 0.29× | 0.8195 | 0.8191 | −0.0004 |
 | 100 | 96 | 2101 | 7723 | 0.27× | 0.8175 | 0.8176 | +0.0001 |
 
-This is the "no cheating" comparison: our BALS-format FP32 scalar kernel against cuMF's tuned FP32+CG solver, no tensor cores on either side. cuMF's FP32 path is faster at K≥32 — the entire speed story of this project comes from the tensor-core dispatch (§6.1), not from the scalar kernel alone. RMSE differences are noise-level (≤0.03%) at every rank — the tiled BALS-format reformulation itself changes nothing about solution quality.
+This is the "no cheating" comparison: our BALS-format FP32 scalar kernel against cuMF's tuned FP32+CG solver, no tensor cores on either side. cuMF's FP32 path is faster at K≥32 — the entire speed story of this project comes from the tensor-core dispatch (§6.1), not from the scalar kernel alone. RMSE differences are ≤0.1% at K≥32 (in the direction set by the rank mismatch); at K=16 cuMF's F=20 model is 0.28% better. The tiled BALS-format reformulation itself changes nothing about solution quality. Consequence for the paper: the FP32 baseline is **not** the fastest FP32 design at K≥32, so speedups over it isolate the tensor-core dispatch within one design, while the comparison with cuMF_ALS is the conservative measure of the overall advantage.
 
 ### 6.4 Compute throughput (GFlops/s), Netflix
 
@@ -231,7 +235,7 @@ Source: `results/JUSTAPR_VS_CCD_SGD_20260721_192433.txt` — same frozen-split p
 | ml32m   | **3.44×** | (not in paper) |
 | netflix | **4.08×** | 3.22× |
 
-**vs cuMF_SGD** (justapr K=96 vs SGD k=128, wall-to-reach-justapr's-RMSE): despite using *fewer* factors (K=96 vs k=128), justapr matches SGD's quality at comparable wall time on ml10m and beats it (SGD never reaches justapr's RMSE within 40 epochs) on ml20m, ml32m, and netflix. See `RUNNING_SUMMARY.md §1` for the full per-dataset breakdown — note the BALS paper's own "5.3× over cuMF_SGD" is a *throughput* (GFlops) number at matched rank, not a wall-to-convergence number; ALS does strictly more FLOPs/iteration than SGD, so it always wins the throughput metric even where wall-clock is only competitive.
+**vs cuMF_SGD** (justapr K=96 vs SGD k=128, wall-to-reach-justapr's-RMSE): despite using *fewer* factors (K=96 vs k=128), justapr beats SGD on netflix (SGD never reaches justapr's RMSE within 40 epochs); on ml10m SGD is 0.08% better and 11% faster. On ml20m and ml32m SGD trails by 0.25% and 0.44%, about the size of the **cold-item effect**: justapr predicts 0 for items with no training rating, which adds 0.02% / 0.20% / 0.59% to its ML-10M / 20M / 32M test RMSE (exact, computed from the frozen splits). So no accuracy advantage is claimed on MovieLens; the Netflix comparison (no cold items) is the clean one. See `RUNNING_SUMMARY.md §1` for the full per-dataset breakdown — note the BALS paper's own "5.3× over cuMF_SGD" is a *throughput* (GFlops) number at matched rank, not a wall-to-convergence number; ALS does strictly more FLOPs/iteration than SGD, so it always wins the throughput metric even where wall-clock is only competitive.
 
 ### 6.6 The BALS-equivalent ladder — `only_scalar_fp32.cu` vs cuMF_ALS vs justapr
 
@@ -244,9 +248,9 @@ Source: `results/BALS_EQUIV_VALIDATION_20260721_205101/` (K=32, λ=0.048, all 4 
 | ml32m   | 6.933 s  | 6.452 s  | 3.078 s | 0.611 s | 2.10× slower | **10.6×** | **11.3×** |
 | netflix | 17.970 s | 15.618 s | 9.955 s | 1.431 s | 1.57× slower | **10.9×** | **12.6×** |
 
-Two honest findings here (both documented at length in `results/RUNNING_SUMMARY.md §2b/§2b.1`):
+Two findings here (both documented at length in `results/RUNNING_SUMMARY.md §2b/§2b.1`):
 1. **justapr is ~10–13× faster than a faithful FP32 BALS re-implementation.** This isolates exactly what tensor cores + momentum + mixed-precision Cholesky buy on top of the shared BALS tiling contribution.
-2. **The faithful FP32 BALS-equivalent is itself 1.6–2.1× slower than modern cuMF_ALS on this GPU**, unlike the original BALS paper's pre-Ampere results (K20C/TITAN X/TITAN RTX). The symmetry-exploiting kernel (`BALS_SYMTILE`) is a real 1.10–1.22× win over the reorder-only kernel (bit-identical RMSE trajectory, verified digit-for-digit), but the FP32 Gram computation here is memory/latency-bound at only ~3% of FP32 peak throughput, so halving FLOPs barely moves wall time — this is an architectural (Ampere vs pre-Ampere) effect, not a bug, and it's the reason the tensor-core path (justapr) exists at all.
+2. **The faithful FP32 BALS-equivalent is itself 1.6–2.1× slower than modern cuMF_ALS on this GPU**, unlike the original BALS paper's pre-Ampere results (K20C/TITAN X/TITAN RTX). At K=32 the symmetry-exploiting kernel (`BALS_SYMTILE`) is a real 1.08–1.21× win over the reorder-only kernel (bit-identical RMSE trajectory, verified digit-for-digit), but it loses at most other ranks (§6.8), and the FP32 Gram computation here is memory/latency-bound at only ~3% of FP32 peak throughput, so halving FLOPs barely moves wall time — this is an architectural (Ampere vs pre-Ampere) effect, not a bug, and it's the reason the tensor-core path (justapr) exists at all.
 
 ### 6.7 Cross-GPU validation — Tesla T4 (Colab, `sm_75`, Turing)
 
@@ -323,6 +327,23 @@ vs cuMF_SGD (T4): justapr K=96 ties SGD on ml10m (0.82× — SGD reaches the sam
 - **cuMF_ALS's own RMSE drifts slightly more cross-GPU than our binaries do.** Netflix F=100 test RMSE: 0.818021 (T4) vs 0.817483–0.817499 (3060 runs) — about 0.06%, a larger gap than the ≤0.01% wobble seen elsewhere in this doc. This is cuMF's own external CG solver's floating-point path on a different architecture, not something under our control.
 - **The `results_unfinished_part/` directory name is misleading.** It was captured mid-session on Colab and the name suggests an interrupted run, but the run inside it (`JUSTAPR_VS_CUMF_20260721_233252.txt`, all 55 expected log files present, every leg reports `✓`, `Finished:` line present, 0 non-finite solves at K=96 on every dataset) is in fact complete — verified file-by-file before writing this section. An earlier attempt in the same results bundle (`JUSTAPR_VS_CUMF_20260721_212253.txt`) genuinely did fail every cuMF leg (root cause: a `cumf_als-master/main` binary carried over from this dev box, incompatible with Colab's libstdc++ — fixed in `run_t4_everything.sh`/`run_justapr_vs_cumf.sh`, see their inline comments); the `233252` run is the corrected re-run and is what the tables above are drawn from.
 
+### 6.8 Paper-revision measurements (August 2026) and dataset checks (September 2026)
+
+Everything in this subsection is in [`results/PAPER_MEASUREMENTS_20260803/`](results/PAPER_MEASUREMENTS_20260803/) (overview and corrections in its `SUMMARY.md`) or [`results/PAPER_CHECKS_20260929/`](results/PAPER_CHECKS_20260929/). August runs: GPU 1 of the 2×3060 box (GPU 0 drives the display), otherwise idle, CUDA 12.9, driver 580.173.02.
+
+| Measurement | Result | Source |
+|---|---|---|
+| Run-to-run variance (5 runs × 20 two-path configs = 100 runs) | speedup relative std dev ≤ 0.44% (mean 0.14%); every July two-path speedup reproduces within 0.50%; test RMSE spread ≤ 10⁻⁶ | `variance_5x/`, `variance_5x_summary.txt` |
+| Precision-isolating ablation (FP16 WMMA / TF32 WMMA / scalar FP32 in one binary, giant tier off) | reduced precision (TF32→FP16) adds at most 1.32× and nothing at K=64; the WMMA kernel at full FP32 range carries 87.8–99.6% of the effect (Netflix; 92.2–96.7% on ML-10M/20M). The timed phase includes the overlapped solve, so the ratios understate the Gram-only effect. The scalar leg differs in dataflow as well as execution unit | `precision_isolation_3way/` |
+| Nsight Compute counters, Netflix K=96 (ship recipe) | dense WMMA: tensor pipe 20.5%, achieved occupancy 16.0% (predicted 16.7%, 240 regs), DRAM 47.6%, SM 25.5% ⇒ staging-bound; giant WMMA: SM 75.1%, DRAM 11.4%; scalar tier: occupancy 69.1%, DRAM 42.2%, SM 29.7% | `ncu/`, `occupancy/`, `ptxas_static_regs.txt` |
+| Tier thresholds, Netflix K=96 | θ_g over 128–2048 moves wall time by only 2.7% (1024 best); raising θ_d from 4 to 8 / 16 / 32 costs 1.05× / 1.31× / 2.04×; test RMSE identical | `threshold_sweep/` |
+| λ sweep, K=96, Netflix + ML-20M, 8 values, ship recipe with momentum | U-shaped, minimum in [0.040, 0.048]; 0.048 is the joint optimum; on Netflix alone λ=0.040 is 0.35% better (0.8142 vs 0.8171) | `lambda_sweep_k96.txt` |
+| BALS-equivalent ladder at every rank (`only_scalar_fp32.cu`, reorder-only vs +symtile) | symtile vs reorder-only 0.77–1.21×: wins only at K=32, loses at 13 of 20 pairs. The best BALS variant runs within 0.5% of our FP32 baseline per sweep at 14 of 20 pairs. APR-BALS (momentum off) vs best BALS per sweep: 4.1–4.7× at K=16 rising to 13.1–19.9× at K=96 | `bals_ladder/`, `bals_ladder_all_K.txt` |
+| Time to a common Netflix test RMSE vs cuMF_ALS | 7.17× / 6.15× / 6.19× / 5.42× at K=32 / 48 / 64 / 96 (≥ the per-sweep ratio); 3.16× at K=16, where cuMF's rank-20 model ends more accurate | `time_to_target_rmse.txt` |
+| Fast-RMSE check, per rank (Netflix, momentum off) | contributes 1.00× / 1.03× / 1.09× / 1.10× / 1.10× at K=16…96; same stopping sweep and bit-identical test RMSE with and without it | `host_factor_per_rank/` |
+| Tier shares from the `.bin` files (Sep 2026) | the tensor-core tiers receive ≥ 99.77% of the training ratings on every dataset and side (Netflix 99.98%) | `PAPER_CHECKS_20260929/` |
+| Cold items (Sep 2026, `count_empty_entities.py`) | items with no training rating: 30 / 909 / 4,182 (ML-10M / 20M / 32M), 0 on Netflix; their 41 / 1,006 / 4,723 test ratings add 0.02% / 0.20% / 0.59% to justapr's test RMSE (it predicts 0 for them) | `PAPER_CHECKS_20260929/` |
+
 ---
 
 ## 7. Reproducing the results
@@ -351,6 +372,15 @@ nvcc -O3 -arch=sm_86 -std=c++14 -DK_DIM=32 -DBALS_REORDER=1 -DBALS_SYMTILE=1 onl
 
 All four scripts write a timestamped summary + full logs under `results/`, so re-running never overwrites a previous result.
 
+**§6.8 ablation legs** (Netflix shown; giant tier disabled in all three):
+```bash
+F="-O3 -arch=sm_86 -std=c++14 -DK_DIM=96 -DWEIGHTED_LAMBDA=1 -DCUMF_INIT=1 -DGIANT_NNZ_THRESH=2000000000"
+nvcc $F                                   justapr.cu -o abl_fp16   # FP16 WMMA (shipped kernel)
+nvcc $F -DWMMA_TF32=1                     justapr.cu -o abl_tf32   # TF32 WMMA, same dataflow
+nvcc $F -DDENSE_NNZ_THRESH=100000000      justapr.cu -o abl_fp32   # every entity on the scalar FP32 tier
+```
+The other §6.8 measurements use the builds of §4 with the flags recorded in each result folder and in `PAPER_MEASUREMENTS_20260803/SUMMARY.md`.
+
 **On a machine other than the one these numbers were measured on** (e.g. a Colab T4, or your own workstation with different dataset paths), use `run_t4_everything.sh` — it runs all four comparisons above end-to-end, auto-detects the GPU architecture, and zips `results/` for you at the end:
 ```bash
 DATA_DIR=/path/to/your/bin/files bash run_t4_everything.sh
@@ -363,10 +393,10 @@ Each `cuMF_*` external baseline needs to be built once (`make` inside `cumf_als-
 
 ## 8. Known gotchas
 
-- **cuMF_ALS prints `nan` test RMSE on every dataset except Netflix.** This is a real limitation of the external cuMF_ALS code (no guard against zero-train-rating entities, which the MovieLens splits contain), not a bug in our harness. Training still completes and wall-time/throughput numbers from those runs are valid; only the RMSE column is unusable off-Netflix.
+- **cuMF_ALS prints `nan` test RMSE on every dataset except Netflix.** Items with no training rating get an all-zero system under weighted λ, cuMF's CG divides 0/0, and its RMSE-kernel NaN guard is off by default (§6.2). Not a bug in our harness. Training still completes and wall-time/throughput numbers from those runs are valid; only the RMSE column is unusable off-Netflix.
 - **`K_DIM` only supports `{16, 32, 48, 64, 96}`.** Anything else fails a compile-time `#error` (by design — see the guard's comment in `common.cuh`; earlier silent support for `K=80` produced a plausible-looking but wrong RMSE).
 - **`-DCHOL_MP` is a K=96-only optimization.** It's compile-guarded against `K_DIM=16` and measured-harmful/net-neutral at K=32/48/64 (§4.1) — don't add it at other ranks even though it will compile.
-- **Run-to-run wall-time noise is ~1–2%** (thermal/scheduler variance on shared GPUs); test RMSE can wobble in the 5th–6th decimal from nondeterministic `atomicAdd` ordering in the LHS accumulation. None of the conclusions in this README depend on differences that small.
+- **Run-to-run wall-time noise is small:** 100 runs (5 × 20 two-path configurations, §6.8) give a relative standard deviation of the speedup of at most 0.44% (mean 0.14%) on the idle 3060; test RMSE varies by at most 10⁻⁶ from nondeterministic `atomicAdd` ordering in the sparse tier. Colab T4 timings vary far more (§6.7). None of the conclusions in this README depend on differences that small.
 - **Dataset paths in `run_justapr_vs_cumf.sh` / `run_ccd_sgd_comparison.py` are hardcoded** to the machine these results were measured on — see §3 for the two ways to point them at your own files.
 - **The shell scripts default to `GPU=1`** (the second GPU on this 2×3060 box, `CUDA_VISIBLE_DEVICES=$GPU`). On a single-GPU machine this will fail to find a device — run with `GPU=0 ./run_justapr_vs_cumf.sh` (etc.) instead.
 
@@ -376,11 +406,12 @@ Each `cuMF_*` external baseline needs to be built once (`make` inside `cumf_als-
 
 - **`FIXLOG.md`** — full chronological engineering log: every optimization attempt (including the ones that failed and were reverted), with exact measured numbers and the reasoning behind every dispatch rule (`CHOL_MP` K-gating, `FAST_RMSE` K-gating, momentum β sweep, solver kernel choice, etc).
 - **`results/RUNNING_SUMMARY.md`** — the living results document this README's numbers are drawn from; kept in sync with `results/` as new runs land.
+- **`results/PAPER_MEASUREMENTS_20260803/SUMMARY.md`** — full write-up of the August 2026 measurements summarized in §6.8, including four corrections to earlier drafts.
 - **`results/`** — every raw run output cited above, plus historical runs (`CHOLMP_VALIDATION_20260720/`, `MAIN3060_WL_20260721_225757/`, etc.) documenting the validation work behind each shipped default.
 
 ## 10. External baselines — attribution
 
-- **cuMF_ALS** — Wei Tan et al., *"Fast ImplicitALS on GPUs"*, HPDC 2016. Original: [github.com/wei-tan/cumf_als](https://github.com/wei-tan/cumf_als)/[cuMF](https://github.com/wei-tan/cuMF). Ported here from `sm_35`/C++11 to `sm_86`/C++14 with a `.bin`-format loader and simplified CLI args (see `cumf_als-master/`).
-- **cuMF_CCD** — CCD++ solver from the same cuMF family. Ported with a `__shfl_down` compatibility shim (CUDA 9+ removed the maskless intrinsic).
-- **cuMF_SGD** — Xie et al., *cuMF_SGD*. Ported with a `__shfl`/`__shfl_down` shim and an added wall-clock timer; test harness uses the bundled libmf-derived `mf-predict`.
-- **BALS** — Chen et al., *"Bridging the Gap between HPC and Big Data frameworks"* / the BALS tiled-ALS paper (TPDS 2021), `jingchen95/BALS`. `only_scalar_fp32.cu` with `-DBALS_REORDER=1 -DBALS_SYMTILE=1` is our from-scratch, faithful re-implementation of its tiling + reuse + symmetry-exploiting Gram kernel — no code was copied, only the algorithm.
+- **cuMF_ALS** — W. Tan, L. Cao, L. Fong, *"Faster and Cheaper: Parallelizing Large-Scale Matrix Factorization on GPUs"*, HPDC 2016. Original: [github.com/cuMF/cumf_als](https://github.com/cuMF/cumf_als). Ported here from `sm_35`/C++11 to `sm_86`/C++14 with a `.bin`-format loader and simplified CLI args (see `cumf_als-master/`).
+- **cuMF_CCD** — I. Nisa, A. Sukumaran-Rajam, R. Kunchum, P. Sadayappan, *"Parallel CCD++ on GPU for Matrix Factorization"*, GPGPU 2017 (CCD++: Yu et al., ICDM 2012). Original: [github.com/cuMF/cumf_ccd](https://github.com/cuMF/cumf_ccd). Ported with a `__shfl_down` compatibility shim (CUDA 9+ removed the maskless intrinsic).
+- **cuMF_SGD** — X. Xie, W. Tan, L. Fong, Y. Liang, *"CuMF_SGD: Parallelized Stochastic Gradient Descent for Matrix Factorization on GPUs"*, HPDC 2017. Original: [github.com/cuMF/cumf_sgd](https://github.com/cuMF/cumf_sgd). Ported with a `__shfl`/`__shfl_down` shim and an added wall-clock timer; test harness uses the bundled libmf-derived `mf-predict`.
+- **BALS** — J. Chen, J. Fang, W. Liu, C. Yang, *"BALS: Blocked Alternating Least Squares for Parallel Sparse Matrix Factorization on GPUs"*, IEEE TPDS 32(9):2291–2302, 2021. Original: [github.com/jingchen95/BALS](https://github.com/jingchen95/BALS). `only_scalar_fp32.cu` with `-DBALS_REORDER=1 -DBALS_SYMTILE=1` is our from-scratch, faithful re-implementation of its tiling + reuse + symmetry-exploiting Gram kernel — no code was copied, only the algorithm.

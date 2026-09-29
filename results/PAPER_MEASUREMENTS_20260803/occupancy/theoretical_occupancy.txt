@@ -1,0 +1,70 @@
+==============================================================================
+Register allocation granularity rounding: WITH (sanity check -- conclusion must not depend on it)
+==============================================================================
+
+FP16-WMMA dense  compute_LHS_RHS_wmma  (threads/block=128, 4 warps)
+   K  reg/thr   smem B  blk/SM  by reg  by smem  warps  occupancy  binding
+  16       60     2304       8       8       44     32      66.7%  registers
+  32      100     4352       4       4       23     16      33.3%  registers
+  48      141     6400       3       3       16     12      25.0%  registers
+  64      163     8448       3       3       12     12      25.0%  registers
+  96      240    12544       2       2        8      8      16.7%  registers
+
+TF32-WMMA dense  compute_LHS_RHS_wmma_tf32  (threads/block=128, 4 warps)
+   K  reg/thr   smem B  blk/SM  by reg  by smem  warps  occupancy  binding
+  16       62     4352       8       8       23     32      66.7%  registers
+  32       97     8448       4       4       12     16      33.3%  registers
+  48      114    12544       4       4        8     16      33.3%  registers
+  64      154    16640       3       3        6     12      25.0%  registers
+  96      252    24832       2       2        4      8      16.7%  registers
+
+FP16-WMMA giant  compute_LHS_RHS_wmma_giant  (threads/block=128, 4 warps)
+   K  reg/thr   smem B  blk/SM  by reg  by smem  warps  occupancy  binding
+  16       62     9984       8       8       10     32      66.7%  registers
+  32       96    14336       5       5        7     20      41.7%  registers
+  48      133    18688       3       3        5     12      25.0%  registers
+  64      191    23040       2       2        4      8      16.7%  registers
+  96      255    31744       2       2        3      8      16.7%  registers
+
+FP16 vs TF32 theoretical occupancy:
+   K=16  fp16= 66.7%  tf32= 66.7%   -> EQUAL
+   K=32  fp16= 33.3%  tf32= 33.3%   -> EQUAL
+   K=48  fp16= 25.0%  tf32= 33.3%   -> TF32 HIGHER
+   K=64  fp16= 25.0%  tf32= 25.0%   -> EQUAL
+   K=96  fp16= 16.7%  tf32= 16.7%   -> EQUAL
+
+==============================================================================
+Register allocation granularity rounding: WITHOUT (sanity check -- conclusion must not depend on it)
+==============================================================================
+
+FP16-WMMA dense  compute_LHS_RHS_wmma  (threads/block=128, 4 warps)
+   K  reg/thr   smem B  blk/SM  by reg  by smem  warps  occupancy  binding
+  16       60     2304       8       8       44     32      66.7%  registers
+  32      100     4352       5       5       23     20      41.7%  registers
+  48      141     6400       3       3       16     12      25.0%  registers
+  64      163     8448       3       3       12     12      25.0%  registers
+  96      240    12544       2       2        8      8      16.7%  registers
+
+TF32-WMMA dense  compute_LHS_RHS_wmma_tf32  (threads/block=128, 4 warps)
+   K  reg/thr   smem B  blk/SM  by reg  by smem  warps  occupancy  binding
+  16       62     4352       8       8       23     32      66.7%  registers
+  32       97     8448       5       5       12     20      41.7%  registers
+  48      114    12544       4       4        8     16      33.3%  registers
+  64      154    16640       3       3        6     12      25.0%  registers
+  96      252    24832       2       2        4      8      16.7%  registers
+
+FP16-WMMA giant  compute_LHS_RHS_wmma_giant  (threads/block=128, 4 warps)
+   K  reg/thr   smem B  blk/SM  by reg  by smem  warps  occupancy  binding
+  16       62     9984       8       8       10     32      66.7%  registers
+  32       96    14336       5       5        7     20      41.7%  registers
+  48      133    18688       3       3        5     12      25.0%  registers
+  64      191    23040       2       2        4      8      16.7%  registers
+  96      255    31744       2       2        3      8      16.7%  registers
+
+FP16 vs TF32 theoretical occupancy:
+   K=16  fp16= 66.7%  tf32= 66.7%   -> EQUAL
+   K=32  fp16= 41.7%  tf32= 41.7%   -> EQUAL
+   K=48  fp16= 25.0%  tf32= 33.3%   -> TF32 HIGHER
+   K=64  fp16= 25.0%  tf32= 25.0%   -> EQUAL
+   K=96  fp16= 16.7%  tf32= 16.7%   -> EQUAL
+

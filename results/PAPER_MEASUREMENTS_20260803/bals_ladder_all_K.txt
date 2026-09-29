@@ -1,0 +1,41 @@
+BALS-EQUIVALENT LADDER AT EVERY RANK  (only_scalar_fp32.cu, BALS_REORDER=1 +/- BALS_SYMTILE=1)
+legacy init (CUMF_INIT=0), weighted-lambda 0.048, GPU1 RTX 3060, one session 2026-08-04.
+Closes the K=32-only gap that sec/5_extended.tex flags as 'the experiment this subsection most needs'.
+
+Wall seconds; 'sym x' = reorder-only / symtile  (>1 = symmetric tiling WINS, <1 = it LOSES)
+  K dataset     reorder  +symtile   sym x   it(b/s) symtile block
+-----------------------------------------------------------------
+ 16 ml10m         0.522     0.561  0.930x     25/25          1024
+ 16 ml20m         0.977     1.074  0.910x     20/20          1024
+ 16 ml32m         1.914     2.179  0.878x     20/20          1024
+ 16 netflix       4.817     5.317  0.906x     20/20          1024
+
+ 32 ml10m         1.917     1.586  1.209x     30/30          1024
+ 32 ml20m         4.363     3.798  1.149x     30/30          1024
+ 32 ml32m         6.933     6.440  1.077x     25/25          1024
+ 32 netflix      17.968    15.637  1.149x     25/25          1024
+
+ 48 ml10m         4.080     4.862  0.839x     30/30           768
+ 48 ml20m         9.536    11.842  0.805x     30/30           768
+ 48 ml32m        18.427    23.864  0.772x     30/30           768
+ 48 netflix      47.680    59.143  0.806x     30/30           768
+
+ 64 ml10m        11.354    10.691  1.062x     35/35           640
+ 64 ml20m        22.350    22.278  1.003x     30/30           640
+ 64 ml32m        42.268    44.508  0.950x     30/30           640
+ 64 netflix     111.324   108.813  1.023x     30/30           640
+
+ 96 ml10m        23.621    26.001  0.908x     35/35           640
+ 96 ml20m        56.055    62.447  0.898x     35/35           640
+ 96 ml32m       110.336   122.890  0.898x     35/35           640
+ 96 netflix     231.843   252.985  0.916x     30/30           640
+
+PER-RANK RANGE of the symmetric-tiling factor:
+  K=16  0.878x - 0.930x    LOSES everywhere
+  K=32  1.077x - 1.209x    WINS
+  K=48  0.772x - 0.839x    LOSES everywhere
+  K=64  0.950x - 1.062x    MIXED
+  K=96  0.898x - 0.916x    LOSES everywhere
+
+Across all 20 rank/dataset pairs: 0.772x - 1.209x
+Paper currently claims 1.07x-1.22x (K=32 only).

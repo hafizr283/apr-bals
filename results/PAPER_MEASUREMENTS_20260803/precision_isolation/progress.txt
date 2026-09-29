@@ -1,0 +1,13 @@
+netflix K=96 wmma DONE 02:05:53
+netflix K=96 simt DONE 02:08:42
+netflix K=32 wmma DONE 02:08:59
+netflix K=32 simt DONE 02:09:29
+ml20m K=96 wmma DONE 02:09:36
+ml20m K=96 simt DONE 02:10:19
+ml20m K=32 wmma DONE 02:10:23
+ml20m K=32 simt DONE 02:10:30
+ml10m K=96 wmma DONE 02:10:34
+ml10m K=96 simt DONE 02:10:52
+ml10m K=32 wmma DONE 02:10:54
+ml10m K=32 simt DONE 02:10:57
+SIMT_ABLATION_DONE 02:10:57

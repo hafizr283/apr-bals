@@ -13,6 +13,157 @@ __global__ void convert_fp32_to_fp16(const float* __restrict__ src,
     if (i < n) dst[i] = __float2half(src[i]);
 }
 
+#if WMMA_TF32
+// ---------------------------------------------------------------------------
+// TF32 dense Gram kernel — MEASUREMENT-ONLY, added 2026-08-04 for the
+// reviewer's precision-isolating ablation (item 2). Compiled ONLY under
+// -DWMMA_TF32=1; with the flag off this file is textually unchanged, so every
+// shipped binary stays byte-identical (verified by md5 against a pre-change
+// build).
+//
+// Purpose: separate "tensor pipe" from "reduced precision". The FP16 kernel
+// below changes BOTH at once relative to scalar FP32, so it cannot answer how
+// much of the win is the MMA hardware versus the narrower mantissa. TF32 uses
+// the same tensor pipe at FP32 dynamic range with a 10-bit mantissa, so the
+// three-way FP32-SIMT / TF32-WMMA / FP16-WMMA comparison splits the effect.
+//
+// Three deliberate differences from compute_LHS_RHS_wmma, each forced by TF32:
+//   1. MMA shape is 16x16x8, not 16x16x16 — the contraction dim is the 16-row
+//      nnz chunk, so each Gram tile needs TWO mma_sync calls (kk = 0, 8)
+//      instead of one. Same tiles, same accumulation target, twice the issues.
+//   2. Staging buffer is float, not half (load_matrix_sync for a tf32 fragment
+//      takes a float*). That doubles dense smem: 12 544 B -> 24 832 B at K=96,
+//      still inside the 48 KB static limit, but occupancy may drop — reported
+//      rather than hidden, since it is intrinsic to TF32 and not a confound
+//      introduced by this patch.
+//   3. Reads the FP32 factor array (d_X / d_Y) directly, NOT the fp16 copy.
+//      Staging from d_*_half would pre-round inputs to fp16 and defeat the
+//      point of the rung.
+// Everything else — tile order, upper-triangle enumeration, RHS accumulation,
+// store layout — is identical to the FP16 kernel.
+//
+// Scope: dense tier only. A TF32 giant kernel would need 2*16*K*4 B per warp
+// of double-buffered staging = ~55.8 KB at K=96, over the 48 KB static cap.
+// The ablation therefore runs all three legs with the giant tier disabled
+// (-DGIANT_NNZ_THRESH huge) so the comparison stays apples-to-apples.
+template <int KT>
+__global__ void __launch_bounds__(WARPS_PER_BLOCK * 32, 1)
+compute_LHS_RHS_wmma_tf32(int n_dense, int entity_offset,
+                          const int* __restrict__ offsets,
+                          const int* __restrict__ col_indices,
+                          const float* __restrict__ values,
+                          const float* __restrict__ d_Feat,
+                          float* __restrict__ d_LHS_all, float* __restrict__ d_RHS_all,
+                          int batch_start) {
+    const int K  = KT * 16;
+    const int NT = KT * (KT + 1) / 2;
+    const int RHS_PER_LANE = (K + 31) / 32;
+
+    int w    = threadIdx.x >> 5;
+    int lane = threadIdx.x & 31;
+    int u    = entity_offset + blockIdx.x * WARPS_PER_BLOCK + w;
+    if (u >= n_dense) return;
+
+    int start = offsets[u];
+    int nnz_u = offsets[u + 1] - start;
+
+    __shared__ float sS[WARPS_PER_BLOCK][16 * (KT * 16)];
+    __shared__ float sR[WARPS_PER_BLOCK][16];
+    float* S = sS[w];
+    float* R = sR[w];
+
+    wmma::fragment<wmma::accumulator, 16, 16, 8, float> c_frag[NT];
+    #pragma unroll
+    for (int t = 0; t < NT; t++) wmma::fill_fragment(c_frag[t], 0.0f);
+
+    float rhs_acc[RHS_PER_LANE];
+    #pragma unroll
+    for (int j = 0; j < RHS_PER_LANE; j++) rhs_acc[j] = 0.0f;
+
+    // 4 floats per 16-byte int4 load (features are FP32 here, not FP16)
+    const int FVECS_PER_ROW = K / 4;
+    const int TOTAL_FVECS   = 16 * FVECS_PER_ROW;   // multiple of 32 for all supported K
+
+    for (int base = 0; base < nnz_u; base += 16) {
+        for (int e = lane; e < TOTAL_FVECS; e += 32) {
+            int i = e / FVECS_PER_ROW;
+            int v = e % FVECS_PER_ROW;
+            int gi = base + i;
+            int4 f4 = make_int4(0, 0, 0, 0);   // 4 x float(0.0)
+            if (gi < nnz_u) {
+                int item = col_indices[start + gi];
+                f4 = ((const int4*)d_Feat)[(long long)item * FVECS_PER_ROW + v];
+            }
+            ((int4*)S)[i * FVECS_PER_ROW + v] = f4;
+        }
+        if (lane < 16) {
+            int gi = base + lane;
+            R[lane] = (gi < nnz_u) ? values[start + gi] : 0.0f;
+        }
+        __syncwarp();
+
+        // Two k-steps of 8 per 16-row chunk (TF32 MMA contracts 8, not 16).
+        #pragma unroll
+        for (int kk = 0; kk < 16; kk += 8) {
+            int t = 0;
+            #pragma unroll
+            for (int m_kt = 0; m_kt < KT; m_kt++) {
+                wmma::fragment<wmma::matrix_a, 16, 16, 8,
+                               wmma::precision::tf32, wmma::col_major> a_frag;
+                wmma::load_matrix_sync(a_frag, S + (long long)kk * K + m_kt * 16, K);
+                // tf32 fragments loaded from float storage must be rounded
+                // explicitly; load_matrix_sync does not do it (CUDA C++ PG,
+                // "Alternate Floating Point"). This IS the precision rung.
+                #pragma unroll
+                for (int e = 0; e < a_frag.num_elements; e++)
+                    a_frag.x[e] = wmma::__float_to_tf32(a_frag.x[e]);
+                #pragma unroll
+                for (int n_kt = m_kt; n_kt < KT; n_kt++) {
+                    wmma::fragment<wmma::matrix_b, 16, 16, 8,
+                                   wmma::precision::tf32, wmma::row_major> b_frag;
+                    wmma::load_matrix_sync(b_frag, S + (long long)kk * K + n_kt * 16, K);
+                    #pragma unroll
+                    for (int e = 0; e < b_frag.num_elements; e++)
+                        b_frag.x[e] = wmma::__float_to_tf32(b_frag.x[e]);
+                    wmma::mma_sync(c_frag[t], a_frag, b_frag, c_frag[t]);
+                    t++;
+                }
+            }
+        }
+
+        #pragma unroll
+        for (int j = 0; j < RHS_PER_LANE; j++) {
+            int f = lane + j * 32;
+            if (f < K) {
+                float acc = 0.0f;
+                #pragma unroll
+                for (int i = 0; i < 16; i++)
+                    acc += S[i * K + f] * R[i];
+                rhs_acc[j] += acc;
+            }
+        }
+        __syncwarp();
+    }
+
+    int t = 0;
+    #pragma unroll
+    for (int m_kt = 0; m_kt < KT; m_kt++) {
+        #pragma unroll
+        for (int n_kt = m_kt; n_kt < KT; n_kt++) {
+            long long ubase = (long long)(u - batch_start) * K * K;
+            wmma::store_matrix_sync(d_LHS_all + ubase + (long long)(m_kt * 16) * K + n_kt * 16,
+                                    c_frag[t], K, wmma::mem_row_major);
+            t++;
+        }
+    }
+    #pragma unroll
+    for (int j = 0; j < RHS_PER_LANE; j++) {
+        int f = lane + j * 32;
+        if (f < K) d_RHS_all[(long long)u * K + f] = rhs_acc[j];
+    }
+}
+#endif  // WMMA_TF32
+
 template <int KT>
 __global__ void __launch_bounds__(WARPS_PER_BLOCK * 32, 1)
 compute_LHS_RHS_wmma(int n_dense, int entity_offset,
