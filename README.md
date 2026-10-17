@@ -53,6 +53,24 @@ comparing_baseline/
 
 ## 2. Requirements
 
+### Validated Toolchain
+
+| Component | Version |
+|---|---|
+| CUDA Toolkit | 12.9 |
+| NVIDIA Driver | 580.173.02 |
+| Nsight Compute | 2025.2 |
+| Nsight Systems | 2025.1 |
+| GPU (primary) | RTX 3060 (sm\_86, Ampere, 12 GB) |
+| GPU (cross-val) | Tesla T4 (sm\_75, Turing) via Google Colab |
+| g++ | ≥ 9.4 |
+| Python | ≥ 3.8 |
+
+> **Note (July 2026 runs):** Earlier measurements used CUDA 12.0, driver 580.159.03.
+> Every two-path speedup reproduces within 0.50% on the newer toolchain (see §6.8).
+
+### Software Dependencies
+
 - An NVIDIA GPU, CUDA toolkit + `nvcc` (validated on CUDA 12.0 and 12.9, `sm_86`; the scripts auto-detect your GPU's compute capability via `nvidia-smi`).
 - `g++` (for `preprocess.cpp`).
 - Python 3 + `numpy` + `scipy` (only needed for the cuMF_CCD/cuMF_SGD comparison — `convert_bin_for_ccd_sgd.py` and `run_ccd_sgd_comparison.py`).
