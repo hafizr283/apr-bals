@@ -1,0 +1,21 @@
+{
+  "command": [
+    "/home/pc/Desktop/2007080/latent_factorr_experimen/comparing_baseline/cumf_sgd-master/test/mf-predict",
+    "-e",
+    "0",
+    "/home/pc/Desktop/2007080/latent_factorr_experimen/comparing_baseline/new_results/external_inputs/netflix/sgd/test.bin",
+    "/home/pc/Desktop/2007080/latent_factorr_experimen/comparing_baseline/new_results/external/netflix_sgd.model",
+    "/dev/null"
+  ],
+  "environment": {
+    "CUDA_VISIBLE_DEVICES": "1",
+    "OMP_NUM_THREADS": "4",
+    "MAX_ITERS": "30",
+    "FIXED_ITERS": "1",
+    "CHECK_EVERY": "1",
+    "MBETA": "0.3"
+  },
+  "returncode": 0,
+  "start": 1792000492.5384514,
+  "end": 1792000494.4343622
+}

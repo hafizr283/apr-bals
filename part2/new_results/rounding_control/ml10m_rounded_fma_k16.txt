@@ -1,0 +1,78 @@
+=== CODE VERSION: SYNC-2026-07-20 [CHOL-MP 16-bit tiled Cholesky + optional IR + stale-L cache — UNVALIDATED ON GPU; CHOL_MP=0 path = 07-06 code] ===
+Tiled Cholesky precision: FP32 tiled (production)
+Regularization: weighted-lambda ALS-WR (diag += nnz*lambda) | Init: cuMF-scale U(0,0.2)
+Loading binary preprocessed dataset: /home/pc/Desktop/2007080/ratings10.bin
+69878 users, 10677 items | train=8026731, test=1973323
+User: 64499 nonzero tiles out of 91728 (29.7% skipped)
+Item: 65428 nonzero tiles out of 91182 (28.2% skipped)
+APR-BALS Precision Tiers (User tiles): FP16 Tensor Core=33771 (36.8%), FP32 Scalar=57957 (63.2%)
+APR-BALS Precision Tiers (Item tiles): FP16 Tensor Core=33901 (37.2%), FP32 Scalar=57281 (62.8%)
+User density stats: min=0.000000 max=0.736816 avg=0.010682 nonzero=64499/91728
+  Nonzero percentiles: p25=0.000244 p50=0.001221 p75=0.006714 p90=0.034790 p99=0.253906
+Item density stats: min=0.000000 max=0.749756 avg=0.010746 nonzero=65428/91182
+  Nonzero percentiles: p25=0.000244 p50=0.001099 p75=0.006470 p90=0.031738 p99=0.263428
+
+=== NNZ per Precision Tier ===
+User-side: FP16=7933857 (98.8%)  FP32=92874 (1.2%)
+Item-side: FP16=7933263 (98.8%)  FP32=93468 (1.2%)
+Thesis signal: dense tiles (FP16 path) hold 98.8% of user-side train NNZ.
+If >40%: precision dispatch covers most compute -> strong thesis.
+If <20%: most compute in FP32 tiles -> thesis needs argument about dense-tile quality.
+Giant split: User giants=0, Item giants=0 (nnz >= 2000000000, 4 warps/giant)
+Load balancing: User jobs=8996 (from 2184 tile-rows), Item jobs=8352 (from 334 tile-rows)
+Hybrid split: User dense=69856 entities (2183 tile-rows, 3 sparse jobs), Item dense=10176 entities (318 tile-rows, 53 sparse jobs)
+
+=== APR-BALS experiment ===
+Iter  1 | Train RMSE: 0.855621 | Test RMSE: 0.881918
+CUMULATIVE_WALL_MS 13.618208
+Iter  2 | Train RMSE: 0.776538 | Test RMSE: 0.834835
+CUMULATIVE_WALL_MS 25.908319
+Iter  3 | Train RMSE: 0.744411 | Test RMSE: 0.814502
+CUMULATIVE_WALL_MS 38.165504
+Iter  4 | Train RMSE: 0.730179 | Test RMSE: 0.804341
+CUMULATIVE_WALL_MS 50.446335
+Iter  5 | Train RMSE: 0.722139 | Test RMSE: 0.798569
+CUMULATIVE_WALL_MS 62.716160
+Iter  6 | Train RMSE: 0.717001 | Test RMSE: 0.794901
+CUMULATIVE_WALL_MS 74.994591
+Iter  7 | Train RMSE: 0.713524 | Test RMSE: 0.792422
+CUMULATIVE_WALL_MS 87.253250
+Iter  8 | Train RMSE: 0.711084 | Test RMSE: 0.790691
+CUMULATIVE_WALL_MS 99.522751
+Iter  9 | Train RMSE: 0.709319 | Test RMSE: 0.789453
+CUMULATIVE_WALL_MS 111.792000
+Iter 10 | Train RMSE: 0.708005 | Test RMSE: 0.788550
+CUMULATIVE_WALL_MS 124.073891
+Iter 11 | Train RMSE: 0.707005 | Test RMSE: 0.787881
+CUMULATIVE_WALL_MS 136.367386
+Iter 12 | Train RMSE: 0.706230 | Test RMSE: 0.787381
+CUMULATIVE_WALL_MS 148.629349
+Iter 13 | Train RMSE: 0.705621 | Test RMSE: 0.787005
+CUMULATIVE_WALL_MS 160.770905
+Iter 14 | Train RMSE: 0.705138 | Test RMSE: 0.786722
+CUMULATIVE_WALL_MS 172.387329
+Iter 15 | Train RMSE: 0.704751 | Test RMSE: 0.786508
+CUMULATIVE_WALL_MS 183.982178
+Iter 16 | Train RMSE: 0.704440 | Test RMSE: 0.786348
+CUMULATIVE_WALL_MS 195.586212
+Iter 17 | Train RMSE: 0.704187 | Test RMSE: 0.786227
+CUMULATIVE_WALL_MS 207.208282
+Iter 18 | Train RMSE: 0.703981 | Test RMSE: 0.786136
+CUMULATIVE_WALL_MS 218.842911
+Iter 19 | Train RMSE: 0.703811 | Test RMSE: 0.786069
+CUMULATIVE_WALL_MS 230.453415
+Iter 20 | Train RMSE: 0.703671 | Test RMSE: 0.786020
+CUMULATIVE_WALL_MS 242.057053
+
+=== Profiling: APR-BALS experiment (20 iters) ===
+User LHS+RHS:  124.93 ms total |  6.25 ms/iter |  390.6 GFlops/s
+User Cholesky:   0.04 ms total |  0.00 ms/iter
+Item LHS+RHS:   85.07 ms total |  4.25 ms/iter |  573.7 GFlops/s
+Item Cholesky:   0.04 ms total |  0.00 ms/iter
+RMSE:           31.65 ms total |  1.58 ms/call
+Total FLOPs: 97.61 GFLOPs | Throughput: 403.8 GFlops/s (compute: 464.6)
+Training Complete in 0.242 seconds!
+
+=== APR-BALS final ===
+Train RMSE: 0.703671 | Test RMSE: 0.786020 | compute=210.08 ms | wall=242.07 ms
+Params: K_DIM=16, lambda=0.05, DENSE_NNZ_THRESH=4, WARPS_PER_BLOCK=4, XB=32, YB=256

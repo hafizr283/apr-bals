@@ -1,0 +1,51 @@
+% Tiled blocked Cholesky solver, one-column width (3.5 in).
+% Same type sizes as the other TikZ figures: 8 pt tiles and lanes, 7 pt labels.
+\begin{tikzpicture}[
+    font=\footnotesize,
+    >={Stealth[length=3pt]},
+    t/.style={draw=black!55, minimum size=6.4mm, inner sep=0pt, line width=0.4pt},
+    potrf/.style={t, fill=orange!22},
+    trsm/.style={t, fill=blue!12},
+    upd/.style={t, fill=teal!14},
+    idle/.style={t, fill=black!4},
+    lane/.style={draw, rounded corners=1pt, minimum height=5.2mm, inner sep=1pt, line width=0.4pt, align=center},
+    lbl/.style={font=\scriptsize\itshape, text=black!65, inner sep=1pt}]
+
+% (a) tile view at panel k = 1 of a K = 64 system (4 x 4 tiles of 16 x 16)
+\foreach \i in {0,...,3} {
+  \foreach \j in {0,...,3} {
+    \ifnum\j>\i
+      \node[idle] at (0.64*\j, -0.64*\i) {};
+    \else\ifnum\j=0
+      \node[t, fill=black!15] at (0.64*\j, -0.64*\i) {};
+    \else\ifnum\i=1
+      \node[potrf] at (0.64*\j, -0.64*\i) {P};
+    \else\ifnum\j=1
+      \node[trsm] at (0.64*\j, -0.64*\i) {T};
+    \else
+      \node[upd] at (0.64*\j, -0.64*\i) {U};
+    \fi\fi\fi\fi
+  }
+}
+\foreach \i in {0,...,3} {
+  \node[t, minimum width=3mm, fill=yellow!25] at (2.72, -0.64*\i) {};
+}
+\node[lbl, above=0.5mm] at (2.72, 0.32) {$\mathbf{b}_u$};
+\node[lbl, above=0.5mm] at (0.96, 0.32) {(a) panel $k{=}1$, $K{=}64$};
+
+% (b) phase overlap between warp 0 and the remaining warps
+\begin{scope}[xshift=4.35cm, yshift=-0.2cm]
+\node[lbl, anchor=south west] at (0, 0.2) {(b) overlap per panel};
+\node[lbl, anchor=east] at (0, -0.35) {warp 0};
+\node[lbl, anchor=east] at (0, -1.05) {others};
+\node[lane, fill=orange!22, minimum width=15.5mm, anchor=west] at (0.05, -0.35) {P, tile $k{+}1$};
+\node[lane, fill=blue!12, minimum width=9mm, anchor=west] at (1.70, -0.35) {T};
+\node[lane, fill=teal!14, minimum width=25.5mm, anchor=west] at (0.05, -1.05) {U, panel $k$};
+\draw[densely dashed, black!60] (2.70, 0.05) -- (2.70, -1.45);
+\node[lbl, anchor=north] at (2.70, -1.45) {barrier};
+\end{scope}
+
+% key
+\node[lbl, anchor=north west] at (-0.32, -2.25)
+  {P: diagonal factor\quad T: triangular solve\quad U: trailing update\quad grey: completed panel};
+\end{tikzpicture}

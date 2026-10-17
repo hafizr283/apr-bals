@@ -1,0 +1,4 @@
+run,sweeps,train,test,compute_s,wall_s,gram_s,zeroed_solves
+netflix_ladder_fp16solve,10,0.71593,0.818571,3.53426,7.32146,3.53422,0
+netflix_ladder_fp32,10,0.715928,0.81857,4.13654,7.92772,4.13649,0
+netflix_ladder_sameflow,10,0.715976,0.818607,14.62697,18.417330000000003,14.62692,0

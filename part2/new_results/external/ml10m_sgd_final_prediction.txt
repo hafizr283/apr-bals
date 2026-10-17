@@ -1,0 +1,18 @@
+read_problem:/home/pc/Desktop/2007080/latent_factorr_experimen/comparing_baseline/new_results/external_inputs/ml10m/sgd/test.bin
+m:69878, n:10566, nnz:1004523
+mf_load_model called
+fun: 0
+m:   69878
+n:   10676
+k:   128
+b:   3.312
+p_size:8944384
+loading feature p m:69878 ...
+progress:%0.000
+loading feature q n:10676 ...
+progress:%0.000
+time elapsed:0.02596100s
+
+calculating rmse ...
+RMSE = 0.7844
+time elapsed:0.06303900s

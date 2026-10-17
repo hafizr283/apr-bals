@@ -1,0 +1,82 @@
+[
+  {
+    "dataset": "ml10m",
+    "side": "users",
+    "dense_prefix_size": 69856,
+    "dense_prefix_below_threshold": 0,
+    "sparse_suffix_above_threshold": 22,
+    "giant_prefix_size": 258,
+    "giant_prefix_below_threshold": 5,
+    "nongiant_suffix_above_threshold": 5
+  },
+  {
+    "dataset": "ml10m",
+    "side": "items",
+    "dense_prefix_size": 10112,
+    "dense_prefix_below_threshold": 68,
+    "sparse_suffix_above_threshold": 69,
+    "giant_prefix_size": 1598,
+    "giant_prefix_below_threshold": 10,
+    "nongiant_suffix_above_threshold": 10
+  },
+  {
+    "dataset": "ml20m",
+    "side": "users",
+    "dense_prefix_size": 138464,
+    "dense_prefix_below_threshold": 0,
+    "sparse_suffix_above_threshold": 29,
+    "giant_prefix_size": 619,
+    "giant_prefix_below_threshold": 10,
+    "nongiant_suffix_above_threshold": 10
+  },
+  {
+    "dataset": "ml20m",
+    "side": "items",
+    "dense_prefix_size": 17856,
+    "dense_prefix_below_threshold": 481,
+    "sparse_suffix_above_threshold": 498,
+    "giant_prefix_size": 2491,
+    "giant_prefix_below_threshold": 10,
+    "nongiant_suffix_above_threshold": 10
+  },
+  {
+    "dataset": "ml32m",
+    "side": "users",
+    "dense_prefix_size": 200928,
+    "dense_prefix_below_threshold": 0,
+    "sparse_suffix_above_threshold": 20,
+    "giant_prefix_size": 1420,
+    "giant_prefix_below_threshold": 16,
+    "nongiant_suffix_above_threshold": 16
+  },
+  {
+    "dataset": "ml32m",
+    "side": "items",
+    "dense_prefix_size": 42208,
+    "dense_prefix_below_threshold": 1984,
+    "sparse_suffix_above_threshold": 2010,
+    "giant_prefix_size": 3546,
+    "giant_prefix_below_threshold": 14,
+    "nongiant_suffix_above_threshold": 14
+  },
+  {
+    "dataset": "netflix",
+    "side": "users",
+    "dense_prefix_size": 472000,
+    "dense_prefix_below_threshold": 557,
+    "sparse_suffix_above_threshold": 573,
+    "giant_prefix_size": 4035,
+    "giant_prefix_below_threshold": 63,
+    "nongiant_suffix_above_threshold": 63
+  },
+  {
+    "dataset": "netflix",
+    "side": "items",
+    "dense_prefix_size": 17760,
+    "dense_prefix_below_threshold": 0,
+    "sparse_suffix_above_threshold": 9,
+    "giant_prefix_size": 6034,
+    "giant_prefix_below_threshold": 12,
+    "nongiant_suffix_above_threshold": 12
+  }
+]

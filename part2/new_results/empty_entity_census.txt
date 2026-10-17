@@ -1,0 +1,15 @@
+dataset                    items    empty   users   empty  test nnz  affected
+-----------------------------------------------------------------------------
+ratings10.bin             10,677       30  69,878       0 1,973,323        41
+ratings.bin               26,744      909 138,493       0 3,947,336     1,006
+ratings32.bin             84,432    4,182 200,948       0 6,322,674     4,723
+netflix_ratings.bin       17,770        0 480,189       0 19,909,518         0
+
+ratings10.bin: 30 of 10,677 items (0.281%) have zero training ratings; 41 of 1,973,323 held-out ratings (0.0021%) reference an empty-row entity.
+  -> a system without a zero-count fallback yields a non-finite aggregate here.
+ratings.bin: 909 of 26,744 items (3.399%) have zero training ratings; 1,006 of 3,947,336 held-out ratings (0.0255%) reference an empty-row entity.
+  -> a system without a zero-count fallback yields a non-finite aggregate here.
+ratings32.bin: 4182 of 84,432 items (4.953%) have zero training ratings; 4,723 of 6,322,674 held-out ratings (0.0747%) reference an empty-row entity.
+  -> a system without a zero-count fallback yields a non-finite aggregate here.
+netflix_ratings.bin: 0 of 17,770 items (0.000%) have zero training ratings; 0 of 19,909,518 held-out ratings (0.0000%) reference an empty-row entity.
+  -> no empty-row items: a system without a zero-count fallback is safe on this split.

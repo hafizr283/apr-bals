@@ -1,0 +1,78 @@
+=== CODE VERSION: SYNC-2026-07-20 [CHOL-MP 16-bit tiled Cholesky + optional IR + stale-L cache — UNVALIDATED ON GPU; CHOL_MP=0 path = 07-06 code] ===
+Tiled Cholesky precision: FP32 tiled (production)
+Regularization: weighted-lambda ALS-WR (diag += nnz*lambda) | Init: cuMF-scale U(0,0.2)
+Loading binary preprocessed dataset: /home/pc/Desktop/2007080/ratings.bin
+138493 users, 26744 items | train=16052927, test=3947336
+User: 293628 nonzero tiles out of 904552 (67.5% skipped)
+Item: 296513 nonzero tiles out of 904552 (67.2% skipped)
+APR-BALS Precision Tiers (User tiles): FP16 Tensor Core=151935 (16.8%), FP32 Scalar=752617 (83.2%)
+APR-BALS Precision Tiers (Item tiles): FP16 Tensor Core=152135 (16.8%), FP32 Scalar=752417 (83.2%)
+User density stats: min=0.000000 max=0.753906 avg=0.004333 nonzero=293628/904552
+  Nonzero percentiles: p25=0.000488 p50=0.001221 p75=0.006104 p90=0.027100 p99=0.235596
+Item density stats: min=0.000000 max=0.773926 avg=0.004333 nonzero=296513/904552
+  Nonzero percentiles: p25=0.000244 p50=0.001221 p75=0.005859 p90=0.026611 p99=0.237549
+
+=== NNZ per Precision Tier ===
+User-side: FP16=15792596 (98.4%)  FP32=260331 (1.6%)
+Item-side: FP16=15789325 (98.4%)  FP32=263602 (1.6%)
+Thesis signal: dense tiles (FP16 path) hold 98.4% of user-side train NNZ.
+If >40%: precision dispatch covers most compute -> strong thesis.
+If <20%: most compute in FP32 tiles -> thesis needs argument about dense-tile quality.
+Giant split: User giants=0, Item giants=0 (nnz >= 2000000000, 4 warps/giant)
+Load balancing: User jobs=38608 (from 4328 tile-rows), Item jobs=37454 (from 836 tile-rows)
+Hybrid split: User dense=138464 entities (4327 tile-rows, 4 sparse jobs), Item dense=18400 entities (575 tile-rows, 825 sparse jobs)
+
+=== APR-BALS experiment ===
+Iter  1 | Train RMSE: 0.787067 | Test RMSE: 0.873114
+CUMULATIVE_WALL_MS 163.325180
+Iter  2 | Train RMSE: 0.667186 | Test RMSE: 0.804762
+CUMULATIVE_WALL_MS 326.506836
+Iter  3 | Train RMSE: 0.634755 | Test RMSE: 0.785735
+CUMULATIVE_WALL_MS 489.696320
+Iter  4 | Train RMSE: 0.622584 | Test RMSE: 0.778681
+CUMULATIVE_WALL_MS 652.917847
+Iter  5 | Train RMSE: 0.616182 | Test RMSE: 0.775203
+CUMULATIVE_WALL_MS 816.145386
+Iter  6 | Train RMSE: 0.612191 | Test RMSE: 0.773199
+CUMULATIVE_WALL_MS 979.416138
+Iter  7 | Train RMSE: 0.609461 | Test RMSE: 0.771924
+CUMULATIVE_WALL_MS 1142.640137
+Iter  8 | Train RMSE: 0.607483 | Test RMSE: 0.771054
+CUMULATIVE_WALL_MS 1305.908325
+Iter  9 | Train RMSE: 0.605994 | Test RMSE: 0.770434
+CUMULATIVE_WALL_MS 1469.085083
+Iter 10 | Train RMSE: 0.604841 | Test RMSE: 0.769979
+CUMULATIVE_WALL_MS 1632.383179
+Iter 11 | Train RMSE: 0.603928 | Test RMSE: 0.769638
+CUMULATIVE_WALL_MS 1795.652710
+Iter 12 | Train RMSE: 0.603191 | Test RMSE: 0.769376
+CUMULATIVE_WALL_MS 1959.121582
+Iter 13 | Train RMSE: 0.602587 | Test RMSE: 0.769174
+CUMULATIVE_WALL_MS 2122.983398
+Iter 14 | Train RMSE: 0.602086 | Test RMSE: 0.769018
+CUMULATIVE_WALL_MS 2287.054932
+Iter 15 | Train RMSE: 0.601665 | Test RMSE: 0.768895
+CUMULATIVE_WALL_MS 2451.234863
+Iter 16 | Train RMSE: 0.601310 | Test RMSE: 0.768799
+CUMULATIVE_WALL_MS 2615.350342
+Iter 17 | Train RMSE: 0.601008 | Test RMSE: 0.768726
+CUMULATIVE_WALL_MS 2779.449707
+Iter 18 | Train RMSE: 0.600748 | Test RMSE: 0.768669
+CUMULATIVE_WALL_MS 2943.526855
+Iter 19 | Train RMSE: 0.600524 | Test RMSE: 0.768625
+CUMULATIVE_WALL_MS 3107.624268
+Iter 20 | Train RMSE: 0.600329 | Test RMSE: 0.768594
+CUMULATIVE_WALL_MS 3271.910889
+
+=== Profiling: APR-BALS experiment (20 iters) ===
+User LHS+RHS: 1882.98 ms total | 94.15 ms/iter | 1620.5 GFlops/s
+User Cholesky:   0.04 ms total |  0.00 ms/iter
+Item LHS+RHS:  991.58 ms total | 49.58 ms/iter | 3077.2 GFlops/s
+Item Cholesky:   0.05 ms total |  0.00 ms/iter
+RMSE:          396.73 ms total | 19.84 ms/call
+Total FLOPs: 6102.68 GFLOPs | Throughput: 1865.5 GFlops/s (compute: 2122.9)
+Training Complete in 3.272 seconds!
+
+=== APR-BALS final ===
+Train RMSE: 0.600329 | Test RMSE: 0.768594 | compute=2874.65 ms | wall=3271.93 ms
+Params: K_DIM=96, lambda=0.05, DENSE_NNZ_THRESH=4, WARPS_PER_BLOCK=4, XB=32, YB=256

@@ -1,0 +1,90 @@
+% Fig. 2 -- APR-BALS framework, drawn at one-column width (3.5 in).
+% IEEE: figure type ~9-10 pt at print size, never below 6 pt.
+% Box text is \footnotesize (8 pt); labels are \scriptsize (7 pt).
+% Sans-serif text, black outlines, one fill colour per execution unit:
+% gold = tensor cores, blue = CUDA cores, green = solver, grey = set-up.
+\definecolor{fwTC}{HTML}{FFE699}
+\definecolor{fwTCbar}{HTML}{F4B400}
+\definecolor{fwSC}{HTML}{DDEBF7}
+\definecolor{fwSCbar}{HTML}{9DC3E6}
+\definecolor{fwSolve}{HTML}{C6E0B4}
+\definecolor{fwSetup}{HTML}{EDEDED}
+\begin{tikzpicture}[
+    font=\sffamily\footnotesize,
+    >={Stealth[length=3.6pt, width=3.2pt]},
+    box/.style={draw=black!85, line width=0.6pt, align=center, inner sep=1.5pt,
+                minimum height=8mm},
+    setup/.style={box, fill=fwSetup},
+    tier/.style={box, minimum width=26mm, minimum height=8.5mm},
+    bar/.style={draw=black!85, line width=0.6pt, font=\sffamily\scriptsize\bfseries,
+                inner sep=0pt, minimum height=4mm, align=center},
+    stage/.style={box, fill=white},
+    tag/.style={draw=black!70, fill=white, rounded corners=3.5pt, line width=0.4pt,
+                font=\scriptsize, inner sep=1.2pt},
+    lbl/.style={font=\sffamily\scriptsize, text=black!80, inner sep=1pt},
+    dot/.style={circle, fill=black, inner sep=0pt, minimum size=2.4pt},
+    flow/.style={->, line width=0.6pt},
+    wire/.style={line width=0.6pt}]
+
+% Row 1: set-up (runs once)
+\node[setup, minimum width=40mm] (pre) at (0,0)
+  {\textbf{Offline:} frequency sort,\\frozen 80/20 train/test split};
+\node[setup, minimum width=38mm, right=4mm of pre] (host)
+  {\textbf{Host:} tiled storage,\\tier split by $\theta_g$ and $\theta_d$};
+\draw[flow] (pre) -- (host);
+
+% Row 2: three-tier Gram assembly, standing on an execution-unit bar
+\node[tier, fill=fwTC, below=14mm of pre.south west, anchor=north west] (giant)
+  {\strut\textbf{Giant tier}\\\strut 4-warp WMMA};
+\node[tier, fill=fwTC, right=1.5mm of giant] (dense)
+  {\strut\textbf{Dense tier}\\\strut 1-warp WMMA};
+\node[tier, fill=fwSC, right=1.5mm of dense] (sparse)
+  {\strut\textbf{Sparse tail}\\\strut tiled scalar kernel};
+\node[bar, fill=fwTCbar, anchor=north west, minimum width=53.5mm]
+  (tcbar) at (giant.south west) {Tensor cores: FP16 in, FP32 accumulate};
+\node[bar, fill=fwSCbar, anchor=north west, minimum width=26mm]
+  (scbar) at (sparse.south west) {CUDA cores: FP32};
+
+% Dispatch bus; each drop carries its routing rule (Eq. tier_def)
+\coordinate (disp) at ($(giant.north)+(0,5mm)$);
+\coordinate (ret)  at ($(sparse.east)+(3.2mm,0)$);
+\draw[wire] (giant.north |- disp) -- (ret |- disp);
+\draw[flow] (host.south) -- (host.south |- disp);
+\node[dot] at (host.south |- disp) {};
+\draw[flow] (giant.north |- disp)  -- node[tag] {$n_u \ge \theta_g$} (giant.north);
+\draw[flow] (dense.north |- disp)  -- node[tag] {$\theta_d \le n_u < \theta_g$} (dense.north);
+\draw[flow] (sparse.north |- disp) -- node[tag] {$n_u < \theta_d$} (sparse.north);
+
+% Row 3: merge, solve, update, check
+\node[stage, below=6.5mm of tcbar.south west, anchor=north west] (gram)
+  {FP32 Gram\\$A_u$, $\mathbf{b}_u$};
+\node[box, fill=fwSolve, right=2.5mm of gram] (chol)
+  {\textbf{Blocked batched}\\\textbf{Cholesky}};
+\node[stage, dashed, right=2.5mm of chol] (mom)
+  {Heavy-ball\\momentum};
+\node[stage, right=2.5mm of mom] (rmse)
+  {Train RMSE\\every 5 sweeps};
+\draw[flow] (gram) -- (chol);
+\draw[flow] (chol) -- (mom);
+\draw[flow] (mom) -- (rmse);
+
+% Both bars feed the FP32 Gram buffers
+\coordinate (bus) at ($(tcbar.south)+(0,-3mm)$);
+\draw[wire] (tcbar.south) -- (tcbar.south |- bus);
+\draw[wire] (scbar.south) -- (scbar.south |- bus);
+\draw[wire] (scbar.south |- bus) -- (gram.north |- bus);
+\draw[flow] (gram.north |- bus) -- (gram.north);
+
+% Loop back to the dispatch bus: next batch, then the other side
+\draw[flow] (rmse.east) -| (ret |- disp);
+\node[lbl, rotate=90, anchor=south] at ($(ret |- scbar.south)+(0,0)$) {next batch};
+
+% Training-loop frame with its legend on the top edge
+\coordinate (top) at ($(disp)+(0,3mm)$);
+\begin{scope}[on background layer]
+\node[draw=black!45, dashed, rounded corners=2pt, inner sep=1.2mm, line width=0.5pt,
+      fit=(giant)(sparse)(gram)(rmse)(ret)(top)] (loop) {};
+\end{scope}
+\node[lbl, fill=white, anchor=west, inner sep=1.2pt] at ($(loop.north west)+(2mm,0)$)
+  {\textbf{Training loop}};
+\end{tikzpicture}

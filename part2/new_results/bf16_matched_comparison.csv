@@ -1,0 +1,2 @@
+dataset,beta,BF16_test,FP16_refined_test,BF16_minus_FP16,BF16_zeroed,FP16_zeroed
+ml32m,0.3,0.758323,0.758311,1.2000000000012001e-05,0,0

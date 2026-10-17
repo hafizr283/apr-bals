@@ -1,0 +1,31 @@
+% Generated from new_results CSV; check protocol notes before manuscript use.
+\begin{table}
+\centering
+\caption{Test accuracy after validation selection. Both paths use FP32 solvers and thirty fixed sweeps without momentum or the giant tier.}
+\begin{tabular}{lllll}
+\hline
+Dataset & $K$ & FP32 RMSE & FP16 RMSE & Change (\%) \\
+\hline
+ml10m & 16 & 0.791022 & 0.79101 & -0.00152 \\
+ml10m & 32 & 0.787261 & 0.787247 & -0.00178 \\
+ml10m & 48 & 0.786633 & 0.786617 & -0.00203 \\
+ml10m & 64 & 0.786353 & 0.786337 & -0.00203 \\
+ml10m & 96 & 0.785869 & 0.785851 & -0.00229 \\
+ml20m & 16 & 0.782373 & 0.782355 & -0.00230 \\
+ml20m & 32 & 0.777541 & 0.777521 & -0.00257 \\
+ml20m & 48 & 0.776606 & 0.776579 & -0.00348 \\
+ml20m & 64 & 0.775753 & 0.775725 & -0.00361 \\
+ml20m & 96 & 0.774715 & 0.774685 & -0.00387 \\
+ml32m & 16 & 0.775416 & 0.775387 & -0.00374 \\
+ml32m & 32 & 0.768074 & 0.768039 & -0.00456 \\
+ml32m & 48 & 0.765927 & 0.765891 & -0.00470 \\
+ml32m & 64 & 0.765079 & 0.765041 & -0.00497 \\
+ml32m & 96 & 0.764065 & 0.764025 & -0.00524 \\
+netflix & 16 & 0.833041 & 0.832992 & -0.00588 \\
+netflix & 32 & 0.825821 & 0.825769 & -0.00630 \\
+netflix & 48 & 0.823124 & 0.823051 & -0.00887 \\
+netflix & 64 & 0.821615 & 0.821531 & -0.01022 \\
+netflix & 96 & 0.819646 & 0.81955 & -0.01171 \\
+\hline
+\end{tabular}
+\end{table}

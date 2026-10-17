@@ -1,0 +1,48 @@
+% Dense-tier WMMA Gram assembly, one chunk at K=64 (K_T=4), one-column width.
+% Same type sizes as Fig. 2: \footnotesize (8 pt) labels, \scriptsize (7 pt) notes.
+\begin{tikzpicture}[
+    font=\footnotesize, x=1mm, y=1mm,
+    >={Stealth[length=3pt]},
+    cell/.style={draw=black!55, line width=0.4pt},
+    hot/.style={line width=0.9pt, draw=teal!70!black},
+    note/.style={font=\scriptsize, text=black!75, inner sep=0.8pt},
+    flow/.style={->, line width=0.5pt}]
+
+% --- FP16 factor matrix W-hat; four of the 16 gathered rows highlighted
+\draw[cell, fill=black!4] (0,0) rectangle (5,30);
+\foreach \y in {26.2, 19.4, 12.0, 4.6}
+  \fill[blue!45] (0,\y) rectangle (5,\y+1.3);
+\node[anchor=south] at (2.5,30.3) {$\widehat{W}$};
+\node[note, anchor=north] at (2.5,-0.4) {FP16};
+\foreach \y in {26.85, 20.05, 12.65, 5.25}
+  \draw[line width=0.4pt, black!55] (5,\y) -- (11.6,15);
+\node[note, anchor=south west] at (6.2,0.2) {gather};
+
+% --- shared-memory tile S = 16 x K as four 16x16 column blocks
+\foreach \m in {0,1,2,3} {
+  \draw[cell, fill=blue!12] (12+6.5*\m,11.5) rectangle (18.5+6.5*\m,18.5);
+  \node at (15.25+6.5*\m,15) {$S_{\m}$};
+}
+\draw[hot] (18.5,11.5) rectangle (25,18.5);
+\draw[hot] (31.5,11.5) rectangle (38,18.5);
+\node[anchor=south] at (25,18.8) {$S$: $16 \times K$};
+\node[note, anchor=north] at (25,11.1) {shared memory, FP16};
+
+% --- Gram matrix A_u as 4x4 fragments; upper triangle held in FP32 registers
+\foreach \m in {0,1,2,3}
+  \foreach \n in {0,1,2,3} {
+    \pgfmathtruncatemacro{\up}{\n >= \m ? 1 : 0}
+    \ifnum\up=1
+      \draw[cell, fill=teal!14] (51+7*\n,28-7*\m) rectangle (58+7*\n,21-7*\m);
+      \node[font=\scriptsize] at (54.5+7*\n,24.5-7*\m) {$C_{\m\n}$};
+    \else
+      \draw[cell, fill=white] (51+7*\n,28-7*\m) rectangle (58+7*\n,21-7*\m);
+    \fi
+  }
+\draw[hot, fill=teal!40] (72,21) rectangle (79,14);
+\node[font=\scriptsize] at (75.5,17.5) {$C_{13}$};
+\node[anchor=south east, inner sep=0pt] at (79,29) {$A_u$: $K_T(K_T{+}1)/2 = 10$ fragments};
+\node[note, anchor=north west] at (50.5,0.3) {lower triangle: not computed};
+
+\draw[flow] (38.6,15) -- node[note, above] {WMMA} node[note, below] {FP32 acc.} (50.4,15);
+\end{tikzpicture}

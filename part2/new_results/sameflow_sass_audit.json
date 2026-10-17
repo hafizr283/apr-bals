@@ -1,0 +1,32 @@
+[
+  {
+    "K": 16,
+    "function": "_Z25compute_LHS_RHS_wmma_tf32ILi1EEviiPKiS1_PKfS3_PfS4_i",
+    "FFMA_count_static": 144,
+    "HMMA_count_static": 0
+  },
+  {
+    "K": 32,
+    "function": "_Z25compute_LHS_RHS_wmma_tf32ILi2EEviiPKiS1_PKfS3_PfS4_i",
+    "FFMA_count_static": 400,
+    "HMMA_count_static": 0
+  },
+  {
+    "K": 48,
+    "function": "_Z25compute_LHS_RHS_wmma_tf32ILi3EEviiPKiS1_PKfS3_PfS4_i",
+    "FFMA_count_static": 800,
+    "HMMA_count_static": 0
+  },
+  {
+    "K": 64,
+    "function": "_Z25compute_LHS_RHS_wmma_tf32ILi4EEviiPKiS1_PKfS3_PfS4_i",
+    "FFMA_count_static": 1312,
+    "HMMA_count_static": 0
+  },
+  {
+    "K": 96,
+    "function": "_Z25compute_LHS_RHS_wmma_tf32ILi6EEviiPKiS1_PKfS3_PfS4_i",
+    "FFMA_count_static": 216,
+    "HMMA_count_static": 0
+  }
+]

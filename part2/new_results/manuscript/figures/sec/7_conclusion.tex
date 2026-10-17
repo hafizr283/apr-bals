@@ -1,0 +1,7 @@
+\section{Conclusion}
+\label{sec:conclusion}
+
+This paper has shown that tensor cores can accelerate explicit-feedback ALS on commodity GPUs without measurable loss of accuracy. APR-BALS sorts entities by rating count, sends the dense majority to WMMA kernels with FP16 operands and FP32 accumulation, keeps the sparse tail on scalar FP32 cores, and solves the per-entity systems with a blocked batched Cholesky kernel. Against an audited FP32 baseline that shares its binary, solver, and convergence rule, APR-BALS trains Netflix $4.1$--$14.8\times$ faster on an RTX~3060 for $K=16$--$96$, with test-RMSE differences below $0.005\%$, and reproduces the trend on a Tesla~T4.
+
+The main finding concerns the mechanism. The WMMA kernel at full FP32 range accounts for $87.8$--$99.6\%$ of the gain, and reduced precision contributes at most $1.32\times$. Further optimizations and momentum raise the end-to-end advantage to $26\times$ ($19.5\times$ with iteration counts matched; Fig.~\ref{fig:ablation}), and APR-BALS outperforms cuMF\_als and cuMF\_CCD on identical splits.
+The evaluation is limited to NVIDIA Ampere and Turing GPUs, to explicit feedback on one GPU, and to $K$ values that are multiples of the WMMA tile size (Section~\ref{ssec:threats}). At high rank, the batched solve is the largest remaining cost, limited at $K=96$ by shared-memory capacity per block (Section~\ref{ssec:fp16solver}). Future work includes BF16 operands, implicit-feedback ALS \cite{hu2008collaborative}, multi-GPU partitioning, and evaluation on data-center GPUs.

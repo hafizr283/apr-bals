@@ -1,0 +1,31 @@
+ptxas info    : 0 bytes gmem
+ptxas info    : Compiling entry function '_Z26compute_LHS_RHS_wmma_giantILi2ELi4EEviPKiS1_PKfPK6__halfPfS7_ii' for 'sm_86'
+ptxas info    : Function properties for _Z26compute_LHS_RHS_wmma_giantILi2ELi4EEviPKiS1_PKfPK6__halfPfS7_ii
+    32 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 96 registers, used 1 barriers, 32 bytes cumulative stack size, 14336 bytes smem, 416 bytes cmem[0]
+ptxas info    : Compile time = 14.330 ms
+ptxas info    : Compiling entry function '_Z25compute_LHS_RHS_wmma_tf32ILi2EEviiPKiS1_PKfS3_PfS4_i' for 'sm_86'
+ptxas info    : Function properties for _Z25compute_LHS_RHS_wmma_tf32ILi2EEviiPKiS1_PKfS3_PfS4_i
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 114 registers, used 0 barriers, 8448 bytes smem, 412 bytes cmem[0]
+ptxas info    : Compile time = 23.794 ms
+ptxas info    : Compiling entry function '_Z20compute_LHS_RHS_wmmaILi2EEviiPKiS1_PKfPK6__halfPfS7_i' for 'sm_86'
+ptxas info    : Function properties for _Z20compute_LHS_RHS_wmmaILi2EEviiPKiS1_PKfPK6__halfPfS7_i
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 107 registers, used 0 barriers, 4352 bytes smem, 412 bytes cmem[0]
+ptxas info    : Compile time = 9.467 ms
+ptxas info    : Compiling entry function '_Z26compute_LHS_RHS_BALS_blockILi4ELi2ELi2EEviifPKiS1_S1_S1_PKfS3_PfS4_S3_S1_S1_S1_S1_S1_ii' for 'sm_86'
+ptxas info    : Function properties for _Z26compute_LHS_RHS_BALS_blockILi4ELi2ELi2EEviifPKiS1_S1_S1_PKfS3_PfS4_S3_S1_S1_S1_S1_S1_ii
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 64 registers, used 1 barriers, 488 bytes cmem[0]
+ptxas info    : Compile time = 41.280 ms
+ptxas info    : Compiling entry function '_Z20convert_fp32_to_fp16PKfP6__halfi' for 'sm_86'
+ptxas info    : Function properties for _Z20convert_fp32_to_fp16PKfP6__halfi
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 8 registers, used 0 barriers, 372 bytes cmem[0]
+ptxas info    : Compile time = 0.649 ms
+ptxas info    : Compiling entry function '_Z19compute_RMSE_kernelPKiS0_PKfiS2_S2_iPd' for 'sm_86'
+ptxas info    : Function properties for _Z19compute_RMSE_kernelPKiS0_PKfiS2_S2_iPd
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 44 registers, used 1 barriers, 2048 bytes smem, 416 bytes cmem[0]
+ptxas info    : Compile time = 10.058 ms

@@ -1,0 +1,14 @@
+{
+  "command": [
+    "/home/pc/Desktop/2007080/latent_factorr_experimen/comparing_baseline/new_results/bin/ladder_momentum",
+    "/home/pc/Desktop/2007080/netflix_ratings.bin",
+    "0.048"
+  ],
+  "environment": {
+    "CUDA_VISIBLE_DEVICES": "1",
+    "CHECK_EVERY": "1",
+    "MAX_ITERS": "30"
+  },
+  "start": 1791998361.2831507,
+  "end": 1791998381.2893395
+}

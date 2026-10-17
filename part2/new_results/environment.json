@@ -1,0 +1,19 @@
+{
+  "gpu": "index, name, uuid, driver_version, memory.total [MiB]\n0, NVIDIA GeForce RTX 3060, GPU-af7d208d-9c84-a16a-9eee-a50daaf4e741, 580.178.04, 12288 MiB\n1, NVIDIA GeForce RTX 3060, GPU-34fe8ff7-f18f-c8d6-b38a-e57a2ea22999, 580.178.04, 12288 MiB\n",
+  "nvcc": "nvcc: NVIDIA (R) Cuda compiler driver\nCopyright (c) 2005-2025 NVIDIA Corporation\nBuilt on Wed_Apr__9_19:24:57_PDT_2025\nCuda compilation tools, release 12.9, V12.9.41\nBuild cuda_12.9.r12.9/compiler.35813241_0\n",
+  "git_head": "9d88f84b8ce4f6b0f2e1fda78b9dfab3142b4a0a",
+  "original_sources": {
+    "justapr_2gpu.cu": "b1bc6174d0a2c7a0259be0faad2d9d00359a0257a1597789b6085cb8295e781e",
+    "main_experiment.cu": "6298843ec69dd2866b0e3d1c37727dc241f838bc7451999e3e51aadcef2f11ea",
+    "justapr.cu": "76e62234eba960b905ab237b7a4d0462bbd697bb90afe1c043ae11573522bf2b",
+    "only_scalar_fp32.cu": "0990bad68cddeb636ba6a85fb28e9ad290c30f0be71b566618239c738c10bf84",
+    "data_utils.cuh": "6228f4b0caa4e769befdcf18e9cfba07fd2eeae8daee19eb6b4f9679f0d0495e",
+    "fused_kernels.cuh": "4035516f58aa459f32477b4d088ea1d9afe97a02ef92cf81e3340bb09ed9f274",
+    "wmma_kernels.cuh": "36b1c64505e6cd4addfff62e40e58d09cec33b14035d86ec800923703bdd415a",
+    "cholesky_kernels.cuh": "4cb03d1910472a20ac8e856b29adcff574be10c5a451131a244c91eac8730894",
+    "common.cuh": "2ff287f229c3160f78b63d6e83597f87c8ced152d466de341c2fb75f0c78daaa"
+  },
+  "manuscript_zip_sha256": "b15f42641ab6fed1e4ab7c92c4a08e83308a14a5aad2f42d572748b13d5549db",
+  "review_pdf_sha256": "fe91e0136f68189a4c071e557a38a386da807ea2220eb33a268f26ea7dbf3c98",
+  "note": "Working tree contained user changes before this task; experiment copies preserve those current sources."
+}

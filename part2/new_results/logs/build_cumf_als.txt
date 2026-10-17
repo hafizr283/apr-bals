@@ -1,0 +1,66 @@
+In file included from new_results/external_src/cumf_als/als.h:34,
+                 from new_results/external_src/cumf_als/main.cpp:23:
+/usr/local/cuda/bin/../targets/x86_64-linux/include/host_defines.h:54:2: warning: #warning "host_defines.h is an internal header file and must not be used directly.  This file will be removed in a future CUDA release.  Please use cuda_runtime_api.h or cuda_runtime.h instead." [-Wcpp]
+   54 | #warning "host_defines.h is an internal header file and must not be used directly.  This file will be removed in a future CUDA release.  Please use cuda_runtime_api.h or cuda_runtime.h instead."
+      |  ^~~~~~~
+new_results/external_src/cumf_als/host_utilities.cpp: In function ‘void loadCSRSparseMatrixBin(const char*, const char*, const char*, float*, int*, int*, int, long int)’:
+new_results/external_src/cumf_als/host_utilities.cpp:33:14: warning: ignoring return value of ‘size_t fread(void*, size_t, size_t, FILE*)’ declared with attribute ‘warn_unused_result’ [-Wunused-result]
+   33 |         fread(&row[0], 4*(m+1) ,1, rFile);
+      |         ~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~
+new_results/external_src/cumf_als/host_utilities.cpp:34:14: warning: ignoring return value of ‘size_t fread(void*, size_t, size_t, FILE*)’ declared with attribute ‘warn_unused_result’ [-Wunused-result]
+   34 |         fread(&col[0], 4*nnz ,1, cFile);
+      |         ~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~
+new_results/external_src/cumf_als/host_utilities.cpp:35:14: warning: ignoring return value of ‘size_t fread(void*, size_t, size_t, FILE*)’ declared with attribute ‘warn_unused_result’ [-Wunused-result]
+   35 |         fread(&data[0], 4*nnz ,1, dFile);
+      |         ~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~
+new_results/external_src/cumf_als/host_utilities.cpp: In function ‘void loadCSCSparseMatrixBin(const char*, const char*, const char*, float*, int*, int*, int, long int)’:
+new_results/external_src/cumf_als/host_utilities.cpp:57:14: warning: ignoring return value of ‘size_t fread(void*, size_t, size_t, FILE*)’ declared with attribute ‘warn_unused_result’ [-Wunused-result]
+   57 |         fread(&row[0], 4*nnz ,1, rFile);
+      |         ~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~
+new_results/external_src/cumf_als/host_utilities.cpp:58:14: warning: ignoring return value of ‘size_t fread(void*, size_t, size_t, FILE*)’ declared with attribute ‘warn_unused_result’ [-Wunused-result]
+   58 |         fread(&col[0], 4*(n+1) ,1, cFile);
+      |         ~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~
+new_results/external_src/cumf_als/host_utilities.cpp:59:14: warning: ignoring return value of ‘size_t fread(void*, size_t, size_t, FILE*)’ declared with attribute ‘warn_unused_result’ [-Wunused-result]
+   59 |         fread(&data[0], 4*nnz ,1, dFile);
+      |         ~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~
+new_results/external_src/cumf_als/host_utilities.cpp: In function ‘void loadCooSparseMatrixRowPtrBin(const char*, int*, long int)’:
+new_results/external_src/cumf_als/host_utilities.cpp:71:14: warning: ignoring return value of ‘size_t fread(void*, size_t, size_t, FILE*)’ declared with attribute ‘warn_unused_result’ [-Wunused-result]
+   71 |         fread(&row[0], 4*nnz ,1, rfile);
+      |         ~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~
+new_results/external_src/cumf_als/host_utilities.cpp: In function ‘void loadCooSparseMatrixBin(const char*, const char*, const char*, float*, int*, int*, long int)’:
+new_results/external_src/cumf_als/host_utilities.cpp:90:14: warning: ignoring return value of ‘size_t fread(void*, size_t, size_t, FILE*)’ declared with attribute ‘warn_unused_result’ [-Wunused-result]
+   90 |         fread(&row[0], 4*nnz, 1, rFile);
+      |         ~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~
+new_results/external_src/cumf_als/host_utilities.cpp:91:14: warning: ignoring return value of ‘size_t fread(void*, size_t, size_t, FILE*)’ declared with attribute ‘warn_unused_result’ [-Wunused-result]
+   91 |         fread(&col[0], 4*nnz, 1, cFile);
+      |         ~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~
+new_results/external_src/cumf_als/host_utilities.cpp:92:14: warning: ignoring return value of ‘size_t fread(void*, size_t, size_t, FILE*)’ declared with attribute ‘warn_unused_result’ [-Wunused-result]
+   92 |         fread(&data[0], 4*nnz, 1, dFile);
+      |         ~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~
+In file included from new_results/external_src/cumf_als/als.h:34,
+                 from new_results/external_src/cumf_als/cg.cu:26:
+/usr/local/cuda/bin/../targets/x86_64-linux/include/host_defines.h:54:2: warning: #warning "host_defines.h is an internal header file and must not be used directly.  This file will be removed in a future CUDA release.  Please use cuda_runtime_api.h or cuda_runtime.h instead." [-Wcpp]
+   54 | #warning "host_defines.h is an internal header file and must not be used directly.  This file will be removed in a future CUDA release.  Please use cuda_runtime_api.h or cuda_runtime.h instead."
+      |  ^~~~~~~
+In file included from new_results/external_src/cumf_als/als.h:34,
+                 from new_results/external_src/cumf_als/cg.cu:26:
+/usr/local/cuda/bin/../targets/x86_64-linux/include/host_defines.h:54:2: warning: #warning "host_defines.h is an internal header file and must not be used directly.  This file will be removed in a future CUDA release.  Please use cuda_runtime_api.h or cuda_runtime.h instead." [-Wcpp]
+   54 | #warning "host_defines.h is an internal header file and must not be used directly.  This file will be removed in a future CUDA release.  Please use cuda_runtime_api.h or cuda_runtime.h instead."
+      |  ^~~~~~~
+In file included from new_results/external_src/cumf_als/als.h:34,
+                 from new_results/external_src/cumf_als/als.cu:35:
+/usr/local/cuda/bin/../targets/x86_64-linux/include/host_defines.h:54:2: warning: #warning "host_defines.h is an internal header file and must not be used directly.  This file will be removed in a future CUDA release.  Please use cuda_runtime_api.h or cuda_runtime.h instead." [-Wcpp]
+   54 | #warning "host_defines.h is an internal header file and must not be used directly.  This file will be removed in a future CUDA release.  Please use cuda_runtime_api.h or cuda_runtime.h instead."
+      |  ^~~~~~~
+In file included from new_results/external_src/cumf_als/als.h:34,
+                 from new_results/external_src/cumf_als/als.cu:35:
+/usr/local/cuda/bin/../targets/x86_64-linux/include/host_defines.h:54:2: warning: #warning "host_defines.h is an internal header file and must not be used directly.  This file will be removed in a future CUDA release.  Please use cuda_runtime_api.h or cuda_runtime.h instead." [-Wcpp]
+   54 | #warning "host_defines.h is an internal header file and must not be used directly.  This file will be removed in a future CUDA release.  Please use cuda_runtime_api.h or cuda_runtime.h instead."
+      |  ^~~~~~~
+new_results/external_src/cumf_als/als.cu: In function ‘float doALS(const int*, const int*, const float*, const int*, const int*, const float*, const int*, float*, float*, const int*, const int*, const float*, int, int, int, long int, long int, float, int, float, int, int, int)’:
+new_results/external_src/cumf_als/als.cu:757:36: warning: ‘cudaError_t cudaDeviceSetSharedMemConfig(cudaSharedMemConfig)’ is deprecated [-Wdeprecated-declarations]
+  757 |         cudaDeviceSetSharedMemConfig(cudaSharedMemBankSizeEightByte);
+      |         ~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda_runtime_api.h:1105:46: note: declared here
+ 1105 | extern __CUDA_DEPRECATED __host__ cudaError_t CUDARTAPI cudaDeviceSetSharedMemConfig(enum cudaSharedMemConfig config);
+      |                                              ^~~~~~~~~~~~~~~~~~~~~~~~~~~~

@@ -1,0 +1,18 @@
+{
+  "command": [
+    "/home/pc/Desktop/2007080/latent_factorr_experimen/comparing_baseline/new_results/bin/bals_k96",
+    "/home/pc/Desktop/2007080/latent_factorr_experimen/comparing_baseline/new_results/external_inputs/netflix/warm_validation.bin",
+    "0.04"
+  ],
+  "environment": {
+    "CUDA_VISIBLE_DEVICES": "1",
+    "OMP_NUM_THREADS": "4",
+    "MAX_ITERS": "30",
+    "FIXED_ITERS": "1",
+    "CHECK_EVERY": "1",
+    "MBETA": "0.3"
+  },
+  "returncode": 0,
+  "start": 1792000239.1580918,
+  "end": 1792000481.7029684
+}

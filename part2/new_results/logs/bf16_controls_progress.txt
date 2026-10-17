@@ -1,0 +1,12 @@
+/home/pc/Desktop/2007080/latent_factorr_experimen/comparing_baseline/new_results/bf16_controls/ml10m_fp16_ir1_k96_beta0.3.txt
+/home/pc/Desktop/2007080/latent_factorr_experimen/comparing_baseline/new_results/bf16_controls/ml10m_fp16_ir1_k96_beta0.5.txt
+/home/pc/Desktop/2007080/latent_factorr_experimen/comparing_baseline/new_results/bf16_controls/ml10m_ship_k96_beta0.5.txt
+/home/pc/Desktop/2007080/latent_factorr_experimen/comparing_baseline/new_results/bf16_controls/ml20m_fp16_ir1_k96_beta0.3.txt
+/home/pc/Desktop/2007080/latent_factorr_experimen/comparing_baseline/new_results/bf16_controls/ml20m_fp16_ir1_k96_beta0.5.txt
+/home/pc/Desktop/2007080/latent_factorr_experimen/comparing_baseline/new_results/bf16_controls/ml20m_ship_k96_beta0.5.txt
+/home/pc/Desktop/2007080/latent_factorr_experimen/comparing_baseline/new_results/bf16_controls/ml32m_fp16_ir1_k96_beta0.3.txt
+/home/pc/Desktop/2007080/latent_factorr_experimen/comparing_baseline/new_results/bf16_controls/ml32m_fp16_ir1_k96_beta0.5.txt
+/home/pc/Desktop/2007080/latent_factorr_experimen/comparing_baseline/new_results/bf16_controls/ml32m_ship_k96_beta0.5.txt
+/home/pc/Desktop/2007080/latent_factorr_experimen/comparing_baseline/new_results/bf16_controls/netflix_fp16_ir1_k96_beta0.3.txt
+/home/pc/Desktop/2007080/latent_factorr_experimen/comparing_baseline/new_results/bf16_controls/netflix_fp16_ir1_k96_beta0.5.txt
+/home/pc/Desktop/2007080/latent_factorr_experimen/comparing_baseline/new_results/bf16_controls/netflix_ship_k96_beta0.5.txt

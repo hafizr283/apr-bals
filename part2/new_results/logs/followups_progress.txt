@@ -1,0 +1,83 @@
+/home/pc/Desktop/2007080/latent_factorr_experimen/comparing_baseline/new_results/control_tuning_runs/ml20m_sameflow_k96_unroll1.txt
+/home/pc/Desktop/2007080/latent_factorr_experimen/comparing_baseline/new_results/control_tuning_runs/ml20m_sameflow_k96_unroll4.txt
+/home/pc/Desktop/2007080/latent_factorr_experimen/comparing_baseline/new_results/control_tuning_runs/ml20m_sameflow_k96_unroll8.txt
+/home/pc/Desktop/2007080/latent_factorr_experimen/comparing_baseline/new_results/control_tuning_runs/ml20m_sameflow_k96_outer.txt
+/home/pc/Desktop/2007080/latent_factorr_experimen/comparing_baseline/new_results/four_way/ml10m_sameflow_k96.txt
+/home/pc/Desktop/2007080/latent_factorr_experimen/comparing_baseline/new_results/four_way/ml20m_sameflow_k96.txt
+/home/pc/Desktop/2007080/latent_factorr_experimen/comparing_baseline/new_results/four_way/ml32m_sameflow_k96.txt
+/home/pc/Desktop/2007080/latent_factorr_experimen/comparing_baseline/new_results/four_way/netflix_sameflow_k96.txt
+/home/pc/Desktop/2007080/latent_factorr_experimen/comparing_baseline/new_results/rounding_control/ml10m_rounded_fma_k16.txt
+/home/pc/Desktop/2007080/latent_factorr_experimen/comparing_baseline/new_results/rounding_control/ml20m_rounded_fma_k16.txt
+/home/pc/Desktop/2007080/latent_factorr_experimen/comparing_baseline/new_results/rounding_control/ml32m_rounded_fma_k16.txt
+/home/pc/Desktop/2007080/latent_factorr_experimen/comparing_baseline/new_results/rounding_control/netflix_rounded_fma_k16.txt
+/home/pc/Desktop/2007080/latent_factorr_experimen/comparing_baseline/new_results/rounding_control/ml10m_rounded_fma_k32.txt
+/home/pc/Desktop/2007080/latent_factorr_experimen/comparing_baseline/new_results/rounding_control/ml20m_rounded_fma_k32.txt
+/home/pc/Desktop/2007080/latent_factorr_experimen/comparing_baseline/new_results/rounding_control/ml32m_rounded_fma_k32.txt
+/home/pc/Desktop/2007080/latent_factorr_experimen/comparing_baseline/new_results/rounding_control/netflix_rounded_fma_k32.txt
+/home/pc/Desktop/2007080/latent_factorr_experimen/comparing_baseline/new_results/rounding_control/ml10m_rounded_fma_k48.txt
+/home/pc/Desktop/2007080/latent_factorr_experimen/comparing_baseline/new_results/rounding_control/ml20m_rounded_fma_k48.txt
+/home/pc/Desktop/2007080/latent_factorr_experimen/comparing_baseline/new_results/rounding_control/ml32m_rounded_fma_k48.txt
+/home/pc/Desktop/2007080/latent_factorr_experimen/comparing_baseline/new_results/rounding_control/netflix_rounded_fma_k48.txt
+/home/pc/Desktop/2007080/latent_factorr_experimen/comparing_baseline/new_results/rounding_control/ml10m_rounded_fma_k64.txt
+/home/pc/Desktop/2007080/latent_factorr_experimen/comparing_baseline/new_results/rounding_control/ml20m_rounded_fma_k64.txt
+/home/pc/Desktop/2007080/latent_factorr_experimen/comparing_baseline/new_results/rounding_control/ml32m_rounded_fma_k64.txt
+/home/pc/Desktop/2007080/latent_factorr_experimen/comparing_baseline/new_results/rounding_control/netflix_rounded_fma_k64.txt
+/home/pc/Desktop/2007080/latent_factorr_experimen/comparing_baseline/new_results/rounding_control/ml10m_rounded_fma_k96.txt
+/home/pc/Desktop/2007080/latent_factorr_experimen/comparing_baseline/new_results/rounding_control/ml20m_rounded_fma_k96.txt
+/home/pc/Desktop/2007080/latent_factorr_experimen/comparing_baseline/new_results/rounding_control/ml32m_rounded_fma_k96.txt
+/home/pc/Desktop/2007080/latent_factorr_experimen/comparing_baseline/new_results/rounding_control/netflix_rounded_fma_k96.txt
+/home/pc/Desktop/2007080/latent_factorr_experimen/comparing_baseline/new_results/gram/ml10m_fp16_k16_factors.txt
+GRAM DONE ml10m 16
+/home/pc/Desktop/2007080/latent_factorr_experimen/comparing_baseline/new_results/gram/ml20m_fp16_k16_factors.txt
+GRAM DONE ml20m 16
+/home/pc/Desktop/2007080/latent_factorr_experimen/comparing_baseline/new_results/gram/ml32m_fp16_k16_factors.txt
+GRAM DONE ml32m 16
+/home/pc/Desktop/2007080/latent_factorr_experimen/comparing_baseline/new_results/gram/netflix_fp16_k16_factors.txt
+GRAM DONE netflix 16
+/home/pc/Desktop/2007080/latent_factorr_experimen/comparing_baseline/new_results/gram/ml10m_fp16_k32_factors.txt
+GRAM DONE ml10m 32
+/home/pc/Desktop/2007080/latent_factorr_experimen/comparing_baseline/new_results/gram/ml20m_fp16_k32_factors.txt
+GRAM DONE ml20m 32
+/home/pc/Desktop/2007080/latent_factorr_experimen/comparing_baseline/new_results/gram/ml32m_fp16_k32_factors.txt
+GRAM DONE ml32m 32
+/home/pc/Desktop/2007080/latent_factorr_experimen/comparing_baseline/new_results/gram/netflix_fp16_k32_factors.txt
+GRAM DONE netflix 32
+/home/pc/Desktop/2007080/latent_factorr_experimen/comparing_baseline/new_results/gram/ml10m_fp16_k48_factors.txt
+GRAM DONE ml10m 48
+/home/pc/Desktop/2007080/latent_factorr_experimen/comparing_baseline/new_results/gram/ml20m_fp16_k48_factors.txt
+GRAM DONE ml20m 48
+/home/pc/Desktop/2007080/latent_factorr_experimen/comparing_baseline/new_results/gram/ml32m_fp16_k48_factors.txt
+GRAM DONE ml32m 48
+/home/pc/Desktop/2007080/latent_factorr_experimen/comparing_baseline/new_results/gram/netflix_fp16_k48_factors.txt
+GRAM DONE netflix 48
+/home/pc/Desktop/2007080/latent_factorr_experimen/comparing_baseline/new_results/gram/ml10m_fp16_k64_factors.txt
+GRAM DONE ml10m 64
+/home/pc/Desktop/2007080/latent_factorr_experimen/comparing_baseline/new_results/gram/ml20m_fp16_k64_factors.txt
+GRAM DONE ml20m 64
+/home/pc/Desktop/2007080/latent_factorr_experimen/comparing_baseline/new_results/gram/ml32m_fp16_k64_factors.txt
+GRAM DONE ml32m 64
+/home/pc/Desktop/2007080/latent_factorr_experimen/comparing_baseline/new_results/gram/netflix_fp16_k64_factors.txt
+GRAM DONE netflix 64
+/home/pc/Desktop/2007080/latent_factorr_experimen/comparing_baseline/new_results/gram/ml10m_fp16_k96_factors.txt
+GRAM DONE ml10m 96
+/home/pc/Desktop/2007080/latent_factorr_experimen/comparing_baseline/new_results/gram/ml20m_fp16_k96_factors.txt
+GRAM DONE ml20m 96
+/home/pc/Desktop/2007080/latent_factorr_experimen/comparing_baseline/new_results/gram/ml32m_fp16_k96_factors.txt
+GRAM DONE ml32m 96
+/home/pc/Desktop/2007080/latent_factorr_experimen/comparing_baseline/new_results/gram/netflix_fp16_k96_factors.txt
+GRAM DONE netflix 96
+/home/pc/Desktop/2007080/latent_factorr_experimen/comparing_baseline/new_results/bf16/ml10m_bf16_k96_beta0.3.txt
+/home/pc/Desktop/2007080/latent_factorr_experimen/comparing_baseline/new_results/bf16/ml10m_bf16_k96_beta0.5.txt
+/home/pc/Desktop/2007080/latent_factorr_experimen/comparing_baseline/new_results/bf16/ml20m_bf16_k96_beta0.3.txt
+/home/pc/Desktop/2007080/latent_factorr_experimen/comparing_baseline/new_results/bf16/ml20m_bf16_k96_beta0.5.txt
+/home/pc/Desktop/2007080/latent_factorr_experimen/comparing_baseline/new_results/bf16/ml32m_bf16_k96_beta0.3.txt
+/home/pc/Desktop/2007080/latent_factorr_experimen/comparing_baseline/new_results/bf16/ml32m_bf16_k96_beta0.5.txt
+/home/pc/Desktop/2007080/latent_factorr_experimen/comparing_baseline/new_results/bf16/netflix_bf16_k96_beta0.3.txt
+/home/pc/Desktop/2007080/latent_factorr_experimen/comparing_baseline/new_results/bf16/netflix_bf16_k96_beta0.5.txt
+/home/pc/Desktop/2007080/latent_factorr_experimen/comparing_baseline/new_results/cumulative/netflix_ladder_atomic.txt
+/home/pc/Desktop/2007080/latent_factorr_experimen/comparing_baseline/new_results/cumulative/netflix_ladder_sameflow.txt
+/home/pc/Desktop/2007080/latent_factorr_experimen/comparing_baseline/new_results/cumulative/netflix_ladder_fp32.txt
+/home/pc/Desktop/2007080/latent_factorr_experimen/comparing_baseline/new_results/cumulative/netflix_ladder_fp16solve.txt
+/home/pc/Desktop/2007080/latent_factorr_experimen/comparing_baseline/new_results/cumulative/netflix_ladder_fastcheck.txt
+/home/pc/Desktop/2007080/latent_factorr_experimen/comparing_baseline/new_results/cumulative/netflix_ladder_momentum.txt
+FOLLOWUPS DONE

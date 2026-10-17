@@ -1,0 +1,1378 @@
+[
+  {
+    "kind": "sweep_sequence_and_monotonic_time",
+    "dataset": "ml10m",
+    "method": "apr",
+    "K": 48,
+    "pass": true
+  },
+  {
+    "kind": "sweep_sequence_and_monotonic_time",
+    "dataset": "ml10m",
+    "method": "ccd",
+    "K": 32,
+    "pass": true
+  },
+  {
+    "kind": "sweep_sequence_and_monotonic_time",
+    "dataset": "ml20m",
+    "method": "als",
+    "K": 32,
+    "pass": true
+  },
+  {
+    "kind": "sweep_sequence_and_monotonic_time",
+    "dataset": "ml20m",
+    "method": "apr",
+    "K": 96,
+    "pass": true
+  },
+  {
+    "kind": "sweep_sequence_and_monotonic_time",
+    "dataset": "ml20m",
+    "method": "ccd",
+    "K": 48,
+    "pass": true
+  },
+  {
+    "kind": "sweep_sequence_and_monotonic_time",
+    "dataset": "ml10m",
+    "method": "als",
+    "K": 16,
+    "pass": true
+  },
+  {
+    "kind": "sweep_sequence_and_monotonic_time",
+    "dataset": "ml20m",
+    "method": "bals",
+    "K": 48,
+    "pass": true
+  },
+  {
+    "kind": "sweep_sequence_and_monotonic_time",
+    "dataset": "ml10m",
+    "method": "apr",
+    "K": 32,
+    "pass": true
+  },
+  {
+    "kind": "sweep_sequence_and_monotonic_time",
+    "dataset": "ml20m",
+    "method": "ccd",
+    "K": 64,
+    "pass": true
+  },
+  {
+    "kind": "sweep_sequence_and_monotonic_time",
+    "dataset": "ml32m",
+    "method": "bals",
+    "K": 16,
+    "pass": true
+  },
+  {
+    "kind": "sweep_sequence_and_monotonic_time",
+    "dataset": "ml10m",
+    "method": "bals",
+    "K": 32,
+    "pass": true
+  },
+  {
+    "kind": "sweep_sequence_and_monotonic_time",
+    "dataset": "ml10m",
+    "method": "sgd",
+    "K": 128,
+    "pass": true
+  },
+  {
+    "kind": "sweep_sequence_and_monotonic_time",
+    "dataset": "netflix",
+    "method": "bals",
+    "K": 16,
+    "pass": true
+  },
+  {
+    "kind": "sweep_sequence_and_monotonic_time",
+    "dataset": "netflix",
+    "method": "bals",
+    "K": 32,
+    "pass": true
+  },
+  {
+    "kind": "sweep_sequence_and_monotonic_time",
+    "dataset": "netflix",
+    "method": "apr",
+    "K": 16,
+    "pass": true
+  },
+  {
+    "kind": "sweep_sequence_and_monotonic_time",
+    "dataset": "ml32m",
+    "method": "ccd",
+    "K": 32,
+    "pass": true
+  },
+  {
+    "kind": "sweep_sequence_and_monotonic_time",
+    "dataset": "ml32m",
+    "method": "als",
+    "K": 48,
+    "pass": true
+  },
+  {
+    "kind": "sweep_sequence_and_monotonic_time",
+    "dataset": "ml32m",
+    "method": "apr",
+    "K": 64,
+    "pass": true
+  },
+  {
+    "kind": "sweep_sequence_and_monotonic_time",
+    "dataset": "ml32m",
+    "method": "bals",
+    "K": 48,
+    "pass": true
+  },
+  {
+    "kind": "sweep_sequence_and_monotonic_time",
+    "dataset": "netflix",
+    "method": "apr",
+    "K": 48,
+    "pass": true
+  },
+  {
+    "kind": "sweep_sequence_and_monotonic_time",
+    "dataset": "ml10m",
+    "method": "ccd",
+    "K": 48,
+    "pass": true
+  },
+  {
+    "kind": "sweep_sequence_and_monotonic_time",
+    "dataset": "ml20m",
+    "method": "bals",
+    "K": 96,
+    "pass": true
+  },
+  {
+    "kind": "sweep_sequence_and_monotonic_time",
+    "dataset": "netflix",
+    "method": "als",
+    "K": 64,
+    "pass": true
+  },
+  {
+    "kind": "sweep_sequence_and_monotonic_time",
+    "dataset": "ml20m",
+    "method": "apr",
+    "K": 48,
+    "pass": true
+  },
+  {
+    "kind": "sweep_sequence_and_monotonic_time",
+    "dataset": "ml32m",
+    "method": "bals",
+    "K": 64,
+    "pass": true
+  },
+  {
+    "kind": "sweep_sequence_and_monotonic_time",
+    "dataset": "ml10m",
+    "method": "als",
+    "K": 32,
+    "pass": true
+  },
+  {
+    "kind": "sweep_sequence_and_monotonic_time",
+    "dataset": "ml32m",
+    "method": "ccd",
+    "K": 16,
+    "pass": true
+  },
+  {
+    "kind": "sweep_sequence_and_monotonic_time",
+    "dataset": "netflix",
+    "method": "ccd",
+    "K": 96,
+    "pass": true
+  },
+  {
+    "kind": "sweep_sequence_and_monotonic_time",
+    "dataset": "ml32m",
+    "method": "ccd",
+    "K": 96,
+    "pass": true
+  },
+  {
+    "kind": "sweep_sequence_and_monotonic_time",
+    "dataset": "ml20m",
+    "method": "bals",
+    "K": 16,
+    "pass": true
+  },
+  {
+    "kind": "sweep_sequence_and_monotonic_time",
+    "dataset": "ml20m",
+    "method": "ccd",
+    "K": 16,
+    "pass": true
+  },
+  {
+    "kind": "sweep_sequence_and_monotonic_time",
+    "dataset": "netflix",
+    "method": "als",
+    "K": 48,
+    "pass": true
+  },
+  {
+    "kind": "sweep_sequence_and_monotonic_time",
+    "dataset": "ml10m",
+    "method": "ccd",
+    "K": 16,
+    "pass": true
+  },
+  {
+    "kind": "sweep_sequence_and_monotonic_time",
+    "dataset": "ml32m",
+    "method": "sgd",
+    "K": 128,
+    "pass": true
+  },
+  {
+    "kind": "sweep_sequence_and_monotonic_time",
+    "dataset": "netflix",
+    "method": "apr",
+    "K": 96,
+    "pass": true
+  },
+  {
+    "kind": "sweep_sequence_and_monotonic_time",
+    "dataset": "ml32m",
+    "method": "ccd",
+    "K": 64,
+    "pass": true
+  },
+  {
+    "kind": "sweep_sequence_and_monotonic_time",
+    "dataset": "netflix",
+    "method": "bals",
+    "K": 96,
+    "pass": true
+  },
+  {
+    "kind": "sweep_sequence_and_monotonic_time",
+    "dataset": "ml20m",
+    "method": "als",
+    "K": 96,
+    "pass": true
+  },
+  {
+    "kind": "sweep_sequence_and_monotonic_time",
+    "dataset": "ml32m",
+    "method": "als",
+    "K": 16,
+    "pass": true
+  },
+  {
+    "kind": "sweep_sequence_and_monotonic_time",
+    "dataset": "ml10m",
+    "method": "als",
+    "K": 64,
+    "pass": true
+  },
+  {
+    "kind": "sweep_sequence_and_monotonic_time",
+    "dataset": "ml10m",
+    "method": "bals",
+    "K": 48,
+    "pass": true
+  },
+  {
+    "kind": "sweep_sequence_and_monotonic_time",
+    "dataset": "ml32m",
+    "method": "als",
+    "K": 32,
+    "pass": true
+  },
+  {
+    "kind": "sweep_sequence_and_monotonic_time",
+    "dataset": "ml10m",
+    "method": "als",
+    "K": 96,
+    "pass": true
+  },
+  {
+    "kind": "sweep_sequence_and_monotonic_time",
+    "dataset": "ml32m",
+    "method": "ccd",
+    "K": 48,
+    "pass": true
+  },
+  {
+    "kind": "sweep_sequence_and_monotonic_time",
+    "dataset": "netflix",
+    "method": "als",
+    "K": 32,
+    "pass": true
+  },
+  {
+    "kind": "sweep_sequence_and_monotonic_time",
+    "dataset": "netflix",
+    "method": "ccd",
+    "K": 32,
+    "pass": true
+  },
+  {
+    "kind": "sweep_sequence_and_monotonic_time",
+    "dataset": "ml32m",
+    "method": "apr",
+    "K": 32,
+    "pass": true
+  },
+  {
+    "kind": "sweep_sequence_and_monotonic_time",
+    "dataset": "netflix",
+    "method": "ccd",
+    "K": 16,
+    "pass": true
+  },
+  {
+    "kind": "sweep_sequence_and_monotonic_time",
+    "dataset": "netflix",
+    "method": "apr",
+    "K": 32,
+    "pass": true
+  },
+  {
+    "kind": "sweep_sequence_and_monotonic_time",
+    "dataset": "ml20m",
+    "method": "als",
+    "K": 64,
+    "pass": true
+  },
+  {
+    "kind": "sweep_sequence_and_monotonic_time",
+    "dataset": "ml20m",
+    "method": "ccd",
+    "K": 96,
+    "pass": true
+  },
+  {
+    "kind": "sweep_sequence_and_monotonic_time",
+    "dataset": "ml10m",
+    "method": "ccd",
+    "K": 64,
+    "pass": true
+  },
+  {
+    "kind": "sweep_sequence_and_monotonic_time",
+    "dataset": "ml10m",
+    "method": "bals",
+    "K": 16,
+    "pass": true
+  },
+  {
+    "kind": "sweep_sequence_and_monotonic_time",
+    "dataset": "ml20m",
+    "method": "apr",
+    "K": 32,
+    "pass": true
+  },
+  {
+    "kind": "sweep_sequence_and_monotonic_time",
+    "dataset": "netflix",
+    "method": "sgd",
+    "K": 128,
+    "pass": true
+  },
+  {
+    "kind": "sweep_sequence_and_monotonic_time",
+    "dataset": "ml32m",
+    "method": "bals",
+    "K": 32,
+    "pass": true
+  },
+  {
+    "kind": "sweep_sequence_and_monotonic_time",
+    "dataset": "ml20m",
+    "method": "bals",
+    "K": 32,
+    "pass": true
+  },
+  {
+    "kind": "sweep_sequence_and_monotonic_time",
+    "dataset": "ml20m",
+    "method": "sgd",
+    "K": 128,
+    "pass": true
+  },
+  {
+    "kind": "sweep_sequence_and_monotonic_time",
+    "dataset": "ml10m",
+    "method": "apr",
+    "K": 16,
+    "pass": true
+  },
+  {
+    "kind": "sweep_sequence_and_monotonic_time",
+    "dataset": "ml20m",
+    "method": "ccd",
+    "K": 32,
+    "pass": true
+  },
+  {
+    "kind": "sweep_sequence_and_monotonic_time",
+    "dataset": "ml32m",
+    "method": "apr",
+    "K": 16,
+    "pass": true
+  },
+  {
+    "kind": "sweep_sequence_and_monotonic_time",
+    "dataset": "ml32m",
+    "method": "als",
+    "K": 96,
+    "pass": true
+  },
+  {
+    "kind": "sweep_sequence_and_monotonic_time",
+    "dataset": "ml20m",
+    "method": "als",
+    "K": 16,
+    "pass": true
+  },
+  {
+    "kind": "sweep_sequence_and_monotonic_time",
+    "dataset": "netflix",
+    "method": "als",
+    "K": 16,
+    "pass": true
+  },
+  {
+    "kind": "sweep_sequence_and_monotonic_time",
+    "dataset": "ml32m",
+    "method": "apr",
+    "K": 96,
+    "pass": true
+  },
+  {
+    "kind": "sweep_sequence_and_monotonic_time",
+    "dataset": "netflix",
+    "method": "bals",
+    "K": 48,
+    "pass": true
+  },
+  {
+    "kind": "sweep_sequence_and_monotonic_time",
+    "dataset": "netflix",
+    "method": "apr",
+    "K": 64,
+    "pass": true
+  },
+  {
+    "kind": "sweep_sequence_and_monotonic_time",
+    "dataset": "ml10m",
+    "method": "apr",
+    "K": 64,
+    "pass": true
+  },
+  {
+    "kind": "sweep_sequence_and_monotonic_time",
+    "dataset": "ml32m",
+    "method": "bals",
+    "K": 96,
+    "pass": true
+  },
+  {
+    "kind": "sweep_sequence_and_monotonic_time",
+    "dataset": "ml20m",
+    "method": "apr",
+    "K": 16,
+    "pass": true
+  },
+  {
+    "kind": "sweep_sequence_and_monotonic_time",
+    "dataset": "ml10m",
+    "method": "bals",
+    "K": 96,
+    "pass": true
+  },
+  {
+    "kind": "sweep_sequence_and_monotonic_time",
+    "dataset": "ml10m",
+    "method": "als",
+    "K": 48,
+    "pass": true
+  },
+  {
+    "kind": "sweep_sequence_and_monotonic_time",
+    "dataset": "ml32m",
+    "method": "als",
+    "K": 64,
+    "pass": true
+  },
+  {
+    "kind": "sweep_sequence_and_monotonic_time",
+    "dataset": "ml10m",
+    "method": "apr",
+    "K": 96,
+    "pass": true
+  },
+  {
+    "kind": "sweep_sequence_and_monotonic_time",
+    "dataset": "netflix",
+    "method": "bals",
+    "K": 64,
+    "pass": true
+  },
+  {
+    "kind": "sweep_sequence_and_monotonic_time",
+    "dataset": "ml20m",
+    "method": "bals",
+    "K": 64,
+    "pass": true
+  },
+  {
+    "kind": "sweep_sequence_and_monotonic_time",
+    "dataset": "ml20m",
+    "method": "als",
+    "K": 48,
+    "pass": true
+  },
+  {
+    "kind": "sweep_sequence_and_monotonic_time",
+    "dataset": "netflix",
+    "method": "als",
+    "K": 96,
+    "pass": true
+  },
+  {
+    "kind": "sweep_sequence_and_monotonic_time",
+    "dataset": "ml10m",
+    "method": "ccd",
+    "K": 96,
+    "pass": true
+  },
+  {
+    "kind": "sweep_sequence_and_monotonic_time",
+    "dataset": "netflix",
+    "method": "ccd",
+    "K": 48,
+    "pass": true
+  },
+  {
+    "kind": "sweep_sequence_and_monotonic_time",
+    "dataset": "ml32m",
+    "method": "apr",
+    "K": 48,
+    "pass": true
+  },
+  {
+    "kind": "sweep_sequence_and_monotonic_time",
+    "dataset": "ml20m",
+    "method": "apr",
+    "K": 64,
+    "pass": true
+  },
+  {
+    "kind": "sweep_sequence_and_monotonic_time",
+    "dataset": "ml10m",
+    "method": "bals",
+    "K": 64,
+    "pass": true
+  },
+  {
+    "kind": "sweep_sequence_and_monotonic_time",
+    "dataset": "netflix",
+    "method": "ccd",
+    "K": 64,
+    "pass": true
+  },
+  {
+    "kind": "curve_length",
+    "dataset": "ml10m",
+    "method": "apr",
+    "K": "48",
+    "pass": true,
+    "observed": 30,
+    "expected": 30
+  },
+  {
+    "kind": "curve_length",
+    "dataset": "ml10m",
+    "method": "ccd",
+    "K": "32",
+    "pass": true,
+    "observed": 30,
+    "expected": 30
+  },
+  {
+    "kind": "curve_length",
+    "dataset": "ml20m",
+    "method": "als",
+    "K": "32",
+    "pass": true,
+    "observed": 30,
+    "expected": 30
+  },
+  {
+    "kind": "curve_length",
+    "dataset": "ml20m",
+    "method": "apr",
+    "K": "96",
+    "pass": true,
+    "observed": 30,
+    "expected": 30
+  },
+  {
+    "kind": "curve_length",
+    "dataset": "ml20m",
+    "method": "ccd",
+    "K": "48",
+    "pass": true,
+    "observed": 30,
+    "expected": 30
+  },
+  {
+    "kind": "curve_length",
+    "dataset": "ml10m",
+    "method": "als",
+    "K": "16",
+    "pass": true,
+    "observed": 30,
+    "expected": 30
+  },
+  {
+    "kind": "curve_length",
+    "dataset": "ml20m",
+    "method": "bals",
+    "K": "48",
+    "pass": true,
+    "observed": 30,
+    "expected": 30
+  },
+  {
+    "kind": "curve_length",
+    "dataset": "ml10m",
+    "method": "apr",
+    "K": "32",
+    "pass": true,
+    "observed": 30,
+    "expected": 30
+  },
+  {
+    "kind": "curve_length",
+    "dataset": "ml20m",
+    "method": "ccd",
+    "K": "64",
+    "pass": true,
+    "observed": 30,
+    "expected": 30
+  },
+  {
+    "kind": "curve_length",
+    "dataset": "ml32m",
+    "method": "bals",
+    "K": "16",
+    "pass": true,
+    "observed": 30,
+    "expected": 30
+  },
+  {
+    "kind": "curve_length",
+    "dataset": "ml10m",
+    "method": "bals",
+    "K": "32",
+    "pass": true,
+    "observed": 30,
+    "expected": 30
+  },
+  {
+    "kind": "curve_length",
+    "dataset": "ml10m",
+    "method": "sgd",
+    "K": "128",
+    "pass": true,
+    "observed": 40,
+    "expected": 40
+  },
+  {
+    "kind": "curve_length",
+    "dataset": "netflix",
+    "method": "bals",
+    "K": "16",
+    "pass": true,
+    "observed": 30,
+    "expected": 30
+  },
+  {
+    "kind": "curve_length",
+    "dataset": "netflix",
+    "method": "bals",
+    "K": "32",
+    "pass": true,
+    "observed": 30,
+    "expected": 30
+  },
+  {
+    "kind": "curve_length",
+    "dataset": "netflix",
+    "method": "apr",
+    "K": "16",
+    "pass": true,
+    "observed": 30,
+    "expected": 30
+  },
+  {
+    "kind": "curve_length",
+    "dataset": "ml32m",
+    "method": "ccd",
+    "K": "32",
+    "pass": true,
+    "observed": 30,
+    "expected": 30
+  },
+  {
+    "kind": "curve_length",
+    "dataset": "ml32m",
+    "method": "als",
+    "K": "48",
+    "pass": true,
+    "observed": 30,
+    "expected": 30
+  },
+  {
+    "kind": "curve_length",
+    "dataset": "ml32m",
+    "method": "apr",
+    "K": "64",
+    "pass": true,
+    "observed": 30,
+    "expected": 30
+  },
+  {
+    "kind": "curve_length",
+    "dataset": "ml32m",
+    "method": "bals",
+    "K": "48",
+    "pass": true,
+    "observed": 30,
+    "expected": 30
+  },
+  {
+    "kind": "curve_length",
+    "dataset": "netflix",
+    "method": "apr",
+    "K": "48",
+    "pass": true,
+    "observed": 30,
+    "expected": 30
+  },
+  {
+    "kind": "curve_length",
+    "dataset": "ml10m",
+    "method": "ccd",
+    "K": "48",
+    "pass": true,
+    "observed": 30,
+    "expected": 30
+  },
+  {
+    "kind": "curve_length",
+    "dataset": "ml20m",
+    "method": "bals",
+    "K": "96",
+    "pass": true,
+    "observed": 30,
+    "expected": 30
+  },
+  {
+    "kind": "curve_length",
+    "dataset": "netflix",
+    "method": "als",
+    "K": "64",
+    "pass": true,
+    "observed": 30,
+    "expected": 30
+  },
+  {
+    "kind": "curve_length",
+    "dataset": "ml20m",
+    "method": "apr",
+    "K": "48",
+    "pass": true,
+    "observed": 30,
+    "expected": 30
+  },
+  {
+    "kind": "curve_length",
+    "dataset": "ml32m",
+    "method": "bals",
+    "K": "64",
+    "pass": true,
+    "observed": 30,
+    "expected": 30
+  },
+  {
+    "kind": "curve_length",
+    "dataset": "ml10m",
+    "method": "als",
+    "K": "32",
+    "pass": true,
+    "observed": 30,
+    "expected": 30
+  },
+  {
+    "kind": "curve_length",
+    "dataset": "ml32m",
+    "method": "ccd",
+    "K": "16",
+    "pass": true,
+    "observed": 30,
+    "expected": 30
+  },
+  {
+    "kind": "curve_length",
+    "dataset": "netflix",
+    "method": "ccd",
+    "K": "96",
+    "pass": true,
+    "observed": 30,
+    "expected": 30
+  },
+  {
+    "kind": "curve_length",
+    "dataset": "ml32m",
+    "method": "ccd",
+    "K": "96",
+    "pass": true,
+    "observed": 30,
+    "expected": 30
+  },
+  {
+    "kind": "curve_length",
+    "dataset": "ml20m",
+    "method": "bals",
+    "K": "16",
+    "pass": true,
+    "observed": 30,
+    "expected": 30
+  },
+  {
+    "kind": "curve_length",
+    "dataset": "ml20m",
+    "method": "ccd",
+    "K": "16",
+    "pass": true,
+    "observed": 30,
+    "expected": 30
+  },
+  {
+    "kind": "curve_length",
+    "dataset": "netflix",
+    "method": "als",
+    "K": "48",
+    "pass": true,
+    "observed": 30,
+    "expected": 30
+  },
+  {
+    "kind": "curve_length",
+    "dataset": "ml10m",
+    "method": "ccd",
+    "K": "16",
+    "pass": true,
+    "observed": 30,
+    "expected": 30
+  },
+  {
+    "kind": "curve_length",
+    "dataset": "ml32m",
+    "method": "sgd",
+    "K": "128",
+    "pass": true,
+    "observed": 40,
+    "expected": 40
+  },
+  {
+    "kind": "curve_length",
+    "dataset": "netflix",
+    "method": "apr",
+    "K": "96",
+    "pass": true,
+    "observed": 30,
+    "expected": 30
+  },
+  {
+    "kind": "curve_length",
+    "dataset": "ml32m",
+    "method": "ccd",
+    "K": "64",
+    "pass": true,
+    "observed": 30,
+    "expected": 30
+  },
+  {
+    "kind": "curve_length",
+    "dataset": "netflix",
+    "method": "bals",
+    "K": "96",
+    "pass": true,
+    "observed": 30,
+    "expected": 30
+  },
+  {
+    "kind": "curve_length",
+    "dataset": "ml20m",
+    "method": "als",
+    "K": "96",
+    "pass": true,
+    "observed": 30,
+    "expected": 30
+  },
+  {
+    "kind": "curve_length",
+    "dataset": "ml32m",
+    "method": "als",
+    "K": "16",
+    "pass": true,
+    "observed": 30,
+    "expected": 30
+  },
+  {
+    "kind": "curve_length",
+    "dataset": "ml10m",
+    "method": "als",
+    "K": "64",
+    "pass": true,
+    "observed": 30,
+    "expected": 30
+  },
+  {
+    "kind": "curve_length",
+    "dataset": "ml10m",
+    "method": "bals",
+    "K": "48",
+    "pass": true,
+    "observed": 30,
+    "expected": 30
+  },
+  {
+    "kind": "curve_length",
+    "dataset": "ml32m",
+    "method": "als",
+    "K": "32",
+    "pass": true,
+    "observed": 30,
+    "expected": 30
+  },
+  {
+    "kind": "curve_length",
+    "dataset": "ml10m",
+    "method": "als",
+    "K": "96",
+    "pass": true,
+    "observed": 30,
+    "expected": 30
+  },
+  {
+    "kind": "curve_length",
+    "dataset": "ml32m",
+    "method": "ccd",
+    "K": "48",
+    "pass": true,
+    "observed": 30,
+    "expected": 30
+  },
+  {
+    "kind": "curve_length",
+    "dataset": "netflix",
+    "method": "als",
+    "K": "32",
+    "pass": true,
+    "observed": 30,
+    "expected": 30
+  },
+  {
+    "kind": "curve_length",
+    "dataset": "netflix",
+    "method": "ccd",
+    "K": "32",
+    "pass": true,
+    "observed": 30,
+    "expected": 30
+  },
+  {
+    "kind": "curve_length",
+    "dataset": "ml32m",
+    "method": "apr",
+    "K": "32",
+    "pass": true,
+    "observed": 30,
+    "expected": 30
+  },
+  {
+    "kind": "curve_length",
+    "dataset": "netflix",
+    "method": "ccd",
+    "K": "16",
+    "pass": true,
+    "observed": 30,
+    "expected": 30
+  },
+  {
+    "kind": "curve_length",
+    "dataset": "netflix",
+    "method": "apr",
+    "K": "32",
+    "pass": true,
+    "observed": 30,
+    "expected": 30
+  },
+  {
+    "kind": "curve_length",
+    "dataset": "ml20m",
+    "method": "als",
+    "K": "64",
+    "pass": true,
+    "observed": 30,
+    "expected": 30
+  },
+  {
+    "kind": "curve_length",
+    "dataset": "ml20m",
+    "method": "ccd",
+    "K": "96",
+    "pass": true,
+    "observed": 30,
+    "expected": 30
+  },
+  {
+    "kind": "curve_length",
+    "dataset": "ml10m",
+    "method": "ccd",
+    "K": "64",
+    "pass": true,
+    "observed": 30,
+    "expected": 30
+  },
+  {
+    "kind": "curve_length",
+    "dataset": "ml10m",
+    "method": "bals",
+    "K": "16",
+    "pass": true,
+    "observed": 30,
+    "expected": 30
+  },
+  {
+    "kind": "curve_length",
+    "dataset": "ml20m",
+    "method": "apr",
+    "K": "32",
+    "pass": true,
+    "observed": 30,
+    "expected": 30
+  },
+  {
+    "kind": "curve_length",
+    "dataset": "netflix",
+    "method": "sgd",
+    "K": "128",
+    "pass": true,
+    "observed": 40,
+    "expected": 40
+  },
+  {
+    "kind": "curve_length",
+    "dataset": "ml32m",
+    "method": "bals",
+    "K": "32",
+    "pass": true,
+    "observed": 30,
+    "expected": 30
+  },
+  {
+    "kind": "curve_length",
+    "dataset": "ml20m",
+    "method": "bals",
+    "K": "32",
+    "pass": true,
+    "observed": 30,
+    "expected": 30
+  },
+  {
+    "kind": "curve_length",
+    "dataset": "ml20m",
+    "method": "sgd",
+    "K": "128",
+    "pass": true,
+    "observed": 40,
+    "expected": 40
+  },
+  {
+    "kind": "curve_length",
+    "dataset": "ml10m",
+    "method": "apr",
+    "K": "16",
+    "pass": true,
+    "observed": 30,
+    "expected": 30
+  },
+  {
+    "kind": "curve_length",
+    "dataset": "ml20m",
+    "method": "ccd",
+    "K": "32",
+    "pass": true,
+    "observed": 30,
+    "expected": 30
+  },
+  {
+    "kind": "curve_length",
+    "dataset": "ml32m",
+    "method": "apr",
+    "K": "16",
+    "pass": true,
+    "observed": 30,
+    "expected": 30
+  },
+  {
+    "kind": "curve_length",
+    "dataset": "ml32m",
+    "method": "als",
+    "K": "96",
+    "pass": true,
+    "observed": 30,
+    "expected": 30
+  },
+  {
+    "kind": "curve_length",
+    "dataset": "ml20m",
+    "method": "als",
+    "K": "16",
+    "pass": true,
+    "observed": 30,
+    "expected": 30
+  },
+  {
+    "kind": "curve_length",
+    "dataset": "netflix",
+    "method": "als",
+    "K": "16",
+    "pass": true,
+    "observed": 30,
+    "expected": 30
+  },
+  {
+    "kind": "curve_length",
+    "dataset": "ml32m",
+    "method": "apr",
+    "K": "96",
+    "pass": true,
+    "observed": 30,
+    "expected": 30
+  },
+  {
+    "kind": "curve_length",
+    "dataset": "netflix",
+    "method": "bals",
+    "K": "48",
+    "pass": true,
+    "observed": 30,
+    "expected": 30
+  },
+  {
+    "kind": "curve_length",
+    "dataset": "netflix",
+    "method": "apr",
+    "K": "64",
+    "pass": true,
+    "observed": 30,
+    "expected": 30
+  },
+  {
+    "kind": "curve_length",
+    "dataset": "ml10m",
+    "method": "apr",
+    "K": "64",
+    "pass": true,
+    "observed": 30,
+    "expected": 30
+  },
+  {
+    "kind": "curve_length",
+    "dataset": "ml32m",
+    "method": "bals",
+    "K": "96",
+    "pass": true,
+    "observed": 30,
+    "expected": 30
+  },
+  {
+    "kind": "curve_length",
+    "dataset": "ml20m",
+    "method": "apr",
+    "K": "16",
+    "pass": true,
+    "observed": 30,
+    "expected": 30
+  },
+  {
+    "kind": "curve_length",
+    "dataset": "ml10m",
+    "method": "bals",
+    "K": "96",
+    "pass": true,
+    "observed": 30,
+    "expected": 30
+  },
+  {
+    "kind": "curve_length",
+    "dataset": "ml10m",
+    "method": "als",
+    "K": "48",
+    "pass": true,
+    "observed": 30,
+    "expected": 30
+  },
+  {
+    "kind": "curve_length",
+    "dataset": "ml32m",
+    "method": "als",
+    "K": "64",
+    "pass": true,
+    "observed": 30,
+    "expected": 30
+  },
+  {
+    "kind": "curve_length",
+    "dataset": "ml10m",
+    "method": "apr",
+    "K": "96",
+    "pass": true,
+    "observed": 30,
+    "expected": 30
+  },
+  {
+    "kind": "curve_length",
+    "dataset": "netflix",
+    "method": "bals",
+    "K": "64",
+    "pass": true,
+    "observed": 30,
+    "expected": 30
+  },
+  {
+    "kind": "curve_length",
+    "dataset": "ml20m",
+    "method": "bals",
+    "K": "64",
+    "pass": true,
+    "observed": 30,
+    "expected": 30
+  },
+  {
+    "kind": "curve_length",
+    "dataset": "ml20m",
+    "method": "als",
+    "K": "48",
+    "pass": true,
+    "observed": 30,
+    "expected": 30
+  },
+  {
+    "kind": "curve_length",
+    "dataset": "netflix",
+    "method": "als",
+    "K": "96",
+    "pass": true,
+    "observed": 30,
+    "expected": 30
+  },
+  {
+    "kind": "curve_length",
+    "dataset": "ml10m",
+    "method": "ccd",
+    "K": "96",
+    "pass": true,
+    "observed": 30,
+    "expected": 30
+  },
+  {
+    "kind": "curve_length",
+    "dataset": "netflix",
+    "method": "ccd",
+    "K": "48",
+    "pass": true,
+    "observed": 30,
+    "expected": 30
+  },
+  {
+    "kind": "curve_length",
+    "dataset": "ml32m",
+    "method": "apr",
+    "K": "48",
+    "pass": true,
+    "observed": 30,
+    "expected": 30
+  },
+  {
+    "kind": "curve_length",
+    "dataset": "ml20m",
+    "method": "apr",
+    "K": "64",
+    "pass": true,
+    "observed": 30,
+    "expected": 30
+  },
+  {
+    "kind": "curve_length",
+    "dataset": "ml10m",
+    "method": "bals",
+    "K": "64",
+    "pass": true,
+    "observed": 30,
+    "expected": 30
+  },
+  {
+    "kind": "curve_length",
+    "dataset": "netflix",
+    "method": "ccd",
+    "K": "64",
+    "pass": true,
+    "observed": 30,
+    "expected": 30
+  },
+  {
+    "kind": "sgd_gpu_cpu_agreement",
+    "dataset": "ml10m",
+    "GPU": 0.784436868,
+    "CPU_printed": 0.7844,
+    "tolerance": 5.1e-05,
+    "pass": true
+  },
+  {
+    "kind": "sgd_gpu_cpu_agreement",
+    "dataset": "ml20m",
+    "GPU": 0.774513458,
+    "CPU_printed": 0.7745,
+    "tolerance": 5.1e-05,
+    "pass": true
+  },
+  {
+    "kind": "sgd_gpu_cpu_agreement",
+    "dataset": "ml32m",
+    "GPU": 0.763636337,
+    "CPU_printed": 0.7636,
+    "tolerance": 5.1e-05,
+    "pass": true
+  },
+  {
+    "kind": "sgd_gpu_cpu_agreement",
+    "dataset": "netflix",
+    "GPU": 0.825522986,
+    "CPU_printed": 0.8255,
+    "tolerance": 5.1e-05,
+    "pass": true
+  }
+]

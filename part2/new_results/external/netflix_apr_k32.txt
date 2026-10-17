@@ -1,0 +1,99 @@
+=== CODE VERSION: SYNC-2026-07-20 [CHOL-MP 16-bit tiled Cholesky + optional IR + stale-L cache — UNVALIDATED ON GPU; CHOL_MP=0 path = 07-06 code] ===
+Tiled Cholesky precision: FP32 tiled (production)
+Regularization: weighted-lambda ALS-WR (diag += nnz*lambda) | Init: cuMF-scale U(0,0.2)
+Loading binary preprocessed dataset: /home/pc/Desktop/2007080/latent_factorr_experimen/comparing_baseline/new_results/external_inputs/netflix/warm_validation.bin
+480189 users, 17770 items | train=70502572, test=10068417
+[MOMENTUM] heavy-ball extrapolation ON, beta=0.300
+User: 814226 nonzero tiles out of 1050420 (22.5% skipped)
+Item: 823258 nonzero tiles out of 1043056 (21.1% skipped)
+APR-BALS Precision Tiers (User tiles): FP16 Tensor Core=339643 (32.3%), FP32 Scalar=710777 (67.7%)
+APR-BALS Precision Tiers (Item tiles): FP16 Tensor Core=339209 (32.5%), FP32 Scalar=703847 (67.5%)
+User density stats: min=0.000000 max=0.638550 avg=0.008163 nonzero=814226/1050420
+  Nonzero percentiles: p25=0.000244 p50=0.000732 p75=0.002808 p90=0.015381 p99=0.233765
+Item density stats: min=0.000000 max=0.638672 avg=0.008202 nonzero=823258/1043056
+  Nonzero percentiles: p25=0.000244 p50=0.000732 p75=0.002808 p90=0.014893 p99=0.232666
+
+=== NNZ per Precision Tier ===
+User-side: FP16=69056337 (97.9%)  FP32=1446235 (2.1%)
+Item-side: FP16=69026330 (97.9%)  FP32=1476242 (2.1%)
+Thesis signal: dense tiles (FP16 path) hold 97.9% of user-side train NNZ.
+If >40%: precision dispatch covers most compute -> strong thesis.
+If <20%: most compute in FP32 tiles -> thesis needs argument about dense-tile quality.
+Giant split: User giants=4035, Item giants=6034 (nnz >= 1024, 4 warps/giant)
+Load balancing: User jobs=108421 (from 15006 tile-rows), Item jobs=103156 (from 556 tile-rows)
+Hybrid split: User dense=472000 entities (14750 tile-rows, 689 sparse jobs), Item dense=17760 entities (555 tile-rows, 9 sparse jobs)
+
+=== APR-BALS experiment ===
+Iter  1 | Train RMSE: 0.887817 | Test RMSE: 0.928774
+CUMULATIVE_WALL_MS 150.129181
+Iter  2 | Train RMSE: 0.794883 | Test RMSE: 0.880130
+CUMULATIVE_WALL_MS 300.294159
+Iter  3 | Train RMSE: 0.765953 | Test RMSE: 0.856174
+CUMULATIVE_WALL_MS 450.441254
+Iter  4 | Train RMSE: 0.751761 | Test RMSE: 0.843366
+CUMULATIVE_WALL_MS 600.578918
+Iter  5 | Train RMSE: 0.743256 | Test RMSE: 0.836402
+CUMULATIVE_WALL_MS 750.701050
+Iter  6 | Train RMSE: 0.738100 | Test RMSE: 0.832301
+CUMULATIVE_WALL_MS 900.957581
+Iter  7 | Train RMSE: 0.735012 | Test RMSE: 0.829882
+CUMULATIVE_WALL_MS 1051.169922
+Iter  8 | Train RMSE: 0.733129 | Test RMSE: 0.828457
+CUMULATIVE_WALL_MS 1201.348633
+Iter  9 | Train RMSE: 0.731957 | Test RMSE: 0.827620
+CUMULATIVE_WALL_MS 1351.517822
+Iter 10 | Train RMSE: 0.731217 | Test RMSE: 0.827133
+CUMULATIVE_WALL_MS 1501.636841
+Iter 11 | Train RMSE: 0.730748 | Test RMSE: 0.826858
+CUMULATIVE_WALL_MS 1651.828491
+Iter 12 | Train RMSE: 0.730454 | Test RMSE: 0.826714
+CUMULATIVE_WALL_MS 1801.994385
+Iter 13 | Train RMSE: 0.730276 | Test RMSE: 0.826654
+CUMULATIVE_WALL_MS 1952.461670
+Iter 14 | Train RMSE: 0.730174 | Test RMSE: 0.826645
+CUMULATIVE_WALL_MS 2102.653809
+Iter 15 | Train RMSE: 0.730123 | Test RMSE: 0.826668
+CUMULATIVE_WALL_MS 2252.785889
+Iter 16 | Train RMSE: 0.730105 | Test RMSE: 0.826708
+CUMULATIVE_WALL_MS 2402.933105
+Iter 17 | Train RMSE: 0.730108 | Test RMSE: 0.826758
+CUMULATIVE_WALL_MS 2553.103271
+Iter 18 | Train RMSE: 0.730124 | Test RMSE: 0.826813
+CUMULATIVE_WALL_MS 2703.226807
+Iter 19 | Train RMSE: 0.730148 | Test RMSE: 0.826867
+CUMULATIVE_WALL_MS 2853.343506
+Iter 20 | Train RMSE: 0.730177 | Test RMSE: 0.826920
+CUMULATIVE_WALL_MS 3003.432129
+Iter 21 | Train RMSE: 0.730207 | Test RMSE: 0.826971
+CUMULATIVE_WALL_MS 3153.759277
+Iter 22 | Train RMSE: 0.730238 | Test RMSE: 0.827018
+CUMULATIVE_WALL_MS 3304.071777
+Iter 23 | Train RMSE: 0.730268 | Test RMSE: 0.827061
+CUMULATIVE_WALL_MS 3454.360596
+Iter 24 | Train RMSE: 0.730296 | Test RMSE: 0.827100
+CUMULATIVE_WALL_MS 3604.641846
+Iter 25 | Train RMSE: 0.730322 | Test RMSE: 0.827135
+CUMULATIVE_WALL_MS 3754.955566
+Iter 26 | Train RMSE: 0.730346 | Test RMSE: 0.827166
+CUMULATIVE_WALL_MS 3905.255371
+Iter 27 | Train RMSE: 0.730368 | Test RMSE: 0.827195
+CUMULATIVE_WALL_MS 4055.520996
+Iter 28 | Train RMSE: 0.730387 | Test RMSE: 0.827219
+CUMULATIVE_WALL_MS 4205.877441
+Iter 29 | Train RMSE: 0.730405 | Test RMSE: 0.827241
+CUMULATIVE_WALL_MS 4356.198242
+Iter 30 | Train RMSE: 0.730420 | Test RMSE: 0.827261
+CUMULATIVE_WALL_MS 4506.518555
+
+=== Profiling: APR-BALS experiment (30 iters) ===
+User LHS+RHS: 1321.44 ms total | 44.05 ms/iter | 1792.7 GFlops/s
+User Cholesky:   0.08 ms total |  0.00 ms/iter
+Item LHS+RHS:  586.43 ms total | 19.55 ms/iter | 4039.5 GFlops/s
+Item Cholesky:   0.06 ms total |  0.00 ms/iter
+RMSE:         2575.08 ms total | 85.84 ms/call
+Total FLOPs: 4737.77 GFLOPs | Throughput: 1056.8 GFlops/s (compute: 2483.1)
+Training Complete in 4.507 seconds!
+
+=== APR-BALS final ===
+Train RMSE: 0.730420 | Test RMSE: 0.827261 | compute=1908.01 ms | wall=4506.57 ms
+Params: K_DIM=32, lambda=0.04, DENSE_NNZ_THRESH=4, WARPS_PER_BLOCK=4, XB=32, YB=256

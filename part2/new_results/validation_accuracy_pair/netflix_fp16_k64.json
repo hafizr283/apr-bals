@@ -1,0 +1,15 @@
+{
+  "command": [
+    "/home/pc/Desktop/2007080/latent_factorr_experimen/comparing_baseline/new_results/bin/fp16_k64",
+    "/home/pc/Desktop/2007080/latent_factorr_experimen/comparing_baseline/new_results/splits/netflix_ratings_test.bin",
+    "0.04"
+  ],
+  "environment": {
+    "CUDA_VISIBLE_DEVICES": "0",
+    "CHECK_EVERY": "30",
+    "FIXED_ITERS": "1",
+    "MAX_ITERS": "30"
+  },
+  "start": 1791998944.7199104,
+  "end": 1791998962.433405
+}

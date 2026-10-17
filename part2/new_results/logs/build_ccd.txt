@@ -1,0 +1,296 @@
+new_results/external_src/ccd/main.cu(132): warning #177-D: variable "start" was declared but never referenced
+   clock_t start, end;
+           ^
+
+Remark: The warnings can be suppressed with "-diag-suppress <warning-number>"
+
+new_results/external_src/ccd/main.cu(132): warning #177-D: variable "end" was declared but never referenced
+   clock_t start, end;
+                  ^
+
+new_results/external_src/ccd/main.cu(133): warning #177-D: variable "cpu_time_used" was declared but never referenced
+   double cpu_time_used;
+          ^
+
+new_results/external_src/ccd/main.cu(134): warning #177-D: variable "h_a" was declared but never referenced
+   float *h_a, *d_W, *h_c, *d_H, *d_R;
+          ^
+
+new_results/external_src/ccd/main.cu(134): warning #177-D: variable "d_W" was declared but never referenced
+   float *h_a, *d_W, *h_c, *d_H, *d_R;
+                ^
+
+new_results/external_src/ccd/main.cu(134): warning #177-D: variable "h_c" was declared but never referenced
+   float *h_a, *d_W, *h_c, *d_H, *d_R;
+                      ^
+
+new_results/external_src/ccd/main.cu(134): warning #177-D: variable "d_H" was declared but never referenced
+   float *h_a, *d_W, *h_c, *d_H, *d_R;
+                            ^
+
+new_results/external_src/ccd/main.cu(134): warning #177-D: variable "d_R" was declared but never referenced
+   float *h_a, *d_W, *h_c, *d_H, *d_R;
+                                  ^
+
+new_results/external_src/ccd/main.cu(135): warning #177-D: variable "t1" was declared but never referenced
+   struct timeval t1, t2;
+                  ^
+
+new_results/external_src/ccd/main.cu(135): warning #177-D: variable "t2" was declared but never referenced
+   struct timeval t1, t2;
+                      ^
+
+new_results/external_src/ccd/ccdp_gpu.cu(411): warning #177-D: variable "init" was declared but never referenced
+     float init = ACSRTime;
+           ^
+
+Remark: The warnings can be suppressed with "-diag-suppress <warning-number>"
+
+new_results/external_src/ccd/ccdp_gpu.cu(326): warning #177-D: variable "early_stop" was declared but never referenced
+    int early_stop = 0, kk = 0;
+        ^
+
+new_results/external_src/ccd/ccdp_gpu.cu(88): warning #177-D: variable "oldobj" was declared but never referenced
+     *d_gArrV, *d_hArrV, *d_u, *d_v, oldobj = 0;
+                                     ^
+
+new_results/external_src/ccd/ccdp_gpu.cu(91): warning #177-D: variable "i" was declared but never referenced
+     *d_test_row, *d_test_col, i, j;
+                               ^
+
+new_results/external_src/ccd/ccdp_gpu.cu(91): warning #177-D: variable "j" was declared but never referenced
+     *d_test_row, *d_test_col, i, j;
+                                  ^
+
+new_results/external_src/ccd/ccdp_gpu.cu(92): warning #177-D: variable "reg" was declared but never referenced
+   float reg = 0, loss, *d_loss, *d_v_new, *d_Wt, *d_Ht, *d_W, *d_H,
+         ^
+
+new_results/external_src/ccd/ccdp_gpu.cu(92): warning #177-D: variable "loss" was declared but never referenced
+   float reg = 0, loss, *d_loss, *d_v_new, *d_Wt, *d_Ht, *d_W, *d_H,
+                  ^
+
+new_results/external_src/ccd/ccdp_gpu.cu(93): warning #177-D: variable "v" was declared but never referenced
+     *d_test_val, v, *d_pred_v, *d_rmse, *d_fundec_col;
+                  ^
+
+new_results/external_src/ccd/ccdp_gpu.cu(93): warning #177-D: variable "d_fundec_col" was declared but never referenced
+     *d_test_val, v, *d_pred_v, *d_rmse, *d_fundec_col;
+                                          ^
+
+new_results/external_src/ccd/ccdp_gpu.cu(112): warning #550-D: variable "copyTime" was set but never used
+   float mili = 0, copyTime = 0;
+                   ^
+
+new_results/external_src/ccd/ccdp_gpu.cu(119): warning #177-D: variable "d_memsize" was declared but never referenced
+   size_t d_memsize = 1 * sizeof(float);
+          ^
+
+new_results/external_src/ccd/ccdp_gpu.cu(180): warning #177-D: variable "textureACSRTime" was declared but never referenced
+   float ACSRTime = 0, textureACSRTime = 0, innerLoopTime = 0;
+                       ^
+
+new_results/external_src/ccd/ccdp_gpu.cu(180): warning #177-D: variable "innerLoopTime" was declared but never referenced
+   float ACSRTime = 0, textureACSRTime = 0, innerLoopTime = 0;
+                                            ^
+
+new_results/external_src/ccd/ccdp_gpu.cu(181): warning #177-D: variable "ACSRPreProcessTime" was declared but never referenced
+   float ACSRPreProcessTime;
+         ^
+
+new_results/external_src/ccd/cuda_fusedR.h(94): warning #20168-D: the unroll value cannot be zero or negative, ignoring pragma for this loop
+  #pragma unroll Nth_POWER
+          ^
+          detected during:
+            instantiation of "void updateR_gen<UseCache,POWER,Nth_POWER>(const int *, const int *, unsigned int *, float *, const float *, const float *, int, int, __nv_bool, int *, int, float, float *, float *, const float *, const float *, const float *, int) [with UseCache=false, POWER=1U, Nth_POWER=0U]" at line 93 of new_results/external_src/ccd/helper_fusedR.h
+            instantiation of "RANK_LOOP<LB, UB>::RANK_LOOP(int &, const int *, int *, unsigned int *, float *, const float *, const float *, int, int, __nv_bool, int *, int *, float, float *, float *, float *, float *, float *, int) [with LB=0U, UB=6U]" at line 120 of new_results/external_src/ccd/helper_fusedR.h
+
+new_results/external_src/ccd/cuda_fusedR.h(143): warning #177-D: variable "newvj" was declared but never referenced
+     float newvj = 0;
+           ^
+
+new_results/external_src/ccd/cuda_updateH.h(77): warning #177-D: variable "vc" was declared but never referenced
+    float vc = v[c];
+          ^
+          detected during instantiation of "RANK_LOOP_R<LB, UB>::RANK_LOOP_R(int &, const int *, int *, const unsigned int *, float *, const float *, const float *, int, int, __nv_bool, int *, int *, float, float *, float *, float *) [with LB=0U, UB=6U]" at line 109 of new_results/external_src/ccd/helper_updateH.h
+
+new_results/external_src/ccd/cuda_updateH.h(87): warning #20168-D: the unroll value cannot be zero or negative, ignoring pragma for this loop
+  #pragma unroll Nth_POWER
+          ^
+          detected during:
+            instantiation of "void CudaRankOneUpdate_gen<UseCache,POWER,Nth_POWER>(const int *, const int *, const unsigned int *, float *, const float *, const float *, int, int, __nv_bool, int *, int, float, float *, float *, const float *) [with UseCache=false, POWER=1U, Nth_POWER=0U]" at line 82 of new_results/external_src/ccd/helper_updateH.h
+            instantiation of "RANK_LOOP_R<LB, UB>::RANK_LOOP_R(int &, const int *, int *, const unsigned int *, float *, const float *, const float *, int, int, __nv_bool, int *, int *, float, float *, float *, float *) [with LB=0U, UB=6U]" at line 109 of new_results/external_src/ccd/helper_updateH.h
+
+new_results/external_src/ccd/cuda_updateH.h(115): warning #177-D: variable "vc" was declared but never referenced
+    float vc = v[c];
+          ^
+
+new_results/external_src/ccd/cuda_updateH.h(123): warning #177-D: variable "newvj" was declared but never referenced
+    float newvj = 0;
+          ^
+
+new_results/external_src/ccd/util.cpp: In function ‘void load_from_binary(const char*, SparseMatrix&, TestData&)’:
+new_results/external_src/ccd/util.cpp:81:15: warning: ignoring return value of ‘int fscanf(FILE*, const char*, ...)’ declared with attribute ‘warn_unused_result’ [-Wunused-result]
+   81 |         fscanf(fp, "%ld %ld", &m, &n);
+      |         ~~~~~~^~~~~~~~~~~~~~~~~~~~~~~
+new_results/external_src/ccd/util.cpp:82:15: warning: ignoring return value of ‘int fscanf(FILE*, const char*, ...)’ declared with attribute ‘warn_unused_result’ [-Wunused-result]
+   82 |         fscanf(fp, "%ld", &nnz);
+      |         ~~~~~~^~~~~~~~~~~~~~~~~
+new_results/external_src/ccd/util.cpp:83:15: warning: ignoring return value of ‘int fscanf(FILE*, const char*, ...)’ declared with attribute ‘warn_unused_result’ [-Wunused-result]
+   83 |         fscanf(fp, "%ld", &test_nnz);
+      |         ~~~~~~^~~~~~~~~~~~~~~~~~~~~~
+new_results/external_src/ccd/util.cpp:86:15: warning: ignoring return value of ‘int fscanf(FILE*, const char*, ...)’ declared with attribute ‘warn_unused_result’ [-Wunused-result]
+   86 |         fscanf(fp, "%s", buf);
+      |         ~~~~~~^~~~~~~~~~~~~~~
+new_results/external_src/ccd/util.cpp:88:15: warning: ignoring return value of ‘int fscanf(FILE*, const char*, ...)’ declared with attribute ‘warn_unused_result’ [-Wunused-result]
+   88 |         fscanf(fp, "%s", buf);
+      |         ~~~~~~^~~~~~~~~~~~~~~
+new_results/external_src/ccd/util.cpp:90:15: warning: ignoring return value of ‘int fscanf(FILE*, const char*, ...)’ declared with attribute ‘warn_unused_result’ [-Wunused-result]
+   90 |         fscanf(fp, "%s", buf);
+      |         ~~~~~~^~~~~~~~~~~~~~~
+new_results/external_src/ccd/util.cpp:92:15: warning: ignoring return value of ‘int fscanf(FILE*, const char*, ...)’ declared with attribute ‘warn_unused_result’ [-Wunused-result]
+   92 |         fscanf(fp, "%s", buf);
+      |         ~~~~~~^~~~~~~~~~~~~~~
+new_results/external_src/ccd/util.cpp:94:15: warning: ignoring return value of ‘int fscanf(FILE*, const char*, ...)’ declared with attribute ‘warn_unused_result’ [-Wunused-result]
+   94 |         fscanf(fp, "%s", buf);
+      |         ~~~~~~^~~~~~~~~~~~~~~
+new_results/external_src/ccd/util.cpp:96:15: warning: ignoring return value of ‘int fscanf(FILE*, const char*, ...)’ declared with attribute ‘warn_unused_result’ [-Wunused-result]
+   96 |         fscanf(fp, "%s", buf);
+      |         ~~~~~~^~~~~~~~~~~~~~~
+new_results/external_src/ccd/util.cpp:104:15: warning: ignoring return value of ‘int fscanf(FILE*, const char*, ...)’ declared with attribute ‘warn_unused_result’ [-Wunused-result]
+  104 |         fscanf(fp, "%s", buf);
+      |         ~~~~~~^~~~~~~~~~~~~~~
+new_results/external_src/ccd/util.cpp:106:15: warning: ignoring return value of ‘int fscanf(FILE*, const char*, ...)’ declared with attribute ‘warn_unused_result’ [-Wunused-result]
+  106 |         fscanf(fp, "%s", buf);
+      |         ~~~~~~^~~~~~~~~~~~~~~
+new_results/external_src/ccd/util.cpp:108:15: warning: ignoring return value of ‘int fscanf(FILE*, const char*, ...)’ declared with attribute ‘warn_unused_result’ [-Wunused-result]
+  108 |         fscanf(fp, "%s", buf);
+      |         ~~~~~~^~~~~~~~~~~~~~~
+new_results/external_src/ccd/util.cpp:87:47: warning: ‘__builtin___sprintf_chk’ may write a terminating nul past the end of the destination [-Wformat-overflow=]
+   87 |         sprintf(binary_filename_rowptr, "%s/%s", srcdir, buf);
+      |                                               ^
+In file included from /usr/include/stdio.h:980,
+                 from /usr/include/c++/13/cstdio:42,
+                 from /usr/include/c++/13/ext/string_conversions.h:45,
+                 from /usr/include/c++/13/bits/basic_string.h:4109,
+                 from /usr/include/c++/13/string:54,
+                 from /usr/include/c++/13/bits/locale_classes.h:40,
+                 from /usr/include/c++/13/bits/ios_base.h:41,
+                 from /usr/include/c++/13/ios:44,
+                 from /usr/include/c++/13/ostream:40,
+                 from /usr/include/c++/13/iostream:41,
+                 from new_results/external_src/ccd/util.h:65,
+                 from new_results/external_src/ccd/util.cpp:62:
+In function ‘int sprintf(char*, const char*, ...)’,
+    inlined from ‘void load_from_binary(const char*, SparseMatrix&, TestData&)’ at new_results/external_src/ccd/util.cpp:87:9:
+/usr/include/x86_64-linux-gnu/bits/stdio2.h:30:34: note: ‘__builtin___sprintf_chk’ output 2 or more bytes (assuming 1025) into a destination of size 1024
+   30 |   return __builtin___sprintf_chk (__s, __USE_FORTIFY_LEVEL - 1,
+      |          ~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+   31 |                                   __glibc_objsize (__s), __fmt,
+      |                                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+   32 |                                   __va_arg_pack ());
+      |                                   ~~~~~~~~~~~~~~~~~
+new_results/external_src/ccd/util.cpp: In function ‘void load_from_binary(const char*, SparseMatrix&, TestData&)’:
+new_results/external_src/ccd/util.cpp:89:47: warning: ‘__builtin___sprintf_chk’ may write a terminating nul past the end of the destination [-Wformat-overflow=]
+   89 |         sprintf(binary_filename_colidx, "%s/%s", srcdir, buf);
+      |                                               ^
+In function ‘int sprintf(char*, const char*, ...)’,
+    inlined from ‘void load_from_binary(const char*, SparseMatrix&, TestData&)’ at new_results/external_src/ccd/util.cpp:89:9:
+/usr/include/x86_64-linux-gnu/bits/stdio2.h:30:34: note: ‘__builtin___sprintf_chk’ output 2 or more bytes (assuming 1025) into a destination of size 1024
+   30 |   return __builtin___sprintf_chk (__s, __USE_FORTIFY_LEVEL - 1,
+      |          ~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+   31 |                                   __glibc_objsize (__s), __fmt,
+      |                                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+   32 |                                   __va_arg_pack ());
+      |                                   ~~~~~~~~~~~~~~~~~
+new_results/external_src/ccd/util.cpp: In function ‘void load_from_binary(const char*, SparseMatrix&, TestData&)’:
+new_results/external_src/ccd/util.cpp:91:47: warning: ‘__builtin___sprintf_chk’ may write a terminating nul past the end of the destination [-Wformat-overflow=]
+   91 |         sprintf(binary_filename_csrval, "%s/%s", srcdir, buf);
+      |                                               ^
+In function ‘int sprintf(char*, const char*, ...)’,
+    inlined from ‘void load_from_binary(const char*, SparseMatrix&, TestData&)’ at new_results/external_src/ccd/util.cpp:91:9:
+/usr/include/x86_64-linux-gnu/bits/stdio2.h:30:34: note: ‘__builtin___sprintf_chk’ output 2 or more bytes (assuming 1025) into a destination of size 1024
+   30 |   return __builtin___sprintf_chk (__s, __USE_FORTIFY_LEVEL - 1,
+      |          ~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+   31 |                                   __glibc_objsize (__s), __fmt,
+      |                                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+   32 |                                   __va_arg_pack ());
+      |                                   ~~~~~~~~~~~~~~~~~
+new_results/external_src/ccd/util.cpp: In function ‘void load_from_binary(const char*, SparseMatrix&, TestData&)’:
+new_results/external_src/ccd/util.cpp:93:47: warning: ‘__builtin___sprintf_chk’ may write a terminating nul past the end of the destination [-Wformat-overflow=]
+   93 |         sprintf(binary_filename_colptr, "%s/%s", srcdir, buf);
+      |                                               ^
+In function ‘int sprintf(char*, const char*, ...)’,
+    inlined from ‘void load_from_binary(const char*, SparseMatrix&, TestData&)’ at new_results/external_src/ccd/util.cpp:93:9:
+/usr/include/x86_64-linux-gnu/bits/stdio2.h:30:34: note: ‘__builtin___sprintf_chk’ output 2 or more bytes (assuming 1025) into a destination of size 1024
+   30 |   return __builtin___sprintf_chk (__s, __USE_FORTIFY_LEVEL - 1,
+      |          ~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+   31 |                                   __glibc_objsize (__s), __fmt,
+      |                                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+   32 |                                   __va_arg_pack ());
+      |                                   ~~~~~~~~~~~~~~~~~
+new_results/external_src/ccd/util.cpp: In function ‘void load_from_binary(const char*, SparseMatrix&, TestData&)’:
+new_results/external_src/ccd/util.cpp:95:47: warning: ‘__builtin___sprintf_chk’ may write a terminating nul past the end of the destination [-Wformat-overflow=]
+   95 |         sprintf(binary_filename_rowidx, "%s/%s", srcdir, buf);
+      |                                               ^
+In function ‘int sprintf(char*, const char*, ...)’,
+    inlined from ‘void load_from_binary(const char*, SparseMatrix&, TestData&)’ at new_results/external_src/ccd/util.cpp:95:9:
+/usr/include/x86_64-linux-gnu/bits/stdio2.h:30:34: note: ‘__builtin___sprintf_chk’ output 2 or more bytes (assuming 1025) into a destination of size 1024
+   30 |   return __builtin___sprintf_chk (__s, __USE_FORTIFY_LEVEL - 1,
+      |          ~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+   31 |                                   __glibc_objsize (__s), __fmt,
+      |                                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+   32 |                                   __va_arg_pack ());
+      |                                   ~~~~~~~~~~~~~~~~~
+new_results/external_src/ccd/util.cpp: In function ‘void load_from_binary(const char*, SparseMatrix&, TestData&)’:
+new_results/external_src/ccd/util.cpp:97:47: warning: ‘__builtin___sprintf_chk’ may write a terminating nul past the end of the destination [-Wformat-overflow=]
+   97 |         sprintf(binary_filename_cscval, "%s/%s", srcdir, buf);
+      |                                               ^
+In function ‘int sprintf(char*, const char*, ...)’,
+    inlined from ‘void load_from_binary(const char*, SparseMatrix&, TestData&)’ at new_results/external_src/ccd/util.cpp:97:9:
+/usr/include/x86_64-linux-gnu/bits/stdio2.h:30:34: note: ‘__builtin___sprintf_chk’ output 2 or more bytes (assuming 1025) into a destination of size 1024
+   30 |   return __builtin___sprintf_chk (__s, __USE_FORTIFY_LEVEL - 1,
+      |          ~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+   31 |                                   __glibc_objsize (__s), __fmt,
+      |                                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+   32 |                                   __va_arg_pack ());
+      |                                   ~~~~~~~~~~~~~~~~~
+new_results/external_src/ccd/util.cpp: In function ‘void load_from_binary(const char*, SparseMatrix&, TestData&)’:
+new_results/external_src/ccd/util.cpp:105:53: warning: ‘__builtin___sprintf_chk’ may write a terminating nul past the end of the destination [-Wformat-overflow=]
+  105 |         sprintf(binary_test_coo_filename_row, "%s/%s", srcdir, buf);
+      |                                                     ^
+In function ‘int sprintf(char*, const char*, ...)’,
+    inlined from ‘void load_from_binary(const char*, SparseMatrix&, TestData&)’ at new_results/external_src/ccd/util.cpp:105:9:
+/usr/include/x86_64-linux-gnu/bits/stdio2.h:30:34: note: ‘__builtin___sprintf_chk’ output 2 or more bytes (assuming 1025) into a destination of size 1024
+   30 |   return __builtin___sprintf_chk (__s, __USE_FORTIFY_LEVEL - 1,
+      |          ~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+   31 |                                   __glibc_objsize (__s), __fmt,
+      |                                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+   32 |                                   __va_arg_pack ());
+      |                                   ~~~~~~~~~~~~~~~~~
+new_results/external_src/ccd/util.cpp: In function ‘void load_from_binary(const char*, SparseMatrix&, TestData&)’:
+new_results/external_src/ccd/util.cpp:107:53: warning: ‘__builtin___sprintf_chk’ may write a terminating nul past the end of the destination [-Wformat-overflow=]
+  107 |         sprintf(binary_test_coo_filename_col, "%s/%s", srcdir, buf);
+      |                                                     ^
+In function ‘int sprintf(char*, const char*, ...)’,
+    inlined from ‘void load_from_binary(const char*, SparseMatrix&, TestData&)’ at new_results/external_src/ccd/util.cpp:107:9:
+/usr/include/x86_64-linux-gnu/bits/stdio2.h:30:34: note: ‘__builtin___sprintf_chk’ output 2 or more bytes (assuming 1025) into a destination of size 1024
+   30 |   return __builtin___sprintf_chk (__s, __USE_FORTIFY_LEVEL - 1,
+      |          ~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+   31 |                                   __glibc_objsize (__s), __fmt,
+      |                                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+   32 |                                   __va_arg_pack ());
+      |                                   ~~~~~~~~~~~~~~~~~
+new_results/external_src/ccd/util.cpp: In function ‘void load_from_binary(const char*, SparseMatrix&, TestData&)’:
+new_results/external_src/ccd/util.cpp:109:53: warning: ‘__builtin___sprintf_chk’ may write a terminating nul past the end of the destination [-Wformat-overflow=]
+  109 |         sprintf(binary_test_coo_filename_val, "%s/%s", srcdir, buf);
+      |                                                     ^
+In function ‘int sprintf(char*, const char*, ...)’,
+    inlined from ‘void load_from_binary(const char*, SparseMatrix&, TestData&)’ at new_results/external_src/ccd/util.cpp:109:9:
+/usr/include/x86_64-linux-gnu/bits/stdio2.h:30:34: note: ‘__builtin___sprintf_chk’ output 2 or more bytes (assuming 1025) into a destination of size 1024
+   30 |   return __builtin___sprintf_chk (__s, __USE_FORTIFY_LEVEL - 1,
+      |          ~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+   31 |                                   __glibc_objsize (__s), __fmt,
+      |                                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+   32 |                                   __va_arg_pack ());
+      |                                   ~~~~~~~~~~~~~~~~~

@@ -1,0 +1,86 @@
+ptxas info    : 0 bytes gmem
+ptxas info    : Compiling entry function '_Z20cholesky_solve_tiledILi96ELi128EEvPKfPfPK4int2iiifPKi' for 'sm_86'
+ptxas info    : Function properties for _Z20cholesky_solve_tiledILi96ELi128EEvPKfPfPK4int2iiifPKi
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 56 registers, used 1 barriers, 400 bytes cmem[0]
+ptxas info    : Compile time = 54.929 ms
+ptxas info    : Compiling entry function '_Z20cholesky_solve_tiledILi64ELi128EEvPKfPfPK4int2iiifPKi' for 'sm_86'
+ptxas info    : Function properties for _Z20cholesky_solve_tiledILi64ELi128EEvPKfPfPK4int2iiifPKi
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 56 registers, used 1 barriers, 400 bytes cmem[0]
+ptxas info    : Compile time = 52.190 ms
+ptxas info    : Compiling entry function '_Z20cholesky_solve_tiledILi32ELi64EEvPKfPfPK4int2iiifPKi' for 'sm_86'
+ptxas info    : Function properties for _Z20cholesky_solve_tiledILi32ELi64EEvPKfPfPK4int2iiifPKi
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 56 registers, used 1 barriers, 400 bytes cmem[0]
+ptxas info    : Compile time = 54.697 ms
+ptxas info    : Compiling entry function '_Z21cholesky_solve_packedILi16EEvPfS0_ifPKi' for 'sm_86'
+ptxas info    : Function properties for _Z21cholesky_solve_packedILi16EEvPfS0_ifPKi
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 38 registers, used 0 barriers, 384 bytes cmem[0]
+ptxas info    : Compile time = 30.279 ms
+ptxas info    : Compiling entry function '_Z22cholesky_solve_batchedILi32EEvPfS0_ifPKi' for 'sm_86'
+ptxas info    : Function properties for _Z22cholesky_solve_batchedILi32EEvPfS0_ifPKi
+    4224 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 40 registers, used 0 barriers, 4224 bytes cumulative stack size, 384 bytes cmem[0]
+ptxas info    : Compile time = 26.030 ms
+ptxas info    : Compiling entry function '_Z22cholesky_solve_batchedILi16EEvPfS0_ifPKi' for 'sm_86'
+ptxas info    : Function properties for _Z22cholesky_solve_batchedILi16EEvPfS0_ifPKi
+    1088 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 64 registers, used 0 barriers, 1088 bytes cumulative stack size, 384 bytes cmem[0]
+ptxas info    : Compile time = 73.975 ms
+ptxas info    : Compiling entry function '_Z20cholesky_solve_tiledILi48ELi96EEvPKfPfPK4int2iiifPKi' for 'sm_86'
+ptxas info    : Function properties for _Z20cholesky_solve_tiledILi48ELi96EEvPKfPfPK4int2iiifPKi
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 56 registers, used 1 barriers, 400 bytes cmem[0]
+ptxas info    : Compile time = 58.459 ms
+ptxas info    : Compiling entry function '_Z26compute_LHS_RHS_BALS_blockILi32ELi3ELi3EEviifPKiS1_S1_S1_PKfS3_PfS4_S3_S1_S1_S1_S1_S1_ii' for 'sm_86'
+ptxas info    : Function properties for _Z26compute_LHS_RHS_BALS_blockILi32ELi3ELi3EEviifPKiS1_S1_S1_PKfS3_PfS4_S3_S1_S1_S1_S1_S1_ii
+    1416 bytes stack frame, 5648 bytes spill stores, 4236 bytes spill loads
+ptxas info    : Used 64 registers, used 1 barriers, 1416 bytes cumulative stack size, 488 bytes cmem[0]
+ptxas info    : Compile time = 688.314 ms
+ptxas info    : Compiling entry function '_Z26compute_LHS_RHS_BALS_blockILi16ELi3ELi3EEviifPKiS1_S1_S1_PKfS3_PfS4_S3_S1_S1_S1_S1_S1_ii' for 'sm_86'
+ptxas info    : Function properties for _Z26compute_LHS_RHS_BALS_blockILi16ELi3ELi3EEviifPKiS1_S1_S1_PKfS3_PfS4_S3_S1_S1_S1_S1_S1_ii
+    640 bytes stack frame, 2544 bytes spill stores, 1908 bytes spill loads
+ptxas info    : Used 64 registers, used 1 barriers, 640 bytes cumulative stack size, 488 bytes cmem[0]
+ptxas info    : Compile time = 216.170 ms
+ptxas info    : Compiling entry function '_Z26compute_LHS_RHS_BALS_blockILi8ELi3ELi3EEviifPKiS1_S1_S1_PKfS3_PfS4_S3_S1_S1_S1_S1_S1_ii' for 'sm_86'
+ptxas info    : Function properties for _Z26compute_LHS_RHS_BALS_blockILi8ELi3ELi3EEviifPKiS1_S1_S1_PKfS3_PfS4_S3_S1_S1_S1_S1_S1_ii
+    256 bytes stack frame, 1008 bytes spill stores, 756 bytes spill loads
+ptxas info    : Used 64 registers, used 1 barriers, 256 bytes cumulative stack size, 488 bytes cmem[0]
+ptxas info    : Compile time = 87.957 ms
+ptxas info    : Compiling entry function '_Z26compute_LHS_RHS_BALS_blockILi4ELi3ELi3EEviifPKiS1_S1_S1_PKfS3_PfS4_S3_S1_S1_S1_S1_S1_ii' for 'sm_86'
+ptxas info    : Function properties for _Z26compute_LHS_RHS_BALS_blockILi4ELi3ELi3EEviifPKiS1_S1_S1_PKfS3_PfS4_S3_S1_S1_S1_S1_S1_ii
+    64 bytes stack frame, 240 bytes spill stores, 180 bytes spill loads
+ptxas info    : Used 64 registers, used 1 barriers, 64 bytes cumulative stack size, 488 bytes cmem[0]
+ptxas info    : Compile time = 40.101 ms
+ptxas info    : Compiling entry function '_Z26compute_LHS_RHS_BALS_blockILi2ELi3ELi3EEviifPKiS1_S1_S1_PKfS3_PfS4_S3_S1_S1_S1_S1_S1_ii' for 'sm_86'
+ptxas info    : Function properties for _Z26compute_LHS_RHS_BALS_blockILi2ELi3ELi3EEviifPKiS1_S1_S1_PKfS3_PfS4_S3_S1_S1_S1_S1_S1_ii
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 64 registers, used 1 barriers, 488 bytes cmem[0]
+ptxas info    : Compile time = 20.499 ms
+ptxas info    : Compiling entry function '_Z26compute_LHS_RHS_BALS_blockILi1ELi3ELi3EEviifPKiS1_S1_S1_PKfS3_PfS4_S3_S1_S1_S1_S1_S1_ii' for 'sm_86'
+ptxas info    : Function properties for _Z26compute_LHS_RHS_BALS_blockILi1ELi3ELi3EEviifPKiS1_S1_S1_PKfS3_PfS4_S3_S1_S1_S1_S1_S1_ii
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 55 registers, used 1 barriers, 488 bytes cmem[0]
+ptxas info    : Compile time = 12.098 ms
+ptxas info    : Compiling entry function '_Z24add_weighted_lambda_diagPfPKiiiif' for 'sm_86'
+ptxas info    : Function properties for _Z24add_weighted_lambda_diagPfPKiiiif
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 16 registers, used 0 barriers, 384 bytes cmem[0]
+ptxas info    : Compile time = 3.178 ms
+ptxas info    : Compiling entry function '_Z26cholesky_solve_cooperativePfS_iifPKi' for 'sm_86'
+ptxas info    : Function properties for _Z26cholesky_solve_cooperativePfS_iifPKi
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 40 registers, used 0 barriers, 392 bytes cmem[0]
+ptxas info    : Compile time = 45.351 ms
+ptxas info    : Compiling entry function '_Z20convert_fp32_to_fp16PKfP6__halfi' for 'sm_86'
+ptxas info    : Function properties for _Z20convert_fp32_to_fp16PKfP6__halfi
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 8 registers, used 0 barriers, 372 bytes cmem[0]
+ptxas info    : Compile time = 0.740 ms
+ptxas info    : Compiling entry function '_Z19compute_RMSE_kernelPKiS0_PKfiS2_S2_iPd' for 'sm_86'
+ptxas info    : Function properties for _Z19compute_RMSE_kernelPKiS0_PKfiS2_S2_iPd
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 44 registers, used 1 barriers, 2048 bytes smem, 416 bytes cmem[0]
+ptxas info    : Compile time = 9.594 ms

@@ -1,0 +1,82 @@
+=== CODE VERSION: CUMF-ALS-HPDC16 [CUDA-12 port | generic SpMM | CG(96-thread) | frozen-split .bin loader | APR-style output] ===
+Loading binary preprocessed dataset: /home/pc/Desktop/2007080/latent_factorr_experimen/comparing_baseline/new_results/external_inputs/ml10m/warm_validation.bin
+69878 users, 10677 items | train=7022183, test=1004523
+cuMF mapping: R = items x users (m=10677, n=69878) | F=60 | lambda=0.0600 (weighted ALS-WR) | X_BATCH=1 THETA_BATCH=3 | CG_ITER=6 | max_iters=30 tol=0.000 | device=0
+
+=== cuMF-ALS (HPDC16 baseline, FP32 + CG solver) ===
+Iter  1 | Train RMSE: 0.851501 | Test RMSE: 0.870434
+CUMULATIVE_WALL_MS 95.967516
+Iter  2 | Train RMSE: 0.790443 | Test RMSE: 0.835446
+CUMULATIVE_WALL_MS 190.952177
+Iter  3 | Train RMSE: 0.713881 | Test RMSE: 0.803175
+CUMULATIVE_WALL_MS 288.500631
+Iter  4 | Train RMSE: 0.679486 | Test RMSE: 0.794516
+CUMULATIVE_WALL_MS 386.004335
+Iter  5 | Train RMSE: 0.663917 | Test RMSE: 0.791222
+CUMULATIVE_WALL_MS 483.696309
+Iter  6 | Train RMSE: 0.656233 | Test RMSE: 0.789522
+CUMULATIVE_WALL_MS 581.326673
+Iter  7 | Train RMSE: 0.651968 | Test RMSE: 0.788508
+CUMULATIVE_WALL_MS 678.850936
+Iter  8 | Train RMSE: 0.649339 | Test RMSE: 0.787864
+CUMULATIVE_WALL_MS 776.143089
+Iter  9 | Train RMSE: 0.647590 | Test RMSE: 0.787445
+CUMULATIVE_WALL_MS 873.431471
+Iter 10 | Train RMSE: 0.646363 | Test RMSE: 0.787170
+CUMULATIVE_WALL_MS 970.572403
+Iter 11 | Train RMSE: 0.645467 | Test RMSE: 0.786991
+CUMULATIVE_WALL_MS 1067.656454
+Iter 12 | Train RMSE: 0.644794 | Test RMSE: 0.786878
+CUMULATIVE_WALL_MS 1164.615494
+Iter 13 | Train RMSE: 0.644278 | Test RMSE: 0.786811
+CUMULATIVE_WALL_MS 1261.524835
+Iter 14 | Train RMSE: 0.643875 | Test RMSE: 0.786779
+CUMULATIVE_WALL_MS 1358.222884
+Iter 15 | Train RMSE: 0.643556 | Test RMSE: 0.786769
+CUMULATIVE_WALL_MS 1454.599012
+Iter 16 | Train RMSE: 0.643302 | Test RMSE: 0.786777
+CUMULATIVE_WALL_MS 1550.676228
+Iter 17 | Train RMSE: 0.643098 | Test RMSE: 0.786798
+CUMULATIVE_WALL_MS 1646.622863
+Iter 18 | Train RMSE: 0.642933 | Test RMSE: 0.786828
+CUMULATIVE_WALL_MS 1742.120016
+Iter 19 | Train RMSE: 0.642800 | Test RMSE: 0.786866
+CUMULATIVE_WALL_MS 1837.478118
+Iter 20 | Train RMSE: 0.642691 | Test RMSE: 0.786908
+CUMULATIVE_WALL_MS 1932.429339
+Iter 21 | Train RMSE: 0.642603 | Test RMSE: 0.786953
+CUMULATIVE_WALL_MS 2027.092958
+Iter 22 | Train RMSE: 0.642530 | Test RMSE: 0.787001
+CUMULATIVE_WALL_MS 2121.365955
+Iter 23 | Train RMSE: 0.642471 | Test RMSE: 0.787050
+CUMULATIVE_WALL_MS 2215.365510
+Iter 24 | Train RMSE: 0.642423 | Test RMSE: 0.787099
+CUMULATIVE_WALL_MS 2309.034345
+Iter 25 | Train RMSE: 0.642384 | Test RMSE: 0.787150
+CUMULATIVE_WALL_MS 2402.374837
+Iter 26 | Train RMSE: 0.642352 | Test RMSE: 0.787199
+CUMULATIVE_WALL_MS 2495.496988
+Iter 27 | Train RMSE: 0.642326 | Test RMSE: 0.787248
+CUMULATIVE_WALL_MS 2588.183057
+Iter 28 | Train RMSE: 0.642304 | Test RMSE: 0.787296
+CUMULATIVE_WALL_MS 2680.603284
+Iter 29 | Train RMSE: 0.642287 | Test RMSE: 0.787342
+CUMULATIVE_WALL_MS 2772.997472
+Iter 30 | Train RMSE: 0.642273 | Test RMSE: 0.787387
+CUMULATIVE_WALL_MS 2864.887006
+
+=== Profiling: cuMF-ALS (HPDC16 baseline, FP32 + CG solver) (30 iters) ===
+User LHS+RHS:  765.90 ms total | 25.53 ms/iter | 1039.7 GFlops/s
+User CG solve: 569.79 ms total | 18.99 ms/iter
+Item LHS+RHS:  944.41 ms total | 31.48 ms/iter |  843.2 GFlops/s
+Item CG solve:  83.09 ms total |  2.77 ms/iter
+RMSE:          501.46 ms total | 16.72 ms/call
+Total FLOPs: 1592.63 GFLOPs | Throughput: 555.9 GFlops/s (compute: 673.9)
+Training Complete in 2.865 seconds!
+
+=== cuMF-ALS final ===
+Train RMSE: 0.642273 | Test RMSE: 0.787387 | compute=2363.19 ms | wall=2864.89 ms
+Params: F=60, lambda=0.0600 (weighted ALS-WR: diag += nnz_u*lambda), CG_ITER=6, SCAN_BATCH=28, X_BATCH=1, THETA_BATCH=3
+Model saved: cumf_XT_f60.bin (items 10677x60), cumf_thetaT_f60.bin (users 69878x60)
+
+ALS Done.

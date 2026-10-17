@@ -1,0 +1,53 @@
+\section{Related Works}
+\label{sec:related}
+
+APR-BALS draws on four lines of research: matrix factorization for collaborative filtering, GPU factorization systems, tensor-core and mixed-precision computing, and batched small-matrix solvers. Table~\ref{tab:litgap} summarizes how representative work covers the dimensions this paper combines.
+
+\subsection{Matrix Factorization for Collaborative Filtering}
+
+Neighbourhood methods, which compare users or items directly \cite{sarwar2001item}, gave way to latent-factor models after the Netflix Prize released about 100 million ratings \cite{bennett2007netflix}. Koren et al. showed that regularized matrix factorization outperforms neighbourhood approaches and scales to industrial data \cite{koren2009matrix}, and Later models extended the same factorization framework by incorporating neighborhood effects and implicit feedback signals\cite{koren2008factorization}. The model is trained mainly by stochastic gradient descent (SGD), which is cheap per update but inherently sequential, or by ALS \cite{zhou2008largescale}, which costs a Gram matrix and a Cholesky solve per entity but parallelizes naturally because each entity's subproblem is independent. ALS also extends to the confidence-weighted implicit-feedback objective of Hu et al.\ \cite{hu2008collaborative}, and its sweep count can be reduced by extrapolation, as shown for tensor decomposition \cite{ma2022pairwise,evans2023blockwise}; the momentum scheme of Section~\ref{sec:extended} applies the same principle to matrix factorization. We target explicit-feedback ALS because its dense per-entity subproblems expose structure that tensor cores can consume, and we evaluate on the Netflix and MovieLens \cite{harper2016movielens} benchmarks.
+
+\subsection{Parallel and GPU-Accelerated Factorization}
+
+On CPUs, Hogwild!, a parallel SGD (Stochastic Gradient Descent) approach, runs SGD largely lock-free \cite{recht2011hogwild}, DSGD partitions the rating matrix for distributed SGD \cite{gemulla2011large}, and enhanced Coordinate Descent (CCD++) reformulates training as cache-friendly coordinate descent \cite{yu2012scalable}. These systems scale out but do not raise per-operation throughput. On GPUs, the leading explicit-ALS system is \textit{cuMF\_als}, which tiles Gram assembly through registers and shared memory \cite{tan2016faster}; it can store the Conjugate Gradient (CG)  system matrix in FP16 to save bandwidth but computes on CUDA cores. The same project, the GPU CCD++,  provides \textit{cuMF\_SGD} \cite{xie2017cumf} and \textit{cuMF\_CCD}. \cite{nisa2017parallel}. Gates et al.\ accelerated implicit-feedback ALS with batched kernels and autotuning \cite{gates2015accelerating}; because that objective combines a dense Gram term shared by all users with a sparse per-user correction. Chen et al.\ proposed BALS, a blocked ALS built on a tiled sparse format \cite{chen2021bals}, which serves as the storage baseline of our scalar path. As Volkov and Demmel showed, performance depends on matching kernel structure to the microarchitecture \cite{volkov2008benchmarking}, which on current GPUs includes tensor cores.
+%Table~\ref{tab:litgap} shows a summary of coverage of key issues of important related works.
+
+\begin{table}[!t]
+\caption{Coverage of Key Dimensions by Representative Related Work}
+\label{tab:litgap}
+\centering
+\footnotesize
+\renewcommand{\arraystretch}{1.15}
+\setlength{\tabcolsep}{2.2pt}
+\begin{tabular}{lccccc}
+\toprule
+\textbf{Work} & \textbf{ALS/MF} & \textbf{GPU} & \textbf{Tensor} & \textbf{Sparse-} & \textbf{Accuracy} \\
+ & & & \textbf{cores} & \textbf{aware} & \textbf{check} \\
+\midrule
+Zhou et al.~\cite{zhou2008largescale}            & ALS    & No  & No  & Yes & Yes \\
+Tan et al.~\cite{tan2016faster}                  & ALS    & Yes & No  & Yes & Yes \\
+Xie et al.~\cite{xie2017cumf}                    & SGD    & Yes & No  & Yes & Yes \\
+Gates et al.~\cite{gates2015accelerating}        & ALS    & Yes & No  & Partial & Yes \\
+Chen et al.~\cite{chen2021bals}                  & ALS    & Yes & No  & Yes & Yes \\
+Markidis et al.~\cite{markidis2018nvidia}        & No     & Yes & Yes & No  & Kernel \\
+Haidar et al.~\cite{haidar2018harnessing}        & No     & Yes & Yes & No  & Solver \\
+Zachariadis et al.~\cite{zachariadis2020accelerating} & No & Yes & Yes & Yes & Kernel \\
+Fan et al.~\cite{fan2024dtcspmm}                 & No     & Yes & Yes & Yes & Kernel \\
+Abdelfattah et al.~\cite{abdelfattah2017factorization} & No & Yes & No & No & Solver \\
+\midrule
+\textbf{APR-BALS (this work)} & \textbf{ALS} & \textbf{Yes} & \textbf{Yes} & \textbf{Yes} & \textbf{End-to-end} \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{Tensor Cores and Mixed-Precision Computing}
+
+Tensor cores perform a $16\times16 \times16$ matrix multiply accumulate per warp-level instruction with FP16 inputs and FP32 accumulation. Their throughput, programmability, and rounding behaviour have been characterized by Markidis et al.\cite{markidis2018nvidia} and by microbenchmark studies through the Hopper generation\cite{jia2018dissecting,luo2024hopper}, and the WMMA interface is specified in the CUDA documentation \cite{nvidia2023cuda}. Blanchard et al.\ bounded the rounding error of the block fused multiply add these units implement, showing that FP32 accumulation of FP16 products is far more accurate than pure FP16 arithmetic\cite{blanchard2020mixed}; Higham and Mary survey the mixed-precision algorithms built on such guarantees \cite{higham2002accuracy,higham2022mixed}. Mixed precision is established in deep learning \cite{micikevicius2018mixed} and in dense solvers, where tensor-core iterative refinement solves FP64 systems up to $4\times$ faster \cite{haidar2018harnessing} and least-squares problems admit several refinement strategies \cite{carson2025comparison}. Those methods recover a high-precision solution from a low-precision factorization; we ask instead whether the ALS normal equations tolerate low-precision \textit{formation} without refinement. For sparse computations, Zachariadis et al.\ dispatched dense sub-blocks of sparse matrix matrix products to tensor cores \cite{zachariadis2020accelerating}, and recent systems refine this approach through data movement optimization \cite{fan2024dtcspmm}, format and pipeline co-design \cite{zhao2025accspmm}, support for unstructured patterns \cite{okanovic2024unstructured}, and block-density transformations \cite{dong2026blocksmith}. Each optimizes a single sparse kernel in isolation; none embeds it in a training loop or reports the accuracy of the resulting model.
+
+\subsection{Batched Small-Matrix Solvers}
+
+Each ALS half-iteration produces hundreds of thousands of independent $K\times K$ symmetric positive-definite systems. Abdelfattah et al. analyzed the occupancy, register-pressure, and memory-layout trade-offs of factorizing many small matrices on GPUs \cite{abdelfattah2017factorization}, and Luszczek et al. proposed interfaces for batched sparse and mixed-precision solvers embedded in larger applications \cite{luszczek2024batched}. Our solver adapts the classical blocked right-looking factorization \cite{golub2013matrix} to the shared-memory capacity and synchronization model of a single streaming multiprocessor.
+
+%\subsection{Summary and Research Gap}
+
+Existing GPU ALS systems compute on FP32 CUDA cores. Tensor-core studies deliver fast dense and sparse kernels but close no training loop around them and do not assess model accuracy, and batched-solver studies optimize the factorization apart from the pipeline that feeds it. No prior system trains explicit-feedback ALS on tensor cores with a density-adaptive precision dispatch and shows, against an audited FP32 baseline under identical conditions, that the end-to-end accuracy cost is negligible.

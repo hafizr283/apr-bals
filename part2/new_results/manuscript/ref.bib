@@ -1,0 +1,395 @@
+% Encoding: UTF-8
+% References for: Accelerating ALS Matrix Factorization on GPUs via
+% Mixed-Precision Tensor Cores (APR-BALS). IEEE style via IEEEtran.bst.
+
+%---------------- Recommender systems and matrix factorization ----------------
+
+@article{koren2009matrix,
+  author    = {Koren, Yehuda and Bell, Robert and Volinsky, Chris},
+  title     = {Matrix factorization techniques for recommender systems},
+  journal   = {Computer},
+  volume    = {42},
+  number    = {8},
+  pages     = {30--37},
+  year      = {2009},
+  publisher = {IEEE},
+  doi       = {10.1109/MC.2009.263}
+}
+
+@inproceedings{zhou2008largescale,
+  author    = {Zhou, Yunhong and Wilkinson, Dennis and Schreiber, Robert and Pan, Rong},
+  title     = {Large-scale parallel collaborative filtering for the {Netflix} prize},
+  booktitle = {Proceedings of the 4th International Conference on Algorithmic Aspects in Information and Management (AAIM)},
+  series    = {Lecture Notes in Computer Science},
+  volume    = {5034},
+  pages     = {337--348},
+  year      = {2008},
+  publisher = {Springer},
+  doi       = {10.1007/978-3-540-68880-8_32}
+}
+
+@inproceedings{bennett2007netflix,
+  author    = {Bennett, James and Lanning, Stan},
+  title     = {The {Netflix} prize},
+  booktitle = {Proceedings of the KDD Cup and Workshop},
+  address   = {San Jose, CA, USA},
+  pages     = {3--6},
+  year      = {2007}
+}
+
+@article{harper2016movielens,
+  author    = {Harper, F. Maxwell and Konstan, Joseph A.},
+  title     = {The {MovieLens} datasets: History and context},
+  journal   = {ACM Transactions on Interactive Intelligent Systems},
+  volume    = {5},
+  number    = {4},
+  pages     = {19:1--19:19},
+  year      = {2015},
+  publisher = {ACM},
+  doi       = {10.1145/2827872}
+}
+
+@inproceedings{hu2008collaborative,
+  author    = {Hu, Yifan and Koren, Yehuda and Volinsky, Chris},
+  title     = {Collaborative filtering for implicit feedback datasets},
+  booktitle = {Proceedings of the 8th IEEE International Conference on Data Mining (ICDM)},
+  pages     = {263--272},
+  year      = {2008},
+  publisher = {IEEE},
+  doi       = {10.1109/ICDM.2008.22}
+}
+
+@inproceedings{sarwar2001item,
+  author    = {Sarwar, Badrul and Karypis, George and Konstan, Joseph and Riedl, John},
+  title     = {Item-based collaborative filtering recommendation algorithms},
+  booktitle = {Proceedings of the 10th International Conference on World Wide Web (WWW)},
+  pages     = {285--295},
+  year      = {2001},
+  publisher = {ACM},
+  doi       = {10.1145/371920.372071}
+}
+
+@inproceedings{koren2008factorization,
+  author    = {Koren, Yehuda},
+  title     = {Factorization meets the neighborhood: A multifaceted collaborative filtering model},
+  booktitle = {Proceedings of the 14th ACM SIGKDD International Conference on Knowledge Discovery and Data Mining (KDD)},
+  pages     = {426--434},
+  year      = {2008},
+  publisher = {ACM},
+  doi       = {10.1145/1401890.1401944}
+}
+
+@article{gomez2016netflix,
+  author    = {Gomez-Uribe, Carlos A. and Hunt, Neil},
+  title     = {The {Netflix} recommender system: Algorithms, business value, and innovation},
+  journal   = {ACM Transactions on Management Information Systems},
+  volume    = {6},
+  number    = {4},
+  pages     = {13:1--13:19},
+  year      = {2016},
+  publisher = {ACM},
+  doi       = {10.1145/2843948}
+}
+
+@article{schafer2001ecommerce,
+  author    = {Schafer, J. Ben and Konstan, Joseph A. and Riedl, John},
+  title     = {E-commerce recommendation applications},
+  journal   = {Data Mining and Knowledge Discovery},
+  volume    = {5},
+  number    = {1--2},
+  pages     = {115--153},
+  year      = {2001},
+  publisher = {Springer},
+  doi       = {10.1023/A:1009804230409}
+}
+
+%---------------- Parallel and GPU-accelerated factorization ----------------
+
+@inproceedings{recht2011hogwild,
+  author    = {Recht, Benjamin and Re, Christopher and Wright, Stephen and Niu, Feng},
+  title     = {Hogwild!: A lock-free approach to parallelizing stochastic gradient descent},
+  booktitle = {Advances in Neural Information Processing Systems 24 (NIPS)},
+  pages     = {693--701},
+  year      = {2011}
+}
+
+@inproceedings{gemulla2011large,
+  author    = {Gemulla, Rainer and Nijkamp, Erik and Haas, Peter J. and Sismanis, Yannis},
+  title     = {Large-scale matrix factorization with distributed stochastic gradient descent},
+  booktitle = {Proceedings of the 17th ACM SIGKDD International Conference on Knowledge Discovery and Data Mining (KDD)},
+  pages     = {69--77},
+  year      = {2011},
+  publisher = {ACM},
+  doi       = {10.1145/2020408.2020426}
+}
+
+@inproceedings{yu2012scalable,
+  author    = {Yu, Hsiang-Fu and Hsieh, Cho-Jui and Si, Si and Dhillon, Inderjit S.},
+  title     = {Scalable coordinate descent approaches to parallel matrix factorization for recommender systems},
+  booktitle = {Proceedings of the 12th IEEE International Conference on Data Mining (ICDM)},
+  pages     = {765--774},
+  year      = {2012},
+  publisher = {IEEE},
+  doi       = {10.1109/ICDM.2012.168}
+}
+
+@inproceedings{tan2016faster,
+  author    = {Tan, Wei and Cao, Liangliang and Fong, Liana},
+  title     = {Faster and cheaper: Parallelizing large-scale matrix factorization on {GPUs}},
+  booktitle = {Proceedings of the 25th ACM International Symposium on High-Performance Parallel and Distributed Computing (HPDC)},
+  pages     = {219--230},
+  year      = {2016},
+  publisher = {ACM},
+  doi       = {10.1145/2907294.2907297}
+}
+
+@inproceedings{xie2017cumf,
+  author    = {Xie, Xiaolong and Tan, Wei and Fong, Liana L. and Liang, Yun},
+  title     = {{CuMF\_SGD}: Parallelized stochastic gradient descent for matrix factorization on {GPUs}},
+  booktitle = {Proceedings of the 26th ACM International Symposium on High-Performance Parallel and Distributed Computing (HPDC)},
+  pages     = {79--92},
+  year      = {2017},
+  publisher = {ACM},
+  doi       = {10.1145/3078597.3078602}
+}
+
+@inproceedings{gates2015accelerating,
+  author    = {Gates, Mark and Anzt, Hartwig and Kurzak, Jakub and Dongarra, Jack},
+  title     = {Accelerating collaborative filtering using concepts from high performance computing},
+  booktitle = {Proceedings of the IEEE International Conference on Big Data},
+  pages     = {667--676},
+  year      = {2015},
+  publisher = {IEEE},
+  doi       = {10.1109/BigData.2015.7363811}
+}
+
+%---------------- Tensor cores and mixed-precision computing ----------------
+
+@inproceedings{markidis2018nvidia,
+  author    = {Markidis, Stefano and Chien, Steven Wei Der and Laure, Erwin and Peng, Ivy Bo and Vetter, Jeffrey S.},
+  title     = {{NVIDIA} tensor core programmability, performance \& precision},
+  booktitle = {Proceedings of the IEEE International Parallel and Distributed Processing Symposium Workshops (IPDPSW)},
+  pages     = {522--531},
+  year      = {2018},
+  publisher = {IEEE},
+  doi       = {10.1109/IPDPSW.2018.00091}
+}
+
+@inproceedings{micikevicius2018mixed,
+  author    = {Micikevicius, Paulius and Narang, Sharan and Alben, Jonah and Diamos, Gregory and Elsen, Erich and Garcia, David and Ginsburg, Boris and Houston, Michael and Kuchaiev, Oleksii and Venkatesh, Ganesh and Wu, Hao},
+  title     = {Mixed precision training},
+  booktitle = {Proceedings of the 6th International Conference on Learning Representations (ICLR)},
+  year      = {2018}
+}
+
+@inproceedings{haidar2018harnessing,
+  author    = {Haidar, Azzam and Tomov, Stanimire and Dongarra, Jack and Higham, Nicholas J.},
+  title     = {Harnessing {GPU} tensor cores for fast {FP16} arithmetic to speed up mixed-precision iterative refinement solvers},
+  booktitle = {Proceedings of the International Conference for High Performance Computing, Networking, Storage and Analysis (SC18)},
+  pages     = {603--613},
+  year      = {2018},
+  publisher = {IEEE},
+  doi       = {10.1109/SC.2018.00050}
+}
+
+@article{blanchard2020mixed,
+  author    = {Blanchard, Pierre and Higham, Nicholas J. and Lopez, Florent and Mary, Theo and Pranesh, Srikara},
+  title     = {Mixed precision block fused multiply-add: Error analysis and application to {GPU} tensor cores},
+  journal   = {SIAM Journal on Scientific Computing},
+  volume    = {42},
+  number    = {3},
+  pages     = {C124--C141},
+  year      = {2020},
+  doi       = {10.1137/19M1289546}
+}
+
+@article{jia2018dissecting,
+  author    = {Jia, Zhe and Maggioni, Marco and Staiger, Benjamin and Scarpazza, Daniele P.},
+  title     = {Dissecting the {NVIDIA} {Volta} {GPU} architecture via microbenchmarking},
+  journal   = {arXiv preprint arXiv:1804.06826},
+  year      = {2018}
+}
+
+@article{zachariadis2020accelerating,
+  author    = {Zachariadis, Orestis and Satpute, Nitin and G{\'o}mez-Luna, Juan and Olivares, Joaqu{\'i}n},
+  title     = {Accelerating sparse matrix--matrix multiplication with {GPU} tensor cores},
+  journal   = {Computers \& Electrical Engineering},
+  volume    = {88},
+  pages     = {106848},
+  year      = {2020},
+  publisher = {Elsevier},
+  doi       = {10.1016/j.compeleceng.2020.106848}
+}
+
+@manual{nvidia2023cuda,
+  author       = {{NVIDIA Corporation}},
+  title        = {{CUDA C++} Programming Guide, Release 12.0},
+  year         = {2022},
+  note         = {[Online]. Available: https://docs.nvidia.com/cuda/archive/12.0.0/cuda-c-programming-guide/}
+}
+
+%---------------- Numerical linear algebra and batched solvers ----------------
+
+@book{golub2013matrix,
+  author    = {Golub, Gene H. and Van Loan, Charles F.},
+  title     = {Matrix Computations},
+  edition   = {4th},
+  publisher = {Johns Hopkins University Press},
+  address   = {Baltimore, MD, USA},
+  year      = {2013}
+}
+
+@book{higham2002accuracy,
+  author    = {Higham, Nicholas J.},
+  title     = {Accuracy and Stability of Numerical Algorithms},
+  edition   = {2nd},
+  publisher = {SIAM},
+  address   = {Philadelphia, PA, USA},
+  year      = {2002},
+  doi       = {10.1137/1.9780898718027}
+}
+
+@article{abdelfattah2017factorization,
+  author    = {Abdelfattah, Ahmad and Haidar, Azzam and Tomov, Stanimire and Dongarra, Jack},
+  title     = {Factorization and inversion of a million matrices using {GPUs}: Challenges and countermeasures},
+  journal   = {Procedia Computer Science},
+  volume    = {108},
+  pages     = {606--615},
+  year      = {2017},
+  publisher = {Elsevier},
+  doi       = {10.1016/j.procs.2017.05.250}
+}
+
+@inproceedings{volkov2008benchmarking,
+  author    = {Volkov, Vasily and Demmel, James W.},
+  title     = {Benchmarking {GPUs} to tune dense linear algebra},
+  booktitle = {Proceedings of the ACM/IEEE Conference on Supercomputing (SC)},
+  pages     = {31:1--31:11},
+  year      = {2008},
+  publisher = {IEEE},
+  doi       = {10.1109/SC.2008.5214359}
+}
+
+@article{chen2021bals,
+  author    = {Chen, Jing and Fang, Jianbin and Liu, Weifeng and Yang, Canqun},
+  title     = {{BALS}: Blocked Alternating Least Squares for Parallel Sparse Matrix Factorization on {GPUs}},
+  journal   = {IEEE Transactions on Parallel and Distributed Systems},
+  volume    = {32},
+  number    = {9},
+  pages     = {2291--2302},
+  year      = {2021},
+  publisher = {IEEE},
+  doi       = {10.1109/TPDS.2021.3064942}
+}
+
+
+@article{higham2022mixed,
+  author    = {Higham, Nicholas J. and Mary, Theo},
+  title     = {Mixed precision algorithms in numerical linear algebra},
+  journal   = {Acta Numerica},
+  volume    = {31},
+  pages     = {347--414},
+  year      = {2022},
+  doi       = {10.1017/S0962492922000022}
+}
+
+@article{carson2025comparison,
+  author    = {Carson, Erin and Dau{\v{z}}ickait{\.{e}}, Ieva},
+  title     = {A Comparison of Mixed Precision Iterative Refinement Approaches for Least-Squares Problems},
+  journal   = {SIAM Journal on Matrix Analysis and Applications},
+  volume    = {46},
+  number    = {2},
+  pages     = {1117--1144},
+  year      = {2025},
+  doi       = {10.1137/24M1664927}
+}
+
+@inproceedings{fan2024dtcspmm,
+  author    = {Fan, Ruibo and Wang, Wei and Chu, Xiaowen},
+  title     = {{DTC-SpMM}: Bridging the Gap in Accelerating General Sparse Matrix Multiplication with Tensor Cores},
+  booktitle = {Proceedings of the 29th ACM International Conference on Architectural Support for Programming Languages and Operating Systems (ASPLOS)},
+  volume    = {3},
+  pages     = {253--267},
+  year      = {2024},
+  doi       = {10.1145/3620666.3651378}
+}
+
+@inproceedings{zhao2025accspmm,
+  author    = {Zhao, Haisha and Li, San and Wang, Jiaheng and Zhou, Chunbao and Wang, Jue and Xin, Zhikuang and Li, Shunde and Liang, Zhiqiang and Pan, Zhijie and Liu, Fang and Zeng, Yan and Wang, Yangang and Chi, Xuebin},
+  title     = {{Acc-SpMM}: Accelerating General-purpose Sparse Matrix-Matrix Multiplication with {GPU} Tensor Cores},
+  booktitle = {Proceedings of the 30th ACM SIGPLAN Annual Symposium on Principles and Practice of Parallel Programming (PPoPP)},
+  pages     = {326--338},
+  year      = {2025},
+  doi       = {10.1145/3710848.3710888}
+}
+
+@inproceedings{okanovic2024unstructured,
+  author    = {Okanovic, Patrik and Kwasniewski, Grzegorz and Sylos Labini, Paolo and Besta, Maciej and Vella, Flavio and Hoefler, Torsten},
+  title     = {High Performance Unstructured {SpMM} Computation Using Tensor Cores},
+  booktitle = {Proceedings of the International Conference for High Performance Computing, Networking, Storage and Analysis (SC)},
+  pages     = {1--14},
+  year      = {2024},
+  doi       = {10.1109/SC41406.2024.00060}
+}
+
+@article{dong2026blocksmith,
+  author    = {Dong, Yukang and Chen, Hao and Meng, Xiangwenxin and Jiang, Wenbin and Yang, Daowen and Xiang, Enze and Jin, Hai},
+  title     = {{BlockSmith}: Ultra-dense Block Transformation for Efficient Sparse Matrix Multiplication Using Tensor Cores},
+  journal   = {ACM Transactions on Architecture and Code Optimization},
+  volume    = {23},
+  number    = {3},
+  pages     = {1--24},
+  year      = {2026},
+  doi       = {10.1145/3828547}
+}
+
+@inproceedings{luo2024hopper,
+  author    = {Luo, Weile and Fan, Ruibo and Li, Zeyu and Du, Dayou and Wang, Qiang and Chu, Xiaowen},
+  title     = {Benchmarking and Dissecting the {Nvidia} {Hopper} {GPU} Architecture},
+  booktitle = {Proceedings of the IEEE International Parallel and Distributed Processing Symposium (IPDPS)},
+  pages     = {656--667},
+  year      = {2024},
+  doi       = {10.1109/IPDPS57955.2024.00064}
+}
+
+@article{luszczek2024batched,
+  author    = {Luszczek, Piotr and Abdelfattah, Ahmad and Anzt, Hartwig and Suzuki, Atsushi and Tomov, Stanimire},
+  title     = {Batched sparse and mixed-precision linear algebra interface for efficient use of {GPU} hardware accelerators in scientific applications},
+  journal   = {Future Generation Computer Systems},
+  volume    = {160},
+  pages     = {359--374},
+  year      = {2024},
+  doi       = {10.1016/j.future.2024.06.004}
+}
+
+@article{ma2022pairwise,
+  author    = {Ma, Linjian and Solomonik, Edgar},
+  title     = {Accelerating alternating least squares for tensor decomposition by pairwise perturbation},
+  journal   = {Numerical Linear Algebra with Applications},
+  volume    = {29},
+  number    = {4},
+  pages     = {e2431},
+  year      = {2022},
+  doi       = {10.1002/nla.2431}
+}
+
+@article{evans2023blockwise,
+  author    = {Evans, David and Ye, Nan},
+  title     = {Blockwise acceleration of alternating least squares for canonical tensor decomposition},
+  journal   = {Numerical Linear Algebra with Applications},
+  volume    = {30},
+  number    = {6},
+  pages     = {e2516},
+  year      = {2023},
+  doi       = {10.1002/nla.2516}
+}
+
+@inproceedings{nisa2017parallel,
+  author    = {Nisa, Israt and Sukumaran-Rajam, Aravind and Kunchum, Rakshith and Sadayappan, P.},
+  title     = {Parallel {CCD++} on {GPU} for matrix factorization},
+  booktitle = {Proceedings of the General Purpose GPUs (GPGPU-10)},
+  pages     = {73--83},
+  year      = {2017},
+  publisher = {ACM},
+  doi       = {10.1145/3038228.3038240}
+}

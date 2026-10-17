@@ -1,27 +1,124 @@
-# Build artifacts left over from compiling/running the vendored external baselines
+# ==============================================================================
+# .gitignore for comparing_baseline
+# Keeps the repository clean and under light version control (~10-20 MB),
+# excluding >8 GB of binary datasets, generated matrix dumps, and build artifacts.
+# All data generation and split pipelines are fully documented in README.md.
+# ==============================================================================
+
+# ------------------------------------------------------------------------------
+# 1. Large Datasets, Matrix Dumps, Factor Snapshots & Models (>8 GB)
+# ------------------------------------------------------------------------------
+*.bin
+*.npy
+*.model
+*.mat
+
+# Preserve the tiny vendored toy example required for regression testing
+!cumf_ccd-master/toy_example/*.bin
+
+# Generated binary split and dump directories
+part2/new_results/splits/
+part2/new_results/external_inputs/
+part2/new_results/gram/
+part2/new_results/external/*.bin
+part2/new_results/external/*.model
+part2/new_results/accumulation_control/*.bin
+part2/new_results/fallback_factors_tmp/
+/new_results/
+
+# ------------------------------------------------------------------------------
+# 2. Review and Scratch Folders (Ignore whattodo and part2 except new_results)
+# ------------------------------------------------------------------------------
+whattodo/
+part2/*
+!part2/new_results/
+
+*.zip
+*.tar.gz
+*.tgz
+*.7z
+*.rar
+part2/*.zip
+whattodo/*.zip
+
+# ------------------------------------------------------------------------------
+# 3. Compiled Binaries, Objects & Build Artifacts
+# ------------------------------------------------------------------------------
+*.o
+*.obj
+*.so
+*.dylib
+*.dll
+*.exe
+*.out
+*.a
+*.lib
+
+# Local experiment binaries
+preprocess
+justapr
+justapr_2gpu
+only_scalar_fp32
+main_experiment
+bals_base
+bals_symtile
+abl_fp16
+abl_tf32
+abl_fp32
+
+# Build directories in new_results
+part2/new_results/bin/
+part2/new_results/fallback_bin/
+
+# Vendored external baseline binaries & object files
+cumf_als-master/*.o
+cumf_als-master/**/*.o
+cumf_als-master/als
 cumf_ccd-master/*.o
 cumf_ccd-master/**/*.o
 cumf_ccd-master/ccdp_gpu
+cumf_sgd-master/*.o
 cumf_sgd-master/**/*.o
 cumf_sgd-master/singleGPU/cumf_sgd
 cumf_sgd-master/test/mf-train
 cumf_sgd-master/test/mf-predict
 cumf_sgd-master/train.bin.model
 
-# Not for publication: compiled profiling binary, local tool state, old draft
+# Profiling binaries
 results/PAPER_MEASUREMENTS_20260803/ncu/bin/
-.agent/
-__pycache__/
-tpds_latex/
 
-# Not for publication: compiled profiling binary, local tool state, old draft
-results/PAPER_MEASUREMENTS_20260803/ncu/bin/
-.agent/
-__pycache__/
-tpds_latex/
+# ------------------------------------------------------------------------------
+# 4. LaTeX Build Artifacts
+# ------------------------------------------------------------------------------
+*.aux
+*.bbl
+*.blg
+*.log
+*.out
+*.synctex.gz
+*.toc
+*.fls
+*.fdb_latexmk
+part2/current_paper/*.aux
+part2/current_paper/*.bbl
+part2/current_paper/*.blg
+part2/current_paper/*.log
+part2/current_paper/*.out
+part2/current_paper/*.synctex.gz
 
-# Not for publication: compiled profiling binary, local tool state, old draft
-results/PAPER_MEASUREMENTS_20260803/ncu/bin/
-.agent/
+# ------------------------------------------------------------------------------
+# 5. Python & Environment Artifacts
+# ------------------------------------------------------------------------------
 __pycache__/
+*.py[cod]
+*$py.class
+.ipynb_checkpoints/
+.pytest_cache/
+
+# ------------------------------------------------------------------------------
+# 6. Local Tooling, Editors & Workspace Artifacts
+# ------------------------------------------------------------------------------
+.agent/
+.vscode/
+.idea/
 tpds_latex/

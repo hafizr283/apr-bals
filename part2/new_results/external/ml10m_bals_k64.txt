@@ -1,0 +1,98 @@
+=== CODE VERSION: SCALAR-FP32-ONLY (from SYNC-2026-07-06) [baseline leg of main_experiment.cu, no WMMA/FP16 launches] ===
+Regularization: WEIGHTED lambda (ALS-WR, cumf_als-style: diag += nnz_e*lambda)
+Init: cuMF-scale U(0,0.2) (CUMF_INIT=1)
+Loading binary preprocessed dataset: /home/pc/Desktop/2007080/latent_factorr_experimen/comparing_baseline/new_results/external_inputs/ml10m/warm_validation.bin
+69878 users, 10677 items | train=7022183, test=1004523
+[BALS_REORDER] Alg.3 applied: rows/cols sorted by descending nnz (max u_nnz=5138, max i_nnz=24517)
+User: 111068 nonzero tiles out of 183456 (39.5% skipped)
+Item: 111919 nonzero tiles out of 182364 (38.6% skipped)
+User density stats: min=0.000000 max=0.652832 avg=0.009345 nonzero=111068/183456
+  Nonzero percentiles: p25=0.000488 p50=0.001709 p75=0.007812 p90=0.035400 p99=0.246338
+Item density stats: min=0.000000 max=0.669922 avg=0.009401 nonzero=111919/182364
+  Nonzero percentiles: p25=0.000488 p50=0.001465 p75=0.007812 p90=0.034424 p99=0.249023
+Load balancing: User jobs=14838 (from 2184 tile-rows), Item jobs=14148 (from 334 tile-rows)
+Weighted-lambda: empty entities (get plain lambda): users=0, items=52
+GPU memory after setup: 9479 MB free / 11910 MB total | LHS buffers=2
+
+=== FP32 Baseline (BALS — all tiles FP32, scalar-only, WEIGHTED lambda like cumf_als) ===
+Iter  1 | Train RMSE: 0.824506 | Test RMSE: 0.884815
+CUMULATIVE_WALL_MS 306.707977
+Iter  2 | Train RMSE: 0.718897 | Test RMSE: 0.825333
+CUMULATIVE_WALL_MS 613.383179
+Iter  3 | Train RMSE: 0.679891 | Test RMSE: 0.805040
+CUMULATIVE_WALL_MS 920.005798
+Iter  4 | Train RMSE: 0.665569 | Test RMSE: 0.797945
+CUMULATIVE_WALL_MS 1226.680420
+Iter  5 | Train RMSE: 0.658027 | Test RMSE: 0.794330
+CUMULATIVE_WALL_MS 1533.329712
+Iter  6 | Train RMSE: 0.653378 | Test RMSE: 0.792170
+CUMULATIVE_WALL_MS 1840.001343
+Iter  7 | Train RMSE: 0.650264 | Test RMSE: 0.790767
+CUMULATIVE_WALL_MS 2146.643311
+Iter  8 | Train RMSE: 0.648060 | Test RMSE: 0.789814
+CUMULATIVE_WALL_MS 2453.289307
+Iter  9 | Train RMSE: 0.646434 | Test RMSE: 0.789147
+CUMULATIVE_WALL_MS 2759.950928
+Iter 10 | Train RMSE: 0.645198 | Test RMSE: 0.788670
+CUMULATIVE_WALL_MS 3066.918945
+Iter 11 | Train RMSE: 0.644234 | Test RMSE: 0.788326
+CUMULATIVE_WALL_MS 3373.598389
+Iter 12 | Train RMSE: 0.643470 | Test RMSE: 0.788074
+CUMULATIVE_WALL_MS 3680.286377
+Iter 13 | Train RMSE: 0.642855 | Test RMSE: 0.787892
+CUMULATIVE_WALL_MS 3986.979980
+Iter 14 | Train RMSE: 0.642354 | Test RMSE: 0.787760
+CUMULATIVE_WALL_MS 4293.696777
+Iter 15 | Train RMSE: 0.641942 | Test RMSE: 0.787667
+CUMULATIVE_WALL_MS 4600.337891
+Iter 16 | Train RMSE: 0.641600 | Test RMSE: 0.787602
+CUMULATIVE_WALL_MS 4906.963379
+Iter 17 | Train RMSE: 0.641315 | Test RMSE: 0.787559
+CUMULATIVE_WALL_MS 5213.588867
+Iter 18 | Train RMSE: 0.641075 | Test RMSE: 0.787534
+CUMULATIVE_WALL_MS 5520.248535
+Iter 19 | Train RMSE: 0.640872 | Test RMSE: 0.787521
+CUMULATIVE_WALL_MS 5826.890137
+Iter 20 | Train RMSE: 0.640700 | Test RMSE: 0.787517
+CUMULATIVE_WALL_MS 6133.537109
+Iter 21 | Train RMSE: 0.640553 | Test RMSE: 0.787522
+CUMULATIVE_WALL_MS 6440.155762
+Iter 22 | Train RMSE: 0.640426 | Test RMSE: 0.787531
+CUMULATIVE_WALL_MS 6746.778320
+Iter 23 | Train RMSE: 0.640317 | Test RMSE: 0.787546
+CUMULATIVE_WALL_MS 7053.444824
+Iter 24 | Train RMSE: 0.640223 | Test RMSE: 0.787563
+CUMULATIVE_WALL_MS 7360.137695
+Iter 25 | Train RMSE: 0.640141 | Test RMSE: 0.787583
+CUMULATIVE_WALL_MS 7666.790527
+Iter 26 | Train RMSE: 0.640070 | Test RMSE: 0.787604
+CUMULATIVE_WALL_MS 7973.460449
+Iter 27 | Train RMSE: 0.640007 | Test RMSE: 0.787626
+CUMULATIVE_WALL_MS 8280.066406
+Iter 28 | Train RMSE: 0.639952 | Test RMSE: 0.787649
+CUMULATIVE_WALL_MS 8586.699219
+Iter 29 | Train RMSE: 0.639903 | Test RMSE: 0.787673
+CUMULATIVE_WALL_MS 8893.321289
+Iter 30 | Train RMSE: 0.639860 | Test RMSE: 0.787697
+CUMULATIVE_WALL_MS 9199.960938
+
+=== Profiling: FP32 Baseline (BALS — all tiles FP32, scalar-only, WEIGHTED lambda like cumf_als) (30 iters) ===
+User LHS+RHS: 4299.25 ms total | 143.31 ms/iter |  210.1 GFlops/s
+User Cholesky: 375.83 ms total | 12.53 ms/iter
+Item LHS+RHS: 4332.50 ms total | 144.42 ms/iter |  208.5 GFlops/s
+Item Cholesky:  57.95 ms total |  1.93 ms/iter
+RMSE:          133.16 ms total |  4.44 ms/call
+(Cholesky overlaps next batch's LHS+RHS on a 2nd stream; LHS+RHS rows = EXPOSED time = phase span minus solve busy time, so their GFlops/s overstates pure kernel throughput. Totals remain exact.)
+Total FLOPs: 1806.67 GFLOPs | Throughput: 196.4 GFlops/s (compute: 199.3)
+Training Complete in 9.200 seconds!
+
+╔══════════════════════════════════════════════════════════════╗
+║        SCALAR FP32 BASELINE — single run  (80/20 split)     ║
+╠══════════════════════════════════════════════════════════════╣
+║  Compute time:              9065.54 ms                      ║
+║  Wall time:                 9200.01 ms                      ║
+╠══════════════════════════════════════════════════════════════╣
+║  Train RMSE:             0.639860                          ║
+║  Test  RMSE:             0.787697                          ║
+╚══════════════════════════════════════════════════════════════╝
+Params: K_DIM=64, lambda=0.0600 (weighted ALS-WR: diag += nnz_e*lambda), XB=32, YB=256 (yb_eff=128), ENTITY_BATCH_SIZE=60000, ROW_SPLIT=8, BATCHED_CHOLESKY_MAX_K=16, MAX_ITERS=50

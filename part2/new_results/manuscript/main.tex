@@ -1,0 +1,94 @@
+\documentclass[10pt,journal,compsoc]{IEEEtran}
+
+% ---------------------------------------------------------------------------
+% Submission toggle.
+%   \submissiontrue  : review version -- omits biographies (the IEEE Computer
+%                      Society page limit counts every page).
+%   \submissionfalse : camera-ready   -- restores biographies.
+% ---------------------------------------------------------------------------
+\newif\ifsubmission
+\submissionfalse
+
+\usepackage{amsmath,amsfonts,amssymb}
+\usepackage[noend]{algorithmic}
+\renewcommand{\algorithmiccomment}[1]{\hfill$\triangleright$~#1}
+\usepackage{algorithm}
+\usepackage{array}
+\usepackage{multirow}
+\usepackage[caption=false,font=normalsize,labelfont=sf,textfont=sf]{subfig}
+\usepackage{textcomp}
+\usepackage{stfloats}
+\usepackage{url}
+\usepackage{xurl}
+\usepackage{verbatim}
+\usepackage{graphicx}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta,backgrounds,decorations.pathreplacing,
+                shapes.geometric,fit,positioning,calc}
+\usepackage{xcolor}
+\usepackage{booktabs}
+\usepackage{cite}
+\hyphenation{op-tical net-works semi-conduc-tor IEEE-Xplore Technology}
+
+\begin{document}
+
+\title{Accelerating ALS Matrix Factorization on GPUs via Mixed-Precision Tensor Cores}
+
+\author{Md.~Hafizur~Rahman, K.~M.~Azharul~Hasan, and Md~Mehrab~Hossain~Opi
+\IEEEcompsocitemizethanks{
+\IEEEcompsocthanksitem M.~H.~Rahman is with the Department of Computer Science and Engineering, Khulna University of Engineering \& Technology, Khulna 9203, Bangladesh.\protect\\
+E-mail: rahman2007080@stud.kuet.ac.bd
+\IEEEcompsocthanksitem K.~M.~A.~Hasan is a Professor with the Department of Computer Science and Engineering, Khulna University of Engineering \& Technology, Khulna 9203, Bangladesh.\protect\\
+E-mail: az@cse.kuet.ac.bd
+\IEEEcompsocthanksitem M.~M.~H.~Opi is an Assistant Professor with the Department of Computer Science and Engineering, Khulna University of Engineering \& Technology, Khulna 9203, Bangladesh.\protect\\
+E-mail: opi@cse.kuet.ac.bd}}
+
+\markboth{IEEE Transactions on Parallel and Distributed Systems}%
+{Rahman \MakeLowercase{\textit{et al.}}: Accelerating ALS Matrix Factorization on GPUs via Mixed-Precision Tensor Cores}
+
+\IEEEtitleabstractindextext{%
+\input{sec/0_abstract}
+\begin{IEEEkeywords}
+Alternating least squares, collaborative filtering, GPU acceleration, matrix factorization, mixed precision, recommender systems, tensor cores.
+\end{IEEEkeywords}}
+
+\maketitle
+\IEEEdisplaynontitleabstractindextext
+\IEEEpeerreviewmaketitle
+
+\input{sec/1_intro}
+\input{sec/2_related}
+\input{sec/3_method}
+\input{sec/4_results}
+\input{sec/5_extended}
+\input{sec/6_external}
+\input{sec/7_conclusion}
+
+\section*{Code and Data Availability}
+The CUDA implementation, preprocessing and benchmarking harness, and run scripts are publicly available at \url{https://github.com/hafizr283/Baseline_Comarison_Of_APR_BALS} (commit \texttt{9d88f84}), together with the raw logs behind every reported number. The MovieLens datasets are available from GroupLens \cite{harper2016movielens}; the Netflix Prize data \cite{bennett2007netflix} are no longer distributed by Netflix but remain available from public archives such as Kaggle. Seed: 42. Toolchain: CUDA 12.0 and driver 580.159.03 (July runs), CUDA 12.9 and driver 580.173.02 (August runs, which reproduce Table~\ref{tab:main3060} within $0.5\%$), Nsight Compute 2025.2, Nsight Systems 2025.1.
+
+%\section*{Author Contributions}
+%M.~H.~Rahman designed and implemented the APR-BALS system, its tensor-core and scalar kernels, the batched Cholesky solvers, and the measurement harness; ported and ran the external baselines; performed all experiments; and drafted the manuscript. K.~M.~A.~Hasan supervised the work, guided the problem formulation and evaluation methodology, and revised the manuscript. M.~M.~H.~Opi contributed to the algorithmic design of the solver and dispatch, advised on the experimental protocol, and revised the manuscript. All authors approved the final version.
+
+%\section*{Acknowledgments}
+%This work was carried out in the Department of Computer Science and Engineering, Khulna University of Engineering \& Technology (KUET), Khulna, Bangladesh.
+
+\bibliographystyle{IEEEtran}
+\bibliography{ref}
+
+\ifsubmission\else
+%\begin{IEEEbiography}[{\includegraphics[width=1in,height=1.25in,clip,keepaspectratio]{authors/bio_rahman}}]{Md. Hafizur Rahman}
+%received the B.Sc. degree in computer science and engineering from Khulna University of Engineering \& Technology (KUET), Khulna, Bangladesh. His research interests include GPU computing, high-performance parallel algorithms, mixed-precision numerical methods, and recommender systems.
+%\end{IEEEbiography}
+
+%\begin{IEEEbiography}[{\includegraphics[width=1in,height=1.25in,clip,keepaspectratio]{authors/bio_hasan}}]{K. M. Azharul Hasan}
+%received the B.Sc.\ (Engg.) degree in computer science from Khulna University, Bangladesh, in 1999, the M.E.\ degree in computer science from the Asian Institute of Technology (AIT), Thailand, in 2002, and the Ph.D.\ degree from the Graduate School of Engineering, University of Fukui, Japan, in 2006. He is currently a Professor with the Department of Computer Science and Engineering, Khulna University of Engineering \& Technology (KUET), Khulna, Bangladesh. His research interests include data engineering, natural language processing, information retrieval, and high-performance computing.
+%\end{IEEEbiography}
+
+%\begin{IEEEbiography}[{\includegraphics[width=1in,height=1.25in,clip,keepaspectratio]{authors/bio_opi}}]{Md. Mehrab Hossain Opi}
+%is an Assistant Professor with the Department of Computer Science and Engineering, Khulna University of Engineering \& Technology (KUET), Khulna, Bangladesh. He was a World Finalist of the International Collegiate Programming Contest (ICPC) in 2024. His research interests include algorithm design, high-performance computing, and data management.
+%\end{IEEEbiography}
+\vfill
+\fi
+
+\end{document}

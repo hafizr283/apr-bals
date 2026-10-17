@@ -1,0 +1,16 @@
+{
+  "command": [
+    "/home/pc/Desktop/2007080/latent_factorr_experimen/comparing_baseline/new_results/bin/ship_k32",
+    "/home/pc/Desktop/2007080/latent_factorr_experimen/comparing_baseline/new_results/splits/netflix_ratings_test.bin",
+    "0.04"
+  ],
+  "environment": {
+    "CUDA_VISIBLE_DEVICES": "1",
+    "CHECK_EVERY": "30",
+    "FIXED_ITERS": "1",
+    "MAX_ITERS": "30",
+    "MBETA": "0.3"
+  },
+  "start": 1791997211.2934792,
+  "end": 1791997224.7681162
+}

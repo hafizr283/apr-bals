@@ -1,0 +1,69 @@
+=== CODE VERSION: SYNC-2026-07-20 [CHOL-MP 16-bit tiled Cholesky + optional IR + stale-L cache — UNVALIDATED ON GPU; CHOL_MP=0 path = 07-06 code] ===
+Tiled Cholesky precision: FP16 tiles, NO refinement (YOLO)
+Regularization: weighted-lambda ALS-WR (diag += nnz*lambda) | Init: cuMF-scale U(0,0.2)
+Loading binary preprocessed dataset: /home/pc/Desktop/2007080/netflix_ratings.bin
+==PROF== Connected to process 35775 (/home/pc/Desktop/2007080/latent_factorr_experimen/comparing_baseline/new_results/bin/ship_k96)
+480189 users, 17770 items | train=80570989, test=19909518
+[MOMENTUM] heavy-ball extrapolation ON, beta=0.300
+User: 1448852 nonzero tiles out of 2085834 (30.5% skipped)
+Item: 1462207 nonzero tiles out of 2086112 (29.9% skipped)
+APR-BALS Precision Tiers (User tiles): FP16 Tensor Core=708533 (34.0%), FP32 Scalar=1377301 (66.0%)
+APR-BALS Precision Tiers (Item tiles): FP16 Tensor Core=708290 (34.0%), FP32 Scalar=1377822 (66.0%)
+User density stats: min=0.000000 max=0.725342 avg=0.009350 nonzero=1448852/2085834
+  Nonzero percentiles: p25=0.000488 p50=0.000977 p75=0.004150 p90=0.021240 p99=0.286865
+Item density stats: min=0.000000 max=0.737061 avg=0.009319 nonzero=1462207/2086112
+  Nonzero percentiles: p25=0.000488 p50=0.000977 p75=0.003906 p90=0.020996 p99=0.286133
+
+=== NNZ per Precision Tier ===
+User-side: FP16=79127973 (98.2%)  FP32=1443016 (1.8%)
+Item-side: FP16=79100852 (98.2%)  FP32=1470137 (1.8%)
+Thesis signal: dense tiles (FP16 path) hold 98.2% of user-side train NNZ.
+If >40%: precision dispatch covers most compute -> strong thesis.
+If <20%: most compute in FP32 tiles -> thesis needs argument about dense-tile quality.
+Giant split: User giants=6345, Item giants=6403 (nnz >= 1024, 4 warps/giant)
+Load balancing: User jobs=187681 (from 15006 tile-rows), Item jobs=183021 (from 556 tile-rows)
+Hybrid split: User dense=472960 entities (14780 tile-rows, 785 sparse jobs), Item dense=17760 entities (555 tile-rows, 11 sparse jobs)
+
+=== APR-BALS experiment ===
+Iter  1 | Train RMSE: 0.869227 | Test RMSE: 0.922559
+CUMULATIVE_WALL_MS 736.685791
+Iter  2 | Train RMSE: 0.754350 | Test RMSE: 0.847259
+CUMULATIVE_WALL_MS 1472.287964
+Iter  3 | Train RMSE: 0.722449 | Test RMSE: 0.825417
+CUMULATIVE_WALL_MS 2207.958984
+Iter  4 | Train RMSE: 0.718163 | Test RMSE: 0.820305
+CUMULATIVE_WALL_MS 2943.951904
+Iter  5 | Train RMSE: 0.716254 | Test RMSE: 0.818571
+CUMULATIVE_WALL_MS 13760.770508
+Iter  6 | Train RMSE: 0.714628 | Test RMSE: 0.817683
+CUMULATIVE_WALL_MS 14496.858398
+Iter  7 | Train RMSE: 0.713411 | Test RMSE: 0.817139
+CUMULATIVE_WALL_MS 15232.478516
+Iter  8 | Train RMSE: 0.712642 | Test RMSE: 0.816831
+CUMULATIVE_WALL_MS 15968.295898
+Iter  9 | Train RMSE: 0.712186 | Test RMSE: 0.816698
+CUMULATIVE_WALL_MS 16704.021484
+Iter 10 | Train RMSE: 0.711922 | Test RMSE: 0.816679
+CUMULATIVE_WALL_MS 17440.185547
+
+=== Profiling: APR-BALS experiment (10 iters) ===
+User LHS+RHS: 12910.59 ms total | 1291.06 ms/iter |  593.1 GFlops/s
+User Cholesky:   0.03 ms total |  0.00 ms/iter
+Item LHS+RHS:  713.15 ms total | 71.31 ms/iter | 10737.6 GFlops/s
+Item Cholesky:   0.03 ms total |  0.00 ms/iter
+CHOL_MP [FP16 tiles, NO refinement (YOLO)]: non-finite solves zeroed = 0 entity-iters
+RMSE:         3793.08 ms total | 379.31 ms/call
+Total FLOPs: 15314.93 GFLOPs | Throughput: 879.3 GFlops/s (compute: 1124.1)
+Training Complete in 17.440 seconds!
+
+=== APR-BALS final ===
+Train RMSE: 0.711922 | Test RMSE: 0.816679 | compute=13623.79 ms | wall=17440.21 ms
+Params: K_DIM=96, lambda=0.05, DENSE_NNZ_THRESH=4, WARPS_PER_BLOCK=4, XB=32, YB=256
+==PROF== Disconnected from process 35775
+"ID","Process ID","Process Name","Host Name","Kernel Name","Context","Stream","Block Size","Grid Size","Device","CC","Section Name","Metric Name","Metric Unit","Metric Value"
+"0","35775","ship_k96","127.0.0.1","void compute_LHS_RHS_wmma_giant<6, 4>(int, const int *, const int *, const float *, const __half *, float *, float *, int, int)","1","13","(128, 1, 1)","(6345, 1, 1)","0","8.6","Command line profiler metrics","smsp__warp_issue_stalled_lg_throttle_per_warp_active.max_rate","","1"
+"0","35775","ship_k96","127.0.0.1","void compute_LHS_RHS_wmma_giant<6, 4>(int, const int *, const int *, const float *, const __half *, float *, float *, int, int)","1","13","(128, 1, 1)","(6345, 1, 1)","0","8.6","Command line profiler metrics","smsp__warp_issue_stalled_lg_throttle_per_warp_active.pct","%","1.23"
+"0","35775","ship_k96","127.0.0.1","void compute_LHS_RHS_wmma_giant<6, 4>(int, const int *, const int *, const float *, const __half *, float *, float *, int, int)","1","13","(128, 1, 1)","(6345, 1, 1)","0","8.6","Command line profiler metrics","smsp__warp_issue_stalled_lg_throttle_per_warp_active.ratio","","0.01"
+"0","35775","ship_k96","127.0.0.1","void compute_LHS_RHS_wmma_giant<6, 4>(int, const int *, const int *, const float *, const __half *, float *, float *, int, int)","1","13","(128, 1, 1)","(6345, 1, 1)","0","8.6","Command line profiler metrics","smsp__warp_issue_stalled_long_scoreboard_per_warp_active.max_rate","","1"
+"0","35775","ship_k96","127.0.0.1","void compute_LHS_RHS_wmma_giant<6, 4>(int, const int *, const int *, const float *, const __half *, float *, float *, int, int)","1","13","(128, 1, 1)","(6345, 1, 1)","0","8.6","Command line profiler metrics","smsp__warp_issue_stalled_long_scoreboard_per_warp_active.pct","%","19.56"
+"0","35775","ship_k96","127.0.0.1","void compute_LHS_RHS_wmma_giant<6, 4>(int, const int *, const int *, const float *, const __half *, float *, float *, int, int)","1","13","(128, 1, 1)","(6345, 1, 1)","0","8.6","Command line profiler metrics","smsp__warp_issue_stalled_long_scoreboard_per_warp_active.ratio","","0.20"

@@ -1,0 +1,187 @@
+\section{The APR-BALS System}
+\label{sec:method}
+
+\subsection{ALS Formulation and Cost Model}
+\label{ssec:formulation}
+
+Let $R \in \mathbb{R}^{m \times n}$ hold the ratings of $m$ users on $n$ items, and let $\Omega$ be the set of observed positions. A rank-$K$ model $R \approx XY^{\mathsf{T}}$ assigns a latent vector $\mathbf{x}_u \in \mathbb{R}^{K}$ to each user and $\mathbf{y}_i \in \mathbb{R}^{K}$ to each item, and predicts $\hat{r}_{ui} = \mathbf{x}_u^{\mathsf{T}}\mathbf{y}_i$. Training minimizes the regularized squared error
+\begin{equation}
+\min_{X,Y} \sum_{(u,i)\in\Omega} \bigl( r_{ui} - \mathbf{x}_u^{\mathsf{T}} \mathbf{y}_i \bigr)^{2}
++ \lambda \Bigl( \sum_{u} n_u \lVert \mathbf{x}_u \rVert^{2} + \sum_{i} n_i \lVert \mathbf{y}_i \rVert^{2} \Bigr),
+\label{eq:mf_objective}
+\end{equation}
+where $n_u$ and $n_i$ are training-rating counts. This per-entity weighting is the weighted-$\lambda$ regularizer of ALS-WR (ALS with weighted-$\lambda$ regularization) by Zhou et al.\ \cite{zhou2008largescale}; Section~\ref{ssec:weightedlambda} explains why we prefer it to a uniform penalty. With $Y$ fixed, each user's subproblem is a ridge regression with the normal equation
+\begin{equation}
+\bigl( \underbrace{Y_{\Omega(u)}^{\mathsf{T}} Y_{\Omega(u)}}_{A_u} + \lambda n_u I \bigr)\, \mathbf{x}_u = \underbrace{Y_{\Omega(u)}^{\mathsf{T}} \mathbf{r}_u}_{\mathbf{b}_u},
+\label{eq:als_update}
+\end{equation}
+where $Y_{\Omega(u)}$ stacks the factor rows of the items rated by $u$. The system is symmetric positive definite and is solved by Cholesky factorization \cite{golub2013matrix}. The item side is symmetric, and one ALS sweep solves all users and then all items.
+
+Each half-sweep has two stages. Gram assembly forms $A_u$ and $\mathbf{b}_u$ for every entity; exploiting the symmetry of $A_u$, it costs
+\begin{equation}
+F_{\text{gram}} = 2\,|\Omega| \left( \tfrac{K(K+1)}{2} + K \right)
+\label{eq:gram_flops}
+\end{equation}
+floating-point operations per side. The solve stage then factorizes $m$ (or $n$) independent $K \times K$ systems at about $K^{3}/3$ operations each. On Netflix at $K=64$, Gram assembly performs about 690~GFLOP per sweep, over an order of magnitude more than the solves, and the FP32 baseline spends $96\%$ of its time there. Once Gram assembly is accelerated tenfold, the solve stage dominates, so APR-BALS treats the solver as a first-class design target.
+
+\textbf{Error model.} FP16 operands with FP32 accumulation admit a tighter bound than generic mixed precision. The WMMA path forms $A_u$ from $s = \lceil n_u/16 \rceil$ rank-16 updates. The product of two FP16 values is exact in FP32, because two 11-bit significands need at most 22 of FP32's 24 bits. Two error sources remain: rounding the operands to FP16, bounded by the unit roundoff $\varepsilon_{16} = 2^{-11}$, and FP32 accumulation over $s$ terms, bounded by $\gamma_s^{(32)} = s \varepsilon_{32}/(1 - s \varepsilon_{32})$ with $\varepsilon_{32} = 2^{-24}$ \cite{blanchard2020mixed,higham2002accuracy}. Hence
+\begin{equation}
+|\hat{A}_{pq} - A_{pq}| \;\lesssim\; \bigl( 2\varepsilon_{16} + \gamma_s^{(32)} \bigr)\, \lVert Y_{\Omega(u)} \rVert_F^{2}.
+\label{eq:error_bound}
+\end{equation}
+The heaviest Netflix user has 14{,}123 training ratings, so $s \le 883$ and $\gamma_s^{(32)} \le 5.3 \times 10^{-5}$, about $19\times$ below $2\varepsilon_{16} \approx 9.8 \times 10^{-4}$. The heaviest item has 187{,}512 ratings, but the giant kernel splits it across four warps (Section~\ref{ssec:wmma}), so each accumulates at most 2{,}930 terms and $\gamma_s^{(32)} \le 1.8 \times 10^{-4}$, still $5.6\times$ below the operand term. For every entity, the error is therefore dominated by operand rounding, which does not depend on degree, so a single dispatch rule is safe across a long-tailed degree distribution. FP16 accumulation would raise the bound to $0.76$ for the heaviest user. The bound ignores the 16-term accumulation inside each WMMA instruction ($\gamma_{16}^{(32)} \approx 9.5 \times 10^{-7}$) and assumes round-to-nearest, which tensor cores do not implement exactly \cite{markidis2018nvidia}. Because $\hat{A}_u$ and $\hat{\mathbf{b}}_u$ come from the same rounded rows, the WMMA path solves, up to accumulation error, the exact ridge problem on slightly perturbed features, and $\hat{A}_u$ stays positive semidefinite. Under the weighted regularizer, $\kappa(A_u + \lambda n_u I) \le 1 + \max_i \lVert \mathbf{y}_i \rVert^{2}/\lambda$ for every degree, so the solve amplifies the Gram error by a bounded factor, and Section~\ref{ssec:main_results} measures the end effect. FP16's range limit (65{,}504) does not affect this FP32-accumulated stage; it matters only for the FP16 solver tiles (Sections~\ref{ssec:fp16solver} and~\ref{ssec:momentum}).
+
+\subsection{System Overview}
+\label{ssec:framework}
+
+Fig.~\ref{fig:framework} shows the structure of APR-BALS, and Algorithm~\ref{alg:training} gives the training loop. Offline preprocessing sorts users and items by rating count, applies a random 80/20 train/test split, and writes both into a frozen binary file; every system evaluated in this paper reads the same file. At start-up, the host builds the scalar path's tiled storage and each side's tier boundaries $N_g \le N_d$ (Section~\ref{ssec:dispatch}).
+
+\begin{algorithm}[!t]
+\caption{APR-BALS training loop (host side)}
+\label{alg:training}
+\small
+\begin{algorithmic}[1]
+\REQUIRE frequency-sorted ratings; tier boundaries $N_g \le N_d$ per side; $X, Y \sim U(0, 0.2)$
+\FOR{$t = 1$ \TO $50$}
+  \FORALL{$(Z, W) \in \{(X, Y), (Y, X)\}$}
+    \STATE $\widehat{W} \gets \mathrm{fp16}(W)$ \COMMENT{solve $Z$ with $W$ fixed}
+    \FORALL{batches $B$ of 60{,}000 entities}
+      \STATE \textbf{stream 1:} wait until Gram buffer $B \bmod 2$ is free \label{alg:tr:wait}
+      \STATE \quad \textsc{Giant}$(B \cap [0, N_g))$, \textsc{Dense}$(B \cap [N_g, N_d))$
+      \STATE \quad \textsc{Scalar}$(B \cap [N_d, \infty))$ \COMMENT{$A_u$, $\mathbf{b}_u$ in FP32}
+      \STATE \textbf{stream 2:} after stream 1, solve \eqref{eq:als_update} for all $u \in B$ \label{alg:tr:solve}
+    \ENDFOR
+    \STATE $Z \gets Z + \beta (Z - Z_{\text{prev}})$ \COMMENT{shipped only}
+  \ENDFOR
+  \IF{$t \bmod 5 = 0$}
+    \STATE $r \gets \textsc{TrainRMSE}(X, Y)$
+    \STATE \textbf{if} $|r - r_{\text{prev}}| < 10^{-3}$ \textbf{then stop}; $r_{\text{prev}} \gets r$
+  \ENDIF
+\ENDFOR
+\end{algorithmic}
+\end{algorithm}
+
+\begin{figure}[!t]
+\centering
+\input{figures/fig_framework.tex}
+\caption{Overview of APR-BALS. The host routes each entity by its rating count $n_u$ (Eq.~\ref{eq:tier_def}) to two tensor-core tiers or a scalar FP32 tier. All tiers write FP32 Gram matrices, which a blocked batched Cholesky kernel solves. Each loop pass handles one batch of 60{,}000 entities, and user and item sides alternate. The dashed momentum step belongs to the shipped configuration only. The FP32 baseline runs the same binary with every entity routed to the scalar tier.}
+\label{fig:framework}
+\end{figure}
+
+\subsection{Frequency Sorting and Tier Dispatch}
+\label{ssec:dispatch}
+
+Frequency sorting renumbers users and items in decreasing order of rating count. The sort runs once offline, and afterwards every tier is a contiguous index range rather than a scatter list: the giant tier is $[0, N_g)$, the dense tier $[N_g, N_d)$, and the sparse tier the rest. With $n_u$ the training-rating count of entity $u$, the dispatch is
+\begin{equation}
+\text{tier}(u) =
+\begin{cases}
+\text{giant}, & n_u \ge \theta_g, \\
+\text{dense}, & \theta_d \le n_u < \theta_g, \\
+\text{sparse}, & n_u < \theta_d .
+\end{cases}
+\label{eq:tier_def}
+\end{equation}
+The dense threshold is $\theta_d = 4$. The WMMA kernels consume ratings in chunks of 16, and an entity with fewer than four ratings fills less than a quarter of one chunk. The giant threshold is 1024 on Netflix, the measured optimum, and 512 on MovieLens, where it was not swept; Section~\ref{ssec:sensitivity} shows that performance is flat in $\theta_g$ but sensitive to $\theta_d$.
+The split is highly skewed. On Netflix, the sparse tier receives $7{,}229$ users ($1.5\%$) but only $0.016\%$ of the training ratings. Across all datasets and both sides, the tensor-core tiers receive at least $99.77\%$ of the training ratings. The numerous but nearly empty sparse tail stays on CUDA cores in the tiled format of BALS \cite{chen2021bals}, which stages each 32-row tile's distinct feature rows in shared memory once; tiles with density $d_t \ge 10^{-3}$ stage them in FP16 but compute in FP32.
+
+\subsection{Tensor-Core Gram Kernels}
+\label{ssec:wmma}
+
+Algorithm~\ref{alg:wmma} shows both tensor-core kernels. They read the FP16 copy $\widehat{W}$ of the fixed factor matrix made at the start of the half-sweep. In the \textit{dense kernel} ($P=1$), one warp processes one entity. The warp gathers the FP16 feature rows of 16 rated items at a time into a $16 \times K$ shared-memory tile $S$ using 16-byte loads (line~\ref{alg:wm:stage}). It then adds $S^{\mathsf{T}} S$ to the Gram matrix one $16 \times 16$ block at a time (Fig.~\ref{fig:wmma}). Computing only the upper triangle takes
+\begin{equation}
+N_{\text{frag}} = \frac{K_T (K_T + 1)}{2}, \qquad K_T = K/16,
+\label{eq:frag_count}
+\end{equation}
+WMMA operations per chunk (line~\ref{alg:wm:mma}), which saves $25\%$ of the tensor-core work at $K=32$ and $42\%$ at $K=96$. The accumulators stay in FP32 register fragments for the entity's entire rating list, and $\mathbf{b}_u$ is accumulated in the same pass. For $K \le 48$, a register double buffer prefetches the next chunk; at larger $K$ no registers remain for it.
+
+The \textit{giant kernel} ($P=4$) handles entities with thousands of ratings, which would otherwise keep one warp busy while the rest of the GPU idles. Its four warps take interleaved chunks of the same entity and reduce their partial matrices through shared memory (line~\ref{alg:wm:reduce}). Neither kernel uses atomic operations, so both are deterministic.
+
+\begin{figure}[!t]
+\centering
+\input{figures/fig_wmma.tex}
+\caption{Dense-tier Gram assembly for one 16-rating chunk at $K=64$ ($K_T=4$). The warp gathers the FP16 factor rows of the chunk's items into $S$ and updates the ten upper-triangle fragments $C_{mn}$ of $A_u$ in FP32 registers. The highlighted update is $C_{13} \mathrel{+}= S_1^{\mathsf{T}} S_3$ (Algorithm~\ref{alg:wmma}, lines~\ref{alg:wm:stage}--\ref{alg:wm:mma}).}
+\label{fig:wmma}
+\end{figure}
+
+\begin{algorithm}[!t]
+\caption{Tensor-core Gram assembly for one entity $u$. $S_m$ is the $m$-th block of 16 columns of $S$}
+\label{alg:wmma}
+\small
+\begin{algorithmic}[1]
+\REQUIRE $\widehat{W}$ (FP16); ratings $(j_k, r_k)$, $0 \le k < n_u$; $P$ warps per entity (dense: 1, giant: 4)
+\FORALL{warps $p = 0, \dots, P-1$ \textbf{in parallel}}
+  \STATE $C_{mn} \gets 0$ for $0 \le m \le n < K_T$; $\mathbf{c} \gets \mathbf{0}$ \COMMENT{FP32}
+  \FOR{$k_0 = 16p$ \TO $n_u - 1$ \textbf{step} $16P$}
+    \STATE $S \gets \widehat{W}[j_{k_0}, \dots, j_{k_0+15}]$ \COMMENT{$16 \times K$, zero-padded} \label{alg:wm:stage}
+    \FOR{$m = 0$ \TO $K_T - 1$; $n = m$ \TO $K_T - 1$}
+      \STATE $C_{mn} \gets C_{mn} + S_m^{\mathsf{T}} S_n$ \COMMENT{one WMMA, FP32 acc.} \label{alg:wm:mma}
+    \ENDFOR
+    \STATE $\mathbf{c} \gets \mathbf{c} + S^{\mathsf{T}} (r_{k_0}, \dots, r_{k_0+15})^{\mathsf{T}}$
+  \ENDFOR
+\ENDFOR
+\STATE \textbf{if} $P > 1$: sum $C_{mn}$, $\mathbf{c}$ over warps in shared memory \label{alg:wm:reduce}
+\STATE write $C_{mn}$ to the upper triangle of $A_u$ and $\mathbf{c}$ to $\mathbf{b}_u$
+\end{algorithmic}
+\end{algorithm}
+
+\subsection{Scalar Kernel and Baseline Audit}
+\label{ssec:scalar}
+
+The scalar kernel assembles Gram contributions tile by tile. A thread block stages a tile's feature rows into shared memory, and each thread accumulates an $R \times R$ register block of the $K \times K$ output, with $R=3$ for $K \in \{48, 96\}$ and $R=2$ otherwise. Contributions are flushed to the Gram buffer with atomic additions. The same kernel, with every entity routed to it, is the FP32 baseline for every speedup, so its quality is critical.
+
+An early version of this kernel was defective. One 1024-thread block covered a full 32-row tile row, that is, $32K^{2}$ Gram outputs, so each thread held $K^{2}/32$ persistent accumulators, an $R \times R$ block in each of several rows. Under the 64-register limit required for full occupancy, these spilled to local memory at $K \ge 48$. The spill traffic throttled the baseline's Gram stage to 51--63~GFLOP/s, about a quarter of the corrected rate. The fix, \textit{row splitting}, divides each tile row among $G$ sibling blocks ($G = 1, 2, 4, 8, 8$ for the five values of $K$), which reduces the per-thread accumulator set $G$-fold without changing the arithmetic order (Fig.~\ref{fig:rowsplit}, Table~\ref{tab:baselineaudit}).
+
+\begin{figure}[!t]
+\centering
+\input{figures/fig_rowsplit.tex}
+\caption{Row splitting in the scalar baseline kernel at $K=64$. (a) One 1024-thread block owned a whole 32-row tile row ($32K^2$ outputs), so each thread held $K^2/32$ accumulators and spilled. (b) $G$ sibling blocks share the tile row, which cuts the per-thread set to $K^2/(32G)$ with the same arithmetic order.}
+\label{fig:rowsplit}
+\end{figure}
+
+\begin{table}[!t]
+\caption{Audit of the Scalar FP32 Baseline Before and After Row Splitting (Netflix, RTX 3060). Compute Speedup Is APR-BALS over the Baseline Excluding the RMSE Check. The Defective Column Is from Earlier Builds (Uniform $\lambda = 0.1$), So the Speedups Are Not Directly Comparable}
+\label{tab:baselineaudit}
+\centering
+\footnotesize
+\renewcommand{\arraystretch}{1.1}
+\setlength{\tabcolsep}{4pt}
+\begin{tabular}{lcc}
+\toprule
+ & \textbf{Defective} & \textbf{Corrected} \\
+\midrule
+Rows per block & 32 & $32/G$ \\
+Stack/thread, $K{=}48$ & 280 B & 0--64 B \\
+Stack/thread, $K{=}64$ & 656 B & 0--64 B \\
+Gram GFLOP/s, $K{=}48$ & 63 & 249--277 \\
+Gram GFLOP/s, $K{=}64$ & 51 & 187--201 \\
+Compute speedup, $K \ge 48$ & 30--44$\times$ & 12.8--17.2$\times$ \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Three checks bound the corrected baseline. First, \texttt{ptxas} reports no spill stores for any scalar template that the dispatch launches. Second, the kernel sustains 187--280~GFLOP/s, about $2\%$ of FP32 peak, with neither DRAM (42.2\%) nor SM (29.7\%) throughput saturated (Section~\ref{ssec:analysis}), which points to latency-bound gathers and atomic flushes. Third, our faithful reimplementation of BALS (Section~\ref{ssec:balsequiv}) runs within $0.5\%$ of the baseline per sweep at 14 of 20 dataset--rank pairs and is never more than $1.21\times$ faster. The baseline is not the fastest FP32 design, however: cuMF\_als, which uses a different Gram kernel and a CG solver, is $1.4$--$4.4\times$ faster per sweep at $K \ge 32$. Ratios over the baseline therefore isolate the dispatch within one design, and the comparison with cuMF\_als (Section~\ref{ssec:cumfals}) is the conservative measure of the overall advantage.
+
+\subsection{Blocked Batched Cholesky Solver}
+\label{ssec:cholesky}
+
+Each system $(A_u + \lambda n_u I)\mathbf{x}_u = \mathbf{b}_u$ is solved on the GPU. The regularization term is added to the diagonal by a separate kernel in the harness and inside the solver in the shipped binary (Section~\ref{ssec:nonsolver}), identically on both paths. At $K=16$, one thread factorizes one system in registers. For $K \ge 32$, a first packed solver reached only about $2\%$ of FP32 peak, limited by $2K$ block-wide barriers per system. The production solver instead assigns one thread block per system and works on $16 \times 16$ shared-memory tiles with a padded row pitch of 17 that avoids bank conflicts. It combines four techniques (Fig.~\ref{fig:cholesky}):
+(i)~\textit{blocked panels}: one warp factorizes each diagonal tile, all threads solve the panel below it, and the trailing update uses $2 \times 2$ register-blocked dot products, cutting block-wide barriers from $2K$ to about $3K/16$; (ii)~a \textit{folded forward solve}, which carries the right-hand side through the panels as an extra row; (iii)~an \textit{inverse-diagonal backward solve}, which stores each diagonal factor's inverse in the unused upper half of its tile, so back substitution becomes one matrix--vector product per tile column; and (iv)~\textit{overlapped factorization}, in which warp~0 factorizes the next diagonal tile while the other warps finish the trailing update, hiding the serial phase of every panel but the first.
+The resulting solver is $1.86\times$, $1.93\times$, $2.08\times$, and $2.26\times$ faster than the packed design at $K = 32$, 48, 64, and 96, and it uses 56 registers per thread (40 in the FP16-tile variant of Section~\ref{ssec:fp16solver}) with no spills at every $K$.
+
+\begin{figure}[!t]
+\centering
+\input{figures/fig_cholesky.tex}
+\caption{Tiled blocked Cholesky solver for $K \ge 32$. (a) Tile roles at panel $k{=}1$ of a $K{=}64$ system; the right-hand side $\mathbf{b}_u$ is carried through the panels. (b) Warp~0 factorizes the next diagonal tile while the other warps apply the trailing update of the current panel.}
+\label{fig:cholesky}
+\end{figure}
+
+\subsection{Execution Pipeline}
+\label{ssec:pipeline}
+
+Gram buffers for half a million entities do not fit in device memory, so each half-sweep processes batches of 60{,}000 entities. Gram assembly runs on one CUDA stream, and each finished batch is solved on a second, higher-priority stream using double-buffered Gram storage (lines~\ref{alg:tr:wait}--\ref{alg:tr:solve} of Algorithm~\ref{alg:training}); CUDA events enforce the two true dependencies. On both paths, the harness's RMSE kernel predicts from FP32 factors and reduces in double precision.
+
+\subsection{Convergence Protocol and Fair Comparison}
+\label{ssec:protocol}
+
+Both paths follow the same protocol. The factors start from the same seeded $U(0, 0.2)$ initialization, as in cuMF, and $\lambda = 0.048$ throughout. There is no separate validation split: $\lambda$ was selected on the test ratings (Section~\ref{ssec:weightedlambda}), whereas the thresholds and the momentum coefficient were chosen by wall time and stability. Absolute RMSE values may therefore be slightly optimistic; both paths share $\lambda$, so their comparison is unaffected. The train RMSE is evaluated every five sweeps, and training stops when it changes by less than $10^{-3}$ between two checks, with a limit of 50 sweeps.
+The baseline is the same binary with the tensor-core path switched off: every entity goes to the scalar tier, and no WMMA kernel is launched. Storage format, batching, solver, RMSE kernel, convergence rule, and stream pipeline are therefore shared. Tile structures are built from training data only, regularization enters only through the diagonal, and convergence is judged only on training error. Two restrictions are deliberate. The scalar kernel computes the full $K \times K$ Gram matrix, because a triangular variant ran slower; weakening the baseline was not acceptable. Only $K \in \{16, 32, 48, 64, 96\}$ is supported, because the WMMA shape requires multiples of 16 and each value needs its own register-tile instantiation. Switching the path off also zeroes the tile densities $d_t$, which disables the FP16 staging inside the scalar kernel, so the two-path ratio covers that optimization as well; Section~\ref{ssec:precisioniso} separates the effects with a single-kernel ablation.

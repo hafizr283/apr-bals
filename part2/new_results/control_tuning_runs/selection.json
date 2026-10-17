@@ -1,0 +1,22 @@
+{
+  "criterion": "minimum ML20M wall time; accuracy not used; all candidates zero-spill",
+  "wall_ms_unroll": [
+    [
+      17445.01,
+      "unroll1"
+    ],
+    [
+      10817.61,
+      "unroll4"
+    ],
+    [
+      10750.69,
+      "unroll8"
+    ],
+    [
+      7222.89,
+      "outer"
+    ]
+  ],
+  "selected_unroll": "outer"
+}
