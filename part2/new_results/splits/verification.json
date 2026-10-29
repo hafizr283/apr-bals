@@ -1,0 +1,30 @@
+[
+  {
+    "dataset": "ratings10",
+    "training_validation_disjoint_by_original_row": true,
+    "training_plus_validation_exact_original_training": true,
+    "test_arrays_bit_identical": true,
+    "same_training_for_val_and_test": true
+  },
+  {
+    "dataset": "ratings",
+    "training_validation_disjoint_by_original_row": true,
+    "training_plus_validation_exact_original_training": true,
+    "test_arrays_bit_identical": true,
+    "same_training_for_val_and_test": true
+  },
+  {
+    "dataset": "ratings32",
+    "training_validation_disjoint_by_original_row": true,
+    "training_plus_validation_exact_original_training": true,
+    "test_arrays_bit_identical": true,
+    "same_training_for_val_and_test": true
+  },
+  {
+    "dataset": "netflix_ratings",
+    "training_validation_disjoint_by_original_row": true,
+    "training_plus_validation_exact_original_training": true,
+    "test_arrays_bit_identical": true,
+    "same_training_for_val_and_test": true
+  }
+]

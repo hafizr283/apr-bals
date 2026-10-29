@@ -2,7 +2,7 @@
 # .gitignore for comparing_baseline
 # Keeps the repository clean and under light version control (~10-20 MB),
 # excluding >8 GB of binary datasets, generated matrix dumps, and build artifacts.
-# All data generation and split pipelines are fully documented in README.md.
+# README.md and docs/reproduction.md describe the available evidence and gaps.
 # ==============================================================================
 
 # ------------------------------------------------------------------------------
@@ -17,9 +17,8 @@
 !cumf_ccd-master/toy_example/*.bin
 
 # Generated binary split and dump directories
-part2/new_results/splits/
-part2/new_results/external_inputs/
-part2/new_results/gram/
+# Keep small split/Gram metadata and commands; binary payloads remain ignored
+# by the extension rules above. Do not ignore these directories wholesale.
 part2/new_results/external/*.bin
 part2/new_results/external/*.model
 part2/new_results/accumulation_control/*.bin
@@ -99,6 +98,9 @@ results/PAPER_MEASUREMENTS_20260803/ncu/bin/
 *.toc
 *.fls
 *.fdb_latexmk
+# These tiny probe logs are scientific evidence, not LaTeX build logs.
+!part2/new_results/gram/*.log
+!part2/new_results/accumulation_control/*.log
 part2/current_paper/*.aux
 part2/current_paper/*.bbl
 part2/current_paper/*.blg

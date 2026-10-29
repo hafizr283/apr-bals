@@ -1,0 +1,1602 @@
+[
+  {
+    "side": "users",
+    "entity": 0,
+    "nnz": 5888,
+    "K": 64,
+    "path": "atomic_fp32",
+    "relative_upper_frobenius": 5.6981401505836004e-08,
+    "max_abs_over_max_ref": 7.862824063342383e-08,
+    "fp16_operand_error": 8.1297892786908e-06
+  },
+  {
+    "side": "users",
+    "entity": 0,
+    "nnz": 5888,
+    "K": 64,
+    "path": "dense_fp16",
+    "relative_upper_frobenius": 4.199636596950201e-05,
+    "max_abs_over_max_ref": 6.34759935059485e-05,
+    "fp16_operand_error": 8.1297892786908e-06
+  },
+  {
+    "side": "users",
+    "entity": 0,
+    "nnz": 5888,
+    "K": 64,
+    "path": "sameflow_fp32",
+    "relative_upper_frobenius": 1.1235449047219456e-06,
+    "max_abs_over_max_ref": 1.7470540149596951e-06,
+    "fp16_operand_error": 8.1297892786908e-06
+  },
+  {
+    "side": "users",
+    "entity": 0,
+    "nnz": 5888,
+    "K": 64,
+    "path": "giant_fp16",
+    "relative_upper_frobenius": 1.2507647373074932e-05,
+    "max_abs_over_max_ref": 2.0106769008780327e-05,
+    "fp16_operand_error": 8.1297892786908e-06
+  },
+  {
+    "side": "users",
+    "entity": 1,
+    "nnz": 5638,
+    "K": 64,
+    "path": "atomic_fp32",
+    "relative_upper_frobenius": 5.479959874337623e-08,
+    "max_abs_over_max_ref": 8.094911693329232e-08,
+    "fp16_operand_error": 7.540130527729028e-06
+  },
+  {
+    "side": "users",
+    "entity": 1,
+    "nnz": 5638,
+    "K": 64,
+    "path": "dense_fp16",
+    "relative_upper_frobenius": 4.132867312719784e-05,
+    "max_abs_over_max_ref": 6.402461308346625e-05,
+    "fp16_operand_error": 7.540130527729028e-06
+  },
+  {
+    "side": "users",
+    "entity": 1,
+    "nnz": 5638,
+    "K": 64,
+    "path": "sameflow_fp32",
+    "relative_upper_frobenius": 1.0698598402470676e-06,
+    "max_abs_over_max_ref": 1.5205281642244423e-06,
+    "fp16_operand_error": 7.540130527729028e-06
+  },
+  {
+    "side": "users",
+    "entity": 1,
+    "nnz": 5638,
+    "K": 64,
+    "path": "giant_fp16",
+    "relative_upper_frobenius": 1.2367651423591805e-05,
+    "max_abs_over_max_ref": 2.012619811655057e-05,
+    "fp16_operand_error": 7.540130527729028e-06
+  },
+  {
+    "side": "users",
+    "entity": 2,
+    "nnz": 4136,
+    "K": 64,
+    "path": "atomic_fp32",
+    "relative_upper_frobenius": 5.7323075184080314e-08,
+    "max_abs_over_max_ref": 1.2414597591769958e-07,
+    "fp16_operand_error": 1.0094501578285044e-05
+  },
+  {
+    "side": "users",
+    "entity": 2,
+    "nnz": 4136,
+    "K": 64,
+    "path": "dense_fp16",
+    "relative_upper_frobenius": 2.990179600127174e-05,
+    "max_abs_over_max_ref": 5.971444197635755e-05,
+    "fp16_operand_error": 1.0094501578285044e-05
+  },
+  {
+    "side": "users",
+    "entity": 2,
+    "nnz": 4136,
+    "K": 64,
+    "path": "sameflow_fp32",
+    "relative_upper_frobenius": 9.322593194493511e-07,
+    "max_abs_over_max_ref": 1.7775472422121324e-06,
+    "fp16_operand_error": 1.0094501578285044e-05
+  },
+  {
+    "side": "users",
+    "entity": 2,
+    "nnz": 4136,
+    "K": 64,
+    "path": "giant_fp16",
+    "relative_upper_frobenius": 1.1884137344186807e-05,
+    "max_abs_over_max_ref": 2.6391932989560947e-05,
+    "fp16_operand_error": 1.0094501578285044e-05
+  },
+  {
+    "side": "users",
+    "entity": 3,
+    "nnz": 3587,
+    "K": 64,
+    "path": "atomic_fp32",
+    "relative_upper_frobenius": 5.6394743017974467e-08,
+    "max_abs_over_max_ref": 9.722705050224714e-08,
+    "fp16_operand_error": 9.76834627655013e-06
+  },
+  {
+    "side": "users",
+    "entity": 3,
+    "nnz": 3587,
+    "K": 64,
+    "path": "dense_fp16",
+    "relative_upper_frobenius": 2.8398644610223504e-05,
+    "max_abs_over_max_ref": 4.698690277464102e-05,
+    "fp16_operand_error": 9.76834627655013e-06
+  },
+  {
+    "side": "users",
+    "entity": 3,
+    "nnz": 3587,
+    "K": 64,
+    "path": "sameflow_fp32",
+    "relative_upper_frobenius": 8.707144544312667e-07,
+    "max_abs_over_max_ref": 1.600728587540788e-06,
+    "fp16_operand_error": 9.76834627655013e-06
+  },
+  {
+    "side": "users",
+    "entity": 3,
+    "nnz": 3587,
+    "K": 64,
+    "path": "giant_fp16",
+    "relative_upper_frobenius": 1.1882445289846846e-05,
+    "max_abs_over_max_ref": 2.2395442167569643e-05,
+    "fp16_operand_error": 9.76834627655013e-06
+  },
+  {
+    "side": "users",
+    "entity": 4,
+    "nnz": 3560,
+    "K": 64,
+    "path": "atomic_fp32",
+    "relative_upper_frobenius": 5.6192323761030785e-08,
+    "max_abs_over_max_ref": 9.448959846163934e-08,
+    "fp16_operand_error": 1.0615305226807742e-05
+  },
+  {
+    "side": "users",
+    "entity": 4,
+    "nnz": 3560,
+    "K": 64,
+    "path": "dense_fp16",
+    "relative_upper_frobenius": 2.8478088255433317e-05,
+    "max_abs_over_max_ref": 4.394381034915044e-05,
+    "fp16_operand_error": 1.0615305226807742e-05
+  },
+  {
+    "side": "users",
+    "entity": 4,
+    "nnz": 3560,
+    "K": 64,
+    "path": "sameflow_fp32",
+    "relative_upper_frobenius": 8.64380064349283e-07,
+    "max_abs_over_max_ref": 1.6580541981046335e-06,
+    "fp16_operand_error": 1.0615305226807742e-05
+  },
+  {
+    "side": "users",
+    "entity": 4,
+    "nnz": 3560,
+    "K": 64,
+    "path": "giant_fp16",
+    "relative_upper_frobenius": 1.254437900944286e-05,
+    "max_abs_over_max_ref": 2.008187507472714e-05,
+    "fp16_operand_error": 1.0615305226807742e-05
+  },
+  {
+    "side": "users",
+    "entity": 5,
+    "nnz": 3332,
+    "K": 64,
+    "path": "atomic_fp32",
+    "relative_upper_frobenius": 5.678769424032312e-08,
+    "max_abs_over_max_ref": 1.1352217553044613e-07,
+    "fp16_operand_error": 1.1653679095419408e-05
+  },
+  {
+    "side": "users",
+    "entity": 5,
+    "nnz": 3332,
+    "K": 64,
+    "path": "dense_fp16",
+    "relative_upper_frobenius": 2.629533120694905e-05,
+    "max_abs_over_max_ref": 3.85188265794058e-05,
+    "fp16_operand_error": 1.1653679095419408e-05
+  },
+  {
+    "side": "users",
+    "entity": 5,
+    "nnz": 3332,
+    "K": 64,
+    "path": "sameflow_fp32",
+    "relative_upper_frobenius": 8.148902478244276e-07,
+    "max_abs_over_max_ref": 1.121399807126954e-06,
+    "fp16_operand_error": 1.1653679095419408e-05
+  },
+  {
+    "side": "users",
+    "entity": 5,
+    "nnz": 3332,
+    "K": 64,
+    "path": "giant_fp16",
+    "relative_upper_frobenius": 1.2933572489471598e-05,
+    "max_abs_over_max_ref": 2.1128026978397203e-05,
+    "fp16_operand_error": 1.1653679095419408e-05
+  },
+  {
+    "side": "users",
+    "entity": 6,
+    "nnz": 3332,
+    "K": 64,
+    "path": "atomic_fp32",
+    "relative_upper_frobenius": 5.6524525541250714e-08,
+    "max_abs_over_max_ref": 9.088638385943925e-08,
+    "fp16_operand_error": 1.0936793791424043e-05
+  },
+  {
+    "side": "users",
+    "entity": 6,
+    "nnz": 3332,
+    "K": 64,
+    "path": "dense_fp16",
+    "relative_upper_frobenius": 2.7156145651479588e-05,
+    "max_abs_over_max_ref": 4.9156973917518004e-05,
+    "fp16_operand_error": 1.0936793791424043e-05
+  },
+  {
+    "side": "users",
+    "entity": 6,
+    "nnz": 3332,
+    "K": 64,
+    "path": "sameflow_fp32",
+    "relative_upper_frobenius": 8.082054195711748e-07,
+    "max_abs_over_max_ref": 1.9365877566047344e-06,
+    "fp16_operand_error": 1.0936793791424043e-05
+  },
+  {
+    "side": "users",
+    "entity": 6,
+    "nnz": 3332,
+    "K": 64,
+    "path": "giant_fp16",
+    "relative_upper_frobenius": 1.2757784251065425e-05,
+    "max_abs_over_max_ref": 2.6610371552601648e-05,
+    "fp16_operand_error": 1.0936793791424043e-05
+  },
+  {
+    "side": "users",
+    "entity": 7,
+    "nnz": 3004,
+    "K": 64,
+    "path": "atomic_fp32",
+    "relative_upper_frobenius": 5.6596931941291285e-08,
+    "max_abs_over_max_ref": 1.209753157343055e-07,
+    "fp16_operand_error": 1.1718173104351783e-05
+  },
+  {
+    "side": "users",
+    "entity": 7,
+    "nnz": 3004,
+    "K": 64,
+    "path": "dense_fp16",
+    "relative_upper_frobenius": 2.620959192708291e-05,
+    "max_abs_over_max_ref": 3.539989876838329e-05,
+    "fp16_operand_error": 1.1718173104351783e-05
+  },
+  {
+    "side": "users",
+    "entity": 7,
+    "nnz": 3004,
+    "K": 64,
+    "path": "sameflow_fp32",
+    "relative_upper_frobenius": 8.020194407380075e-07,
+    "max_abs_over_max_ref": 1.2593810766635513e-06,
+    "fp16_operand_error": 1.1718173104351783e-05
+  },
+  {
+    "side": "users",
+    "entity": 7,
+    "nnz": 3004,
+    "K": 64,
+    "path": "giant_fp16",
+    "relative_upper_frobenius": 1.3534571738262173e-05,
+    "max_abs_over_max_ref": 2.133921380048472e-05,
+    "fp16_operand_error": 1.1718173104351783e-05
+  },
+  {
+    "side": "users",
+    "entity": 8,
+    "nnz": 2958,
+    "K": 64,
+    "path": "atomic_fp32",
+    "relative_upper_frobenius": 6.024508872202592e-08,
+    "max_abs_over_max_ref": 8.31027371229055e-08,
+    "fp16_operand_error": 1.2006076761786917e-05
+  },
+  {
+    "side": "users",
+    "entity": 8,
+    "nnz": 2958,
+    "K": 64,
+    "path": "dense_fp16",
+    "relative_upper_frobenius": 2.4083791860465087e-05,
+    "max_abs_over_max_ref": 4.435272179894315e-05,
+    "fp16_operand_error": 1.2006076761786917e-05
+  },
+  {
+    "side": "users",
+    "entity": 8,
+    "nnz": 2958,
+    "K": 64,
+    "path": "sameflow_fp32",
+    "relative_upper_frobenius": 8.008424478657939e-07,
+    "max_abs_over_max_ref": 2.405539433264464e-06,
+    "fp16_operand_error": 1.2006076761786917e-05
+  },
+  {
+    "side": "users",
+    "entity": 8,
+    "nnz": 2958,
+    "K": 64,
+    "path": "giant_fp16",
+    "relative_upper_frobenius": 1.3030530542498743e-05,
+    "max_abs_over_max_ref": 2.8883144216858786e-05,
+    "fp16_operand_error": 1.2006076761786917e-05
+  },
+  {
+    "side": "users",
+    "entity": 9,
+    "nnz": 2784,
+    "K": 64,
+    "path": "atomic_fp32",
+    "relative_upper_frobenius": 5.675093511270032e-08,
+    "max_abs_over_max_ref": 8.858972035927177e-08,
+    "fp16_operand_error": 1.0189552941418842e-05
+  },
+  {
+    "side": "users",
+    "entity": 9,
+    "nnz": 2784,
+    "K": 64,
+    "path": "dense_fp16",
+    "relative_upper_frobenius": 2.19152936878505e-05,
+    "max_abs_over_max_ref": 3.240659890298838e-05,
+    "fp16_operand_error": 1.0189552941418842e-05
+  },
+  {
+    "side": "users",
+    "entity": 9,
+    "nnz": 2784,
+    "K": 64,
+    "path": "sameflow_fp32",
+    "relative_upper_frobenius": 7.581946048740057e-07,
+    "max_abs_over_max_ref": 1.4348317855400794e-06,
+    "fp16_operand_error": 1.0189552941418842e-05
+  },
+  {
+    "side": "users",
+    "entity": 9,
+    "nnz": 2784,
+    "K": 64,
+    "path": "giant_fp16",
+    "relative_upper_frobenius": 1.0809016006885991e-05,
+    "max_abs_over_max_ref": 1.740107038405775e-05,
+    "fp16_operand_error": 1.0189552941418842e-05
+  },
+  {
+    "side": "users",
+    "entity": 10,
+    "nnz": 2732,
+    "K": 64,
+    "path": "atomic_fp32",
+    "relative_upper_frobenius": 6.094489373556907e-08,
+    "max_abs_over_max_ref": 1.1015948583594878e-07,
+    "fp16_operand_error": 1.0753801435505472e-05
+  },
+  {
+    "side": "users",
+    "entity": 10,
+    "nnz": 2732,
+    "K": 64,
+    "path": "dense_fp16",
+    "relative_upper_frobenius": 2.4096043068437798e-05,
+    "max_abs_over_max_ref": 3.662331942894879e-05,
+    "fp16_operand_error": 1.0753801435505472e-05
+  },
+  {
+    "side": "users",
+    "entity": 10,
+    "nnz": 2732,
+    "K": 64,
+    "path": "sameflow_fp32",
+    "relative_upper_frobenius": 7.845275108000027e-07,
+    "max_abs_over_max_ref": 1.4497540257314892e-06,
+    "fp16_operand_error": 1.0753801435505472e-05
+  },
+  {
+    "side": "users",
+    "entity": 10,
+    "nnz": 2732,
+    "K": 64,
+    "path": "giant_fp16",
+    "relative_upper_frobenius": 1.2404423965280179e-05,
+    "max_abs_over_max_ref": 1.6894737574084458e-05,
+    "fp16_operand_error": 1.0753801435505472e-05
+  },
+  {
+    "side": "users",
+    "entity": 11,
+    "nnz": 2580,
+    "K": 64,
+    "path": "atomic_fp32",
+    "relative_upper_frobenius": 5.954175685854585e-08,
+    "max_abs_over_max_ref": 9.946529912397097e-08,
+    "fp16_operand_error": 1.1662699262864256e-05
+  },
+  {
+    "side": "users",
+    "entity": 11,
+    "nnz": 2580,
+    "K": 64,
+    "path": "dense_fp16",
+    "relative_upper_frobenius": 2.0884488102626827e-05,
+    "max_abs_over_max_ref": 4.1803501400157294e-05,
+    "fp16_operand_error": 1.1662699262864256e-05
+  },
+  {
+    "side": "users",
+    "entity": 11,
+    "nnz": 2580,
+    "K": 64,
+    "path": "sameflow_fp32",
+    "relative_upper_frobenius": 7.357016934261377e-07,
+    "max_abs_over_max_ref": 1.0632494441959363e-06,
+    "fp16_operand_error": 1.1662699262864256e-05
+  },
+  {
+    "side": "users",
+    "entity": 11,
+    "nnz": 2580,
+    "K": 64,
+    "path": "giant_fp16",
+    "relative_upper_frobenius": 1.205389267426841e-05,
+    "max_abs_over_max_ref": 2.679508229027429e-05,
+    "fp16_operand_error": 1.1662699262864256e-05
+  },
+  {
+    "side": "users",
+    "entity": 12,
+    "nnz": 2562,
+    "K": 64,
+    "path": "atomic_fp32",
+    "relative_upper_frobenius": 5.602694764353307e-08,
+    "max_abs_over_max_ref": 1.1337172383717937e-07,
+    "fp16_operand_error": 1.2603105196100238e-05
+  },
+  {
+    "side": "users",
+    "entity": 12,
+    "nnz": 2562,
+    "K": 64,
+    "path": "dense_fp16",
+    "relative_upper_frobenius": 2.2758173677477417e-05,
+    "max_abs_over_max_ref": 4.7069849737486476e-05,
+    "fp16_operand_error": 1.2603105196100238e-05
+  },
+  {
+    "side": "users",
+    "entity": 12,
+    "nnz": 2562,
+    "K": 64,
+    "path": "sameflow_fp32",
+    "relative_upper_frobenius": 7.184288309529371e-07,
+    "max_abs_over_max_ref": 1.1281182167322914e-06,
+    "fp16_operand_error": 1.2603105196100238e-05
+  },
+  {
+    "side": "users",
+    "entity": 12,
+    "nnz": 2562,
+    "K": 64,
+    "path": "giant_fp16",
+    "relative_upper_frobenius": 1.3508903199421361e-05,
+    "max_abs_over_max_ref": 2.993202043891926e-05,
+    "fp16_operand_error": 1.2603105196100238e-05
+  },
+  {
+    "side": "users",
+    "entity": 13,
+    "nnz": 2550,
+    "K": 64,
+    "path": "atomic_fp32",
+    "relative_upper_frobenius": 5.5463524068396435e-08,
+    "max_abs_over_max_ref": 9.919507796754358e-08,
+    "fp16_operand_error": 1.184546643252314e-05
+  },
+  {
+    "side": "users",
+    "entity": 13,
+    "nnz": 2550,
+    "K": 64,
+    "path": "dense_fp16",
+    "relative_upper_frobenius": 1.9999201112980584e-05,
+    "max_abs_over_max_ref": 3.989133992232988e-05,
+    "fp16_operand_error": 1.184546643252314e-05
+  },
+  {
+    "side": "users",
+    "entity": 13,
+    "nnz": 2550,
+    "K": 64,
+    "path": "sameflow_fp32",
+    "relative_upper_frobenius": 7.409375130830387e-07,
+    "max_abs_over_max_ref": 1.3486490109463853e-06,
+    "fp16_operand_error": 1.184546643252314e-05
+  },
+  {
+    "side": "users",
+    "entity": 13,
+    "nnz": 2550,
+    "K": 64,
+    "path": "giant_fp16",
+    "relative_upper_frobenius": 1.2048583732423227e-05,
+    "max_abs_over_max_ref": 2.458119679400543e-05,
+    "fp16_operand_error": 1.184546643252314e-05
+  },
+  {
+    "side": "users",
+    "entity": 14,
+    "nnz": 2532,
+    "K": 64,
+    "path": "atomic_fp32",
+    "relative_upper_frobenius": 5.5937867031110734e-08,
+    "max_abs_over_max_ref": 8.006738199441155e-08,
+    "fp16_operand_error": 1.2363323951761128e-05
+  },
+  {
+    "side": "users",
+    "entity": 14,
+    "nnz": 2532,
+    "K": 64,
+    "path": "dense_fp16",
+    "relative_upper_frobenius": 2.1489566993871847e-05,
+    "max_abs_over_max_ref": 3.639060046080079e-05,
+    "fp16_operand_error": 1.2363323951761128e-05
+  },
+  {
+    "side": "users",
+    "entity": 14,
+    "nnz": 2532,
+    "K": 64,
+    "path": "sameflow_fp32",
+    "relative_upper_frobenius": 7.44408138941919e-07,
+    "max_abs_over_max_ref": 1.0650143593155575e-06,
+    "fp16_operand_error": 1.2363323951761128e-05
+  },
+  {
+    "side": "users",
+    "entity": 14,
+    "nnz": 2532,
+    "K": 64,
+    "path": "giant_fp16",
+    "relative_upper_frobenius": 1.2925107831006623e-05,
+    "max_abs_over_max_ref": 2.274863480295751e-05,
+    "fp16_operand_error": 1.2363323951761128e-05
+  },
+  {
+    "side": "users",
+    "entity": 15,
+    "nnz": 2422,
+    "K": 64,
+    "path": "atomic_fp32",
+    "relative_upper_frobenius": 5.665573426153732e-08,
+    "max_abs_over_max_ref": 9.090152922979848e-08,
+    "fp16_operand_error": 1.3034831816345073e-05
+  },
+  {
+    "side": "users",
+    "entity": 15,
+    "nnz": 2422,
+    "K": 64,
+    "path": "dense_fp16",
+    "relative_upper_frobenius": 2.204804730202749e-05,
+    "max_abs_over_max_ref": 3.662224540993422e-05,
+    "fp16_operand_error": 1.3034831816345073e-05
+  },
+  {
+    "side": "users",
+    "entity": 15,
+    "nnz": 2422,
+    "K": 64,
+    "path": "sameflow_fp32",
+    "relative_upper_frobenius": 7.278340398892557e-07,
+    "max_abs_over_max_ref": 1.1268311770462936e-06,
+    "fp16_operand_error": 1.3034831816345073e-05
+  },
+  {
+    "side": "users",
+    "entity": 15,
+    "nnz": 2422,
+    "K": 64,
+    "path": "giant_fp16",
+    "relative_upper_frobenius": 1.3892430082134291e-05,
+    "max_abs_over_max_ref": 2.345761266215305e-05,
+    "fp16_operand_error": 1.3034831816345073e-05
+  },
+  {
+    "side": "users",
+    "entity": 16,
+    "nnz": 2328,
+    "K": 64,
+    "path": "atomic_fp32",
+    "relative_upper_frobenius": 6.224883232606489e-08,
+    "max_abs_over_max_ref": 8.356088337169628e-08,
+    "fp16_operand_error": 1.2165347861151938e-05
+  },
+  {
+    "side": "users",
+    "entity": 16,
+    "nnz": 2328,
+    "K": 64,
+    "path": "dense_fp16",
+    "relative_upper_frobenius": 2.1952569128960145e-05,
+    "max_abs_over_max_ref": 3.528443168369228e-05,
+    "fp16_operand_error": 1.2165347861151938e-05
+  },
+  {
+    "side": "users",
+    "entity": 16,
+    "nnz": 2328,
+    "K": 64,
+    "path": "sameflow_fp32",
+    "relative_upper_frobenius": 7.024672193255012e-07,
+    "max_abs_over_max_ref": 1.0830005229803126e-06,
+    "fp16_operand_error": 1.2165347861151938e-05
+  },
+  {
+    "side": "users",
+    "entity": 16,
+    "nnz": 2328,
+    "K": 64,
+    "path": "giant_fp16",
+    "relative_upper_frobenius": 1.3227557488979399e-05,
+    "max_abs_over_max_ref": 1.7454640849857243e-05,
+    "fp16_operand_error": 1.2165347861151938e-05
+  },
+  {
+    "side": "users",
+    "entity": 17,
+    "nnz": 2309,
+    "K": 64,
+    "path": "atomic_fp32",
+    "relative_upper_frobenius": 6.237775753762135e-08,
+    "max_abs_over_max_ref": 1.2207319233942563e-07,
+    "fp16_operand_error": 1.2143734598596973e-05
+  },
+  {
+    "side": "users",
+    "entity": 17,
+    "nnz": 2309,
+    "K": 64,
+    "path": "dense_fp16",
+    "relative_upper_frobenius": 2.1877412870091133e-05,
+    "max_abs_over_max_ref": 3.9301837160328786e-05,
+    "fp16_operand_error": 1.2143734598596973e-05
+  },
+  {
+    "side": "users",
+    "entity": 17,
+    "nnz": 2309,
+    "K": 64,
+    "path": "sameflow_fp32",
+    "relative_upper_frobenius": 7.00638920455495e-07,
+    "max_abs_over_max_ref": 1.0982535316156956e-06,
+    "fp16_operand_error": 1.2143734598596973e-05
+  },
+  {
+    "side": "users",
+    "entity": 17,
+    "nnz": 2309,
+    "K": 64,
+    "path": "giant_fp16",
+    "relative_upper_frobenius": 1.3191826970423565e-05,
+    "max_abs_over_max_ref": 2.223912855746395e-05,
+    "fp16_operand_error": 1.2143734598596973e-05
+  },
+  {
+    "side": "users",
+    "entity": 18,
+    "nnz": 2262,
+    "K": 64,
+    "path": "atomic_fp32",
+    "relative_upper_frobenius": 5.981977508764711e-08,
+    "max_abs_over_max_ref": 1.1295156122353214e-07,
+    "fp16_operand_error": 1.2731303929633358e-05
+  },
+  {
+    "side": "users",
+    "entity": 18,
+    "nnz": 2262,
+    "K": 64,
+    "path": "dense_fp16",
+    "relative_upper_frobenius": 2.0680444786422813e-05,
+    "max_abs_over_max_ref": 2.8074259516455982e-05,
+    "fp16_operand_error": 1.2731303929633358e-05
+  },
+  {
+    "side": "users",
+    "entity": 18,
+    "nnz": 2262,
+    "K": 64,
+    "path": "sameflow_fp32",
+    "relative_upper_frobenius": 6.910372020566658e-07,
+    "max_abs_over_max_ref": 7.828047127359264e-07,
+    "fp16_operand_error": 1.2731303929633358e-05
+  },
+  {
+    "side": "users",
+    "entity": 18,
+    "nnz": 2262,
+    "K": 64,
+    "path": "giant_fp16",
+    "relative_upper_frobenius": 1.3243767780579482e-05,
+    "max_abs_over_max_ref": 2.1765278614985398e-05,
+    "fp16_operand_error": 1.2731303929633358e-05
+  },
+  {
+    "side": "users",
+    "entity": 19,
+    "nnz": 2250,
+    "K": 64,
+    "path": "atomic_fp32",
+    "relative_upper_frobenius": 6.004177982360183e-08,
+    "max_abs_over_max_ref": 1.0931362943871566e-07,
+    "fp16_operand_error": 1.3032441437059038e-05
+  },
+  {
+    "side": "users",
+    "entity": 19,
+    "nnz": 2250,
+    "K": 64,
+    "path": "dense_fp16",
+    "relative_upper_frobenius": 2.036827774873521e-05,
+    "max_abs_over_max_ref": 3.1166273216814366e-05,
+    "fp16_operand_error": 1.3032441437059038e-05
+  },
+  {
+    "side": "users",
+    "entity": 19,
+    "nnz": 2250,
+    "K": 64,
+    "path": "sameflow_fp32",
+    "relative_upper_frobenius": 6.831667504482291e-07,
+    "max_abs_over_max_ref": 1.2024338546249813e-06,
+    "fp16_operand_error": 1.3032441437059038e-05
+  },
+  {
+    "side": "users",
+    "entity": 19,
+    "nnz": 2250,
+    "K": 64,
+    "path": "giant_fp16",
+    "relative_upper_frobenius": 1.3476614371191673e-05,
+    "max_abs_over_max_ref": 1.410084491898994e-05,
+    "fp16_operand_error": 1.3032441437059038e-05
+  },
+  {
+    "side": "items",
+    "entity": 0,
+    "nnz": 28121,
+    "K": 64,
+    "path": "atomic_fp32",
+    "relative_upper_frobenius": 1.308760474908429e-07,
+    "max_abs_over_max_ref": 2.8687676966806803e-07,
+    "fp16_operand_error": 2.793601749152415e-06
+  },
+  {
+    "side": "items",
+    "entity": 0,
+    "nnz": 28121,
+    "K": 64,
+    "path": "dense_fp16",
+    "relative_upper_frobenius": 0.0002673155938552713,
+    "max_abs_over_max_ref": 0.00032993318186878764,
+    "fp16_operand_error": 2.793601749152415e-06
+  },
+  {
+    "side": "items",
+    "entity": 0,
+    "nnz": 28121,
+    "K": 64,
+    "path": "sameflow_fp32",
+    "relative_upper_frobenius": 2.411922534432813e-06,
+    "max_abs_over_max_ref": 3.919917296222758e-06,
+    "fp16_operand_error": 2.793601749152415e-06
+  },
+  {
+    "side": "items",
+    "entity": 0,
+    "nnz": 28121,
+    "K": 64,
+    "path": "giant_fp16",
+    "relative_upper_frobenius": 6.623961321700011e-05,
+    "max_abs_over_max_ref": 8.055570106031487e-05,
+    "fp16_operand_error": 2.793601749152415e-06
+  },
+  {
+    "side": "items",
+    "entity": 1,
+    "nnz": 27640,
+    "K": 64,
+    "path": "atomic_fp32",
+    "relative_upper_frobenius": 1.3128444666791063e-07,
+    "max_abs_over_max_ref": 2.623911913156699e-07,
+    "fp16_operand_error": 2.437180982893367e-06
+  },
+  {
+    "side": "items",
+    "entity": 1,
+    "nnz": 27640,
+    "K": 64,
+    "path": "dense_fp16",
+    "relative_upper_frobenius": 0.00026304512708708456,
+    "max_abs_over_max_ref": 0.0003095315949974166,
+    "fp16_operand_error": 2.437180982893367e-06
+  },
+  {
+    "side": "items",
+    "entity": 1,
+    "nnz": 27640,
+    "K": 64,
+    "path": "sameflow_fp32",
+    "relative_upper_frobenius": 2.5013406859525535e-06,
+    "max_abs_over_max_ref": 4.862627050491709e-06,
+    "fp16_operand_error": 2.437180982893367e-06
+  },
+  {
+    "side": "items",
+    "entity": 1,
+    "nnz": 27640,
+    "K": 64,
+    "path": "giant_fp16",
+    "relative_upper_frobenius": 6.474812185283086e-05,
+    "max_abs_over_max_ref": 6.978082086836507e-05,
+    "fp16_operand_error": 2.437180982893367e-06
+  },
+  {
+    "side": "items",
+    "entity": 2,
+    "nnz": 27114,
+    "K": 64,
+    "path": "atomic_fp32",
+    "relative_upper_frobenius": 1.2900619492604328e-07,
+    "max_abs_over_max_ref": 3.112811086475265e-07,
+    "fp16_operand_error": 2.60898616564263e-06
+  },
+  {
+    "side": "items",
+    "entity": 2,
+    "nnz": 27114,
+    "K": 64,
+    "path": "dense_fp16",
+    "relative_upper_frobenius": 0.00025795330891654014,
+    "max_abs_over_max_ref": 0.00031869441578257635,
+    "fp16_operand_error": 2.60898616564263e-06
+  },
+  {
+    "side": "items",
+    "entity": 2,
+    "nnz": 27114,
+    "K": 64,
+    "path": "sameflow_fp32",
+    "relative_upper_frobenius": 2.4632519003056626e-06,
+    "max_abs_over_max_ref": 4.745169204761033e-06,
+    "fp16_operand_error": 2.60898616564263e-06
+  },
+  {
+    "side": "items",
+    "entity": 2,
+    "nnz": 27114,
+    "K": 64,
+    "path": "giant_fp16",
+    "relative_upper_frobenius": 6.368333200178577e-05,
+    "max_abs_over_max_ref": 8.096053931470865e-05,
+    "fp16_operand_error": 2.60898616564263e-06
+  },
+  {
+    "side": "items",
+    "entity": 3,
+    "nnz": 26270,
+    "K": 64,
+    "path": "atomic_fp32",
+    "relative_upper_frobenius": 1.2774926982327048e-07,
+    "max_abs_over_max_ref": 2.401733288826035e-07,
+    "fp16_operand_error": 2.8315110914604696e-06
+  },
+  {
+    "side": "items",
+    "entity": 3,
+    "nnz": 26270,
+    "K": 64,
+    "path": "dense_fp16",
+    "relative_upper_frobenius": 0.00025098059870313263,
+    "max_abs_over_max_ref": 0.0003024208192768324,
+    "fp16_operand_error": 2.8315110914604696e-06
+  },
+  {
+    "side": "items",
+    "entity": 3,
+    "nnz": 26270,
+    "K": 64,
+    "path": "sameflow_fp32",
+    "relative_upper_frobenius": 2.3620968650979807e-06,
+    "max_abs_over_max_ref": 4.344549649287318e-06,
+    "fp16_operand_error": 2.8315110914604696e-06
+  },
+  {
+    "side": "items",
+    "entity": 3,
+    "nnz": 26270,
+    "K": 64,
+    "path": "giant_fp16",
+    "relative_upper_frobenius": 6.199472696789298e-05,
+    "max_abs_over_max_ref": 7.091691570292414e-05,
+    "fp16_operand_error": 2.8315110914604696e-06
+  },
+  {
+    "side": "items",
+    "entity": 4,
+    "nnz": 25139,
+    "K": 64,
+    "path": "atomic_fp32",
+    "relative_upper_frobenius": 1.2950893131518703e-07,
+    "max_abs_over_max_ref": 2.563320070917431e-07,
+    "fp16_operand_error": 2.9297913483570835e-06
+  },
+  {
+    "side": "items",
+    "entity": 4,
+    "nnz": 25139,
+    "K": 64,
+    "path": "dense_fp16",
+    "relative_upper_frobenius": 0.00024082421796022408,
+    "max_abs_over_max_ref": 0.00029112690429645993,
+    "fp16_operand_error": 2.9297913483570835e-06
+  },
+  {
+    "side": "items",
+    "entity": 4,
+    "nnz": 25139,
+    "K": 64,
+    "path": "sameflow_fp32",
+    "relative_upper_frobenius": 2.3851729275277835e-06,
+    "max_abs_over_max_ref": 3.440517546766555e-06,
+    "fp16_operand_error": 2.9297913483570835e-06
+  },
+  {
+    "side": "items",
+    "entity": 4,
+    "nnz": 25139,
+    "K": 64,
+    "path": "giant_fp16",
+    "relative_upper_frobenius": 5.9524842644765414e-05,
+    "max_abs_over_max_ref": 7.264534324137976e-05,
+    "fp16_operand_error": 2.9297913483570835e-06
+  },
+  {
+    "side": "items",
+    "entity": 5,
+    "nnz": 23448,
+    "K": 64,
+    "path": "atomic_fp32",
+    "relative_upper_frobenius": 1.264620091599926e-07,
+    "max_abs_over_max_ref": 2.49027285708812e-07,
+    "fp16_operand_error": 2.851364192157982e-06
+  },
+  {
+    "side": "items",
+    "entity": 5,
+    "nnz": 23448,
+    "K": 64,
+    "path": "dense_fp16",
+    "relative_upper_frobenius": 0.00022495693784497508,
+    "max_abs_over_max_ref": 0.0002728564148885501,
+    "fp16_operand_error": 2.851364192157982e-06
+  },
+  {
+    "side": "items",
+    "entity": 5,
+    "nnz": 23448,
+    "K": 64,
+    "path": "sameflow_fp32",
+    "relative_upper_frobenius": 2.322291172990102e-06,
+    "max_abs_over_max_ref": 4.357192092700867e-06,
+    "fp16_operand_error": 2.851364192157982e-06
+  },
+  {
+    "side": "items",
+    "entity": 5,
+    "nnz": 23448,
+    "K": 64,
+    "path": "giant_fp16",
+    "relative_upper_frobenius": 5.545480274516894e-05,
+    "max_abs_over_max_ref": 6.61952231403504e-05,
+    "fp16_operand_error": 2.851364192157982e-06
+  },
+  {
+    "side": "items",
+    "entity": 6,
+    "nnz": 23231,
+    "K": 64,
+    "path": "atomic_fp32",
+    "relative_upper_frobenius": 1.273639173122182e-07,
+    "max_abs_over_max_ref": 2.0951503123158893e-07,
+    "fp16_operand_error": 2.930573740499392e-06
+  },
+  {
+    "side": "items",
+    "entity": 6,
+    "nnz": 23231,
+    "K": 64,
+    "path": "dense_fp16",
+    "relative_upper_frobenius": 0.0002239502267087251,
+    "max_abs_over_max_ref": 0.0002687565417360575,
+    "fp16_operand_error": 2.930573740499392e-06
+  },
+  {
+    "side": "items",
+    "entity": 6,
+    "nnz": 23231,
+    "K": 64,
+    "path": "sameflow_fp32",
+    "relative_upper_frobenius": 2.2929065954117427e-06,
+    "max_abs_over_max_ref": 4.6535647401358465e-06,
+    "fp16_operand_error": 2.930573740499392e-06
+  },
+  {
+    "side": "items",
+    "entity": 6,
+    "nnz": 23231,
+    "K": 64,
+    "path": "giant_fp16",
+    "relative_upper_frobenius": 5.5226466945275444e-05,
+    "max_abs_over_max_ref": 6.16810001799039e-05,
+    "fp16_operand_error": 2.930573740499392e-06
+  },
+  {
+    "side": "items",
+    "entity": 7,
+    "nnz": 23180,
+    "K": 64,
+    "path": "atomic_fp32",
+    "relative_upper_frobenius": 1.2780161521230315e-07,
+    "max_abs_over_max_ref": 2.6347260682880045e-07,
+    "fp16_operand_error": 3.1378735546912073e-06
+  },
+  {
+    "side": "items",
+    "entity": 7,
+    "nnz": 23180,
+    "K": 64,
+    "path": "dense_fp16",
+    "relative_upper_frobenius": 0.00022363280257034485,
+    "max_abs_over_max_ref": 0.0002790998924654139,
+    "fp16_operand_error": 3.1378735546912073e-06
+  },
+  {
+    "side": "items",
+    "entity": 7,
+    "nnz": 23180,
+    "K": 64,
+    "path": "sameflow_fp32",
+    "relative_upper_frobenius": 2.325173317332576e-06,
+    "max_abs_over_max_ref": 4.587274280872702e-06,
+    "fp16_operand_error": 3.1378735546912073e-06
+  },
+  {
+    "side": "items",
+    "entity": 7,
+    "nnz": 23180,
+    "K": 64,
+    "path": "giant_fp16",
+    "relative_upper_frobenius": 5.5666091246596296e-05,
+    "max_abs_over_max_ref": 7.256492388140408e-05,
+    "fp16_operand_error": 3.1378735546912073e-06
+  },
+  {
+    "side": "items",
+    "entity": 8,
+    "nnz": 22906,
+    "K": 64,
+    "path": "atomic_fp32",
+    "relative_upper_frobenius": 1.268211140057223e-07,
+    "max_abs_over_max_ref": 1.884517948698974e-07,
+    "fp16_operand_error": 3.175669797732819e-06
+  },
+  {
+    "side": "items",
+    "entity": 8,
+    "nnz": 22906,
+    "K": 64,
+    "path": "dense_fp16",
+    "relative_upper_frobenius": 0.00021807679285053419,
+    "max_abs_over_max_ref": 0.0002770286488725004,
+    "fp16_operand_error": 3.175669797732819e-06
+  },
+  {
+    "side": "items",
+    "entity": 8,
+    "nnz": 22906,
+    "K": 64,
+    "path": "sameflow_fp32",
+    "relative_upper_frobenius": 2.244209052201176e-06,
+    "max_abs_over_max_ref": 3.5685379675485275e-06,
+    "fp16_operand_error": 3.175669797732819e-06
+  },
+  {
+    "side": "items",
+    "entity": 8,
+    "nnz": 22906,
+    "K": 64,
+    "path": "giant_fp16",
+    "relative_upper_frobenius": 5.365890871518193e-05,
+    "max_abs_over_max_ref": 7.110482513335802e-05,
+    "fp16_operand_error": 3.175669797732819e-06
+  },
+  {
+    "side": "items",
+    "entity": 10,
+    "nnz": 21791,
+    "K": 64,
+    "path": "atomic_fp32",
+    "relative_upper_frobenius": 1.281565168696193e-07,
+    "max_abs_over_max_ref": 2.2427178761743287e-07,
+    "fp16_operand_error": 2.876687023422332e-06
+  },
+  {
+    "side": "items",
+    "entity": 10,
+    "nnz": 21791,
+    "K": 64,
+    "path": "dense_fp16",
+    "relative_upper_frobenius": 0.00020947529687138407,
+    "max_abs_over_max_ref": 0.00025505351649512454,
+    "fp16_operand_error": 2.876687023422332e-06
+  },
+  {
+    "side": "items",
+    "entity": 10,
+    "nnz": 21791,
+    "K": 64,
+    "path": "sameflow_fp32",
+    "relative_upper_frobenius": 2.1659037240873433e-06,
+    "max_abs_over_max_ref": 3.782242554480746e-06,
+    "fp16_operand_error": 2.876687023422332e-06
+  },
+  {
+    "side": "items",
+    "entity": 10,
+    "nnz": 21791,
+    "K": 64,
+    "path": "giant_fp16",
+    "relative_upper_frobenius": 5.1667832085173094e-05,
+    "max_abs_over_max_ref": 5.692169861027837e-05,
+    "fp16_operand_error": 2.876687023422332e-06
+  },
+  {
+    "side": "items",
+    "entity": 9,
+    "nnz": 21728,
+    "K": 64,
+    "path": "atomic_fp32",
+    "relative_upper_frobenius": 1.3268083672148118e-07,
+    "max_abs_over_max_ref": 4.497933693966163e-07,
+    "fp16_operand_error": 3.068172699812816e-06
+  },
+  {
+    "side": "items",
+    "entity": 9,
+    "nnz": 21728,
+    "K": 64,
+    "path": "dense_fp16",
+    "relative_upper_frobenius": 0.00020897922999299452,
+    "max_abs_over_max_ref": 0.0002552687814703924,
+    "fp16_operand_error": 3.068172699812816e-06
+  },
+  {
+    "side": "items",
+    "entity": 9,
+    "nnz": 21728,
+    "K": 64,
+    "path": "sameflow_fp32",
+    "relative_upper_frobenius": 2.225485621477133e-06,
+    "max_abs_over_max_ref": 3.300440598383145e-06,
+    "fp16_operand_error": 3.068172699812816e-06
+  },
+  {
+    "side": "items",
+    "entity": 9,
+    "nnz": 21728,
+    "K": 64,
+    "path": "giant_fp16",
+    "relative_upper_frobenius": 5.159067907553757e-05,
+    "max_abs_over_max_ref": 6.168973801265705e-05,
+    "fp16_operand_error": 3.068172699812816e-06
+  },
+  {
+    "side": "items",
+    "entity": 11,
+    "nnz": 21388,
+    "K": 64,
+    "path": "atomic_fp32",
+    "relative_upper_frobenius": 1.286907586968218e-07,
+    "max_abs_over_max_ref": 2.2816044926827951e-07,
+    "fp16_operand_error": 3.6489582060545425e-06
+  },
+  {
+    "side": "items",
+    "entity": 11,
+    "nnz": 21388,
+    "K": 64,
+    "path": "dense_fp16",
+    "relative_upper_frobenius": 0.00020319091351279436,
+    "max_abs_over_max_ref": 0.0002445249883809899,
+    "fp16_operand_error": 3.6489582060545425e-06
+  },
+  {
+    "side": "items",
+    "entity": 11,
+    "nnz": 21388,
+    "K": 64,
+    "path": "sameflow_fp32",
+    "relative_upper_frobenius": 2.145403053866122e-06,
+    "max_abs_over_max_ref": 2.974357876703853e-06,
+    "fp16_operand_error": 3.6489582060545425e-06
+  },
+  {
+    "side": "items",
+    "entity": 11,
+    "nnz": 21388,
+    "K": 64,
+    "path": "giant_fp16",
+    "relative_upper_frobenius": 5.029960522812765e-05,
+    "max_abs_over_max_ref": 5.8426932886485854e-05,
+    "fp16_operand_error": 3.6489582060545425e-06
+  },
+  {
+    "side": "items",
+    "entity": 12,
+    "nnz": 20992,
+    "K": 64,
+    "path": "atomic_fp32",
+    "relative_upper_frobenius": 1.2753717463322196e-07,
+    "max_abs_over_max_ref": 2.6838212598268454e-07,
+    "fp16_operand_error": 2.9262374141790717e-06
+  },
+  {
+    "side": "items",
+    "entity": 12,
+    "nnz": 20992,
+    "K": 64,
+    "path": "dense_fp16",
+    "relative_upper_frobenius": 0.00020096345854553595,
+    "max_abs_over_max_ref": 0.00023899524110829317,
+    "fp16_operand_error": 2.9262374141790717e-06
+  },
+  {
+    "side": "items",
+    "entity": 12,
+    "nnz": 20992,
+    "K": 64,
+    "path": "sameflow_fp32",
+    "relative_upper_frobenius": 2.1038899999598668e-06,
+    "max_abs_over_max_ref": 3.13666334828968e-06,
+    "fp16_operand_error": 2.9262374141790717e-06
+  },
+  {
+    "side": "items",
+    "entity": 12,
+    "nnz": 20992,
+    "K": 64,
+    "path": "giant_fp16",
+    "relative_upper_frobenius": 4.955639571786788e-05,
+    "max_abs_over_max_ref": 5.14471194563533e-05,
+    "fp16_operand_error": 2.9262374141790717e-06
+  },
+  {
+    "side": "items",
+    "entity": 13,
+    "nnz": 20816,
+    "K": 64,
+    "path": "atomic_fp32",
+    "relative_upper_frobenius": 1.2346077762895625e-07,
+    "max_abs_over_max_ref": 1.7361219483007272e-07,
+    "fp16_operand_error": 3.239881230236309e-06
+  },
+  {
+    "side": "items",
+    "entity": 13,
+    "nnz": 20816,
+    "K": 64,
+    "path": "dense_fp16",
+    "relative_upper_frobenius": 0.00019963370321193522,
+    "max_abs_over_max_ref": 0.0002429078171202523,
+    "fp16_operand_error": 3.239881230236309e-06
+  },
+  {
+    "side": "items",
+    "entity": 13,
+    "nnz": 20816,
+    "K": 64,
+    "path": "sameflow_fp32",
+    "relative_upper_frobenius": 2.1631440126352714e-06,
+    "max_abs_over_max_ref": 3.1697195320629676e-06,
+    "fp16_operand_error": 3.239881230236309e-06
+  },
+  {
+    "side": "items",
+    "entity": 13,
+    "nnz": 20816,
+    "K": 64,
+    "path": "giant_fp16",
+    "relative_upper_frobenius": 4.950011958285987e-05,
+    "max_abs_over_max_ref": 5.650805227230549e-05,
+    "fp16_operand_error": 3.239881230236309e-06
+  },
+  {
+    "side": "items",
+    "entity": 14,
+    "nnz": 20778,
+    "K": 64,
+    "path": "atomic_fp32",
+    "relative_upper_frobenius": 1.257019198531926e-07,
+    "max_abs_over_max_ref": 2.1055392849414613e-07,
+    "fp16_operand_error": 3.2533529005360574e-06
+  },
+  {
+    "side": "items",
+    "entity": 14,
+    "nnz": 20778,
+    "K": 64,
+    "path": "dense_fp16",
+    "relative_upper_frobenius": 0.00019740925214106826,
+    "max_abs_over_max_ref": 0.00023466890483259405,
+    "fp16_operand_error": 3.2533529005360574e-06
+  },
+  {
+    "side": "items",
+    "entity": 14,
+    "nnz": 20778,
+    "K": 64,
+    "path": "sameflow_fp32",
+    "relative_upper_frobenius": 2.0976819235785786e-06,
+    "max_abs_over_max_ref": 4.844598289379849e-06,
+    "fp16_operand_error": 3.2533529005360574e-06
+  },
+  {
+    "side": "items",
+    "entity": 14,
+    "nnz": 20778,
+    "K": 64,
+    "path": "giant_fp16",
+    "relative_upper_frobenius": 4.859803014249521e-05,
+    "max_abs_over_max_ref": 6.017701880833341e-05,
+    "fp16_operand_error": 3.2533529005360574e-06
+  },
+  {
+    "side": "items",
+    "entity": 15,
+    "nnz": 20386,
+    "K": 64,
+    "path": "atomic_fp32",
+    "relative_upper_frobenius": 1.311386844049679e-07,
+    "max_abs_over_max_ref": 2.1603887133205936e-07,
+    "fp16_operand_error": 2.9938699932592926e-06
+  },
+  {
+    "side": "items",
+    "entity": 15,
+    "nnz": 20386,
+    "K": 64,
+    "path": "dense_fp16",
+    "relative_upper_frobenius": 0.00019793095764660275,
+    "max_abs_over_max_ref": 0.0002400493656952143,
+    "fp16_operand_error": 2.9938699932592926e-06
+  },
+  {
+    "side": "items",
+    "entity": 15,
+    "nnz": 20386,
+    "K": 64,
+    "path": "sameflow_fp32",
+    "relative_upper_frobenius": 2.1533176719774917e-06,
+    "max_abs_over_max_ref": 3.3730905858090304e-06,
+    "fp16_operand_error": 2.9938699932592926e-06
+  },
+  {
+    "side": "items",
+    "entity": 15,
+    "nnz": 20386,
+    "K": 64,
+    "path": "giant_fp16",
+    "relative_upper_frobenius": 4.915701970053317e-05,
+    "max_abs_over_max_ref": 5.5635153873908934e-05,
+    "fp16_operand_error": 2.9938699932592926e-06
+  },
+  {
+    "side": "items",
+    "entity": 16,
+    "nnz": 20170,
+    "K": 64,
+    "path": "atomic_fp32",
+    "relative_upper_frobenius": 1.2406850964920733e-07,
+    "max_abs_over_max_ref": 1.8752877339998403e-07,
+    "fp16_operand_error": 3.2301207626790154e-06
+  },
+  {
+    "side": "items",
+    "entity": 16,
+    "nnz": 20170,
+    "K": 64,
+    "path": "dense_fp16",
+    "relative_upper_frobenius": 0.00019339892476612097,
+    "max_abs_over_max_ref": 0.0002380175078726699,
+    "fp16_operand_error": 3.2301207626790154e-06
+  },
+  {
+    "side": "items",
+    "entity": 16,
+    "nnz": 20170,
+    "K": 64,
+    "path": "sameflow_fp32",
+    "relative_upper_frobenius": 2.0310049242180824e-06,
+    "max_abs_over_max_ref": 3.726141239956437e-06,
+    "fp16_operand_error": 3.2301207626790154e-06
+  },
+  {
+    "side": "items",
+    "entity": 16,
+    "nnz": 20170,
+    "K": 64,
+    "path": "giant_fp16",
+    "relative_upper_frobenius": 4.7834668297486466e-05,
+    "max_abs_over_max_ref": 5.845160272173977e-05,
+    "fp16_operand_error": 3.2301207626790154e-06
+  },
+  {
+    "side": "items",
+    "entity": 17,
+    "nnz": 19587,
+    "K": 64,
+    "path": "atomic_fp32",
+    "relative_upper_frobenius": 1.2444039417590619e-07,
+    "max_abs_over_max_ref": 2.687886467156867e-07,
+    "fp16_operand_error": 3.6926178059073736e-06
+  },
+  {
+    "side": "items",
+    "entity": 17,
+    "nnz": 19587,
+    "K": 64,
+    "path": "dense_fp16",
+    "relative_upper_frobenius": 0.0001874796390507496,
+    "max_abs_over_max_ref": 0.00022023119134234994,
+    "fp16_operand_error": 3.6926178059073736e-06
+  },
+  {
+    "side": "items",
+    "entity": 17,
+    "nnz": 19587,
+    "K": 64,
+    "path": "sameflow_fp32",
+    "relative_upper_frobenius": 2.1056684595205416e-06,
+    "max_abs_over_max_ref": 4.579108726186334e-06,
+    "fp16_operand_error": 3.6926178059073736e-06
+  },
+  {
+    "side": "items",
+    "entity": 17,
+    "nnz": 19587,
+    "K": 64,
+    "path": "giant_fp16",
+    "relative_upper_frobenius": 4.644255819698394e-05,
+    "max_abs_over_max_ref": 5.7894773700120564e-05,
+    "fp16_operand_error": 3.6926178059073736e-06
+  },
+  {
+    "side": "items",
+    "entity": 18,
+    "nnz": 19364,
+    "K": 64,
+    "path": "atomic_fp32",
+    "relative_upper_frobenius": 1.2886458701350207e-07,
+    "max_abs_over_max_ref": 2.5424398508906216e-07,
+    "fp16_operand_error": 3.042848459053838e-06
+  },
+  {
+    "side": "items",
+    "entity": 18,
+    "nnz": 19364,
+    "K": 64,
+    "path": "dense_fp16",
+    "relative_upper_frobenius": 0.00018758386200135588,
+    "max_abs_over_max_ref": 0.0002244680508801915,
+    "fp16_operand_error": 3.042848459053838e-06
+  },
+  {
+    "side": "items",
+    "entity": 18,
+    "nnz": 19364,
+    "K": 64,
+    "path": "sameflow_fp32",
+    "relative_upper_frobenius": 2.012831767638363e-06,
+    "max_abs_over_max_ref": 3.097992070230652e-06,
+    "fp16_operand_error": 3.042848459053838e-06
+  },
+  {
+    "side": "items",
+    "entity": 18,
+    "nnz": 19364,
+    "K": 64,
+    "path": "giant_fp16",
+    "relative_upper_frobenius": 4.604212853876041e-05,
+    "max_abs_over_max_ref": 5.761738378958185e-05,
+    "fp16_operand_error": 3.042848459053838e-06
+  },
+  {
+    "side": "items",
+    "entity": 19,
+    "nnz": 19158,
+    "K": 64,
+    "path": "atomic_fp32",
+    "relative_upper_frobenius": 1.256080531187304e-07,
+    "max_abs_over_max_ref": 2.391216916941463e-07,
+    "fp16_operand_error": 3.2140151691814653e-06
+  },
+  {
+    "side": "items",
+    "entity": 19,
+    "nnz": 19158,
+    "K": 64,
+    "path": "dense_fp16",
+    "relative_upper_frobenius": 0.00018226954046114875,
+    "max_abs_over_max_ref": 0.0002184155186785177,
+    "fp16_operand_error": 3.2140151691814653e-06
+  },
+  {
+    "side": "items",
+    "entity": 19,
+    "nnz": 19158,
+    "K": 64,
+    "path": "sameflow_fp32",
+    "relative_upper_frobenius": 2.0472897201971764e-06,
+    "max_abs_over_max_ref": 3.253840386513377e-06,
+    "fp16_operand_error": 3.2140151691814653e-06
+  },
+  {
+    "side": "items",
+    "entity": 19,
+    "nnz": 19158,
+    "K": 64,
+    "path": "giant_fp16",
+    "relative_upper_frobenius": 4.481207063913814e-05,
+    "max_abs_over_max_ref": 5.695390661688421e-05,
+    "fp16_operand_error": 3.2140151691814653e-06
+  }
+]

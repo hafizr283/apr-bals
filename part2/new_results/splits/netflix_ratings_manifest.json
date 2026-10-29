@@ -1,0 +1,11 @@
+{
+  "source": "/home/pc/Desktop/2007080/netflix_ratings.bin",
+  "seed": 20261014,
+  "train": 70502572,
+  "validation": 10068417,
+  "test": 19909518,
+  "original_test_preserved": true,
+  "selection": "validation only",
+  "test_caveat": "Original test was used in historical tuning; this carve-out cannot undo historical exposure. A fresh external test would be stronger.",
+  "validation_index_sha256": "ef15441168bede8cbf7c1de54226be33f6b5e71115ae408b50d3c6c79c18e8c9"
+}

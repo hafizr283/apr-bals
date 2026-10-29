@@ -1,0 +1,6 @@
+{
+  "source": "/home/pc/Desktop/2007080/latent_factorr_experimen/comparing_baseline/new_results/splits/ratings10_validation.bin",
+  "scope": "validation ratings with both entities present in training; same mask for every method",
+  "removed_cold": 25,
+  "kept": 1004523
+}

@@ -1,0 +1,16 @@
+{
+  "command": [
+    "/home/pc/Desktop/2007080/latent_factorr_experimen/comparing_baseline/new_results/bin/fp16_k64",
+    "/home/pc/Desktop/2007080/ratings32.bin",
+    "0.048"
+  ],
+  "environment": {
+    "CUDA_VISIBLE_DEVICES": "1",
+    "CHECK_EVERY": "20",
+    "FIXED_ITERS": "1",
+    "MAX_ITERS": "20",
+    "DUMP_FACTORS": "/home/pc/Desktop/2007080/latent_factorr_experimen/comparing_baseline/new_results/gram/ml32m_k64"
+  },
+  "start": 1791997892.1558938,
+  "end": 1791997901.3360264
+}
