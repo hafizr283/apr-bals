@@ -1,4 +1,7 @@
-run,sweeps,train,test,compute_s,wall_s,gram_s,zeroed_solves
-netflix_ladder_fp16solve,10,0.71593,0.818571,3.53426,7.32146,3.53422,0
-netflix_ladder_fp32,10,0.715928,0.81857,4.13654,7.92772,4.13649,0
-netflix_ladder_sameflow,10,0.715976,0.818607,14.62697,18.417330000000003,14.62692,0
+run,sweeps,train,test,compute_s,wall_s,gram_s,zeroed_solves
+netflix_ladder_atomic,10,0.715976,0.818607,76.03175,79.82144,76.03170000000001,0
+netflix_ladder_fastcheck,10,0.715926,0.81857,3.52268,4.60367,3.52263,0
+netflix_ladder_fp16solve,10,0.71593,0.818571,3.53426,7.32146,3.53422,0
+netflix_ladder_fp32,10,0.715928,0.81857,4.13654,7.92772,4.13649,0
+netflix_ladder_momentum,8,0.712642,0.816831,2.81722,3.77525,2.81719,0
+netflix_ladder_sameflow,10,0.715976,0.818607,14.62697,18.417330000000003,14.62692,0

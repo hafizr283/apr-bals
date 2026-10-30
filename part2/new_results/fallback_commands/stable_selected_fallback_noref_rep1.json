@@ -1,0 +1,18 @@
+{
+  "command": [
+    "/home/pc/Desktop/2007080/latent_factorr_experimen/comparing_baseline/new_results/fallback_bin/fallback_noref",
+    "/home/pc/Desktop/2007080/latent_factorr_experimen/comparing_baseline/new_results/splits/netflix_ratings_test.bin",
+    "0.04"
+  ],
+  "environment": {
+    "CUDA_VISIBLE_DEVICES": "1",
+    "CHECK_EVERY": "30",
+    "MAX_ITERS": "30",
+    "FIXED_ITERS": "1",
+    "MBETA": "0.3",
+    "DUMP_FACTORS": "/home/pc/Desktop/2007080/latent_factorr_experimen/comparing_baseline/new_results/fallback_factors_tmp/stable_selected_fallback_noref_rep1"
+  },
+  "gpu_snapshot_before": "0, NVIDIA GeForce RTX 3060, 40 %, 359 MiB\n1, NVIDIA GeForce RTX 3060, 0 %, 15 MiB\n",
+  "start_unix": 1792005685.36842,
+  "end_unix": 1792005708.0880034
+}

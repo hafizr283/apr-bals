@@ -1,0 +1,15 @@
+{
+  "command": [
+    "/home/pc/Desktop/2007080/latent_factorr_experimen/comparing_baseline/new_results/bin/rounded_fma_k64",
+    "/home/pc/Desktop/2007080/ratings.bin",
+    "0.048"
+  ],
+  "environment": {
+    "CUDA_VISIBLE_DEVICES": "1",
+    "CHECK_EVERY": "1",
+    "FIXED_ITERS": "1",
+    "MAX_ITERS": "20"
+  },
+  "start": 1791997627.9529784,
+  "end": 1791997633.5786014
+}

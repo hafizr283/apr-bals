@@ -1,0 +1,58 @@
+[
+  {
+    "users": 480189,
+    "items": 17770,
+    "nnz_train": 70502572,
+    "nnz_test": 10068417,
+    "empty_items": 0,
+    "empty_users": 0,
+    "test_hits_empty_item": 0,
+    "test_hits_empty_user": 0,
+    "test_hits_any": 0,
+    "dataset": "netflix_ratings_validation.bin",
+    "max_user_degree": 12363,
+    "max_item_degree": 164043
+  },
+  {
+    "users": 69878,
+    "items": 10677,
+    "nnz_train": 7022183,
+    "nnz_test": 1004548,
+    "empty_items": 52,
+    "empty_users": 0,
+    "test_hits_empty_item": 25,
+    "test_hits_empty_user": 0,
+    "test_hits_any": 25,
+    "dataset": "ratings10_validation.bin",
+    "max_user_degree": 5138,
+    "max_item_degree": 24517
+  },
+  {
+    "users": 200948,
+    "items": 84432,
+    "nnz_train": 22467045,
+    "nnz_test": 3210485,
+    "empty_items": 6691,
+    "empty_users": 0,
+    "test_hits_empty_item": 2716,
+    "test_hits_empty_user": 0,
+    "test_hits_any": 2716,
+    "dataset": "ratings32_validation.bin",
+    "max_user_degree": 23297,
+    "max_item_degree": 72662
+  },
+  {
+    "users": 138493,
+    "items": 26744,
+    "nnz_train": 14044727,
+    "nnz_test": 2008200,
+    "empty_items": 1448,
+    "empty_users": 0,
+    "test_hits_empty_item": 573,
+    "test_hits_empty_user": 0,
+    "test_hits_any": 573,
+    "dataset": "ratings_validation.bin",
+    "max_user_degree": 6489,
+    "max_item_degree": 47264
+  }
+]

@@ -1,3 +1,5 @@
-dataset,selected_lambda,validation_rmse
-ml10m,0.06,0.787916
-netflix,0.04,0.820528
+dataset,selected_lambda,validation_rmse
+ml10m,0.06,0.787916
+ml20m,0.048,0.776661
+ml32m,0.048,0.766086
+netflix,0.04,0.820528

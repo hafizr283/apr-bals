@@ -1,0 +1,15 @@
+{
+  "command": [
+    "/home/pc/Desktop/2007080/latent_factorr_experimen/comparing_baseline/new_results/bin/fp16_k96",
+    "/home/pc/Desktop/2007080/ratings10.bin",
+    "0.048"
+  ],
+  "environment": {
+    "CUDA_VISIBLE_DEVICES": "1",
+    "CHECK_EVERY": "1",
+    "FIXED_ITERS": "1",
+    "MAX_ITERS": "20"
+  },
+  "start": 1791995616.7275453,
+  "end": 1791995620.0327306
+}

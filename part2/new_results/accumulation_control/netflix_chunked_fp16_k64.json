@@ -1,0 +1,15 @@
+{
+  "command": [
+    "/home/pc/Desktop/2007080/latent_factorr_experimen/comparing_baseline/new_results/bin/chunked_fp16_k64",
+    "/home/pc/Desktop/2007080/netflix_ratings.bin",
+    "0.048"
+  ],
+  "environment": {
+    "CUDA_VISIBLE_DEVICES": "0",
+    "CHECK_EVERY": "1",
+    "FIXED_ITERS": "1",
+    "MAX_ITERS": "20"
+  },
+  "start": 1791998572.0013964,
+  "end": 1791998597.3793943
+}

@@ -1,0 +1,15 @@
+{
+  "command": [
+    "/home/pc/Desktop/2007080/latent_factorr_experimen/comparing_baseline/new_results/bin/sameflow_k16",
+    "/home/pc/Desktop/2007080/latent_factorr_experimen/comparing_baseline/new_results/splits/netflix_ratings_test.bin",
+    "0.04"
+  ],
+  "environment": {
+    "CUDA_VISIBLE_DEVICES": "0",
+    "CHECK_EVERY": "30",
+    "FIXED_ITERS": "1",
+    "MAX_ITERS": "30"
+  },
+  "start": 1791998837.7153308,
+  "end": 1791998850.6781745
+}

@@ -1,0 +1,19 @@
+read_problem:/home/pc/Desktop/2007080/latent_factorr_experimen/comparing_baseline/new_results/external_inputs/netflix/sgd/test.bin
+m:476694, n:17770, nnz:10068417
+mf_load_model called
+fun: 0
+m:   480189
+n:   17770
+k:   128
+b:   3.321
+p_size:61464192
+loading feature p m:480189 ...
+progress:%0.000
+loading feature q n:17770 ...
+progress:%0.000
+time elapsed:0.15262000s
+
+calculating rmse ...
+progress: %99.320, est_RMSE: 0.8253
+RMSE = 0.8255
+time elapsed:1.40988700s

@@ -1,0 +1,8 @@
+{
+  "metric": "training-loop elapsed seconds including each implementation's per-sweep held-out evaluation",
+  "evaluation_set": "common warm-validation subset; no test-based selection",
+  "targets": {"ml10m": 0.80, "ml20m": 0.79, "ml32m": 0.78, "netflix": 0.84},
+  "selection_note": "Targets declared before the new external curves run, guided by the historical accuracy range. Full curves and unreached targets must also be reported.",
+  "ranks": "APR/CCD/BALS K=16,32,48,64,96; ALS F=20,30,50,60,100; SGD F=128 only at the K96 comparison",
+  "budgets": "30 sweeps APR/ALS/CCD/BALS, 40 epochs SGD"
+}

@@ -1,0 +1,5 @@
+113 hashed artifacts; 278 run logs audited
+{'log': 'validation/ml32m_ship_k96_lambda0.01.txt', 'final_present': True, 'metadata_present': True, 'nonfinite_text': False, 'zeroed_solves': [1]}
+{'log': 'validation/netflix_ship_k96_lambda0.01.txt', 'final_present': True, 'metadata_present': True, 'nonfinite_text': False, 'zeroed_solves': [2]}
+{'log': 'bf16_controls/netflix_fp16_ir1_k96_beta0.5.txt', 'final_present': True, 'metadata_present': True, 'nonfinite_text': False, 'zeroed_solves': [3142]}
+{'log': 'bf16_controls/netflix_ship_k96_beta0.5.txt', 'final_present': True, 'metadata_present': True, 'nonfinite_text': False, 'zeroed_solves': [3492]}

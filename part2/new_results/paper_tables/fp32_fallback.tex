@@ -1,0 +1,22 @@
+\begin{table*}[t]
+\centering
+\caption{FP32 solver fallback at Netflix $K=96$ (median of three GPU-1 runs, 30 sweeps).}
+\label{tab:fp32-fallback}
+\begin{tabular}{llrrrrrr}
+\toprule
+Protocol & Solver & FP16 fail (\%) & FP32 rec. & FP32 fail & Val. RMSE & Test RMSE & Wall (s) \\
+\midrule
+New split, stable & FP16 + FP32 fb & 0 (0.000000) & 0 & 0 & 0.820529 & 0.819465 & 10.54967 \\
+New split, $\beta$=.5 & FP16 zero, no IR & 6 (0.000040) & -- & -- & 0.822635 & 0.821787 & 10.56239 \\
+New split, $\beta$=.5 & FP16 fallback, no IR & 2 (0.000013) & 2 & 0 & 0.822030 & 0.821171 & 10.55798 \\
+New split, $\beta$=.5 & FP16 zero, IR1 & 9 (0.000060) & -- & -- & 0.823091 & 0.822242 & 11.64633 \\
+New split, $\beta$=.5 & FP16 fallback, IR1 & 2 (0.000013) & 2 & 0 & 0.822022 & 0.821168 & 11.64616 \\
+New split, $\beta$=.5 & FP32 & 0 (0.000000) & -- & -- & 0.822022 & 0.821168 & 12.35772 \\
+Original split, $\beta$=.5 & FP16 zero, no IR & 3417 (0.022873) & -- & -- & -- & 1.203685 & 11.09559 \\
+Original split, $\beta$=.5 & FP16 fallback, no IR & 33 (0.000221) & 33 & 0 & -- & 0.817964 & 11.08234 \\
+Original split, $\beta$=.5 & FP16 zero, IR1 & 3163 (0.021173) & -- & -- & -- & 1.263372 & 12.17853 \\
+Original split, $\beta$=.5 & FP16 fallback, IR1 & 27 (0.000181) & 27 & 0 & -- & 0.817956 & 12.17629 \\
+Original split, $\beta$=.5 & FP32 & 0 (0.000000) & -- & -- & -- & 0.817956 & 12.88565 \\
+\bottomrule
+\end{tabular}
+\end{table*}

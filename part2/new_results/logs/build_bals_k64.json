@@ -1,0 +1,28 @@
+{
+  "command": [
+    "/usr/local/cuda/bin/nvcc",
+    "-O3",
+    "-arch=sm_86",
+    "-std=c++14",
+    "-DWEIGHTED_LAMBDA=1",
+    "-DCUMF_INIT=1",
+    "-Xptxas=-v",
+    "-DK_DIM=64",
+    "-DBALS_REORDER=1",
+    "-DFAST_RMSE=0",
+    "/home/pc/Desktop/2007080/latent_factorr_experimen/comparing_baseline/new_results/src/bals.cu",
+    "-o",
+    "/home/pc/Desktop/2007080/latent_factorr_experimen/comparing_baseline/new_results/bin/bals_k64"
+  ],
+  "environment": {
+    "CUDA_VISIBLE_DEVICES": "1",
+    "OMP_NUM_THREADS": "4",
+    "MAX_ITERS": "30",
+    "FIXED_ITERS": "1",
+    "CHECK_EVERY": "1",
+    "MBETA": "0.3"
+  },
+  "returncode": 0,
+  "start": 1791998439.4672904,
+  "end": 1791998446.7989142
+}

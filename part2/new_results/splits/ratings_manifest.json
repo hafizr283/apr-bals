@@ -1,0 +1,11 @@
+{
+  "source": "/home/pc/Desktop/2007080/ratings.bin",
+  "seed": 20261014,
+  "train": 14044727,
+  "validation": 2008200,
+  "test": 3947336,
+  "original_test_preserved": true,
+  "selection": "validation only",
+  "test_caveat": "Original test was used in historical tuning; this carve-out cannot undo historical exposure. A fresh external test would be stronger.",
+  "validation_index_sha256": "52cd86fc971eed4a313d9e61d99a8660074d96f03c5d18938ce6159fb1ce59c5"
+}

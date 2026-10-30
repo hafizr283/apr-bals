@@ -1,0 +1,15 @@
+{
+  "command": [
+    "/home/pc/Desktop/2007080/latent_factorr_experimen/comparing_baseline/new_results/bin/sameflow_k64",
+    "/home/pc/Desktop/2007080/latent_factorr_experimen/comparing_baseline/new_results/splits/ratings10_test.bin",
+    "0.06"
+  ],
+  "environment": {
+    "CUDA_VISIBLE_DEVICES": "0",
+    "CHECK_EVERY": "30",
+    "FIXED_ITERS": "1",
+    "MAX_ITERS": "30"
+  },
+  "start": 1791998682.764231,
+  "end": 1791998685.304791
+}

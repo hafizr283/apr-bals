@@ -1,0 +1,2082 @@
+[
+  {
+    "log": "four_way/ml10m_atomic_k16.txt",
+    "final_present": true,
+    "metadata_present": true,
+    "nonfinite_text": false,
+    "zeroed_solves": []
+  },
+  {
+    "log": "four_way/ml10m_atomic_k32.txt",
+    "final_present": true,
+    "metadata_present": true,
+    "nonfinite_text": false,
+    "zeroed_solves": []
+  },
+  {
+    "log": "four_way/ml10m_atomic_k48.txt",
+    "final_present": true,
+    "metadata_present": true,
+    "nonfinite_text": false,
+    "zeroed_solves": []
+  },
+  {
+    "log": "four_way/ml10m_atomic_k64.txt",
+    "final_present": true,
+    "metadata_present": true,
+    "nonfinite_text": false,
+    "zeroed_solves": []
+  },
+  {
+    "log": "four_way/ml10m_atomic_k96.txt",
+    "final_present": true,
+    "metadata_present": true,
+    "nonfinite_text": false,
+    "zeroed_solves": []
+  },
+  {
+    "log": "four_way/ml10m_fp16_k16.txt",
+    "final_present": true,
+    "metadata_present": true,
+    "nonfinite_text": false,
+    "zeroed_solves": []
+  },
+  {
+    "log": "four_way/ml10m_fp16_k32.txt",
+    "final_present": true,
+    "metadata_present": true,
+    "nonfinite_text": false,
+    "zeroed_solves": []
+  },
+  {
+    "log": "four_way/ml10m_fp16_k48.txt",
+    "final_present": true,
+    "metadata_present": true,
+    "nonfinite_text": false,
+    "zeroed_solves": []
+  },
+  {
+    "log": "four_way/ml10m_fp16_k64.txt",
+    "final_present": true,
+    "metadata_present": true,
+    "nonfinite_text": false,
+    "zeroed_solves": []
+  },
+  {
+    "log": "four_way/ml10m_fp16_k96.txt",
+    "final_present": true,
+    "metadata_present": true,
+    "nonfinite_text": false,
+    "zeroed_solves": []
+  },
+  {
+    "log": "four_way/ml10m_sameflow_k16.txt",
+    "final_present": true,
+    "metadata_present": true,
+    "nonfinite_text": false,
+    "zeroed_solves": []
+  },
+  {
+    "log": "four_way/ml10m_sameflow_k32.txt",
+    "final_present": true,
+    "metadata_present": true,
+    "nonfinite_text": false,
+    "zeroed_solves": []
+  },
+  {
+    "log": "four_way/ml10m_sameflow_k48.txt",
+    "final_present": true,
+    "metadata_present": true,
+    "nonfinite_text": false,
+    "zeroed_solves": []
+  },
+  {
+    "log": "four_way/ml10m_sameflow_k64.txt",
+    "final_present": true,
+    "metadata_present": true,
+    "nonfinite_text": false,
+    "zeroed_solves": []
+  },
+  {
+    "log": "four_way/ml10m_sameflow_k96.txt",
+    "final_present": true,
+    "metadata_present": true,
+    "nonfinite_text": false,
+    "zeroed_solves": []
+  },
+  {
+    "log": "four_way/ml10m_tf32_k16.txt",
+    "final_present": true,
+    "metadata_present": true,
+    "nonfinite_text": false,
+    "zeroed_solves": []
+  },
+  {
+    "log": "four_way/ml10m_tf32_k32.txt",
+    "final_present": true,
+    "metadata_present": true,
+    "nonfinite_text": false,
+    "zeroed_solves": []
+  },
+  {
+    "log": "four_way/ml10m_tf32_k48.txt",
+    "final_present": true,
+    "metadata_present": true,
+    "nonfinite_text": false,
+    "zeroed_solves": []
+  },
+  {
+    "log": "four_way/ml10m_tf32_k64.txt",
+    "final_present": true,
+    "metadata_present": true,
+    "nonfinite_text": false,
+    "zeroed_solves": []
+  },
+  {
+    "log": "four_way/ml10m_tf32_k96.txt",
+    "final_present": true,
+    "metadata_present": true,
+    "nonfinite_text": false,
+    "zeroed_solves": []
+  },
+  {
+    "log": "four_way/ml20m_atomic_k16.txt",
+    "final_present": true,
+    "metadata_present": true,
+    "nonfinite_text": false,
+    "zeroed_solves": []
+  },
+  {
+    "log": "four_way/ml20m_atomic_k32.txt",
+    "final_present": true,
+    "metadata_present": true,
+    "nonfinite_text": false,
+    "zeroed_solves": []
+  },
+  {
+    "log": "four_way/ml20m_atomic_k48.txt",
+    "final_present": true,
+    "metadata_present": true,
+    "nonfinite_text": false,
+    "zeroed_solves": []
+  },
+  {
+    "log": "four_way/ml20m_atomic_k64.txt",
+    "final_present": true,
+    "metadata_present": true,
+    "nonfinite_text": false,
+    "zeroed_solves": []
+  },
+  {
+    "log": "four_way/ml20m_atomic_k96.txt",
+    "final_present": true,
+    "metadata_present": true,
+    "nonfinite_text": false,
+    "zeroed_solves": []
+  },
+  {
+    "log": "four_way/ml20m_fp16_k16.txt",
+    "final_present": true,
+    "metadata_present": true,
+    "nonfinite_text": false,
+    "zeroed_solves": []
+  },
+  {
+    "log": "four_way/ml20m_fp16_k32.txt",
+    "final_present": true,
+    "metadata_present": true,
+    "nonfinite_text": false,
+    "zeroed_solves": []
+  },
+  {
+    "log": "four_way/ml20m_fp16_k48.txt",
+    "final_present": true,
+    "metadata_present": true,
+    "nonfinite_text": false,
+    "zeroed_solves": []
+  },
+  {
+    "log": "four_way/ml20m_fp16_k64.txt",
+    "final_present": true,
+    "metadata_present": true,
+    "nonfinite_text": false,
+    "zeroed_solves": []
+  },
+  {
+    "log": "four_way/ml20m_fp16_k96.txt",
+    "final_present": true,
+    "metadata_present": true,
+    "nonfinite_text": false,
+    "zeroed_solves": []
+  },
+  {
+    "log": "four_way/ml20m_sameflow_k16.txt",
+    "final_present": true,
+    "metadata_present": true,
+    "nonfinite_text": false,
+    "zeroed_solves": []
+  },
+  {
+    "log": "four_way/ml20m_sameflow_k32.txt",
+    "final_present": true,
+    "metadata_present": true,
+    "nonfinite_text": false,
+    "zeroed_solves": []
+  },
+  {
+    "log": "four_way/ml20m_sameflow_k48.txt",
+    "final_present": true,
+    "metadata_present": true,
+    "nonfinite_text": false,
+    "zeroed_solves": []
+  },
+  {
+    "log": "four_way/ml20m_sameflow_k64.txt",
+    "final_present": true,
+    "metadata_present": true,
+    "nonfinite_text": false,
+    "zeroed_solves": []
+  },
+  {
+    "log": "four_way/ml20m_sameflow_k96.txt",
+    "final_present": true,
+    "metadata_present": true,
+    "nonfinite_text": false,
+    "zeroed_solves": []
+  },
+  {
+    "log": "four_way/ml20m_tf32_k16.txt",
+    "final_present": true,
+    "metadata_present": true,
+    "nonfinite_text": false,
+    "zeroed_solves": []
+  },
+  {
+    "log": "four_way/ml20m_tf32_k32.txt",
+    "final_present": true,
+    "metadata_present": true,
+    "nonfinite_text": false,
+    "zeroed_solves": []
+  },
+  {
+    "log": "four_way/ml20m_tf32_k48.txt",
+    "final_present": true,
+    "metadata_present": true,
+    "nonfinite_text": false,
+    "zeroed_solves": []
+  },
+  {
+    "log": "four_way/ml20m_tf32_k64.txt",
+    "final_present": true,
+    "metadata_present": true,
+    "nonfinite_text": false,
+    "zeroed_solves": []
+  },
+  {
+    "log": "four_way/ml20m_tf32_k96.txt",
+    "final_present": true,
+    "metadata_present": true,
+    "nonfinite_text": false,
+    "zeroed_solves": []
+  },
+  {
+    "log": "four_way/ml32m_atomic_k16.txt",
+    "final_present": true,
+    "metadata_present": true,
+    "nonfinite_text": false,
+    "zeroed_solves": []
+  },
+  {
+    "log": "four_way/ml32m_atomic_k32.txt",
+    "final_present": true,
+    "metadata_present": true,
+    "nonfinite_text": false,
+    "zeroed_solves": []
+  },
+  {
+    "log": "four_way/ml32m_atomic_k48.txt",
+    "final_present": true,
+    "metadata_present": true,
+    "nonfinite_text": false,
+    "zeroed_solves": []
+  },
+  {
+    "log": "four_way/ml32m_atomic_k64.txt",
+    "final_present": true,
+    "metadata_present": true,
+    "nonfinite_text": false,
+    "zeroed_solves": []
+  },
+  {
+    "log": "four_way/ml32m_atomic_k96.txt",
+    "final_present": true,
+    "metadata_present": true,
+    "nonfinite_text": false,
+    "zeroed_solves": []
+  },
+  {
+    "log": "four_way/ml32m_fp16_k16.txt",
+    "final_present": true,
+    "metadata_present": true,
+    "nonfinite_text": false,
+    "zeroed_solves": []
+  },
+  {
+    "log": "four_way/ml32m_fp16_k32.txt",
+    "final_present": true,
+    "metadata_present": true,
+    "nonfinite_text": false,
+    "zeroed_solves": []
+  },
+  {
+    "log": "four_way/ml32m_fp16_k48.txt",
+    "final_present": true,
+    "metadata_present": true,
+    "nonfinite_text": false,
+    "zeroed_solves": []
+  },
+  {
+    "log": "four_way/ml32m_fp16_k64.txt",
+    "final_present": true,
+    "metadata_present": true,
+    "nonfinite_text": false,
+    "zeroed_solves": []
+  },
+  {
+    "log": "four_way/ml32m_fp16_k96.txt",
+    "final_present": true,
+    "metadata_present": true,
+    "nonfinite_text": false,
+    "zeroed_solves": []
+  },
+  {
+    "log": "four_way/ml32m_sameflow_k16.txt",
+    "final_present": true,
+    "metadata_present": true,
+    "nonfinite_text": false,
+    "zeroed_solves": []
+  },
+  {
+    "log": "four_way/ml32m_sameflow_k32.txt",
+    "final_present": true,
+    "metadata_present": true,
+    "nonfinite_text": false,
+    "zeroed_solves": []
+  },
+  {
+    "log": "four_way/ml32m_sameflow_k48.txt",
+    "final_present": true,
+    "metadata_present": true,
+    "nonfinite_text": false,
+    "zeroed_solves": []
+  },
+  {
+    "log": "four_way/ml32m_sameflow_k64.txt",
+    "final_present": true,
+    "metadata_present": true,
+    "nonfinite_text": false,
+    "zeroed_solves": []
+  },
+  {
+    "log": "four_way/ml32m_sameflow_k96.txt",
+    "final_present": true,
+    "metadata_present": true,
+    "nonfinite_text": false,
+    "zeroed_solves": []
+  },
+  {
+    "log": "four_way/ml32m_tf32_k16.txt",
+    "final_present": true,
+    "metadata_present": true,
+    "nonfinite_text": false,
+    "zeroed_solves": []
+  },
+  {
+    "log": "four_way/ml32m_tf32_k32.txt",
+    "final_present": true,
+    "metadata_present": true,
+    "nonfinite_text": false,
+    "zeroed_solves": []
+  },
+  {
+    "log": "four_way/ml32m_tf32_k48.txt",
+    "final_present": true,
+    "metadata_present": true,
+    "nonfinite_text": false,
+    "zeroed_solves": []
+  },
+  {
+    "log": "four_way/ml32m_tf32_k64.txt",
+    "final_present": true,
+    "metadata_present": true,
+    "nonfinite_text": false,
+    "zeroed_solves": []
+  },
+  {
+    "log": "four_way/ml32m_tf32_k96.txt",
+    "final_present": true,
+    "metadata_present": true,
+    "nonfinite_text": false,
+    "zeroed_solves": []
+  },
+  {
+    "log": "four_way/netflix_atomic_k16.txt",
+    "final_present": true,
+    "metadata_present": true,
+    "nonfinite_text": false,
+    "zeroed_solves": []
+  },
+  {
+    "log": "four_way/netflix_atomic_k32.txt",
+    "final_present": true,
+    "metadata_present": true,
+    "nonfinite_text": false,
+    "zeroed_solves": []
+  },
+  {
+    "log": "four_way/netflix_atomic_k48.txt",
+    "final_present": true,
+    "metadata_present": true,
+    "nonfinite_text": false,
+    "zeroed_solves": []
+  },
+  {
+    "log": "four_way/netflix_atomic_k64.txt",
+    "final_present": true,
+    "metadata_present": true,
+    "nonfinite_text": false,
+    "zeroed_solves": []
+  },
+  {
+    "log": "four_way/netflix_atomic_k96.txt",
+    "final_present": true,
+    "metadata_present": true,
+    "nonfinite_text": false,
+    "zeroed_solves": []
+  },
+  {
+    "log": "four_way/netflix_fp16_k16.txt",
+    "final_present": true,
+    "metadata_present": true,
+    "nonfinite_text": false,
+    "zeroed_solves": []
+  },
+  {
+    "log": "four_way/netflix_fp16_k32.txt",
+    "final_present": true,
+    "metadata_present": true,
+    "nonfinite_text": false,
+    "zeroed_solves": []
+  },
+  {
+    "log": "four_way/netflix_fp16_k48.txt",
+    "final_present": true,
+    "metadata_present": true,
+    "nonfinite_text": false,
+    "zeroed_solves": []
+  },
+  {
+    "log": "four_way/netflix_fp16_k64.txt",
+    "final_present": true,
+    "metadata_present": true,
+    "nonfinite_text": false,
+    "zeroed_solves": []
+  },
+  {
+    "log": "four_way/netflix_fp16_k96.txt",
+    "final_present": true,
+    "metadata_present": true,
+    "nonfinite_text": false,
+    "zeroed_solves": []
+  },
+  {
+    "log": "four_way/netflix_sameflow_k16.txt",
+    "final_present": true,
+    "metadata_present": true,
+    "nonfinite_text": false,
+    "zeroed_solves": []
+  },
+  {
+    "log": "four_way/netflix_sameflow_k32.txt",
+    "final_present": true,
+    "metadata_present": true,
+    "nonfinite_text": false,
+    "zeroed_solves": []
+  },
+  {
+    "log": "four_way/netflix_sameflow_k48.txt",
+    "final_present": true,
+    "metadata_present": true,
+    "nonfinite_text": false,
+    "zeroed_solves": []
+  },
+  {
+    "log": "four_way/netflix_sameflow_k64.txt",
+    "final_present": true,
+    "metadata_present": true,
+    "nonfinite_text": false,
+    "zeroed_solves": []
+  },
+  {
+    "log": "four_way/netflix_sameflow_k96.txt",
+    "final_present": true,
+    "metadata_present": true,
+    "nonfinite_text": false,
+    "zeroed_solves": []
+  },
+  {
+    "log": "four_way/netflix_tf32_k16.txt",
+    "final_present": true,
+    "metadata_present": true,
+    "nonfinite_text": false,
+    "zeroed_solves": []
+  },
+  {
+    "log": "four_way/netflix_tf32_k32.txt",
+    "final_present": true,
+    "metadata_present": true,
+    "nonfinite_text": false,
+    "zeroed_solves": []
+  },
+  {
+    "log": "four_way/netflix_tf32_k48.txt",
+    "final_present": true,
+    "metadata_present": true,
+    "nonfinite_text": false,
+    "zeroed_solves": []
+  },
+  {
+    "log": "four_way/netflix_tf32_k64.txt",
+    "final_present": true,
+    "metadata_present": true,
+    "nonfinite_text": false,
+    "zeroed_solves": []
+  },
+  {
+    "log": "four_way/netflix_tf32_k96.txt",
+    "final_present": true,
+    "metadata_present": true,
+    "nonfinite_text": false,
+    "zeroed_solves": []
+  },
+  {
+    "log": "momentum/ml10m_ship_k16_beta0.3.txt",
+    "final_present": true,
+    "metadata_present": true,
+    "nonfinite_text": false,
+    "zeroed_solves": []
+  },
+  {
+    "log": "momentum/ml10m_ship_k16_beta0.txt",
+    "final_present": true,
+    "metadata_present": true,
+    "nonfinite_text": false,
+    "zeroed_solves": []
+  },
+  {
+    "log": "momentum/ml10m_ship_k32_beta0.3.txt",
+    "final_present": true,
+    "metadata_present": true,
+    "nonfinite_text": false,
+    "zeroed_solves": []
+  },
+  {
+    "log": "momentum/ml10m_ship_k32_beta0.txt",
+    "final_present": true,
+    "metadata_present": true,
+    "nonfinite_text": false,
+    "zeroed_solves": []
+  },
+  {
+    "log": "momentum/ml10m_ship_k48_beta0.3.txt",
+    "final_present": true,
+    "metadata_present": true,
+    "nonfinite_text": false,
+    "zeroed_solves": []
+  },
+  {
+    "log": "momentum/ml10m_ship_k48_beta0.txt",
+    "final_present": true,
+    "metadata_present": true,
+    "nonfinite_text": false,
+    "zeroed_solves": []
+  },
+  {
+    "log": "momentum/ml10m_ship_k64_beta0.3.txt",
+    "final_present": true,
+    "metadata_present": true,
+    "nonfinite_text": false,
+    "zeroed_solves": []
+  },
+  {
+    "log": "momentum/ml10m_ship_k64_beta0.txt",
+    "final_present": true,
+    "metadata_present": true,
+    "nonfinite_text": false,
+    "zeroed_solves": []
+  },
+  {
+    "log": "momentum/ml10m_ship_k96_beta0.3.txt",
+    "final_present": true,
+    "metadata_present": true,
+    "nonfinite_text": false,
+    "zeroed_solves": [
+      0
+    ]
+  },
+  {
+    "log": "momentum/ml10m_ship_k96_beta0.txt",
+    "final_present": true,
+    "metadata_present": true,
+    "nonfinite_text": false,
+    "zeroed_solves": [
+      0
+    ]
+  },
+  {
+    "log": "momentum/ml20m_ship_k16_beta0.3.txt",
+    "final_present": true,
+    "metadata_present": true,
+    "nonfinite_text": false,
+    "zeroed_solves": []
+  },
+  {
+    "log": "momentum/ml20m_ship_k16_beta0.txt",
+    "final_present": true,
+    "metadata_present": true,
+    "nonfinite_text": false,
+    "zeroed_solves": []
+  },
+  {
+    "log": "momentum/ml20m_ship_k32_beta0.3.txt",
+    "final_present": true,
+    "metadata_present": true,
+    "nonfinite_text": false,
+    "zeroed_solves": []
+  },
+  {
+    "log": "momentum/ml20m_ship_k32_beta0.txt",
+    "final_present": true,
+    "metadata_present": true,
+    "nonfinite_text": false,
+    "zeroed_solves": []
+  },
+  {
+    "log": "momentum/ml20m_ship_k48_beta0.3.txt",
+    "final_present": true,
+    "metadata_present": true,
+    "nonfinite_text": false,
+    "zeroed_solves": []
+  },
+  {
+    "log": "momentum/ml20m_ship_k48_beta0.txt",
+    "final_present": true,
+    "metadata_present": true,
+    "nonfinite_text": false,
+    "zeroed_solves": []
+  },
+  {
+    "log": "momentum/ml20m_ship_k64_beta0.3.txt",
+    "final_present": true,
+    "metadata_present": true,
+    "nonfinite_text": false,
+    "zeroed_solves": []
+  },
+  {
+    "log": "momentum/ml20m_ship_k64_beta0.txt",
+    "final_present": true,
+    "metadata_present": true,
+    "nonfinite_text": false,
+    "zeroed_solves": []
+  },
+  {
+    "log": "momentum/ml20m_ship_k96_beta0.3.txt",
+    "final_present": true,
+    "metadata_present": true,
+    "nonfinite_text": false,
+    "zeroed_solves": [
+      0
+    ]
+  },
+  {
+    "log": "momentum/ml20m_ship_k96_beta0.txt",
+    "final_present": true,
+    "metadata_present": true,
+    "nonfinite_text": false,
+    "zeroed_solves": [
+      0
+    ]
+  },
+  {
+    "log": "momentum/ml32m_ship_k16_beta0.3.txt",
+    "final_present": true,
+    "metadata_present": true,
+    "nonfinite_text": false,
+    "zeroed_solves": []
+  },
+  {
+    "log": "momentum/ml32m_ship_k16_beta0.txt",
+    "final_present": true,
+    "metadata_present": true,
+    "nonfinite_text": false,
+    "zeroed_solves": []
+  },
+  {
+    "log": "momentum/ml32m_ship_k32_beta0.3.txt",
+    "final_present": true,
+    "metadata_present": true,
+    "nonfinite_text": false,
+    "zeroed_solves": []
+  },
+  {
+    "log": "momentum/ml32m_ship_k32_beta0.txt",
+    "final_present": true,
+    "metadata_present": true,
+    "nonfinite_text": false,
+    "zeroed_solves": []
+  },
+  {
+    "log": "momentum/ml32m_ship_k48_beta0.3.txt",
+    "final_present": true,
+    "metadata_present": true,
+    "nonfinite_text": false,
+    "zeroed_solves": []
+  },
+  {
+    "log": "momentum/ml32m_ship_k48_beta0.txt",
+    "final_present": true,
+    "metadata_present": true,
+    "nonfinite_text": false,
+    "zeroed_solves": []
+  },
+  {
+    "log": "momentum/ml32m_ship_k64_beta0.3.txt",
+    "final_present": true,
+    "metadata_present": true,
+    "nonfinite_text": false,
+    "zeroed_solves": []
+  },
+  {
+    "log": "momentum/ml32m_ship_k64_beta0.txt",
+    "final_present": true,
+    "metadata_present": true,
+    "nonfinite_text": false,
+    "zeroed_solves": []
+  },
+  {
+    "log": "momentum/ml32m_ship_k96_beta0.3.txt",
+    "final_present": true,
+    "metadata_present": true,
+    "nonfinite_text": false,
+    "zeroed_solves": [
+      0
+    ]
+  },
+  {
+    "log": "momentum/ml32m_ship_k96_beta0.txt",
+    "final_present": true,
+    "metadata_present": true,
+    "nonfinite_text": false,
+    "zeroed_solves": [
+      0
+    ]
+  },
+  {
+    "log": "momentum/netflix_ship_k16_beta0.3.txt",
+    "final_present": true,
+    "metadata_present": true,
+    "nonfinite_text": false,
+    "zeroed_solves": []
+  },
+  {
+    "log": "momentum/netflix_ship_k16_beta0.txt",
+    "final_present": true,
+    "metadata_present": true,
+    "nonfinite_text": false,
+    "zeroed_solves": []
+  },
+  {
+    "log": "momentum/netflix_ship_k32_beta0.3.txt",
+    "final_present": true,
+    "metadata_present": true,
+    "nonfinite_text": false,
+    "zeroed_solves": []
+  },
+  {
+    "log": "momentum/netflix_ship_k32_beta0.txt",
+    "final_present": true,
+    "metadata_present": true,
+    "nonfinite_text": false,
+    "zeroed_solves": []
+  },
+  {
+    "log": "momentum/netflix_ship_k48_beta0.3.txt",
+    "final_present": true,
+    "metadata_present": true,
+    "nonfinite_text": false,
+    "zeroed_solves": []
+  },
+  {
+    "log": "momentum/netflix_ship_k48_beta0.txt",
+    "final_present": true,
+    "metadata_present": true,
+    "nonfinite_text": false,
+    "zeroed_solves": []
+  },
+  {
+    "log": "momentum/netflix_ship_k64_beta0.3.txt",
+    "final_present": true,
+    "metadata_present": true,
+    "nonfinite_text": false,
+    "zeroed_solves": []
+  },
+  {
+    "log": "momentum/netflix_ship_k64_beta0.txt",
+    "final_present": true,
+    "metadata_present": true,
+    "nonfinite_text": false,
+    "zeroed_solves": []
+  },
+  {
+    "log": "momentum/netflix_ship_k96_beta0.3.txt",
+    "final_present": true,
+    "metadata_present": true,
+    "nonfinite_text": false,
+    "zeroed_solves": [
+      0
+    ]
+  },
+  {
+    "log": "momentum/netflix_ship_k96_beta0.txt",
+    "final_present": true,
+    "metadata_present": true,
+    "nonfinite_text": false,
+    "zeroed_solves": [
+      0
+    ]
+  },
+  {
+    "log": "validation/ml10m_ship_k96_lambda0.01.txt",
+    "final_present": true,
+    "metadata_present": true,
+    "nonfinite_text": false,
+    "zeroed_solves": [
+      0
+    ]
+  },
+  {
+    "log": "validation/ml10m_ship_k96_lambda0.02.txt",
+    "final_present": true,
+    "metadata_present": true,
+    "nonfinite_text": false,
+    "zeroed_solves": [
+      0
+    ]
+  },
+  {
+    "log": "validation/ml10m_ship_k96_lambda0.03.txt",
+    "final_present": true,
+    "metadata_present": true,
+    "nonfinite_text": false,
+    "zeroed_solves": [
+      0
+    ]
+  },
+  {
+    "log": "validation/ml10m_ship_k96_lambda0.04.txt",
+    "final_present": true,
+    "metadata_present": true,
+    "nonfinite_text": false,
+    "zeroed_solves": [
+      0
+    ]
+  },
+  {
+    "log": "validation/ml10m_ship_k96_lambda0.048.txt",
+    "final_present": true,
+    "metadata_present": true,
+    "nonfinite_text": false,
+    "zeroed_solves": [
+      0
+    ]
+  },
+  {
+    "log": "validation/ml10m_ship_k96_lambda0.06.txt",
+    "final_present": true,
+    "metadata_present": true,
+    "nonfinite_text": false,
+    "zeroed_solves": [
+      0
+    ]
+  },
+  {
+    "log": "validation/ml10m_ship_k96_lambda0.08.txt",
+    "final_present": true,
+    "metadata_present": true,
+    "nonfinite_text": false,
+    "zeroed_solves": [
+      0
+    ]
+  },
+  {
+    "log": "validation/ml10m_ship_k96_lambda0.12.txt",
+    "final_present": true,
+    "metadata_present": true,
+    "nonfinite_text": false,
+    "zeroed_solves": [
+      0
+    ]
+  },
+  {
+    "log": "validation/ml20m_ship_k96_lambda0.01.txt",
+    "final_present": true,
+    "metadata_present": true,
+    "nonfinite_text": false,
+    "zeroed_solves": [
+      0
+    ]
+  },
+  {
+    "log": "validation/ml20m_ship_k96_lambda0.02.txt",
+    "final_present": true,
+    "metadata_present": true,
+    "nonfinite_text": false,
+    "zeroed_solves": [
+      0
+    ]
+  },
+  {
+    "log": "validation/ml20m_ship_k96_lambda0.03.txt",
+    "final_present": true,
+    "metadata_present": true,
+    "nonfinite_text": false,
+    "zeroed_solves": [
+      0
+    ]
+  },
+  {
+    "log": "validation/ml20m_ship_k96_lambda0.04.txt",
+    "final_present": true,
+    "metadata_present": true,
+    "nonfinite_text": false,
+    "zeroed_solves": [
+      0
+    ]
+  },
+  {
+    "log": "validation/ml20m_ship_k96_lambda0.048.txt",
+    "final_present": true,
+    "metadata_present": true,
+    "nonfinite_text": false,
+    "zeroed_solves": [
+      0
+    ]
+  },
+  {
+    "log": "validation/ml20m_ship_k96_lambda0.06.txt",
+    "final_present": true,
+    "metadata_present": true,
+    "nonfinite_text": false,
+    "zeroed_solves": [
+      0
+    ]
+  },
+  {
+    "log": "validation/ml20m_ship_k96_lambda0.08.txt",
+    "final_present": true,
+    "metadata_present": true,
+    "nonfinite_text": false,
+    "zeroed_solves": [
+      0
+    ]
+  },
+  {
+    "log": "validation/ml20m_ship_k96_lambda0.12.txt",
+    "final_present": true,
+    "metadata_present": true,
+    "nonfinite_text": false,
+    "zeroed_solves": [
+      0
+    ]
+  },
+  {
+    "log": "validation/ml32m_ship_k96_lambda0.01.txt",
+    "final_present": true,
+    "metadata_present": true,
+    "nonfinite_text": false,
+    "zeroed_solves": [
+      1
+    ]
+  },
+  {
+    "log": "validation/ml32m_ship_k96_lambda0.02.txt",
+    "final_present": true,
+    "metadata_present": true,
+    "nonfinite_text": false,
+    "zeroed_solves": [
+      0
+    ]
+  },
+  {
+    "log": "validation/ml32m_ship_k96_lambda0.03.txt",
+    "final_present": true,
+    "metadata_present": true,
+    "nonfinite_text": false,
+    "zeroed_solves": [
+      0
+    ]
+  },
+  {
+    "log": "validation/ml32m_ship_k96_lambda0.04.txt",
+    "final_present": true,
+    "metadata_present": true,
+    "nonfinite_text": false,
+    "zeroed_solves": [
+      0
+    ]
+  },
+  {
+    "log": "validation/ml32m_ship_k96_lambda0.048.txt",
+    "final_present": true,
+    "metadata_present": true,
+    "nonfinite_text": false,
+    "zeroed_solves": [
+      0
+    ]
+  },
+  {
+    "log": "validation/ml32m_ship_k96_lambda0.06.txt",
+    "final_present": true,
+    "metadata_present": true,
+    "nonfinite_text": false,
+    "zeroed_solves": [
+      0
+    ]
+  },
+  {
+    "log": "validation/ml32m_ship_k96_lambda0.08.txt",
+    "final_present": true,
+    "metadata_present": true,
+    "nonfinite_text": false,
+    "zeroed_solves": [
+      0
+    ]
+  },
+  {
+    "log": "validation/ml32m_ship_k96_lambda0.12.txt",
+    "final_present": true,
+    "metadata_present": true,
+    "nonfinite_text": false,
+    "zeroed_solves": [
+      0
+    ]
+  },
+  {
+    "log": "validation/netflix_ship_k96_lambda0.01.txt",
+    "final_present": true,
+    "metadata_present": true,
+    "nonfinite_text": false,
+    "zeroed_solves": [
+      2
+    ]
+  },
+  {
+    "log": "validation/netflix_ship_k96_lambda0.02.txt",
+    "final_present": true,
+    "metadata_present": true,
+    "nonfinite_text": false,
+    "zeroed_solves": [
+      0
+    ]
+  },
+  {
+    "log": "validation/netflix_ship_k96_lambda0.03.txt",
+    "final_present": true,
+    "metadata_present": true,
+    "nonfinite_text": false,
+    "zeroed_solves": [
+      0
+    ]
+  },
+  {
+    "log": "validation/netflix_ship_k96_lambda0.04.txt",
+    "final_present": true,
+    "metadata_present": true,
+    "nonfinite_text": false,
+    "zeroed_solves": [
+      0
+    ]
+  },
+  {
+    "log": "validation/netflix_ship_k96_lambda0.048.txt",
+    "final_present": true,
+    "metadata_present": true,
+    "nonfinite_text": false,
+    "zeroed_solves": [
+      0
+    ]
+  },
+  {
+    "log": "validation/netflix_ship_k96_lambda0.06.txt",
+    "final_present": true,
+    "metadata_present": true,
+    "nonfinite_text": false,
+    "zeroed_solves": [
+      0
+    ]
+  },
+  {
+    "log": "validation/netflix_ship_k96_lambda0.08.txt",
+    "final_present": true,
+    "metadata_present": true,
+    "nonfinite_text": false,
+    "zeroed_solves": [
+      0
+    ]
+  },
+  {
+    "log": "validation/netflix_ship_k96_lambda0.12.txt",
+    "final_present": true,
+    "metadata_present": true,
+    "nonfinite_text": false,
+    "zeroed_solves": [
+      0
+    ]
+  },
+  {
+    "log": "heldout_test/ml10m_ship_k16.txt",
+    "final_present": true,
+    "metadata_present": true,
+    "nonfinite_text": false,
+    "zeroed_solves": []
+  },
+  {
+    "log": "heldout_test/ml10m_ship_k32.txt",
+    "final_present": true,
+    "metadata_present": true,
+    "nonfinite_text": false,
+    "zeroed_solves": []
+  },
+  {
+    "log": "heldout_test/ml10m_ship_k48.txt",
+    "final_present": true,
+    "metadata_present": true,
+    "nonfinite_text": false,
+    "zeroed_solves": []
+  },
+  {
+    "log": "heldout_test/ml10m_ship_k64.txt",
+    "final_present": true,
+    "metadata_present": true,
+    "nonfinite_text": false,
+    "zeroed_solves": []
+  },
+  {
+    "log": "heldout_test/ml10m_ship_k96.txt",
+    "final_present": true,
+    "metadata_present": true,
+    "nonfinite_text": false,
+    "zeroed_solves": [
+      0
+    ]
+  },
+  {
+    "log": "heldout_test/ml20m_ship_k16.txt",
+    "final_present": true,
+    "metadata_present": true,
+    "nonfinite_text": false,
+    "zeroed_solves": []
+  },
+  {
+    "log": "heldout_test/ml20m_ship_k32.txt",
+    "final_present": true,
+    "metadata_present": true,
+    "nonfinite_text": false,
+    "zeroed_solves": []
+  },
+  {
+    "log": "heldout_test/ml20m_ship_k48.txt",
+    "final_present": true,
+    "metadata_present": true,
+    "nonfinite_text": false,
+    "zeroed_solves": []
+  },
+  {
+    "log": "heldout_test/ml20m_ship_k64.txt",
+    "final_present": true,
+    "metadata_present": true,
+    "nonfinite_text": false,
+    "zeroed_solves": []
+  },
+  {
+    "log": "heldout_test/ml20m_ship_k96.txt",
+    "final_present": true,
+    "metadata_present": true,
+    "nonfinite_text": false,
+    "zeroed_solves": [
+      0
+    ]
+  },
+  {
+    "log": "heldout_test/ml32m_ship_k16.txt",
+    "final_present": true,
+    "metadata_present": true,
+    "nonfinite_text": false,
+    "zeroed_solves": []
+  },
+  {
+    "log": "heldout_test/ml32m_ship_k32.txt",
+    "final_present": true,
+    "metadata_present": true,
+    "nonfinite_text": false,
+    "zeroed_solves": []
+  },
+  {
+    "log": "heldout_test/ml32m_ship_k48.txt",
+    "final_present": true,
+    "metadata_present": true,
+    "nonfinite_text": false,
+    "zeroed_solves": []
+  },
+  {
+    "log": "heldout_test/ml32m_ship_k64.txt",
+    "final_present": true,
+    "metadata_present": true,
+    "nonfinite_text": false,
+    "zeroed_solves": []
+  },
+  {
+    "log": "heldout_test/ml32m_ship_k96.txt",
+    "final_present": true,
+    "metadata_present": true,
+    "nonfinite_text": false,
+    "zeroed_solves": [
+      0
+    ]
+  },
+  {
+    "log": "heldout_test/netflix_ship_k16.txt",
+    "final_present": true,
+    "metadata_present": true,
+    "nonfinite_text": false,
+    "zeroed_solves": []
+  },
+  {
+    "log": "heldout_test/netflix_ship_k32.txt",
+    "final_present": true,
+    "metadata_present": true,
+    "nonfinite_text": false,
+    "zeroed_solves": []
+  },
+  {
+    "log": "heldout_test/netflix_ship_k48.txt",
+    "final_present": true,
+    "metadata_present": true,
+    "nonfinite_text": false,
+    "zeroed_solves": []
+  },
+  {
+    "log": "heldout_test/netflix_ship_k64.txt",
+    "final_present": true,
+    "metadata_present": true,
+    "nonfinite_text": false,
+    "zeroed_solves": []
+  },
+  {
+    "log": "heldout_test/netflix_ship_k96.txt",
+    "final_present": true,
+    "metadata_present": true,
+    "nonfinite_text": false,
+    "zeroed_solves": [
+      0
+    ]
+  },
+  {
+    "log": "rounding_control/ml10m_rounded_fma_k16.txt",
+    "final_present": true,
+    "metadata_present": true,
+    "nonfinite_text": false,
+    "zeroed_solves": []
+  },
+  {
+    "log": "rounding_control/ml10m_rounded_fma_k32.txt",
+    "final_present": true,
+    "metadata_present": true,
+    "nonfinite_text": false,
+    "zeroed_solves": []
+  },
+  {
+    "log": "rounding_control/ml10m_rounded_fma_k48.txt",
+    "final_present": true,
+    "metadata_present": true,
+    "nonfinite_text": false,
+    "zeroed_solves": []
+  },
+  {
+    "log": "rounding_control/ml10m_rounded_fma_k64.txt",
+    "final_present": true,
+    "metadata_present": true,
+    "nonfinite_text": false,
+    "zeroed_solves": []
+  },
+  {
+    "log": "rounding_control/ml10m_rounded_fma_k96.txt",
+    "final_present": true,
+    "metadata_present": true,
+    "nonfinite_text": false,
+    "zeroed_solves": []
+  },
+  {
+    "log": "rounding_control/ml20m_rounded_fma_k16.txt",
+    "final_present": true,
+    "metadata_present": true,
+    "nonfinite_text": false,
+    "zeroed_solves": []
+  },
+  {
+    "log": "rounding_control/ml20m_rounded_fma_k32.txt",
+    "final_present": true,
+    "metadata_present": true,
+    "nonfinite_text": false,
+    "zeroed_solves": []
+  },
+  {
+    "log": "rounding_control/ml20m_rounded_fma_k48.txt",
+    "final_present": true,
+    "metadata_present": true,
+    "nonfinite_text": false,
+    "zeroed_solves": []
+  },
+  {
+    "log": "rounding_control/ml20m_rounded_fma_k64.txt",
+    "final_present": true,
+    "metadata_present": true,
+    "nonfinite_text": false,
+    "zeroed_solves": []
+  },
+  {
+    "log": "rounding_control/ml20m_rounded_fma_k96.txt",
+    "final_present": true,
+    "metadata_present": true,
+    "nonfinite_text": false,
+    "zeroed_solves": []
+  },
+  {
+    "log": "rounding_control/ml32m_rounded_fma_k16.txt",
+    "final_present": true,
+    "metadata_present": true,
+    "nonfinite_text": false,
+    "zeroed_solves": []
+  },
+  {
+    "log": "rounding_control/ml32m_rounded_fma_k32.txt",
+    "final_present": true,
+    "metadata_present": true,
+    "nonfinite_text": false,
+    "zeroed_solves": []
+  },
+  {
+    "log": "rounding_control/ml32m_rounded_fma_k48.txt",
+    "final_present": true,
+    "metadata_present": true,
+    "nonfinite_text": false,
+    "zeroed_solves": []
+  },
+  {
+    "log": "rounding_control/ml32m_rounded_fma_k64.txt",
+    "final_present": true,
+    "metadata_present": true,
+    "nonfinite_text": false,
+    "zeroed_solves": []
+  },
+  {
+    "log": "rounding_control/ml32m_rounded_fma_k96.txt",
+    "final_present": true,
+    "metadata_present": true,
+    "nonfinite_text": false,
+    "zeroed_solves": []
+  },
+  {
+    "log": "rounding_control/netflix_rounded_fma_k16.txt",
+    "final_present": true,
+    "metadata_present": true,
+    "nonfinite_text": false,
+    "zeroed_solves": []
+  },
+  {
+    "log": "rounding_control/netflix_rounded_fma_k32.txt",
+    "final_present": true,
+    "metadata_present": true,
+    "nonfinite_text": false,
+    "zeroed_solves": []
+  },
+  {
+    "log": "rounding_control/netflix_rounded_fma_k48.txt",
+    "final_present": true,
+    "metadata_present": true,
+    "nonfinite_text": false,
+    "zeroed_solves": []
+  },
+  {
+    "log": "rounding_control/netflix_rounded_fma_k64.txt",
+    "final_present": true,
+    "metadata_present": true,
+    "nonfinite_text": false,
+    "zeroed_solves": []
+  },
+  {
+    "log": "rounding_control/netflix_rounded_fma_k96.txt",
+    "final_present": true,
+    "metadata_present": true,
+    "nonfinite_text": false,
+    "zeroed_solves": []
+  },
+  {
+    "log": "bf16/ml10m_bf16_k96_beta0.3.txt",
+    "final_present": true,
+    "metadata_present": true,
+    "nonfinite_text": false,
+    "zeroed_solves": [
+      0
+    ]
+  },
+  {
+    "log": "bf16/ml10m_bf16_k96_beta0.5.txt",
+    "final_present": true,
+    "metadata_present": true,
+    "nonfinite_text": false,
+    "zeroed_solves": [
+      0
+    ]
+  },
+  {
+    "log": "bf16/ml20m_bf16_k96_beta0.3.txt",
+    "final_present": true,
+    "metadata_present": true,
+    "nonfinite_text": false,
+    "zeroed_solves": [
+      0
+    ]
+  },
+  {
+    "log": "bf16/ml20m_bf16_k96_beta0.5.txt",
+    "final_present": true,
+    "metadata_present": true,
+    "nonfinite_text": false,
+    "zeroed_solves": [
+      0
+    ]
+  },
+  {
+    "log": "bf16/ml32m_bf16_k96_beta0.3.txt",
+    "final_present": true,
+    "metadata_present": true,
+    "nonfinite_text": false,
+    "zeroed_solves": [
+      0
+    ]
+  },
+  {
+    "log": "bf16/ml32m_bf16_k96_beta0.5.txt",
+    "final_present": true,
+    "metadata_present": true,
+    "nonfinite_text": false,
+    "zeroed_solves": [
+      0
+    ]
+  },
+  {
+    "log": "bf16/netflix_bf16_k96_beta0.3.txt",
+    "final_present": true,
+    "metadata_present": true,
+    "nonfinite_text": false,
+    "zeroed_solves": [
+      0
+    ]
+  },
+  {
+    "log": "bf16/netflix_bf16_k96_beta0.5.txt",
+    "final_present": true,
+    "metadata_present": true,
+    "nonfinite_text": false,
+    "zeroed_solves": [
+      0
+    ]
+  },
+  {
+    "log": "bf16_controls/ml10m_fp16_ir1_k96_beta0.3.txt",
+    "final_present": true,
+    "metadata_present": true,
+    "nonfinite_text": false,
+    "zeroed_solves": [
+      0
+    ]
+  },
+  {
+    "log": "bf16_controls/ml10m_fp16_ir1_k96_beta0.5.txt",
+    "final_present": true,
+    "metadata_present": true,
+    "nonfinite_text": false,
+    "zeroed_solves": [
+      0
+    ]
+  },
+  {
+    "log": "bf16_controls/ml10m_ship_k96_beta0.5.txt",
+    "final_present": true,
+    "metadata_present": true,
+    "nonfinite_text": false,
+    "zeroed_solves": [
+      0
+    ]
+  },
+  {
+    "log": "bf16_controls/ml20m_fp16_ir1_k96_beta0.3.txt",
+    "final_present": true,
+    "metadata_present": true,
+    "nonfinite_text": false,
+    "zeroed_solves": [
+      0
+    ]
+  },
+  {
+    "log": "bf16_controls/ml20m_fp16_ir1_k96_beta0.5.txt",
+    "final_present": true,
+    "metadata_present": true,
+    "nonfinite_text": false,
+    "zeroed_solves": [
+      0
+    ]
+  },
+  {
+    "log": "bf16_controls/ml20m_ship_k96_beta0.5.txt",
+    "final_present": true,
+    "metadata_present": true,
+    "nonfinite_text": false,
+    "zeroed_solves": [
+      0
+    ]
+  },
+  {
+    "log": "bf16_controls/ml32m_fp16_ir1_k96_beta0.3.txt",
+    "final_present": true,
+    "metadata_present": true,
+    "nonfinite_text": false,
+    "zeroed_solves": [
+      0
+    ]
+  },
+  {
+    "log": "bf16_controls/ml32m_fp16_ir1_k96_beta0.5.txt",
+    "final_present": true,
+    "metadata_present": true,
+    "nonfinite_text": false,
+    "zeroed_solves": [
+      0
+    ]
+  },
+  {
+    "log": "bf16_controls/ml32m_ship_k96_beta0.5.txt",
+    "final_present": true,
+    "metadata_present": true,
+    "nonfinite_text": false,
+    "zeroed_solves": [
+      0
+    ]
+  },
+  {
+    "log": "bf16_controls/netflix_fp16_ir1_k96_beta0.3.txt",
+    "final_present": true,
+    "metadata_present": true,
+    "nonfinite_text": false,
+    "zeroed_solves": [
+      0
+    ]
+  },
+  {
+    "log": "bf16_controls/netflix_fp16_ir1_k96_beta0.5.txt",
+    "final_present": true,
+    "metadata_present": true,
+    "nonfinite_text": false,
+    "zeroed_solves": [
+      3142
+    ]
+  },
+  {
+    "log": "bf16_controls/netflix_ship_k96_beta0.5.txt",
+    "final_present": true,
+    "metadata_present": true,
+    "nonfinite_text": false,
+    "zeroed_solves": [
+      3492
+    ]
+  },
+  {
+    "log": "cumulative/netflix_ladder_atomic.txt",
+    "final_present": true,
+    "metadata_present": true,
+    "nonfinite_text": false,
+    "zeroed_solves": []
+  },
+  {
+    "log": "cumulative/netflix_ladder_fastcheck.txt",
+    "final_present": true,
+    "metadata_present": true,
+    "nonfinite_text": false,
+    "zeroed_solves": [
+      0
+    ]
+  },
+  {
+    "log": "cumulative/netflix_ladder_fp16solve.txt",
+    "final_present": true,
+    "metadata_present": true,
+    "nonfinite_text": false,
+    "zeroed_solves": [
+      0
+    ]
+  },
+  {
+    "log": "cumulative/netflix_ladder_fp32.txt",
+    "final_present": true,
+    "metadata_present": true,
+    "nonfinite_text": false,
+    "zeroed_solves": []
+  },
+  {
+    "log": "cumulative/netflix_ladder_momentum.txt",
+    "final_present": true,
+    "metadata_present": true,
+    "nonfinite_text": false,
+    "zeroed_solves": [
+      0
+    ]
+  },
+  {
+    "log": "cumulative/netflix_ladder_sameflow.txt",
+    "final_present": true,
+    "metadata_present": true,
+    "nonfinite_text": false,
+    "zeroed_solves": []
+  },
+  {
+    "log": "accumulation_control/ml10m_chunked_fp16_k16.txt",
+    "final_present": true,
+    "metadata_present": true,
+    "nonfinite_text": false,
+    "zeroed_solves": []
+  },
+  {
+    "log": "accumulation_control/ml10m_chunked_fp16_k32.txt",
+    "final_present": true,
+    "metadata_present": true,
+    "nonfinite_text": false,
+    "zeroed_solves": []
+  },
+  {
+    "log": "accumulation_control/ml10m_chunked_fp16_k48.txt",
+    "final_present": true,
+    "metadata_present": true,
+    "nonfinite_text": false,
+    "zeroed_solves": []
+  },
+  {
+    "log": "accumulation_control/ml10m_chunked_fp16_k64.txt",
+    "final_present": true,
+    "metadata_present": true,
+    "nonfinite_text": false,
+    "zeroed_solves": []
+  },
+  {
+    "log": "accumulation_control/ml10m_chunked_fp16_k96.txt",
+    "final_present": true,
+    "metadata_present": true,
+    "nonfinite_text": false,
+    "zeroed_solves": []
+  },
+  {
+    "log": "accumulation_control/ml20m_chunked_fp16_k16.txt",
+    "final_present": true,
+    "metadata_present": true,
+    "nonfinite_text": false,
+    "zeroed_solves": []
+  },
+  {
+    "log": "accumulation_control/ml20m_chunked_fp16_k32.txt",
+    "final_present": true,
+    "metadata_present": true,
+    "nonfinite_text": false,
+    "zeroed_solves": []
+  },
+  {
+    "log": "accumulation_control/ml20m_chunked_fp16_k48.txt",
+    "final_present": true,
+    "metadata_present": true,
+    "nonfinite_text": false,
+    "zeroed_solves": []
+  },
+  {
+    "log": "accumulation_control/ml20m_chunked_fp16_k64.txt",
+    "final_present": true,
+    "metadata_present": true,
+    "nonfinite_text": false,
+    "zeroed_solves": []
+  },
+  {
+    "log": "accumulation_control/ml20m_chunked_fp16_k96.txt",
+    "final_present": true,
+    "metadata_present": true,
+    "nonfinite_text": false,
+    "zeroed_solves": []
+  },
+  {
+    "log": "accumulation_control/ml32m_chunked_fp16_k16.txt",
+    "final_present": true,
+    "metadata_present": true,
+    "nonfinite_text": false,
+    "zeroed_solves": []
+  },
+  {
+    "log": "accumulation_control/ml32m_chunked_fp16_k32.txt",
+    "final_present": true,
+    "metadata_present": true,
+    "nonfinite_text": false,
+    "zeroed_solves": []
+  },
+  {
+    "log": "accumulation_control/ml32m_chunked_fp16_k48.txt",
+    "final_present": true,
+    "metadata_present": true,
+    "nonfinite_text": false,
+    "zeroed_solves": []
+  },
+  {
+    "log": "accumulation_control/ml32m_chunked_fp16_k64.txt",
+    "final_present": true,
+    "metadata_present": true,
+    "nonfinite_text": false,
+    "zeroed_solves": []
+  },
+  {
+    "log": "accumulation_control/ml32m_chunked_fp16_k96.txt",
+    "final_present": true,
+    "metadata_present": true,
+    "nonfinite_text": false,
+    "zeroed_solves": []
+  },
+  {
+    "log": "accumulation_control/netflix_chunked_fp16_k16.txt",
+    "final_present": true,
+    "metadata_present": true,
+    "nonfinite_text": false,
+    "zeroed_solves": []
+  },
+  {
+    "log": "accumulation_control/netflix_chunked_fp16_k32.txt",
+    "final_present": true,
+    "metadata_present": true,
+    "nonfinite_text": false,
+    "zeroed_solves": []
+  },
+  {
+    "log": "accumulation_control/netflix_chunked_fp16_k48.txt",
+    "final_present": true,
+    "metadata_present": true,
+    "nonfinite_text": false,
+    "zeroed_solves": []
+  },
+  {
+    "log": "accumulation_control/netflix_chunked_fp16_k64.txt",
+    "final_present": true,
+    "metadata_present": true,
+    "nonfinite_text": false,
+    "zeroed_solves": []
+  },
+  {
+    "log": "accumulation_control/netflix_chunked_fp16_k96.txt",
+    "final_present": true,
+    "metadata_present": true,
+    "nonfinite_text": false,
+    "zeroed_solves": []
+  },
+  {
+    "log": "validation_accuracy_pair/ml10m_fp16_k16.txt",
+    "final_present": true,
+    "metadata_present": true,
+    "nonfinite_text": false,
+    "zeroed_solves": []
+  },
+  {
+    "log": "validation_accuracy_pair/ml10m_fp16_k32.txt",
+    "final_present": true,
+    "metadata_present": true,
+    "nonfinite_text": false,
+    "zeroed_solves": []
+  },
+  {
+    "log": "validation_accuracy_pair/ml10m_fp16_k48.txt",
+    "final_present": true,
+    "metadata_present": true,
+    "nonfinite_text": false,
+    "zeroed_solves": []
+  },
+  {
+    "log": "validation_accuracy_pair/ml10m_fp16_k64.txt",
+    "final_present": true,
+    "metadata_present": true,
+    "nonfinite_text": false,
+    "zeroed_solves": []
+  },
+  {
+    "log": "validation_accuracy_pair/ml10m_fp16_k96.txt",
+    "final_present": true,
+    "metadata_present": true,
+    "nonfinite_text": false,
+    "zeroed_solves": []
+  },
+  {
+    "log": "validation_accuracy_pair/ml10m_sameflow_k16.txt",
+    "final_present": true,
+    "metadata_present": true,
+    "nonfinite_text": false,
+    "zeroed_solves": []
+  },
+  {
+    "log": "validation_accuracy_pair/ml10m_sameflow_k32.txt",
+    "final_present": true,
+    "metadata_present": true,
+    "nonfinite_text": false,
+    "zeroed_solves": []
+  },
+  {
+    "log": "validation_accuracy_pair/ml10m_sameflow_k48.txt",
+    "final_present": true,
+    "metadata_present": true,
+    "nonfinite_text": false,
+    "zeroed_solves": []
+  },
+  {
+    "log": "validation_accuracy_pair/ml10m_sameflow_k64.txt",
+    "final_present": true,
+    "metadata_present": true,
+    "nonfinite_text": false,
+    "zeroed_solves": []
+  },
+  {
+    "log": "validation_accuracy_pair/ml10m_sameflow_k96.txt",
+    "final_present": true,
+    "metadata_present": true,
+    "nonfinite_text": false,
+    "zeroed_solves": []
+  },
+  {
+    "log": "validation_accuracy_pair/ml20m_fp16_k16.txt",
+    "final_present": true,
+    "metadata_present": true,
+    "nonfinite_text": false,
+    "zeroed_solves": []
+  },
+  {
+    "log": "validation_accuracy_pair/ml20m_fp16_k32.txt",
+    "final_present": true,
+    "metadata_present": true,
+    "nonfinite_text": false,
+    "zeroed_solves": []
+  },
+  {
+    "log": "validation_accuracy_pair/ml20m_fp16_k48.txt",
+    "final_present": true,
+    "metadata_present": true,
+    "nonfinite_text": false,
+    "zeroed_solves": []
+  },
+  {
+    "log": "validation_accuracy_pair/ml20m_fp16_k64.txt",
+    "final_present": true,
+    "metadata_present": true,
+    "nonfinite_text": false,
+    "zeroed_solves": []
+  },
+  {
+    "log": "validation_accuracy_pair/ml20m_fp16_k96.txt",
+    "final_present": true,
+    "metadata_present": true,
+    "nonfinite_text": false,
+    "zeroed_solves": []
+  },
+  {
+    "log": "validation_accuracy_pair/ml20m_sameflow_k16.txt",
+    "final_present": true,
+    "metadata_present": true,
+    "nonfinite_text": false,
+    "zeroed_solves": []
+  },
+  {
+    "log": "validation_accuracy_pair/ml20m_sameflow_k32.txt",
+    "final_present": true,
+    "metadata_present": true,
+    "nonfinite_text": false,
+    "zeroed_solves": []
+  },
+  {
+    "log": "validation_accuracy_pair/ml20m_sameflow_k48.txt",
+    "final_present": true,
+    "metadata_present": true,
+    "nonfinite_text": false,
+    "zeroed_solves": []
+  },
+  {
+    "log": "validation_accuracy_pair/ml20m_sameflow_k64.txt",
+    "final_present": true,
+    "metadata_present": true,
+    "nonfinite_text": false,
+    "zeroed_solves": []
+  },
+  {
+    "log": "validation_accuracy_pair/ml20m_sameflow_k96.txt",
+    "final_present": true,
+    "metadata_present": true,
+    "nonfinite_text": false,
+    "zeroed_solves": []
+  },
+  {
+    "log": "validation_accuracy_pair/ml32m_fp16_k16.txt",
+    "final_present": true,
+    "metadata_present": true,
+    "nonfinite_text": false,
+    "zeroed_solves": []
+  },
+  {
+    "log": "validation_accuracy_pair/ml32m_fp16_k32.txt",
+    "final_present": true,
+    "metadata_present": true,
+    "nonfinite_text": false,
+    "zeroed_solves": []
+  },
+  {
+    "log": "validation_accuracy_pair/ml32m_fp16_k48.txt",
+    "final_present": true,
+    "metadata_present": true,
+    "nonfinite_text": false,
+    "zeroed_solves": []
+  },
+  {
+    "log": "validation_accuracy_pair/ml32m_fp16_k64.txt",
+    "final_present": true,
+    "metadata_present": true,
+    "nonfinite_text": false,
+    "zeroed_solves": []
+  },
+  {
+    "log": "validation_accuracy_pair/ml32m_fp16_k96.txt",
+    "final_present": true,
+    "metadata_present": true,
+    "nonfinite_text": false,
+    "zeroed_solves": []
+  },
+  {
+    "log": "validation_accuracy_pair/ml32m_sameflow_k16.txt",
+    "final_present": true,
+    "metadata_present": true,
+    "nonfinite_text": false,
+    "zeroed_solves": []
+  },
+  {
+    "log": "validation_accuracy_pair/ml32m_sameflow_k32.txt",
+    "final_present": true,
+    "metadata_present": true,
+    "nonfinite_text": false,
+    "zeroed_solves": []
+  },
+  {
+    "log": "validation_accuracy_pair/ml32m_sameflow_k48.txt",
+    "final_present": true,
+    "metadata_present": true,
+    "nonfinite_text": false,
+    "zeroed_solves": []
+  },
+  {
+    "log": "validation_accuracy_pair/ml32m_sameflow_k64.txt",
+    "final_present": true,
+    "metadata_present": true,
+    "nonfinite_text": false,
+    "zeroed_solves": []
+  },
+  {
+    "log": "validation_accuracy_pair/ml32m_sameflow_k96.txt",
+    "final_present": true,
+    "metadata_present": true,
+    "nonfinite_text": false,
+    "zeroed_solves": []
+  },
+  {
+    "log": "validation_accuracy_pair/netflix_fp16_k16.txt",
+    "final_present": true,
+    "metadata_present": true,
+    "nonfinite_text": false,
+    "zeroed_solves": []
+  },
+  {
+    "log": "validation_accuracy_pair/netflix_fp16_k32.txt",
+    "final_present": true,
+    "metadata_present": true,
+    "nonfinite_text": false,
+    "zeroed_solves": []
+  },
+  {
+    "log": "validation_accuracy_pair/netflix_fp16_k48.txt",
+    "final_present": true,
+    "metadata_present": true,
+    "nonfinite_text": false,
+    "zeroed_solves": []
+  },
+  {
+    "log": "validation_accuracy_pair/netflix_fp16_k64.txt",
+    "final_present": true,
+    "metadata_present": true,
+    "nonfinite_text": false,
+    "zeroed_solves": []
+  },
+  {
+    "log": "validation_accuracy_pair/netflix_fp16_k96.txt",
+    "final_present": true,
+    "metadata_present": true,
+    "nonfinite_text": false,
+    "zeroed_solves": []
+  },
+  {
+    "log": "validation_accuracy_pair/netflix_sameflow_k16.txt",
+    "final_present": true,
+    "metadata_present": true,
+    "nonfinite_text": false,
+    "zeroed_solves": []
+  },
+  {
+    "log": "validation_accuracy_pair/netflix_sameflow_k32.txt",
+    "final_present": true,
+    "metadata_present": true,
+    "nonfinite_text": false,
+    "zeroed_solves": []
+  },
+  {
+    "log": "validation_accuracy_pair/netflix_sameflow_k48.txt",
+    "final_present": true,
+    "metadata_present": true,
+    "nonfinite_text": false,
+    "zeroed_solves": []
+  },
+  {
+    "log": "validation_accuracy_pair/netflix_sameflow_k64.txt",
+    "final_present": true,
+    "metadata_present": true,
+    "nonfinite_text": false,
+    "zeroed_solves": []
+  },
+  {
+    "log": "validation_accuracy_pair/netflix_sameflow_k96.txt",
+    "final_present": true,
+    "metadata_present": true,
+    "nonfinite_text": false,
+    "zeroed_solves": []
+  }
+]

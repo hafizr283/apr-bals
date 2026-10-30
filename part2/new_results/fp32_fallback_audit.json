@@ -1,0 +1,266 @@
+{
+  "all_passed": true,
+  "checks": [
+    {
+      "name": "primary_run_count",
+      "passed": true,
+      "value": 24
+    },
+    {
+      "name": "legacy_run_count",
+      "passed": true,
+      "value": 15
+    },
+    {
+      "name": "primary:stable_selected:fallback_noref:rep1",
+      "passed": true,
+      "gpu1_idle_before": true,
+      "log": "fallback_logs/stable_selected_fallback_noref_rep1.txt"
+    },
+    {
+      "name": "primary:stable_selected:fallback_noref:rep2",
+      "passed": true,
+      "gpu1_idle_before": true,
+      "log": "fallback_logs/stable_selected_fallback_noref_rep2.txt"
+    },
+    {
+      "name": "primary:stable_selected:fallback_noref:rep3",
+      "passed": true,
+      "gpu1_idle_before": true,
+      "log": "fallback_logs/stable_selected_fallback_noref_rep3.txt"
+    },
+    {
+      "name": "primary:stable_selected:zero_noref:rep1",
+      "passed": true,
+      "gpu1_idle_before": true,
+      "log": "fallback_logs/stable_selected_zero_noref_rep1.txt"
+    },
+    {
+      "name": "primary:stable_selected:zero_noref:rep2",
+      "passed": true,
+      "gpu1_idle_before": true,
+      "log": "fallback_logs/stable_selected_zero_noref_rep2.txt"
+    },
+    {
+      "name": "primary:stable_selected:zero_noref:rep3",
+      "passed": true,
+      "gpu1_idle_before": true,
+      "log": "fallback_logs/stable_selected_zero_noref_rep3.txt"
+    },
+    {
+      "name": "primary:stable_selected:fp32:rep1",
+      "passed": true,
+      "gpu1_idle_before": true,
+      "log": "fallback_logs/stable_selected_fp32_rep1.txt"
+    },
+    {
+      "name": "primary:stable_selected:fp32:rep2",
+      "passed": true,
+      "gpu1_idle_before": true,
+      "log": "fallback_logs/stable_selected_fp32_rep2.txt"
+    },
+    {
+      "name": "primary:stable_selected:fp32:rep3",
+      "passed": true,
+      "gpu1_idle_before": true,
+      "log": "fallback_logs/stable_selected_fp32_rep3.txt"
+    },
+    {
+      "name": "primary:hard_beta05:fallback_noref:rep1",
+      "passed": true,
+      "gpu1_idle_before": true,
+      "log": "fallback_logs/hard_beta05_fallback_noref_rep1.txt"
+    },
+    {
+      "name": "primary:hard_beta05:fallback_noref:rep2",
+      "passed": true,
+      "gpu1_idle_before": true,
+      "log": "fallback_logs/hard_beta05_fallback_noref_rep2.txt"
+    },
+    {
+      "name": "primary:hard_beta05:fallback_noref:rep3",
+      "passed": true,
+      "gpu1_idle_before": true,
+      "log": "fallback_logs/hard_beta05_fallback_noref_rep3.txt"
+    },
+    {
+      "name": "primary:hard_beta05:fallback_ir1:rep1",
+      "passed": true,
+      "gpu1_idle_before": true,
+      "log": "fallback_logs/hard_beta05_fallback_ir1_rep1.txt"
+    },
+    {
+      "name": "primary:hard_beta05:fallback_ir1:rep2",
+      "passed": true,
+      "gpu1_idle_before": true,
+      "log": "fallback_logs/hard_beta05_fallback_ir1_rep2.txt"
+    },
+    {
+      "name": "primary:hard_beta05:fallback_ir1:rep3",
+      "passed": true,
+      "gpu1_idle_before": true,
+      "log": "fallback_logs/hard_beta05_fallback_ir1_rep3.txt"
+    },
+    {
+      "name": "primary:hard_beta05:zero_noref:rep1",
+      "passed": true,
+      "gpu1_idle_before": true,
+      "log": "fallback_logs/hard_beta05_zero_noref_rep1.txt"
+    },
+    {
+      "name": "primary:hard_beta05:zero_noref:rep2",
+      "passed": true,
+      "gpu1_idle_before": true,
+      "log": "fallback_logs/hard_beta05_zero_noref_rep2.txt"
+    },
+    {
+      "name": "primary:hard_beta05:zero_noref:rep3",
+      "passed": true,
+      "gpu1_idle_before": true,
+      "log": "fallback_logs/hard_beta05_zero_noref_rep3.txt"
+    },
+    {
+      "name": "primary:hard_beta05:zero_ir1:rep1",
+      "passed": true,
+      "gpu1_idle_before": true,
+      "log": "fallback_logs/hard_beta05_zero_ir1_rep1.txt"
+    },
+    {
+      "name": "primary:hard_beta05:zero_ir1:rep2",
+      "passed": true,
+      "gpu1_idle_before": true,
+      "log": "fallback_logs/hard_beta05_zero_ir1_rep2.txt"
+    },
+    {
+      "name": "primary:hard_beta05:zero_ir1:rep3",
+      "passed": true,
+      "gpu1_idle_before": true,
+      "log": "fallback_logs/hard_beta05_zero_ir1_rep3.txt"
+    },
+    {
+      "name": "primary:hard_beta05:fp32:rep1",
+      "passed": true,
+      "gpu1_idle_before": true,
+      "log": "fallback_logs/hard_beta05_fp32_rep1.txt"
+    },
+    {
+      "name": "primary:hard_beta05:fp32:rep2",
+      "passed": true,
+      "gpu1_idle_before": true,
+      "log": "fallback_logs/hard_beta05_fp32_rep2.txt"
+    },
+    {
+      "name": "primary:hard_beta05:fp32:rep3",
+      "passed": true,
+      "gpu1_idle_before": true,
+      "log": "fallback_logs/hard_beta05_fp32_rep3.txt"
+    },
+    {
+      "name": "legacy:legacy_original_split:fallback_noref:rep1",
+      "passed": true,
+      "gpu1_idle_before": true,
+      "log": "fallback_logs/legacy_original_fallback_noref_rep1.txt"
+    },
+    {
+      "name": "legacy:legacy_original_split:fallback_noref:rep2",
+      "passed": true,
+      "gpu1_idle_before": true,
+      "log": "fallback_logs/legacy_original_fallback_noref_rep2.txt"
+    },
+    {
+      "name": "legacy:legacy_original_split:fallback_noref:rep3",
+      "passed": true,
+      "gpu1_idle_before": true,
+      "log": "fallback_logs/legacy_original_fallback_noref_rep3.txt"
+    },
+    {
+      "name": "legacy:legacy_original_split:fallback_ir1:rep1",
+      "passed": true,
+      "gpu1_idle_before": true,
+      "log": "fallback_logs/legacy_original_fallback_ir1_rep1.txt"
+    },
+    {
+      "name": "legacy:legacy_original_split:fallback_ir1:rep2",
+      "passed": true,
+      "gpu1_idle_before": true,
+      "log": "fallback_logs/legacy_original_fallback_ir1_rep2.txt"
+    },
+    {
+      "name": "legacy:legacy_original_split:fallback_ir1:rep3",
+      "passed": true,
+      "gpu1_idle_before": true,
+      "log": "fallback_logs/legacy_original_fallback_ir1_rep3.txt"
+    },
+    {
+      "name": "legacy:legacy_original_split:zero_noref:rep1",
+      "passed": true,
+      "gpu1_idle_before": true,
+      "log": "fallback_logs/legacy_original_zero_noref_rep1.txt"
+    },
+    {
+      "name": "legacy:legacy_original_split:zero_noref:rep2",
+      "passed": true,
+      "gpu1_idle_before": true,
+      "log": "fallback_logs/legacy_original_zero_noref_rep2.txt"
+    },
+    {
+      "name": "legacy:legacy_original_split:zero_noref:rep3",
+      "passed": true,
+      "gpu1_idle_before": true,
+      "log": "fallback_logs/legacy_original_zero_noref_rep3.txt"
+    },
+    {
+      "name": "legacy:legacy_original_split:zero_ir1:rep1",
+      "passed": true,
+      "gpu1_idle_before": true,
+      "log": "fallback_logs/legacy_original_zero_ir1_rep1.txt"
+    },
+    {
+      "name": "legacy:legacy_original_split:zero_ir1:rep2",
+      "passed": true,
+      "gpu1_idle_before": true,
+      "log": "fallback_logs/legacy_original_zero_ir1_rep2.txt"
+    },
+    {
+      "name": "legacy:legacy_original_split:zero_ir1:rep3",
+      "passed": true,
+      "gpu1_idle_before": true,
+      "log": "fallback_logs/legacy_original_zero_ir1_rep3.txt"
+    },
+    {
+      "name": "legacy:legacy_original_split:fp32:rep1",
+      "passed": true,
+      "gpu1_idle_before": true,
+      "log": "fallback_logs/legacy_original_fp32_rep1.txt"
+    },
+    {
+      "name": "legacy:legacy_original_split:fp32:rep2",
+      "passed": true,
+      "gpu1_idle_before": true,
+      "log": "fallback_logs/legacy_original_fp32_rep2.txt"
+    },
+    {
+      "name": "legacy:legacy_original_split:fp32:rep3",
+      "passed": true,
+      "gpu1_idle_before": true,
+      "log": "fallback_logs/legacy_original_fp32_rep3.txt"
+    }
+  ],
+  "source_sha256": {
+    "fallback_src/common.cuh": "3bcd9d92da8b98c325029762a9f95a8deb35dc0cd5419c2b19c828a6482a0c3f",
+    "fallback_src/cholesky_kernels.cuh": "f88bf5fc90d3c6d8e51f2d7ab15d7bf92d150a44353615b32303504abd659211",
+    "fallback_src/justapr.cu": "db1f19173ce41afbcd4074b1f2d0d3f07e05a9bf20ca95e2bd8b02a00310f5d8",
+    "run_fp32_fallback.py": "d2b249ae4a4d521d42abd1fc65d35a6d0def398cc4118af2403097578e7729f0",
+    "run_fp32_fallback_legacy.py": "cdf53f8089b18ff6e226d886d133cb27ea6098510609f71b38e07c01dad7fd88"
+  },
+  "csv_sha256": {
+    "fp32_fallback_runs.csv": "7d462e87d3bb050c82538a285208c036e674427640f3562b4f4affe0b852735d",
+    "fp32_fallback_legacy_runs.csv": "d5ddd9d73de34894cfe7b01c6adbdeee9ca91d5dcc987439e0585b4a05604d4d"
+  },
+  "deliverable_sha256": {
+    "fp32_fallback_summary.csv": "57ffbfa5c7642f3b45a29c319007605f820c7e542a5e78b065ecdac3d92fc84c",
+    "FP32_FALLBACK_PROTOCOL.md": "72e63079d6fd139184ea839c72fa06dc2f5ffbfd9da467639cced5078becf6cf",
+    "FP32_FALLBACK_TABLE.md": "4d53e78e10df97627e30482e73db8875d46be88ff80b3f885e5c538ebc6de283",
+    "paper_tables/fp32_fallback.tex": "57230273b6241bb1a6dc2e480610e651c57a299936221d9d68b4a4ccfcfd2fc6"
+  }
+}

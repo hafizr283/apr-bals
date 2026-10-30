@@ -1,0 +1,45 @@
+=== CODE VERSION: SYNC-2026-07-20 [CHOL-MP 16-bit tiled Cholesky + optional IR + stale-L cache — UNVALIDATED ON GPU; CHOL_MP=0 path = 07-06 code] ===
+Tiled Cholesky precision: FP16 tiles, NO refinement (YOLO)
+Regularization: weighted-lambda ALS-WR (diag += nnz*lambda) | Init: cuMF-scale U(0,0.2)
+Loading binary preprocessed dataset: /home/pc/Desktop/2007080/ratings100.bin
+==PROF== Connected to process 30384 (/home/pc/Desktop/2007080/latent_factorr_experimen/comparing_baseline/new_results/bin/ship_k96)
+==ERROR== ERR_NVGPUCTRPERM - The user does not have permission to access NVIDIA GPU Performance Counters on the target device 0. For instructions on enabling permissions and to get more information see https://developer.nvidia.com/ERR_NVGPUCTRPERM
+943 users, 1682 items | train=80367, test=19633
+[MOMENTUM] heavy-ball extrapolation ON, beta=0.300
+User: 372 nonzero tiles out of 420 (11.4% skipped)
+Item: 390 nonzero tiles out of 424 (8.0% skipped)
+APR-BALS Precision Tiers (User tiles): FP16 Tensor Core=329 (78.3%), FP32 Scalar=91 (21.7%)
+APR-BALS Precision Tiers (Item tiles): FP16 Tensor Core=338 (79.7%), FP32 Scalar=86 (20.3%)
+User density stats: min=0.000000 max=0.618164 avg=0.046716 nonzero=372/420
+  Nonzero percentiles: p25=0.002930 p50=0.012451 p75=0.055420 p90=0.157959 p99=0.474121
+Item density stats: min=0.000000 max=0.605957 avg=0.046276 nonzero=390/424
+  Nonzero percentiles: p25=0.002441 p50=0.010986 p75=0.048096 p90=0.151367 p99=0.499023
+
+=== NNZ per Precision Tier ===
+User-side: FP16=80272 (99.9%)  FP32=95 (0.1%)
+Item-side: FP16=80250 (99.9%)  FP32=117 (0.1%)
+Thesis signal: dense tiles (FP16 path) hold 99.9% of user-side train NNZ.
+If >40%: precision dispatch covers most compute -> strong thesis.
+If <20%: most compute in FP32 tiles -> thesis needs argument about dense-tile quality.
+Giant split: User giants=0, Item giants=0 (nnz >= 1024, 4 warps/giant)
+Load balancing: User jobs=60 (from 30 tile-rows), Item jobs=53 (from 53 tile-rows)
+Hybrid split: User dense=928 entities (29 tile-rows, 2 sparse jobs), Item dense=1344 entities (42 tile-rows, 11 sparse jobs)
+
+=== APR-BALS experiment ===
+Iter  1 | Train RMSE: 0.688576 | Test RMSE: 0.966828
+CUMULATIVE_WALL_MS 2.998208
+
+=== Profiling: APR-BALS experiment (1 iters) ===
+User LHS+RHS:    1.30 ms total |  1.30 ms/iter |  585.5 GFlops/s
+User Cholesky:   0.00 ms total |  0.00 ms/iter
+Item LHS+RHS:    1.23 ms total |  1.23 ms/iter |  620.6 GFlops/s
+Item Cholesky:   0.00 ms total |  0.00 ms/iter
+CHOL_MP [FP16 tiles, NO refinement (YOLO)]: non-finite solves zeroed = 0 entity-iters
+RMSE:            0.32 ms total |  0.32 ms/call
+Total FLOPs: 1.53 GFLOPs | Throughput: 533.8 GFlops/s (compute: 602.0)
+Training Complete in 0.003 seconds!
+
+=== APR-BALS final ===
+Train RMSE: 0.688576 | Test RMSE: 0.966828 | compute=2.54 ms | wall=3.02 ms
+Params: K_DIM=96, lambda=0.05, DENSE_NNZ_THRESH=4, WARPS_PER_BLOCK=4, XB=32, YB=256
+==PROF== Disconnected from process 30384

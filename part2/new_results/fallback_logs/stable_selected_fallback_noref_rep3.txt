@@ -1,0 +1,44 @@
+=== CODE VERSION: FP32-FALLBACK-2026-10-15 [failed FP16 entity solves retry validated FP32 tiled Cholesky] ===
+Tiled Cholesky precision: FP16 tiles, NO refinement (YOLO)
+Regularization: weighted-lambda ALS-WR (diag += nnz*lambda) | Init: cuMF-scale U(0,0.2)
+Loading binary preprocessed dataset: /home/pc/Desktop/2007080/latent_factorr_experimen/comparing_baseline/new_results/splits/netflix_ratings_test.bin
+480189 users, 17770 items | train=70502572, test=19909518
+[MOMENTUM] heavy-ball extrapolation ON, beta=0.300
+User: 1403572 nonzero tiles out of 2085834 (32.7% skipped)
+Item: 1416084 nonzero tiles out of 2086112 (32.1% skipped)
+APR-BALS Precision Tiers (User tiles): FP16 Tensor Core=666011 (31.9%), FP32 Scalar=1419823 (68.1%)
+APR-BALS Precision Tiers (Item tiles): FP16 Tensor Core=665474 (31.9%), FP32 Scalar=1420638 (68.1%)
+User density stats: min=0.000000 max=0.641357 avg=0.008191 nonzero=1403572/2085834
+  Nonzero percentiles: p25=0.000488 p50=0.000977 p75=0.003906 p90=0.019775 p99=0.255371
+Item density stats: min=0.000000 max=0.642578 avg=0.008154 nonzero=1416084/2086112
+  Nonzero percentiles: p25=0.000488 p50=0.000977 p75=0.003662 p90=0.019287 p99=0.254883
+
+=== NNZ per Precision Tier ===
+User-side: FP16=69080830 (98.0%)  FP32=1421742 (2.0%)
+Item-side: FP16=69055955 (97.9%)  FP32=1446617 (2.1%)
+Thesis signal: dense tiles (FP16 path) hold 98.0% of user-side train NNZ.
+If >40%: precision dispatch covers most compute -> strong thesis.
+If <20%: most compute in FP32 tiles -> thesis needs argument about dense-tile quality.
+Giant split: User giants=4035, Item giants=6034 (nnz >= 1024, 4 warps/giant)
+Load balancing: User jobs=182088 (from 15006 tile-rows), Item jobs=177255 (from 556 tile-rows)
+Hybrid split: User dense=472000 entities (14750 tile-rows, 896 sparse jobs), Item dense=17760 entities (555 tile-rows, 10 sparse jobs)
+
+=== APR-BALS experiment ===
+Iter 30 | Train RMSE: 0.666558 | Test RMSE: 0.819465
+CUMULATIVE_WALL_MS 10541.080078
+
+=== Profiling: APR-BALS experiment (30 iters) ===
+User LHS+RHS: 8262.99 ms total | 275.43 ms/iter | 2432.7 GFlops/s
+User Cholesky:5388.27 ms total | 179.61 ms/iter
+Item LHS+RHS: 1868.33 ms total | 62.28 ms/iter | 10759.2 GFlops/s
+Item Cholesky: 204.41 ms total |  6.81 ms/iter
+SOLVER_STREAM_MS total=5592.676758 user=5388.270996 item=204.405762 boundary=sum_of_per_batch_solver_stream_intervals
+CHOL_MP [FP16 tiles, NO refinement (YOLO)]: FP16 failed solves = 0 entity-iters
+FALLBACK_COUNTERS total=14938770 fp16_success=14938770 fp16_failures=0 fp32_attempts=0 fp32_recoveries=0 fp32_failures=0
+RMSE:          340.77 ms total | 340.77 ms/call
+Total FLOPs: 40203.39 GFLOPs | Throughput: 2502.6 GFlops/s (compute: 2556.8)
+Training Complete in 10.541 seconds!
+
+=== APR-BALS final ===
+Train RMSE: 0.666558 | Test RMSE: 0.819465 | compute=15723.99 ms | wall=10541.11 ms
+Params: K_DIM=96, lambda=0.04, DENSE_NNZ_THRESH=4, WARPS_PER_BLOCK=4, XB=32, YB=256

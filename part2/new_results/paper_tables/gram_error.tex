@@ -1,0 +1,16 @@
+% Generated from new_results CSV; check protocol notes before manuscript use.
+\begin{table}
+\centering
+\caption{Relative upper-triangle Gram errors against FP64 on identical factors, with 800 heavy-entity snapshots per path.}
+\begin{tabular}{llll}
+\hline
+Path & Median error & Maximum error & Median trace bias \\
+\hline
+atomic\_fp32 & 1.23e-07 & 3.41e-07 & -6.33e-10 \\
+sameflow\_fp32 & 2.01e-06 & 9.26e-06 & -5.16e-07 \\
+dense\_fp16 & 0.000186 & 0.00205 & -0.000216 \\
+giant\_fp16 & 4.55e-05 & 0.000507 & -5.01e-05 \\
+chunked\_fp16 & 4.05e-06 & 1.38e-05 & -2.18e-08 \\
+\hline
+\end{tabular}
+\end{table}

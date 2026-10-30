@@ -1,0 +1,12 @@
+69878 10677
+7022183
+1004523
+train_csr.rowptr.bin
+train_csr.colidx.bin
+train_csr.value.bin
+train_csc.colptr.bin
+train_csc.rowidx.bin
+train_csc.value.bin
+test_coo.row.bin
+test_coo.col.bin
+test_coo.data.bin

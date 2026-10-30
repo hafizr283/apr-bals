@@ -1,0 +1,56 @@
+new_results/external_src/sgd/sgd.cu: In function ‘SGDIndex* gen_random_map(SGDIndex)’:
+new_results/external_src/sgd/sgd.cu:49:15: warning: ‘void std::random_shuffle(_RAIter, _RAIter) [with _RAIter = __gnu_cxx::__normal_iterator<int*, vector<int> >]’ is deprecated: use 'std::shuffle' instead [-Wdeprecated-declarations]
+   49 |     random_shuffle(map.begin(), map.end());
+      |     ~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~
+/usr/include/c++/13/bits/stl_algo.h:4581:1: note: declared here
+ 4581 |     random_shuffle(_RandomAccessIterator __first, _RandomAccessIterator __last)
+      | ^   ~~~~~~~~~~
+new_results/external_src/sgd/sgd_kernel.cu: In function ‘void sgd_update_k128(Parameter, mf_model*, mf_problem*, float)’:
+new_results/external_src/sgd/sgd_kernel.cu:294:15: warning: ‘void std::random_shuffle(_RAIter, _RAIter) [with _RAIter = __gnu_cxx::__normal_iterator<int*, vector<int> >]’ is deprecated: use 'std::shuffle' instead [-Wdeprecated-declarations]
+  294 |             random_shuffle(u_id_vec.begin(), u_id_vec.end());
+      |             ~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/usr/include/c++/13/bits/stl_algo.h:4581:1: note: declared here
+ 4581 |     random_shuffle(_RandomAccessIterator __first, _RandomAccessIterator __last)
+      | ^   ~~~~~~~~~~
+new_results/external_src/sgd/sgd_kernel.cu:298:15: warning: ‘void std::random_shuffle(_RAIter, _RAIter) [with _RAIter = __gnu_cxx::__normal_iterator<int*, vector<int> >]’ is deprecated: use 'std::shuffle' instead [-Wdeprecated-declarations]
+  298 |                 random_shuffle(v_id_vec.begin(), v_id_vec.end());
+      |               ^ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/usr/include/c++/13/bits/stl_algo.h:4581:1: note: declared here
+ 4581 |     random_shuffle(_RandomAccessIterator __first, _RandomAccessIterator __last)
+      | ^   ~~~~~~~~~~
+new_results/external_src/sgd/sgd_kernel.cu:442:15: warning: ‘void std::random_shuffle(_RAIter, _RAIter) [with _RAIter = __gnu_cxx::__normal_iterator<int*, vector<int> >]’ is deprecated: use 'std::shuffle' instead [-Wdeprecated-declarations]
+  442 |             random_shuffle(uv_id_vec.begin(), uv_id_vec.end());
+      |             ~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/usr/include/c++/13/bits/stl_algo.h:4581:1: note: declared here
+ 4581 |     random_shuffle(_RandomAccessIterator __first, _RandomAccessIterator __last)
+      | ^   ~~~~~~~~~~
+new_results/external_src/sgd/sgd_kernel.cu:444:15: warning: ‘void std::random_shuffle(_RAIter, _RAIter) [with _RAIter = __gnu_cxx::__normal_iterator<int*, vector<int> >]’ is deprecated: use 'std::shuffle' instead [-Wdeprecated-declarations]
+  444 |             random_shuffle(u_id_vec.begin(), u_id_vec.end());
+      |             ~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/usr/include/c++/13/bits/stl_algo.h:4581:1: note: declared here
+ 4581 |     random_shuffle(_RandomAccessIterator __first, _RandomAccessIterator __last)
+      | ^   ~~~~~~~~~~
+new_results/external_src/sgd/sgd_kernel.cu:447:15: warning: ‘void std::random_shuffle(_RAIter, _RAIter) [with _RAIter = __gnu_cxx::__normal_iterator<int*, vector<int> >]’ is deprecated: use 'std::shuffle' instead [-Wdeprecated-declarations]
+  447 |                 random_shuffle(v_id_vec.begin(), v_id_vec.begin());
+      |               ^ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/usr/include/c++/13/bits/stl_algo.h:4581:1: note: declared here
+ 4581 |     random_shuffle(_RandomAccessIterator __first, _RandomAccessIterator __last)
+      | ^   ~~~~~~~~~~
+new_results/external_src/sgd/sgd_kernel.cu:457:15: warning: ‘void std::random_shuffle(_RAIter, _RAIter) [with _RAIter = __gnu_cxx::__normal_iterator<int*, vector<int> >]’ is deprecated: use 'std::shuffle' instead [-Wdeprecated-declarations]
+  457 |                     random_shuffle(x_id_vec.begin(), x_id_vec.end());
+      |               ^     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/usr/include/c++/13/bits/stl_algo.h:4581:1: note: declared here
+ 4581 |     random_shuffle(_RandomAccessIterator __first, _RandomAccessIterator __last)
+      | ^   ~~~~~~~~~~
+new_results/external_src/sgd/sgd_kernel.cu:458:15: warning: ‘void std::random_shuffle(_RAIter, _RAIter) [with _RAIter = __gnu_cxx::__normal_iterator<int*, vector<int> >]’ is deprecated: use 'std::shuffle' instead [-Wdeprecated-declarations]
+  458 |                     random_shuffle(xy_id_vec.begin(), xy_id_vec.end());
+      |               ^     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/usr/include/c++/13/bits/stl_algo.h:4581:1: note: declared here
+ 4581 |     random_shuffle(_RandomAccessIterator __first, _RandomAccessIterator __last)
+      | ^   ~~~~~~~~~~
+new_results/external_src/sgd/sgd_kernel.cu:462:15: warning: ‘void std::random_shuffle(_RAIter, _RAIter) [with _RAIter = __gnu_cxx::__normal_iterator<int*, vector<int> >]’ is deprecated: use 'std::shuffle' instead [-Wdeprecated-declarations]
+  462 |                         random_shuffle(y_id_vec.begin(),y_id_vec.end());
+      |               ^         ~~~~~~~~~~~~~~~~~~~~~~~~
+/usr/include/c++/13/bits/stl_algo.h:4581:1: note: declared here
+ 4581 |     random_shuffle(_RandomAccessIterator __first, _RandomAccessIterator __last)
+      | ^   ~~~~~~~~~~

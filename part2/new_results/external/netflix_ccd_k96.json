@@ -1,0 +1,29 @@
+{
+  "command": [
+    "/home/pc/Desktop/2007080/latent_factorr_experimen/comparing_baseline/new_results/bin/ccd",
+    "-T",
+    "1",
+    "-a",
+    "100000",
+    "-b",
+    "100000",
+    "-l",
+    "0.04",
+    "-k",
+    "96",
+    "-t",
+    "30",
+    "/home/pc/Desktop/2007080/latent_factorr_experimen/comparing_baseline/new_results/external_inputs/netflix/ccd"
+  ],
+  "environment": {
+    "CUDA_VISIBLE_DEVICES": "1",
+    "OMP_NUM_THREADS": "4",
+    "MAX_ITERS": "30",
+    "FIXED_ITERS": "1",
+    "CHECK_EVERY": "1",
+    "MBETA": "0.3"
+  },
+  "returncode": 0,
+  "start": 1792000186.0357847,
+  "end": 1792000239.157935
+}

@@ -1,0 +1,4 @@
+ratings10 PASS
+ratings PASS
+ratings32 PASS
+netflix_ratings PASS
