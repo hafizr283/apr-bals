@@ -21,7 +21,7 @@ DATASETS = ("ml10m", "ml20m", "ml32m", "netflix")
 NAMES = dict(zip(DATASETS, ("ML-10M", "ML-20M", "ML-32M", "Netflix")))
 RANKS = (16, 32, 48, 64, 96)
 ALS_RANKS = dict(zip(RANKS, (20, 30, 50, 60, 100)))
-COMMIT = "e798aa242dc5026247426bd96ca6055be26b2354"
+COMMIT = "437e10e55c066e50c6077043313eec2fdaf46247"
 GITHUB = "https://github.com/hafizr283/apr-bals/blob/" + COMMIT + "/"
 
 
@@ -83,6 +83,8 @@ def sequence(curve, count, context):
 
 
 def calculate(root, manifest):
+    targets = json.loads(read(root, RESULTS + "external_targets.json"))
+    require(targets["targets"] == manifest["targets"], "external target manifest mismatch")
     rows, lines, _ = table(root, "external_time_to_target.csv")
     idx = {(r["dataset"], r["method"], int(r["K"])): r for r in rows}
     loc = {k: n for k, n in zip(idx, lines)}
@@ -256,6 +258,8 @@ def rendered_blocks(root, manifest, data):
             d, method, k = key.split("|")
             gaps.append(f"| {NAMES[d]} | {method} | {k} | {Path(spec['path']).name} |")
     blocks["gaps"] = "\n".join(gaps)
+    if not any(r["status"] == "missing" for r in manifest["external_raw"].values()):
+        blocks["gaps"] = "All 84 external raw trajectories are present and numerically checked against their CSV records. No external raw-log gaps remain."
     m = data["metrics"]
     blocks["headlines"] = "\n".join([
         "| Comparison | Protocol and ranks | Result | Evidence |",
@@ -322,7 +326,10 @@ def verify(root=ROOT):
             require(None not in r and all(v is not None for v in r.values()), "malformed row: " + name)
             keys.append([r[k] for k in spec["keys"]])
             for col in spec["numeric"]:
-                require(r[col] == "" or math.isfinite(float(r[col])), "non-finite CSV value: " + name)
+                declared = spec.get("declared_nonfinite", [])
+                exception = {"key": [r[k] for k in spec["keys"]], "column": col, "value": r[col]}
+                require(r[col] == "" or math.isfinite(float(r[col])) or exception in declared,
+                        "non-finite CSV value: " + name)
         require(len(keys) == len({tuple(k) for k in keys}), "duplicate CSV key: " + name)
         require(sorted(keys) == spec["expected_keys"], "coverage/key drift: " + name)
     data = calculate(root, manifest)
@@ -337,6 +344,15 @@ def verify(root=ROOT):
     anchors = validate_links(root, manifest)
     for path, sha in manifest["sources"].items():
         require(fingerprint(read(root, path)) == sha, "source fingerprint changed: " + path)
+    for path, sha in manifest.get("binary_sources", {}).items():
+        require((root / path).is_file(), "missing required figure/reference: " + path)
+        require(hashlib.sha256((root / path).read_bytes()).hexdigest() == sha,
+                "figure/reference fingerprint changed: " + path)
+    artifacts = json.loads(read(root, "docs/artifacts_manifest.json"))
+    require(artifacts["archive"]["sha256"] == manifest["archive_sha256"], "archive checksum metadata drift")
+    require(all(p not in manifest["sources"] and p not in manifest.get("binary_sources", {})
+                for p in (RESULTS + m["path"] for m in artifacts["excluded_members"])),
+            "large/generated artifact included in CPU evidence manifest")
     for path, sha in manifest["documents"].items():
         require(fingerprint(read(root, path)) == sha, "documentation drift: " + path)
     for path in manifest["small_evidence"]:
@@ -361,8 +377,12 @@ def main():
         return 1
     for warning in warnings:
         print("WARNING: " + warning)
-    print(f"PASS: archived evidence consistent; 84 external records, 59 raw trajectories, 6 momentum pairs; {anchors} pinned links checked.")
-    print("No models trained; no result files modified. Declared gaps remain; this is not a full reproduction check.")
+    manifest = json.loads(read(ROOT, "docs/evidence_manifest.json"))
+    external = len(manifest["tables"]["external_time_to_target.csv"]["expected_keys"])
+    raw = manifest["external_raw_available"]
+    pairs = len(manifest["tables"]["momentum_crossings.csv"]["expected_keys"]) // 2
+    print(f"PASS: archived evidence consistent; {external} external records, {raw} raw trajectories, {pairs} momentum pairs; {anchors} pinned links checked.")
+    print("No models trained; no result files modified. Binary inputs are external; full GPU reproduction is not validated.")
     return 0
 
 

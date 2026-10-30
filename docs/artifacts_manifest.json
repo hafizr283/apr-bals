@@ -1,0 +1,2014 @@
+{
+  "version": 1,
+  "archive": {
+    "filename": "new_results.zip",
+    "bytes": 6722845207,
+    "sha256": "0414eb3fc8cd80cf65b0b1cde7ec0cbfa51237d1bce48f212f69deac1bad3538",
+    "uncompressed_bytes": 17916059206,
+    "download_url": "https://drive.google.com/file/d/1c9_HLNKctFwAC5Ts9hofxoWuRiIJM9iZ/view",
+    "folder_url": "https://drive.google.com/drive/folders/1mdVw-JonIiq6gsNs9MZoCURK_6-n7XcC",
+    "access": "Existing Drive permissions apply; no new public hosting or dataset redistribution is claimed.",
+    "verification": "Archive SHA-256 computed locally. Per-member CRC/size are from the ZIP; archived member SHA-256 entries are saved historical records, not a fresh replay of every binary."
+  },
+  "evidence_commit": "437e10e55c066e50c6077043313eec2fdaf46247",
+  "excluded_members": [
+    {
+      "path": "__pycache__/analyze_accumulation.cpython-312.pyc",
+      "bytes": 6437,
+      "zip_crc32": "0418a867",
+      "category": "cache (regenerate; do not distribute)"
+    },
+    {
+      "path": "__pycache__/analyze_fp32_fallback.cpython-312.pyc",
+      "bytes": 13906,
+      "zip_crc32": "732a7627",
+      "category": "cache (regenerate; do not distribute)"
+    },
+    {
+      "path": "__pycache__/gram_check.cpython-312.pyc",
+      "bytes": 7714,
+      "zip_crc32": "d32f121b",
+      "category": "cache (regenerate; do not distribute)"
+    },
+    {
+      "path": "__pycache__/make_validation_split.cpython-312.pyc",
+      "bytes": 5702,
+      "zip_crc32": "11020206",
+      "category": "cache (regenerate; do not distribute)"
+    },
+    {
+      "path": "__pycache__/plot_results.cpython-312.pyc",
+      "bytes": 5775,
+      "zip_crc32": "c226b35b",
+      "category": "cache (regenerate; do not distribute)"
+    },
+    {
+      "path": "__pycache__/prepare_external.cpython-312.pyc",
+      "bytes": 2492,
+      "zip_crc32": "70a14450",
+      "category": "cache (regenerate; do not distribute)"
+    },
+    {
+      "path": "__pycache__/run_accumulation_control.cpython-312.pyc",
+      "bytes": 3504,
+      "zip_crc32": "daa441c8",
+      "category": "cache (regenerate; do not distribute)"
+    },
+    {
+      "path": "__pycache__/run_experiments.cpython-312.pyc",
+      "bytes": 5908,
+      "zip_crc32": "1dcd035e",
+      "category": "cache (regenerate; do not distribute)"
+    },
+    {
+      "path": "__pycache__/run_external.cpython-312.pyc",
+      "bytes": 5430,
+      "zip_crc32": "dd5ce468",
+      "category": "cache (regenerate; do not distribute)"
+    },
+    {
+      "path": "__pycache__/run_followups.cpython-312.pyc",
+      "bytes": 6335,
+      "zip_crc32": "26cec2e5",
+      "category": "cache (regenerate; do not distribute)"
+    },
+    {
+      "path": "__pycache__/run_fp32_fallback.cpython-312.pyc",
+      "bytes": 12646,
+      "zip_crc32": "af12bc74",
+      "category": "cache (regenerate; do not distribute)"
+    },
+    {
+      "path": "__pycache__/run_fp32_fallback_legacy.cpython-312.pyc",
+      "bytes": 5003,
+      "zip_crc32": "23dee061",
+      "category": "cache (regenerate; do not distribute)"
+    },
+    {
+      "path": "__pycache__/summarize.cpython-312.pyc",
+      "bytes": 23859,
+      "zip_crc32": "be6037c9",
+      "category": "cache (regenerate; do not distribute)"
+    },
+    {
+      "path": "__pycache__/summarize_external.cpython-312.pyc",
+      "bytes": 5747,
+      "zip_crc32": "4f99319d",
+      "category": "cache (regenerate; do not distribute)"
+    },
+    {
+      "path": "__pycache__/verify_splits.cpython-312.pyc",
+      "bytes": 2236,
+      "zip_crc32": "22e8071a",
+      "category": "cache (regenerate; do not distribute)"
+    },
+    {
+      "path": "accumulation_control/ml10m_k16_items.output.bin",
+      "bytes": 131072,
+      "zip_crc32": "e8e68e0f",
+      "category": "binary factors or diagnostic arrays"
+    },
+    {
+      "path": "accumulation_control/ml10m_k16_users.output.bin",
+      "bytes": 131072,
+      "zip_crc32": "74bd317d",
+      "category": "binary factors or diagnostic arrays"
+    },
+    {
+      "path": "accumulation_control/ml10m_k32_items.output.bin",
+      "bytes": 524288,
+      "zip_crc32": "3e5ebd15",
+      "category": "binary factors or diagnostic arrays"
+    },
+    {
+      "path": "accumulation_control/ml10m_k32_users.output.bin",
+      "bytes": 524288,
+      "zip_crc32": "1d3239b9",
+      "category": "binary factors or diagnostic arrays"
+    },
+    {
+      "path": "accumulation_control/ml10m_k48_items.output.bin",
+      "bytes": 1179648,
+      "zip_crc32": "5c367dde",
+      "category": "binary factors or diagnostic arrays"
+    },
+    {
+      "path": "accumulation_control/ml10m_k48_users.output.bin",
+      "bytes": 1179648,
+      "zip_crc32": "b88cbb94",
+      "category": "binary factors or diagnostic arrays"
+    },
+    {
+      "path": "accumulation_control/ml10m_k64_items.output.bin",
+      "bytes": 2097152,
+      "zip_crc32": "bc668cf5",
+      "category": "binary factors or diagnostic arrays"
+    },
+    {
+      "path": "accumulation_control/ml10m_k64_users.output.bin",
+      "bytes": 2097152,
+      "zip_crc32": "2e033522",
+      "category": "binary factors or diagnostic arrays"
+    },
+    {
+      "path": "accumulation_control/ml10m_k96_items.output.bin",
+      "bytes": 4718592,
+      "zip_crc32": "4ecf4489",
+      "category": "binary factors or diagnostic arrays"
+    },
+    {
+      "path": "accumulation_control/ml10m_k96_users.output.bin",
+      "bytes": 4718592,
+      "zip_crc32": "558b5f8a",
+      "category": "binary factors or diagnostic arrays"
+    },
+    {
+      "path": "accumulation_control/ml20m_k16_items.output.bin",
+      "bytes": 131072,
+      "zip_crc32": "c61c4ea4",
+      "category": "binary factors or diagnostic arrays"
+    },
+    {
+      "path": "accumulation_control/ml20m_k16_users.output.bin",
+      "bytes": 131072,
+      "zip_crc32": "cc380623",
+      "category": "binary factors or diagnostic arrays"
+    },
+    {
+      "path": "accumulation_control/ml20m_k32_items.output.bin",
+      "bytes": 524288,
+      "zip_crc32": "2603ecc0",
+      "category": "binary factors or diagnostic arrays"
+    },
+    {
+      "path": "accumulation_control/ml20m_k32_users.output.bin",
+      "bytes": 524288,
+      "zip_crc32": "d70527c5",
+      "category": "binary factors or diagnostic arrays"
+    },
+    {
+      "path": "accumulation_control/ml20m_k48_items.output.bin",
+      "bytes": 1179648,
+      "zip_crc32": "53e4016d",
+      "category": "binary factors or diagnostic arrays"
+    },
+    {
+      "path": "accumulation_control/ml20m_k48_users.output.bin",
+      "bytes": 1179648,
+      "zip_crc32": "7f656edb",
+      "category": "binary factors or diagnostic arrays"
+    },
+    {
+      "path": "accumulation_control/ml20m_k64_items.output.bin",
+      "bytes": 2097152,
+      "zip_crc32": "48ed9d3e",
+      "category": "binary factors or diagnostic arrays"
+    },
+    {
+      "path": "accumulation_control/ml20m_k64_users.output.bin",
+      "bytes": 2097152,
+      "zip_crc32": "1b9b4a2e",
+      "category": "binary factors or diagnostic arrays"
+    },
+    {
+      "path": "accumulation_control/ml20m_k96_items.output.bin",
+      "bytes": 4718592,
+      "zip_crc32": "f02df5ea",
+      "category": "binary factors or diagnostic arrays"
+    },
+    {
+      "path": "accumulation_control/ml20m_k96_users.output.bin",
+      "bytes": 4718592,
+      "zip_crc32": "f32788e8",
+      "category": "binary factors or diagnostic arrays"
+    },
+    {
+      "path": "accumulation_control/ml32m_k16_items.output.bin",
+      "bytes": 131072,
+      "zip_crc32": "677f5820",
+      "category": "binary factors or diagnostic arrays"
+    },
+    {
+      "path": "accumulation_control/ml32m_k16_users.output.bin",
+      "bytes": 131072,
+      "zip_crc32": "3cdb10bc",
+      "category": "binary factors or diagnostic arrays"
+    },
+    {
+      "path": "accumulation_control/ml32m_k32_items.output.bin",
+      "bytes": 524288,
+      "zip_crc32": "c98597da",
+      "category": "binary factors or diagnostic arrays"
+    },
+    {
+      "path": "accumulation_control/ml32m_k32_users.output.bin",
+      "bytes": 524288,
+      "zip_crc32": "5b83cebc",
+      "category": "binary factors or diagnostic arrays"
+    },
+    {
+      "path": "accumulation_control/ml32m_k48_items.output.bin",
+      "bytes": 1179648,
+      "zip_crc32": "d365e30b",
+      "category": "binary factors or diagnostic arrays"
+    },
+    {
+      "path": "accumulation_control/ml32m_k48_users.output.bin",
+      "bytes": 1179648,
+      "zip_crc32": "5556a615",
+      "category": "binary factors or diagnostic arrays"
+    },
+    {
+      "path": "accumulation_control/ml32m_k64_items.output.bin",
+      "bytes": 2097152,
+      "zip_crc32": "29b31b91",
+      "category": "binary factors or diagnostic arrays"
+    },
+    {
+      "path": "accumulation_control/ml32m_k64_users.output.bin",
+      "bytes": 2097152,
+      "zip_crc32": "7a5a79c3",
+      "category": "binary factors or diagnostic arrays"
+    },
+    {
+      "path": "accumulation_control/ml32m_k96_items.output.bin",
+      "bytes": 4718592,
+      "zip_crc32": "889562bb",
+      "category": "binary factors or diagnostic arrays"
+    },
+    {
+      "path": "accumulation_control/ml32m_k96_users.output.bin",
+      "bytes": 4718592,
+      "zip_crc32": "596c01a9",
+      "category": "binary factors or diagnostic arrays"
+    },
+    {
+      "path": "accumulation_control/netflix_k16_items.output.bin",
+      "bytes": 131072,
+      "zip_crc32": "659b573c",
+      "category": "binary factors or diagnostic arrays"
+    },
+    {
+      "path": "accumulation_control/netflix_k16_users.output.bin",
+      "bytes": 131072,
+      "zip_crc32": "eecf9673",
+      "category": "binary factors or diagnostic arrays"
+    },
+    {
+      "path": "accumulation_control/netflix_k32_items.output.bin",
+      "bytes": 524288,
+      "zip_crc32": "59b65f68",
+      "category": "binary factors or diagnostic arrays"
+    },
+    {
+      "path": "accumulation_control/netflix_k32_users.output.bin",
+      "bytes": 524288,
+      "zip_crc32": "b4245e53",
+      "category": "binary factors or diagnostic arrays"
+    },
+    {
+      "path": "accumulation_control/netflix_k48_items.output.bin",
+      "bytes": 1179648,
+      "zip_crc32": "12b6bd85",
+      "category": "binary factors or diagnostic arrays"
+    },
+    {
+      "path": "accumulation_control/netflix_k48_users.output.bin",
+      "bytes": 1179648,
+      "zip_crc32": "cc44988e",
+      "category": "binary factors or diagnostic arrays"
+    },
+    {
+      "path": "accumulation_control/netflix_k64_items.output.bin",
+      "bytes": 2097152,
+      "zip_crc32": "3b6aff2b",
+      "category": "binary factors or diagnostic arrays"
+    },
+    {
+      "path": "accumulation_control/netflix_k64_users.output.bin",
+      "bytes": 2097152,
+      "zip_crc32": "c3d1162b",
+      "category": "binary factors or diagnostic arrays"
+    },
+    {
+      "path": "accumulation_control/netflix_k96_items.output.bin",
+      "bytes": 4718592,
+      "zip_crc32": "e82190e6",
+      "category": "binary factors or diagnostic arrays"
+    },
+    {
+      "path": "accumulation_control/netflix_k96_users.output.bin",
+      "bytes": 4718592,
+      "zip_crc32": "783d2b7f",
+      "category": "binary factors or diagnostic arrays"
+    },
+    {
+      "path": "bin/atomic_k16",
+      "bytes": 2605976,
+      "zip_crc32": "6d31b584",
+      "category": "compiled executable (prefer rebuilding)",
+      "archived_sha256": "129762c6b9f8331dd1e5916fd9f74f2b194132e8970bce9975f373269708d3d3"
+    },
+    {
+      "path": "bin/atomic_k32",
+      "bytes": 2618264,
+      "zip_crc32": "c1671353",
+      "category": "compiled executable (prefer rebuilding)",
+      "archived_sha256": "11f3bfa9bda37684d309c9b958b55812991ddbd33875f4849379f595598b594c"
+    },
+    {
+      "path": "bin/atomic_k48",
+      "bytes": 2581400,
+      "zip_crc32": "41b0f141",
+      "category": "compiled executable (prefer rebuilding)",
+      "archived_sha256": "a3de1c6dbca55ad22be0c40a8b9234ab1361d8d94364f9e79e2937b4abbb0cd9"
+    },
+    {
+      "path": "bin/atomic_k64",
+      "bytes": 2614168,
+      "zip_crc32": "265b695f",
+      "category": "compiled executable (prefer rebuilding)",
+      "archived_sha256": "75eb4f535f349a4dd138af2e26cefed0f4763d4e0be66cf54bc74628f839020d"
+    },
+    {
+      "path": "bin/atomic_k96",
+      "bytes": 2577304,
+      "zip_crc32": "0d6d3437",
+      "category": "compiled executable (prefer rebuilding)",
+      "archived_sha256": "c1d99bdbc56405518ab6bf13a6465393c1558c0d809a179685f149561ae4ffa4"
+    },
+    {
+      "path": "bin/bals_k16",
+      "bytes": 2410176,
+      "zip_crc32": "351da967",
+      "category": "compiled executable (prefer rebuilding)",
+      "archived_sha256": "0a6b5acb3aa84efd85d8088f4634970222cf85d294a7f115e7c3f8a045b0de59"
+    },
+    {
+      "path": "bin/bals_k32",
+      "bytes": 2414272,
+      "zip_crc32": "a984b7ae",
+      "category": "compiled executable (prefer rebuilding)",
+      "archived_sha256": "141fd75d8bc5e65773c5518b9f59565d4f7c552e72d59434b0ff634f46e90c65"
+    },
+    {
+      "path": "bin/bals_k48",
+      "bytes": 2381504,
+      "zip_crc32": "c3dcc841",
+      "category": "compiled executable (prefer rebuilding)",
+      "archived_sha256": "07b8b6c81aef4f84a6f1368e1c7556b20ff9ca859ec7d7425c35555785c49a86"
+    },
+    {
+      "path": "bin/bals_k64",
+      "bytes": 2410176,
+      "zip_crc32": "d25e2467",
+      "category": "compiled executable (prefer rebuilding)",
+      "archived_sha256": "6f2d731b260fbf3523d9bb55333534d51b5a71b24bc4d43fef35a5bf9791b106"
+    },
+    {
+      "path": "bin/bals_k96",
+      "bytes": 2381504,
+      "zip_crc32": "a76d58d2",
+      "category": "compiled executable (prefer rebuilding)",
+      "archived_sha256": "d48e157c429a234faca9ae8d463f3fdad10180af671607b4cc2478b1aa542def"
+    },
+    {
+      "path": "bin/bf16_k96",
+      "bytes": 2786872,
+      "zip_crc32": "c3c81605",
+      "category": "compiled executable (prefer rebuilding)",
+      "archived_sha256": "8279fdabd88347bffe556db736ea73e5655014d6cee9bbdd6518cca715471521"
+    },
+    {
+      "path": "bin/ccd",
+      "bytes": 1268432,
+      "zip_crc32": "2433af96",
+      "category": "compiled executable (prefer rebuilding)",
+      "archived_sha256": "dd5dfa6782e9b746b86af99864b61b712fc3514b164f42cb47fe6f993190a5d5"
+    },
+    {
+      "path": "bin/chunked_fp16_k16",
+      "bytes": 2626392,
+      "zip_crc32": "5dd250e2",
+      "category": "compiled executable (prefer rebuilding)",
+      "archived_sha256": "ca88763ab3220a8387883c939f471e61ae1587285eb0e2fa126e71136fecd913"
+    },
+    {
+      "path": "bin/chunked_fp16_k32",
+      "bytes": 2634584,
+      "zip_crc32": "19c13114",
+      "category": "compiled executable (prefer rebuilding)",
+      "archived_sha256": "e328e89cd7830ebfaa5105461440f9063b7bb6e2b44b83570c21ffc76c545b80"
+    },
+    {
+      "path": "bin/chunked_fp16_k48",
+      "bytes": 2597720,
+      "zip_crc32": "97a26ff8",
+      "category": "compiled executable (prefer rebuilding)",
+      "archived_sha256": "f8ee5e50a4052372e5395ce95379fa759c1a06291d932b37f9571b5b6b6c8c3b"
+    },
+    {
+      "path": "bin/chunked_fp16_k64",
+      "bytes": 2630488,
+      "zip_crc32": "a2f43ba1",
+      "category": "compiled executable (prefer rebuilding)",
+      "archived_sha256": "31c5cc10feb7398c9025f696b6c9f345e10f46329706504609ff4f88217835d8"
+    },
+    {
+      "path": "bin/chunked_fp16_k96",
+      "bytes": 2593624,
+      "zip_crc32": "eec44bde",
+      "category": "compiled executable (prefer rebuilding)",
+      "archived_sha256": "bc9570fb41f151fcbf9e14ec6c49836f898c5a09db64dffe063c4d21dd0221ee"
+    },
+    {
+      "path": "bin/chunked_probe_k16",
+      "bytes": 1123056,
+      "zip_crc32": "c21b0e9d",
+      "category": "compiled executable (prefer rebuilding)",
+      "archived_sha256": "3fcd28c4ea960a5bb97d9f4ac7104f78ceeb7ee7296fe631b15661f67bbed981"
+    },
+    {
+      "path": "bin/chunked_probe_k32",
+      "bytes": 1168112,
+      "zip_crc32": "cec6d4a3",
+      "category": "compiled executable (prefer rebuilding)",
+      "archived_sha256": "535ff673afd707633ba93b6b56052656a23d546958c0845188d917e19639a3e8"
+    },
+    {
+      "path": "bin/chunked_probe_k48",
+      "bytes": 1172208,
+      "zip_crc32": "13765022",
+      "category": "compiled executable (prefer rebuilding)",
+      "archived_sha256": "f5182ebd6d757696c30e3a1c07a90c72e28b35549a396ba29962598ca3be072f"
+    },
+    {
+      "path": "bin/chunked_probe_k64",
+      "bytes": 1229552,
+      "zip_crc32": "6c3d7a70",
+      "category": "compiled executable (prefer rebuilding)",
+      "archived_sha256": "23697367e72c79c98a7e8935158c7b7e8d86b6f30b2a4600b889be5ca7fc5628"
+    },
+    {
+      "path": "bin/chunked_probe_k96",
+      "bytes": 1225456,
+      "zip_crc32": "2a98bd1e",
+      "category": "compiled executable (prefer rebuilding)",
+      "archived_sha256": "7ed8ffb062b6d4db1c651c509b916742fef8306575bad14c5e5ca691f3a087af"
+    },
+    {
+      "path": "bin/control_k32",
+      "bytes": 2872096,
+      "zip_crc32": "d8c476dd",
+      "category": "compiled executable (prefer rebuilding)",
+      "archived_sha256": "cd4f713e92c983b119eec8d345e1bb822311bda6facdcc763e90af6e8b81fae8"
+    },
+    {
+      "path": "bin/cumf_als",
+      "bytes": 1291776,
+      "zip_crc32": "f2358b77",
+      "category": "compiled executable (prefer rebuilding)",
+      "archived_sha256": "7221dbb82574458bf819abfe786dbca6c8f042e91a9d67e9a611e4e2aba94f7d"
+    },
+    {
+      "path": "bin/fp16_ir1_k96",
+      "bytes": 2790600,
+      "zip_crc32": "985d6fca",
+      "category": "compiled executable (prefer rebuilding)",
+      "archived_sha256": "732f84c22bae94ba0ba336d8b143c22c4b314b2337bdd3b9f02154035bffa09a"
+    },
+    {
+      "path": "bin/fp16_k16",
+      "bytes": 2618200,
+      "zip_crc32": "c6fcf849",
+      "category": "compiled executable (prefer rebuilding)",
+      "archived_sha256": "a6d3d0940d81888bc35af20002a59698ea153a25a569f0160a69db775a05258a"
+    },
+    {
+      "path": "bin/fp16_k32",
+      "bytes": 2626392,
+      "zip_crc32": "c0ed4fdd",
+      "category": "compiled executable (prefer rebuilding)",
+      "archived_sha256": "b1d3a1c56259af24e73e6a7cfd2e8f0eb0931eb5240cfb5fe5239b590075a9a1"
+    },
+    {
+      "path": "bin/fp16_k48",
+      "bytes": 2589528,
+      "zip_crc32": "88d4eff8",
+      "category": "compiled executable (prefer rebuilding)",
+      "archived_sha256": "2d9884aa22260274986938e6c3d997dd8e7ceb74e05da88f0dbec34bf711ef27"
+    },
+    {
+      "path": "bin/fp16_k64",
+      "bytes": 2622296,
+      "zip_crc32": "e286644d",
+      "category": "compiled executable (prefer rebuilding)",
+      "archived_sha256": "ed9c193379af7d4cefb8b855afd4ae22c8710dc8f3a771bda68f79a1838264b3"
+    },
+    {
+      "path": "bin/fp16_k96",
+      "bytes": 2593624,
+      "zip_crc32": "bb959b1b",
+      "category": "compiled executable (prefer rebuilding)",
+      "archived_sha256": "c77bdb1f25b371fb89050d6d8a39db7f6d388f70bb0b70a98696e042486fa002"
+    },
+    {
+      "path": "bin/gram_probe_k16",
+      "bytes": 1123056,
+      "zip_crc32": "8b213afa",
+      "category": "compiled executable (prefer rebuilding)",
+      "archived_sha256": "6b57ec7e4070ec651d9eb1c9e342356c86ad1484ce15fac308f3bd418cf21880"
+    },
+    {
+      "path": "bin/gram_probe_k32",
+      "bytes": 1168112,
+      "zip_crc32": "dae1dc88",
+      "category": "compiled executable (prefer rebuilding)",
+      "archived_sha256": "994eea0315ec92dc4b047dab1286e44119c915504a860512d4d93856d4bd6bcc"
+    },
+    {
+      "path": "bin/gram_probe_k48",
+      "bytes": 1172208,
+      "zip_crc32": "a383b8c7",
+      "category": "compiled executable (prefer rebuilding)",
+      "archived_sha256": "b4185b8579646e420af6a68dccf6dd5821ceb0f06287fda5cdb160973d15ab49"
+    },
+    {
+      "path": "bin/gram_probe_k64",
+      "bytes": 1225456,
+      "zip_crc32": "99e705cb",
+      "category": "compiled executable (prefer rebuilding)",
+      "archived_sha256": "b8ee458ce7966a04dcd0979c1b7c7710902c9d3aa1326fb40cf69d17af3bfe1e"
+    },
+    {
+      "path": "bin/gram_probe_k96",
+      "bytes": 1217264,
+      "zip_crc32": "78a5347b",
+      "category": "compiled executable (prefer rebuilding)",
+      "archived_sha256": "a3498fad3905d64bfe51ef2702cec03dcbd02177303da3267e96d859447869dc"
+    },
+    {
+      "path": "bin/ladder_atomic",
+      "bytes": 2581400,
+      "zip_crc32": "11e90215",
+      "category": "compiled executable (prefer rebuilding)",
+      "archived_sha256": "5330362e8f37b9610ec70e64363d05477c74c27310acd381c21e1e912c59b232"
+    },
+    {
+      "path": "bin/ladder_fastcheck",
+      "bytes": 2737432,
+      "zip_crc32": "de9fea93",
+      "category": "compiled executable (prefer rebuilding)",
+      "archived_sha256": "5f8a5872b3f3762bf6412cda87d1baf019dabb583136c8d822a567b90bae46f1"
+    },
+    {
+      "path": "bin/ladder_fp16solve",
+      "bytes": 2720840,
+      "zip_crc32": "97b6ac21",
+      "category": "compiled executable (prefer rebuilding)",
+      "archived_sha256": "55caad8b538270dacaa42f1fad04a9fb5cb2751a06bf97b1e1ecec19ed504cf1"
+    },
+    {
+      "path": "bin/ladder_fp32",
+      "bytes": 2593624,
+      "zip_crc32": "e40cf930",
+      "category": "compiled executable (prefer rebuilding)",
+      "archived_sha256": "42aa4f3395ac9e844347eecb53c1b67c32b1289aa725691285005c136057fcb7"
+    },
+    {
+      "path": "bin/ladder_momentum",
+      "bytes": 2737560,
+      "zip_crc32": "5f13597c",
+      "category": "compiled executable (prefer rebuilding)",
+      "archived_sha256": "f91556c909773b75a90423a7a95ca403798f9254e9461376045ae0e33e12ae6a"
+    },
+    {
+      "path": "bin/ladder_sameflow",
+      "bytes": 2642816,
+      "zip_crc32": "9742cc71",
+      "category": "compiled executable (prefer rebuilding)",
+      "archived_sha256": "8a5fe2230af91abe8e42c114857304322d86ad4382dc64d040fd1af7554f6883"
+    },
+    {
+      "path": "bin/rounded_fma_k16",
+      "bytes": 2851712,
+      "zip_crc32": "6bf912bd",
+      "category": "compiled executable (prefer rebuilding)",
+      "archived_sha256": "1ae70dc7bddc1ed625fc26faca4bb7a1f38ad88d8ff8c76b49b6458cae303f62"
+    },
+    {
+      "path": "bin/rounded_fma_k32",
+      "bytes": 2855808,
+      "zip_crc32": "ed0c4155",
+      "category": "compiled executable (prefer rebuilding)",
+      "archived_sha256": "d7a9222c93039ca148a86c36a9d69554a3c2ce5e3fed9ac207b5df5311bdaf83"
+    },
+    {
+      "path": "bin/rounded_fma_k48",
+      "bytes": 2827136,
+      "zip_crc32": "d6e5ea4c",
+      "category": "compiled executable (prefer rebuilding)",
+      "archived_sha256": "314fba12c5b20b3a076abd58cc9648f62942d4fa6321b0ebbc552e973e4a6bc2"
+    },
+    {
+      "path": "bin/rounded_fma_k64",
+      "bytes": 2855808,
+      "zip_crc32": "e053e922",
+      "category": "compiled executable (prefer rebuilding)",
+      "archived_sha256": "e41fbd6cc5f02882fd2e5f151bb2d036f5540f86115068dfc909947d0e8546b4"
+    },
+    {
+      "path": "bin/rounded_fma_k96",
+      "bytes": 2646912,
+      "zip_crc32": "9f0e465d",
+      "category": "compiled executable (prefer rebuilding)",
+      "archived_sha256": "7043b455cfeec4ce0720be72d0bd36d66bc718d77a5763bf93bc65a4ce2d7996"
+    },
+    {
+      "path": "bin/sameflow_k16",
+      "bytes": 2843520,
+      "zip_crc32": "12cda07d",
+      "category": "compiled executable (prefer rebuilding)",
+      "archived_sha256": "ca3f7ec972b2a84ccd86f7ffab812f157f64b8c639397f6c13ea6e577e1a81c7"
+    },
+    {
+      "path": "bin/sameflow_k32",
+      "bytes": 2855808,
+      "zip_crc32": "f4c8f6b9",
+      "category": "compiled executable (prefer rebuilding)",
+      "archived_sha256": "ac08761a56eca2bc1d3427c7779543bc5cbba296c77ea59c41be56e5171d9888"
+    },
+    {
+      "path": "bin/sameflow_k48",
+      "bytes": 2827136,
+      "zip_crc32": "4b4cb51b",
+      "category": "compiled executable (prefer rebuilding)",
+      "archived_sha256": "bb3e5bd1d44adcf1bb66133ce4a2c1e57429046f9f192e88485f9442dd8a9f56"
+    },
+    {
+      "path": "bin/sameflow_k64",
+      "bytes": 2855808,
+      "zip_crc32": "5a12be76",
+      "category": "compiled executable (prefer rebuilding)",
+      "archived_sha256": "dd6cba93bd08aa43f0ddabeabd819bf8d2b3a57326c8adfc00b7ef2d94479592"
+    },
+    {
+      "path": "bin/sameflow_k96",
+      "bytes": 2642816,
+      "zip_crc32": "2bc2bbf1",
+      "category": "compiled executable (prefer rebuilding)",
+      "archived_sha256": "69ae45d56df90c46a459f0a738133ee7fbcb048b94525bd1a38186131fab8e23"
+    },
+    {
+      "path": "bin/sameflow_k96_outer",
+      "bytes": 2642816,
+      "zip_crc32": "7638f3d0",
+      "category": "compiled executable (prefer rebuilding)",
+      "archived_sha256": "794a0d2afff0423fbbdf7a5d4a23977a078b95240d895a8ef55e9dfb0c4f382c"
+    },
+    {
+      "path": "bin/sameflow_k96_unroll1",
+      "bytes": 2720640,
+      "zip_crc32": "24f270d3",
+      "category": "compiled executable (prefer rebuilding)",
+      "archived_sha256": "f7e9c885a6e2e7028a2b26f93f2c245f5493d58f7e4e5dc00e5280b6b3babb73"
+    },
+    {
+      "path": "bin/sameflow_k96_unroll4",
+      "bytes": 2806656,
+      "zip_crc32": "05aaad0b",
+      "category": "compiled executable (prefer rebuilding)",
+      "archived_sha256": "a06a1ed0b6494da3a81ab795f31d066e763d9bb9f29a593a8b4dbfd79dd0d7cf"
+    },
+    {
+      "path": "bin/sameflow_k96_unroll8",
+      "bytes": 2909056,
+      "zip_crc32": "a7fd8130",
+      "category": "compiled executable (prefer rebuilding)",
+      "archived_sha256": "606d8af10c3ae68967ab4b34a6d3215051517528f4eb8dc2aee18bd8078ea62a"
+    },
+    {
+      "path": "bin/sgd",
+      "bytes": 2152056,
+      "zip_crc32": "a9b72b28",
+      "category": "compiled executable (prefer rebuilding)",
+      "archived_sha256": "4a1ed8679285ab2650f01f90f6890cd1d4d848fed45c306f2fdb33c917bd3aaf"
+    },
+    {
+      "path": "bin/ship_k16",
+      "bytes": 2618328,
+      "zip_crc32": "c69b9966",
+      "category": "compiled executable (prefer rebuilding)",
+      "archived_sha256": "fd218e357478070a70c8002e4f0eac8f99d36c11685a58b1a7b1b20b9fef5dc2"
+    },
+    {
+      "path": "bin/ship_k32",
+      "bytes": 2626520,
+      "zip_crc32": "9b8342f5",
+      "category": "compiled executable (prefer rebuilding)",
+      "archived_sha256": "79f75a834336b78a5d6a856cad6c896b396cee426226c425b98c5bbd2fd566af"
+    },
+    {
+      "path": "bin/ship_k48",
+      "bytes": 2589656,
+      "zip_crc32": "61709944",
+      "category": "compiled executable (prefer rebuilding)",
+      "archived_sha256": "b8d5dd97e90561b8a44e6e551c98d162f9782a5af5f15975729424588af93ce9"
+    },
+    {
+      "path": "bin/ship_k64",
+      "bytes": 2622424,
+      "zip_crc32": "3bad0673",
+      "category": "compiled executable (prefer rebuilding)",
+      "archived_sha256": "3d649b7f8d682c71f6854d94201e76164d57a902660376e4feac821da19d221a"
+    },
+    {
+      "path": "bin/ship_k96",
+      "bytes": 2729160,
+      "zip_crc32": "4faa507e",
+      "category": "compiled executable (prefer rebuilding)",
+      "archived_sha256": "f31180e4f4a8cc8b09b1b3a5d396c01fe7b42235c32833ab5eeeebba32b0697c"
+    },
+    {
+      "path": "bin/tf32_k16",
+      "bytes": 2642816,
+      "zip_crc32": "a7c33a71",
+      "category": "compiled executable (prefer rebuilding)",
+      "archived_sha256": "ac10255d66cbd983c162aa8bb5c198b714fa2a60408c88d8dde0a7edeb63ccf9"
+    },
+    {
+      "path": "bin/tf32_k32",
+      "bytes": 2651008,
+      "zip_crc32": "81ab149e",
+      "category": "compiled executable (prefer rebuilding)",
+      "archived_sha256": "751ebe89ee1bb4923900cbaeeaf3c8e3b2a3944fe8520276f8809f880ba641d1"
+    },
+    {
+      "path": "bin/tf32_k48",
+      "bytes": 2626432,
+      "zip_crc32": "447c9dcf",
+      "category": "compiled executable (prefer rebuilding)",
+      "archived_sha256": "cc6d6cfd14e20672dc133f72ba5683cd305d3e53c295400bffd4e079ae1f45dc"
+    },
+    {
+      "path": "bin/tf32_k64",
+      "bytes": 2655104,
+      "zip_crc32": "59f35245",
+      "category": "compiled executable (prefer rebuilding)",
+      "archived_sha256": "e136bb821291db972f051664368d83a50bdb68ba05e7759d29f949d396b6a3de"
+    },
+    {
+      "path": "bin/tf32_k96",
+      "bytes": 2630528,
+      "zip_crc32": "320e970a",
+      "category": "compiled executable (prefer rebuilding)",
+      "archived_sha256": "1c6cd97b354c233d017e6aa3e15eedf11381a212381c2d894dc1acf0122715ee"
+    },
+    {
+      "path": "external/cumf_XT_f100.bin",
+      "bytes": 7108000,
+      "zip_crc32": "2f330502",
+      "category": "binary factors or diagnostic arrays"
+    },
+    {
+      "path": "external/cumf_XT_f20.bin",
+      "bytes": 1421600,
+      "zip_crc32": "3832a5c6",
+      "category": "binary factors or diagnostic arrays"
+    },
+    {
+      "path": "external/cumf_XT_f30.bin",
+      "bytes": 2132400,
+      "zip_crc32": "934848c0",
+      "category": "binary factors or diagnostic arrays"
+    },
+    {
+      "path": "external/cumf_XT_f50.bin",
+      "bytes": 3554000,
+      "zip_crc32": "627ff5c5",
+      "category": "binary factors or diagnostic arrays"
+    },
+    {
+      "path": "external/cumf_XT_f60.bin",
+      "bytes": 4264800,
+      "zip_crc32": "b0f479b3",
+      "category": "binary factors or diagnostic arrays"
+    },
+    {
+      "path": "external/cumf_thetaT_f100.bin",
+      "bytes": 192075600,
+      "zip_crc32": "1f758f1f",
+      "category": "binary factors or diagnostic arrays"
+    },
+    {
+      "path": "external/cumf_thetaT_f20.bin",
+      "bytes": 38415120,
+      "zip_crc32": "15ff1e59",
+      "category": "binary factors or diagnostic arrays"
+    },
+    {
+      "path": "external/cumf_thetaT_f30.bin",
+      "bytes": 57622680,
+      "zip_crc32": "0a4437b0",
+      "category": "binary factors or diagnostic arrays"
+    },
+    {
+      "path": "external/cumf_thetaT_f50.bin",
+      "bytes": 96037800,
+      "zip_crc32": "aa1d770d",
+      "category": "binary factors or diagnostic arrays"
+    },
+    {
+      "path": "external/cumf_thetaT_f60.bin",
+      "bytes": 115245360,
+      "zip_crc32": "0b7f3b90",
+      "category": "binary factors or diagnostic arrays"
+    },
+    {
+      "path": "external/ml10m_sgd.model",
+      "bytes": 41243668,
+      "zip_crc32": "5db6a2c8",
+      "category": "model or factor output"
+    },
+    {
+      "path": "external/ml20m_sgd.model",
+      "bytes": 84601364,
+      "zip_crc32": "9b659990",
+      "category": "model or factor output"
+    },
+    {
+      "path": "external/ml32m_sgd.model",
+      "bytes": 146114068,
+      "zip_crc32": "ca828f14",
+      "category": "model or factor output"
+    },
+    {
+      "path": "external/netflix_sgd.model",
+      "bytes": 254955028,
+      "zip_crc32": "6b2a3725",
+      "category": "model or factor output"
+    },
+    {
+      "path": "external_inputs/ml10m/ccd/test_coo.col.bin",
+      "bytes": 4018092,
+      "zip_crc32": "55131cef",
+      "category": "prepared dataset or split"
+    },
+    {
+      "path": "external_inputs/ml10m/ccd/test_coo.data.bin",
+      "bytes": 4018092,
+      "zip_crc32": "47b099f8",
+      "category": "prepared dataset or split"
+    },
+    {
+      "path": "external_inputs/ml10m/ccd/test_coo.row.bin",
+      "bytes": 4018092,
+      "zip_crc32": "701a9752",
+      "category": "prepared dataset or split"
+    },
+    {
+      "path": "external_inputs/ml10m/ccd/train_csc.colptr.bin",
+      "bytes": 42712,
+      "zip_crc32": "a4050815",
+      "category": "prepared dataset or split"
+    },
+    {
+      "path": "external_inputs/ml10m/ccd/train_csc.rowidx.bin",
+      "bytes": 28088732,
+      "zip_crc32": "f575aa69",
+      "category": "prepared dataset or split"
+    },
+    {
+      "path": "external_inputs/ml10m/ccd/train_csc.value.bin",
+      "bytes": 28088732,
+      "zip_crc32": "f647b850",
+      "category": "prepared dataset or split"
+    },
+    {
+      "path": "external_inputs/ml10m/ccd/train_csr.colidx.bin",
+      "bytes": 28088732,
+      "zip_crc32": "99a83746",
+      "category": "prepared dataset or split"
+    },
+    {
+      "path": "external_inputs/ml10m/ccd/train_csr.rowptr.bin",
+      "bytes": 279516,
+      "zip_crc32": "6e0f127f",
+      "category": "prepared dataset or split"
+    },
+    {
+      "path": "external_inputs/ml10m/ccd/train_csr.value.bin",
+      "bytes": 28088732,
+      "zip_crc32": "6a6ee90e",
+      "category": "prepared dataset or split"
+    },
+    {
+      "path": "external_inputs/ml10m/sgd/test.bin",
+      "bytes": 12054276,
+      "zip_crc32": "0b8dbf4a",
+      "category": "prepared dataset or split"
+    },
+    {
+      "path": "external_inputs/ml10m/sgd/train.bin",
+      "bytes": 84266196,
+      "zip_crc32": "745bd684",
+      "category": "prepared dataset or split"
+    },
+    {
+      "path": "external_inputs/ml10m/warm_validation.bin",
+      "bytes": 208997744,
+      "zip_crc32": "698138fa",
+      "category": "prepared dataset or split"
+    },
+    {
+      "path": "external_inputs/ml20m/ccd/test_coo.col.bin",
+      "bytes": 8030508,
+      "zip_crc32": "c039c18f",
+      "category": "prepared dataset or split"
+    },
+    {
+      "path": "external_inputs/ml20m/ccd/test_coo.data.bin",
+      "bytes": 8030508,
+      "zip_crc32": "8a7e5138",
+      "category": "prepared dataset or split"
+    },
+    {
+      "path": "external_inputs/ml20m/ccd/test_coo.row.bin",
+      "bytes": 8030508,
+      "zip_crc32": "a9b84d52",
+      "category": "prepared dataset or split"
+    },
+    {
+      "path": "external_inputs/ml20m/ccd/train_csc.colptr.bin",
+      "bytes": 106980,
+      "zip_crc32": "3d58454a",
+      "category": "prepared dataset or split"
+    },
+    {
+      "path": "external_inputs/ml20m/ccd/train_csc.rowidx.bin",
+      "bytes": 56178908,
+      "zip_crc32": "7dfb79a1",
+      "category": "prepared dataset or split"
+    },
+    {
+      "path": "external_inputs/ml20m/ccd/train_csc.value.bin",
+      "bytes": 56178908,
+      "zip_crc32": "016890f1",
+      "category": "prepared dataset or split"
+    },
+    {
+      "path": "external_inputs/ml20m/ccd/train_csr.colidx.bin",
+      "bytes": 56178908,
+      "zip_crc32": "adb22ef5",
+      "category": "prepared dataset or split"
+    },
+    {
+      "path": "external_inputs/ml20m/ccd/train_csr.rowptr.bin",
+      "bytes": 553976,
+      "zip_crc32": "43945b57",
+      "category": "prepared dataset or split"
+    },
+    {
+      "path": "external_inputs/ml20m/ccd/train_csr.value.bin",
+      "bytes": 56178908,
+      "zip_crc32": "44c72d1a",
+      "category": "prepared dataset or split"
+    },
+    {
+      "path": "external_inputs/ml20m/sgd/test.bin",
+      "bytes": 24091524,
+      "zip_crc32": "0f51d0a8",
+      "category": "prepared dataset or split"
+    },
+    {
+      "path": "external_inputs/ml20m/sgd/train.bin",
+      "bytes": 168536724,
+      "zip_crc32": "7f5dd0ac",
+      "category": "prepared dataset or split"
+    },
+    {
+      "path": "external_inputs/ml20m/warm_validation.bin",
+      "bytes": 418004952,
+      "zip_crc32": "37675e5e",
+      "category": "prepared dataset or split"
+    },
+    {
+      "path": "external_inputs/ml32m/ccd/test_coo.col.bin",
+      "bytes": 12831076,
+      "zip_crc32": "8635e0cc",
+      "category": "prepared dataset or split"
+    },
+    {
+      "path": "external_inputs/ml32m/ccd/test_coo.data.bin",
+      "bytes": 12831076,
+      "zip_crc32": "f1d39e86",
+      "category": "prepared dataset or split"
+    },
+    {
+      "path": "external_inputs/ml32m/ccd/test_coo.row.bin",
+      "bytes": 12831076,
+      "zip_crc32": "3ae50339",
+      "category": "prepared dataset or split"
+    },
+    {
+      "path": "external_inputs/ml32m/ccd/train_csc.colptr.bin",
+      "bytes": 337732,
+      "zip_crc32": "e7dd5e42",
+      "category": "prepared dataset or split"
+    },
+    {
+      "path": "external_inputs/ml32m/ccd/train_csc.rowidx.bin",
+      "bytes": 89868180,
+      "zip_crc32": "32197c87",
+      "category": "prepared dataset or split"
+    },
+    {
+      "path": "external_inputs/ml32m/ccd/train_csc.value.bin",
+      "bytes": 89868180,
+      "zip_crc32": "729e3b59",
+      "category": "prepared dataset or split"
+    },
+    {
+      "path": "external_inputs/ml32m/ccd/train_csr.colidx.bin",
+      "bytes": 89868180,
+      "zip_crc32": "bd9484e5",
+      "category": "prepared dataset or split"
+    },
+    {
+      "path": "external_inputs/ml32m/ccd/train_csr.rowptr.bin",
+      "bytes": 803796,
+      "zip_crc32": "872152a5",
+      "category": "prepared dataset or split"
+    },
+    {
+      "path": "external_inputs/ml32m/ccd/train_csr.value.bin",
+      "bytes": 89868180,
+      "zip_crc32": "ea19044c",
+      "category": "prepared dataset or split"
+    },
+    {
+      "path": "external_inputs/ml32m/sgd/test.bin",
+      "bytes": 38493228,
+      "zip_crc32": "616f9111",
+      "category": "prepared dataset or split"
+    },
+    {
+      "path": "external_inputs/ml32m/sgd/train.bin",
+      "bytes": 269604540,
+      "zip_crc32": "9ef2236e",
+      "category": "prepared dataset or split"
+    },
+    {
+      "path": "external_inputs/ml32m/warm_validation.bin",
+      "bytes": 668712132,
+      "zip_crc32": "f3d3fa58",
+      "category": "prepared dataset or split"
+    },
+    {
+      "path": "external_inputs/netflix/ccd/test_coo.col.bin",
+      "bytes": 40273668,
+      "zip_crc32": "3ae74b9e",
+      "category": "prepared dataset or split"
+    },
+    {
+      "path": "external_inputs/netflix/ccd/test_coo.data.bin",
+      "bytes": 40273668,
+      "zip_crc32": "8dfc090d",
+      "category": "prepared dataset or split"
+    },
+    {
+      "path": "external_inputs/netflix/ccd/test_coo.row.bin",
+      "bytes": 40273668,
+      "zip_crc32": "a8bcefda",
+      "category": "prepared dataset or split"
+    },
+    {
+      "path": "external_inputs/netflix/ccd/train_csc.colptr.bin",
+      "bytes": 71084,
+      "zip_crc32": "db250595",
+      "category": "prepared dataset or split"
+    },
+    {
+      "path": "external_inputs/netflix/ccd/train_csc.rowidx.bin",
+      "bytes": 282010288,
+      "zip_crc32": "25cc5040",
+      "category": "prepared dataset or split"
+    },
+    {
+      "path": "external_inputs/netflix/ccd/train_csc.value.bin",
+      "bytes": 282010288,
+      "zip_crc32": "96e870e7",
+      "category": "prepared dataset or split"
+    },
+    {
+      "path": "external_inputs/netflix/ccd/train_csr.colidx.bin",
+      "bytes": 282010288,
+      "zip_crc32": "2c87702d",
+      "category": "prepared dataset or split"
+    },
+    {
+      "path": "external_inputs/netflix/ccd/train_csr.rowptr.bin",
+      "bytes": 1920760,
+      "zip_crc32": "2c1e5949",
+      "category": "prepared dataset or split"
+    },
+    {
+      "path": "external_inputs/netflix/ccd/train_csr.value.bin",
+      "bytes": 282010288,
+      "zip_crc32": "3866ea3a",
+      "category": "prepared dataset or split"
+    },
+    {
+      "path": "external_inputs/netflix/sgd/test.bin",
+      "bytes": 120821004,
+      "zip_crc32": "fd24c2a4",
+      "category": "prepared dataset or split"
+    },
+    {
+      "path": "external_inputs/netflix/sgd/train.bin",
+      "bytes": 846030864,
+      "zip_crc32": "274e045a",
+      "category": "prepared dataset or split"
+    },
+    {
+      "path": "external_inputs/netflix/warm_validation.bin",
+      "bytes": 2096884980,
+      "zip_crc32": "cb163f0c",
+      "category": "prepared dataset or split"
+    },
+    {
+      "path": "fallback_bin/fallback_ir1",
+      "bytes": 3070144,
+      "zip_crc32": "fe0308f4",
+      "category": "compiled executable (prefer rebuilding)"
+    },
+    {
+      "path": "fallback_bin/fallback_noref",
+      "bytes": 2980032,
+      "zip_crc32": "0957b716",
+      "category": "compiled executable (prefer rebuilding)"
+    },
+    {
+      "path": "fallback_bin/fallback_noref_k96",
+      "bytes": 2980016,
+      "zip_crc32": "7cb3b785",
+      "category": "compiled executable (prefer rebuilding)"
+    },
+    {
+      "path": "fallback_bin/fallback_stale_compilecheck",
+      "bytes": 3317096,
+      "zip_crc32": "fe6cad8a",
+      "category": "compiled executable (prefer rebuilding)"
+    },
+    {
+      "path": "fallback_bin/fp32",
+      "bytes": 2593752,
+      "zip_crc32": "eee6d8a3",
+      "category": "compiled executable (prefer rebuilding)"
+    },
+    {
+      "path": "fallback_bin/zero_ir1",
+      "bytes": 2790600,
+      "zip_crc32": "90537a11",
+      "category": "compiled executable (prefer rebuilding)"
+    },
+    {
+      "path": "fallback_bin/zero_noref",
+      "bytes": 2729160,
+      "zip_crc32": "b8982e33",
+      "category": "compiled executable (prefer rebuilding)"
+    },
+    {
+      "path": "gram/ml10m_k16_X.bin",
+      "bytes": 4472192,
+      "zip_crc32": "5b137fe9",
+      "category": "binary factors or diagnostic arrays"
+    },
+    {
+      "path": "gram/ml10m_k16_Y.bin",
+      "bytes": 683328,
+      "zip_crc32": "c0a50f0a",
+      "category": "binary factors or diagnostic arrays"
+    },
+    {
+      "path": "gram/ml10m_k16_items.input.bin",
+      "bytes": 9798396,
+      "zip_crc32": "40de5790",
+      "category": "binary factors or diagnostic arrays"
+    },
+    {
+      "path": "gram/ml10m_k16_items.output.bin",
+      "bytes": 131072,
+      "zip_crc32": "92f68b84",
+      "category": "binary factors or diagnostic arrays"
+    },
+    {
+      "path": "gram/ml10m_k16_users.input.bin",
+      "bytes": 1389844,
+      "zip_crc32": "9af8e153",
+      "category": "binary factors or diagnostic arrays"
+    },
+    {
+      "path": "gram/ml10m_k16_users.output.bin",
+      "bytes": 131072,
+      "zip_crc32": "25fee2e3",
+      "category": "binary factors or diagnostic arrays"
+    },
+    {
+      "path": "gram/ml10m_k32_X.bin",
+      "bytes": 8944384,
+      "zip_crc32": "f597a9fa",
+      "category": "binary factors or diagnostic arrays"
+    },
+    {
+      "path": "gram/ml10m_k32_Y.bin",
+      "bytes": 1366656,
+      "zip_crc32": "55f2f2e7",
+      "category": "binary factors or diagnostic arrays"
+    },
+    {
+      "path": "gram/ml10m_k32_items.input.bin",
+      "bytes": 14270588,
+      "zip_crc32": "e5a91f4e",
+      "category": "binary factors or diagnostic arrays"
+    },
+    {
+      "path": "gram/ml10m_k32_items.output.bin",
+      "bytes": 524288,
+      "zip_crc32": "fb5f5f94",
+      "category": "binary factors or diagnostic arrays"
+    },
+    {
+      "path": "gram/ml10m_k32_users.input.bin",
+      "bytes": 2073172,
+      "zip_crc32": "8333a60b",
+      "category": "binary factors or diagnostic arrays"
+    },
+    {
+      "path": "gram/ml10m_k32_users.output.bin",
+      "bytes": 524288,
+      "zip_crc32": "672f0775",
+      "category": "binary factors or diagnostic arrays"
+    },
+    {
+      "path": "gram/ml10m_k48_X.bin",
+      "bytes": 13416576,
+      "zip_crc32": "dff857c4",
+      "category": "binary factors or diagnostic arrays"
+    },
+    {
+      "path": "gram/ml10m_k48_Y.bin",
+      "bytes": 2049984,
+      "zip_crc32": "6c490bfe",
+      "category": "binary factors or diagnostic arrays"
+    },
+    {
+      "path": "gram/ml10m_k48_items.input.bin",
+      "bytes": 18742780,
+      "zip_crc32": "0f59c5ad",
+      "category": "binary factors or diagnostic arrays"
+    },
+    {
+      "path": "gram/ml10m_k48_items.output.bin",
+      "bytes": 1179648,
+      "zip_crc32": "34ef30fc",
+      "category": "binary factors or diagnostic arrays"
+    },
+    {
+      "path": "gram/ml10m_k48_users.input.bin",
+      "bytes": 2756500,
+      "zip_crc32": "b346f5dd",
+      "category": "binary factors or diagnostic arrays"
+    },
+    {
+      "path": "gram/ml10m_k48_users.output.bin",
+      "bytes": 1179648,
+      "zip_crc32": "998bdc59",
+      "category": "binary factors or diagnostic arrays"
+    },
+    {
+      "path": "gram/ml10m_k64_X.bin",
+      "bytes": 17888768,
+      "zip_crc32": "dcf3ec2a",
+      "category": "binary factors or diagnostic arrays"
+    },
+    {
+      "path": "gram/ml10m_k64_Y.bin",
+      "bytes": 2733312,
+      "zip_crc32": "e4d133cc",
+      "category": "binary factors or diagnostic arrays"
+    },
+    {
+      "path": "gram/ml10m_k64_items.input.bin",
+      "bytes": 23214972,
+      "zip_crc32": "46677188",
+      "category": "binary factors or diagnostic arrays"
+    },
+    {
+      "path": "gram/ml10m_k64_items.output.bin",
+      "bytes": 2097152,
+      "zip_crc32": "c6a7d64c",
+      "category": "binary factors or diagnostic arrays"
+    },
+    {
+      "path": "gram/ml10m_k64_users.input.bin",
+      "bytes": 3439828,
+      "zip_crc32": "a346ccd1",
+      "category": "binary factors or diagnostic arrays"
+    },
+    {
+      "path": "gram/ml10m_k64_users.output.bin",
+      "bytes": 2097152,
+      "zip_crc32": "5e1798ad",
+      "category": "binary factors or diagnostic arrays"
+    },
+    {
+      "path": "gram/ml10m_k96_X.bin",
+      "bytes": 26833152,
+      "zip_crc32": "4022fe5a",
+      "category": "binary factors or diagnostic arrays"
+    },
+    {
+      "path": "gram/ml10m_k96_Y.bin",
+      "bytes": 4099968,
+      "zip_crc32": "a7186963",
+      "category": "binary factors or diagnostic arrays"
+    },
+    {
+      "path": "gram/ml10m_k96_items.input.bin",
+      "bytes": 32159356,
+      "zip_crc32": "886c2cda",
+      "category": "binary factors or diagnostic arrays"
+    },
+    {
+      "path": "gram/ml10m_k96_items.output.bin",
+      "bytes": 4718592,
+      "zip_crc32": "b3522d3c",
+      "category": "binary factors or diagnostic arrays"
+    },
+    {
+      "path": "gram/ml10m_k96_users.input.bin",
+      "bytes": 4806484,
+      "zip_crc32": "0c11beee",
+      "category": "binary factors or diagnostic arrays"
+    },
+    {
+      "path": "gram/ml10m_k96_users.output.bin",
+      "bytes": 4718592,
+      "zip_crc32": "902d0e22",
+      "category": "binary factors or diagnostic arrays"
+    },
+    {
+      "path": "gram/ml20m_k16_X.bin",
+      "bytes": 8863552,
+      "zip_crc32": "11e17d1a",
+      "category": "binary factors or diagnostic arrays"
+    },
+    {
+      "path": "gram/ml20m_k16_Y.bin",
+      "bytes": 1711616,
+      "zip_crc32": "f9f5352e",
+      "category": "binary factors or diagnostic arrays"
+    },
+    {
+      "path": "gram/ml20m_k16_items.input.bin",
+      "bytes": 18858388,
+      "zip_crc32": "a898e758",
+      "category": "binary factors or diagnostic arrays"
+    },
+    {
+      "path": "gram/ml20m_k16_items.output.bin",
+      "bytes": 131072,
+      "zip_crc32": "688cd920",
+      "category": "binary factors or diagnostic arrays"
+    },
+    {
+      "path": "gram/ml20m_k16_users.input.bin",
+      "bytes": 2653300,
+      "zip_crc32": "dc0adbe2",
+      "category": "binary factors or diagnostic arrays"
+    },
+    {
+      "path": "gram/ml20m_k16_users.output.bin",
+      "bytes": 131072,
+      "zip_crc32": "0cc1c57e",
+      "category": "binary factors or diagnostic arrays"
+    },
+    {
+      "path": "gram/ml20m_k32_X.bin",
+      "bytes": 17727104,
+      "zip_crc32": "8e388704",
+      "category": "binary factors or diagnostic arrays"
+    },
+    {
+      "path": "gram/ml20m_k32_Y.bin",
+      "bytes": 3423232,
+      "zip_crc32": "8847a9ce",
+      "category": "binary factors or diagnostic arrays"
+    },
+    {
+      "path": "gram/ml20m_k32_items.input.bin",
+      "bytes": 27721940,
+      "zip_crc32": "ca9f99ac",
+      "category": "binary factors or diagnostic arrays"
+    },
+    {
+      "path": "gram/ml20m_k32_items.output.bin",
+      "bytes": 524288,
+      "zip_crc32": "8812802e",
+      "category": "binary factors or diagnostic arrays"
+    },
+    {
+      "path": "gram/ml20m_k32_users.input.bin",
+      "bytes": 4364916,
+      "zip_crc32": "2b004c89",
+      "category": "binary factors or diagnostic arrays"
+    },
+    {
+      "path": "gram/ml20m_k32_users.output.bin",
+      "bytes": 524288,
+      "zip_crc32": "4f8a34a9",
+      "category": "binary factors or diagnostic arrays"
+    },
+    {
+      "path": "gram/ml20m_k48_X.bin",
+      "bytes": 26590656,
+      "zip_crc32": "b28446af",
+      "category": "binary factors or diagnostic arrays"
+    },
+    {
+      "path": "gram/ml20m_k48_Y.bin",
+      "bytes": 5134848,
+      "zip_crc32": "51f02228",
+      "category": "binary factors or diagnostic arrays"
+    },
+    {
+      "path": "gram/ml20m_k48_items.input.bin",
+      "bytes": 36585492,
+      "zip_crc32": "90aaebab",
+      "category": "binary factors or diagnostic arrays"
+    },
+    {
+      "path": "gram/ml20m_k48_items.output.bin",
+      "bytes": 1179648,
+      "zip_crc32": "4c01f0c0",
+      "category": "binary factors or diagnostic arrays"
+    },
+    {
+      "path": "gram/ml20m_k48_users.input.bin",
+      "bytes": 6076532,
+      "zip_crc32": "ac45fd03",
+      "category": "binary factors or diagnostic arrays"
+    },
+    {
+      "path": "gram/ml20m_k48_users.output.bin",
+      "bytes": 1179648,
+      "zip_crc32": "146f4e54",
+      "category": "binary factors or diagnostic arrays"
+    },
+    {
+      "path": "gram/ml20m_k64_X.bin",
+      "bytes": 35454208,
+      "zip_crc32": "1fc99754",
+      "category": "binary factors or diagnostic arrays"
+    },
+    {
+      "path": "gram/ml20m_k64_Y.bin",
+      "bytes": 6846464,
+      "zip_crc32": "e436b3c9",
+      "category": "binary factors or diagnostic arrays"
+    },
+    {
+      "path": "gram/ml20m_k64_items.input.bin",
+      "bytes": 45449044,
+      "zip_crc32": "cac00c8a",
+      "category": "binary factors or diagnostic arrays"
+    },
+    {
+      "path": "gram/ml20m_k64_items.output.bin",
+      "bytes": 2097152,
+      "zip_crc32": "5f9baa08",
+      "category": "binary factors or diagnostic arrays"
+    },
+    {
+      "path": "gram/ml20m_k64_users.input.bin",
+      "bytes": 7788148,
+      "zip_crc32": "8c38460a",
+      "category": "binary factors or diagnostic arrays"
+    },
+    {
+      "path": "gram/ml20m_k64_users.output.bin",
+      "bytes": 2097152,
+      "zip_crc32": "c92eaf87",
+      "category": "binary factors or diagnostic arrays"
+    },
+    {
+      "path": "gram/ml20m_k96_X.bin",
+      "bytes": 53181312,
+      "zip_crc32": "1a198929",
+      "category": "binary factors or diagnostic arrays"
+    },
+    {
+      "path": "gram/ml20m_k96_Y.bin",
+      "bytes": 10269696,
+      "zip_crc32": "98bd102a",
+      "category": "binary factors or diagnostic arrays"
+    },
+    {
+      "path": "gram/ml20m_k96_items.input.bin",
+      "bytes": 63176148,
+      "zip_crc32": "29b0289f",
+      "category": "binary factors or diagnostic arrays"
+    },
+    {
+      "path": "gram/ml20m_k96_items.output.bin",
+      "bytes": 4718592,
+      "zip_crc32": "75d26a1a",
+      "category": "binary factors or diagnostic arrays"
+    },
+    {
+      "path": "gram/ml20m_k96_users.input.bin",
+      "bytes": 11211380,
+      "zip_crc32": "394a5b4c",
+      "category": "binary factors or diagnostic arrays"
+    },
+    {
+      "path": "gram/ml20m_k96_users.output.bin",
+      "bytes": 4718592,
+      "zip_crc32": "c18f427b",
+      "category": "binary factors or diagnostic arrays"
+    },
+    {
+      "path": "gram/ml32m_k16_X.bin",
+      "bytes": 12860672,
+      "zip_crc32": "9e4bff2e",
+      "category": "binary factors or diagnostic arrays"
+    },
+    {
+      "path": "gram/ml32m_k16_Y.bin",
+      "bytes": 5403648,
+      "zip_crc32": "5d9870e1",
+      "category": "binary factors or diagnostic arrays"
+    },
+    {
+      "path": "gram/ml32m_k16_items.input.bin",
+      "bytes": 27414788,
+      "zip_crc32": "68affbba",
+      "category": "binary factors or diagnostic arrays"
+    },
+    {
+      "path": "gram/ml32m_k16_items.output.bin",
+      "bytes": 131072,
+      "zip_crc32": "61936cd2",
+      "category": "binary factors or diagnostic arrays"
+    },
+    {
+      "path": "gram/ml32m_k16_users.input.bin",
+      "bytes": 6886620,
+      "zip_crc32": "2ef84fab",
+      "category": "binary factors or diagnostic arrays"
+    },
+    {
+      "path": "gram/ml32m_k16_users.output.bin",
+      "bytes": 131072,
+      "zip_crc32": "93d51e8c",
+      "category": "binary factors or diagnostic arrays"
+    },
+    {
+      "path": "gram/ml32m_k32_X.bin",
+      "bytes": 25721344,
+      "zip_crc32": "a82081c2",
+      "category": "binary factors or diagnostic arrays"
+    },
+    {
+      "path": "gram/ml32m_k32_Y.bin",
+      "bytes": 10807296,
+      "zip_crc32": "183b06da",
+      "category": "binary factors or diagnostic arrays"
+    },
+    {
+      "path": "gram/ml32m_k32_items.input.bin",
+      "bytes": 40275460,
+      "zip_crc32": "2fed59f5",
+      "category": "binary factors or diagnostic arrays"
+    },
+    {
+      "path": "gram/ml32m_k32_items.output.bin",
+      "bytes": 524288,
+      "zip_crc32": "4374030e",
+      "category": "binary factors or diagnostic arrays"
+    },
+    {
+      "path": "gram/ml32m_k32_users.input.bin",
+      "bytes": 12290268,
+      "zip_crc32": "e64b3d67",
+      "category": "binary factors or diagnostic arrays"
+    },
+    {
+      "path": "gram/ml32m_k32_users.output.bin",
+      "bytes": 524288,
+      "zip_crc32": "93f277e8",
+      "category": "binary factors or diagnostic arrays"
+    },
+    {
+      "path": "gram/ml32m_k48_X.bin",
+      "bytes": 38582016,
+      "zip_crc32": "a0671a8f",
+      "category": "binary factors or diagnostic arrays"
+    },
+    {
+      "path": "gram/ml32m_k48_Y.bin",
+      "bytes": 16210944,
+      "zip_crc32": "1fad497e",
+      "category": "binary factors or diagnostic arrays"
+    },
+    {
+      "path": "gram/ml32m_k48_items.input.bin",
+      "bytes": 53136132,
+      "zip_crc32": "338f5f21",
+      "category": "binary factors or diagnostic arrays"
+    },
+    {
+      "path": "gram/ml32m_k48_items.output.bin",
+      "bytes": 1179648,
+      "zip_crc32": "17535a31",
+      "category": "binary factors or diagnostic arrays"
+    },
+    {
+      "path": "gram/ml32m_k48_users.input.bin",
+      "bytes": 17693916,
+      "zip_crc32": "fcd16400",
+      "category": "binary factors or diagnostic arrays"
+    },
+    {
+      "path": "gram/ml32m_k48_users.output.bin",
+      "bytes": 1179648,
+      "zip_crc32": "e8a01b5c",
+      "category": "binary factors or diagnostic arrays"
+    },
+    {
+      "path": "gram/ml32m_k64_X.bin",
+      "bytes": 51442688,
+      "zip_crc32": "43305646",
+      "category": "binary factors or diagnostic arrays"
+    },
+    {
+      "path": "gram/ml32m_k64_Y.bin",
+      "bytes": 21614592,
+      "zip_crc32": "b9f8a228",
+      "category": "binary factors or diagnostic arrays"
+    },
+    {
+      "path": "gram/ml32m_k64_items.input.bin",
+      "bytes": 65996804,
+      "zip_crc32": "37a5cfe8",
+      "category": "binary factors or diagnostic arrays"
+    },
+    {
+      "path": "gram/ml32m_k64_items.output.bin",
+      "bytes": 2097152,
+      "zip_crc32": "029a6b11",
+      "category": "binary factors or diagnostic arrays"
+    },
+    {
+      "path": "gram/ml32m_k64_users.input.bin",
+      "bytes": 23097564,
+      "zip_crc32": "4f38f0f7",
+      "category": "binary factors or diagnostic arrays"
+    },
+    {
+      "path": "gram/ml32m_k64_users.output.bin",
+      "bytes": 2097152,
+      "zip_crc32": "7e9758c0",
+      "category": "binary factors or diagnostic arrays"
+    },
+    {
+      "path": "gram/ml32m_k96_X.bin",
+      "bytes": 77164032,
+      "zip_crc32": "9c87d14f",
+      "category": "binary factors or diagnostic arrays"
+    },
+    {
+      "path": "gram/ml32m_k96_Y.bin",
+      "bytes": 32421888,
+      "zip_crc32": "3adb4964",
+      "category": "binary factors or diagnostic arrays"
+    },
+    {
+      "path": "gram/ml32m_k96_items.input.bin",
+      "bytes": 91718148,
+      "zip_crc32": "26885816",
+      "category": "binary factors or diagnostic arrays"
+    },
+    {
+      "path": "gram/ml32m_k96_items.output.bin",
+      "bytes": 4718592,
+      "zip_crc32": "ca1ac140",
+      "category": "binary factors or diagnostic arrays"
+    },
+    {
+      "path": "gram/ml32m_k96_users.input.bin",
+      "bytes": 33904860,
+      "zip_crc32": "ac653f8b",
+      "category": "binary factors or diagnostic arrays"
+    },
+    {
+      "path": "gram/ml32m_k96_users.output.bin",
+      "bytes": 4718592,
+      "zip_crc32": "507edb06",
+      "category": "binary factors or diagnostic arrays"
+    },
+    {
+      "path": "gram/netflix_k16_X.bin",
+      "bytes": 30732096,
+      "zip_crc32": "2f91d7c1",
+      "category": "binary factors or diagnostic arrays"
+    },
+    {
+      "path": "gram/netflix_k16_Y.bin",
+      "bytes": 1137280,
+      "zip_crc32": "b55dde19",
+      "category": "binary factors or diagnostic arrays"
+    },
+    {
+      "path": "gram/netflix_k16_items.input.bin",
+      "bytes": 65596172,
+      "zip_crc32": "3ffc019b",
+      "category": "binary factors or diagnostic arrays"
+    },
+    {
+      "path": "gram/netflix_k16_items.output.bin",
+      "bytes": 131072,
+      "zip_crc32": "30a11e53",
+      "category": "binary factors or diagnostic arrays"
+    },
+    {
+      "path": "gram/netflix_k16_users.input.bin",
+      "bytes": 2908124,
+      "zip_crc32": "259bb3ca",
+      "category": "binary factors or diagnostic arrays"
+    },
+    {
+      "path": "gram/netflix_k16_users.output.bin",
+      "bytes": 131072,
+      "zip_crc32": "b9b27702",
+      "category": "binary factors or diagnostic arrays"
+    },
+    {
+      "path": "gram/netflix_k32_X.bin",
+      "bytes": 61464192,
+      "zip_crc32": "8152db74",
+      "category": "binary factors or diagnostic arrays"
+    },
+    {
+      "path": "gram/netflix_k32_Y.bin",
+      "bytes": 2274560,
+      "zip_crc32": "6bec6b6a",
+      "category": "binary factors or diagnostic arrays"
+    },
+    {
+      "path": "gram/netflix_k32_items.input.bin",
+      "bytes": 96328268,
+      "zip_crc32": "e0691a12",
+      "category": "binary factors or diagnostic arrays"
+    },
+    {
+      "path": "gram/netflix_k32_items.output.bin",
+      "bytes": 524288,
+      "zip_crc32": "55100cab",
+      "category": "binary factors or diagnostic arrays"
+    },
+    {
+      "path": "gram/netflix_k32_users.input.bin",
+      "bytes": 4045404,
+      "zip_crc32": "e60224be",
+      "category": "binary factors or diagnostic arrays"
+    },
+    {
+      "path": "gram/netflix_k32_users.output.bin",
+      "bytes": 524288,
+      "zip_crc32": "4759fdd2",
+      "category": "binary factors or diagnostic arrays"
+    },
+    {
+      "path": "gram/netflix_k48_X.bin",
+      "bytes": 92196288,
+      "zip_crc32": "388c20f0",
+      "category": "binary factors or diagnostic arrays"
+    },
+    {
+      "path": "gram/netflix_k48_Y.bin",
+      "bytes": 3411840,
+      "zip_crc32": "33911fd6",
+      "category": "binary factors or diagnostic arrays"
+    },
+    {
+      "path": "gram/netflix_k48_items.input.bin",
+      "bytes": 127060364,
+      "zip_crc32": "b7eaf12a",
+      "category": "binary factors or diagnostic arrays"
+    },
+    {
+      "path": "gram/netflix_k48_items.output.bin",
+      "bytes": 1179648,
+      "zip_crc32": "9496cf68",
+      "category": "binary factors or diagnostic arrays"
+    },
+    {
+      "path": "gram/netflix_k48_users.input.bin",
+      "bytes": 5182684,
+      "zip_crc32": "cd5ff066",
+      "category": "binary factors or diagnostic arrays"
+    },
+    {
+      "path": "gram/netflix_k48_users.output.bin",
+      "bytes": 1179648,
+      "zip_crc32": "79be570f",
+      "category": "binary factors or diagnostic arrays"
+    },
+    {
+      "path": "gram/netflix_k64_X.bin",
+      "bytes": 122928384,
+      "zip_crc32": "3900bfdc",
+      "category": "binary factors or diagnostic arrays"
+    },
+    {
+      "path": "gram/netflix_k64_Y.bin",
+      "bytes": 4549120,
+      "zip_crc32": "7c7e9967",
+      "category": "binary factors or diagnostic arrays"
+    },
+    {
+      "path": "gram/netflix_k64_items.input.bin",
+      "bytes": 157792460,
+      "zip_crc32": "63370b4b",
+      "category": "binary factors or diagnostic arrays"
+    },
+    {
+      "path": "gram/netflix_k64_items.output.bin",
+      "bytes": 2097152,
+      "zip_crc32": "8ad12db4",
+      "category": "binary factors or diagnostic arrays"
+    },
+    {
+      "path": "gram/netflix_k64_users.input.bin",
+      "bytes": 6319964,
+      "zip_crc32": "2246d303",
+      "category": "binary factors or diagnostic arrays"
+    },
+    {
+      "path": "gram/netflix_k64_users.output.bin",
+      "bytes": 2097152,
+      "zip_crc32": "21e37226",
+      "category": "binary factors or diagnostic arrays"
+    },
+    {
+      "path": "gram/netflix_k96_X.bin",
+      "bytes": 184392576,
+      "zip_crc32": "92951a9c",
+      "category": "binary factors or diagnostic arrays"
+    },
+    {
+      "path": "gram/netflix_k96_Y.bin",
+      "bytes": 6823680,
+      "zip_crc32": "2fc7f7fb",
+      "category": "binary factors or diagnostic arrays"
+    },
+    {
+      "path": "gram/netflix_k96_items.input.bin",
+      "bytes": 219256652,
+      "zip_crc32": "c8b29390",
+      "category": "binary factors or diagnostic arrays"
+    },
+    {
+      "path": "gram/netflix_k96_items.output.bin",
+      "bytes": 4718592,
+      "zip_crc32": "f890f926",
+      "category": "binary factors or diagnostic arrays"
+    },
+    {
+      "path": "gram/netflix_k96_users.input.bin",
+      "bytes": 8594524,
+      "zip_crc32": "2b53bd83",
+      "category": "binary factors or diagnostic arrays"
+    },
+    {
+      "path": "gram/netflix_k96_users.output.bin",
+      "bytes": 4718592,
+      "zip_crc32": "51138070",
+      "category": "binary factors or diagnostic arrays"
+    },
+    {
+      "path": "splits/netflix_ratings_test.bin",
+      "bytes": 2214978192,
+      "zip_crc32": "892cf010",
+      "category": "prepared dataset or split"
+    },
+    {
+      "path": "splits/netflix_ratings_validation.bin",
+      "bytes": 2096884980,
+      "zip_crc32": "cb163f0c",
+      "category": "prepared dataset or split"
+    },
+    {
+      "path": "splits/netflix_ratings_validation_indices.npy",
+      "bytes": 80547464,
+      "zip_crc32": "99e7852d",
+      "category": "prepared dataset or split"
+    },
+    {
+      "path": "splits/ratings10_test.bin",
+      "bytes": 220623344,
+      "zip_crc32": "d7a80c50",
+      "category": "prepared dataset or split"
+    },
+    {
+      "path": "splits/ratings10_validation.bin",
+      "bytes": 208998044,
+      "zip_crc32": "461dd4c9",
+      "category": "prepared dataset or split"
+    },
+    {
+      "path": "splits/ratings10_validation_indices.npy",
+      "bytes": 8036512,
+      "zip_crc32": "c563c491",
+      "category": "prepared dataset or split"
+    },
+    {
+      "path": "splits/ratings32_test.bin",
+      "bytes": 706090992,
+      "zip_crc32": "56ac73da",
+      "category": "prepared dataset or split"
+    },
+    {
+      "path": "splits/ratings32_validation.bin",
+      "bytes": 668744724,
+      "zip_crc32": "30d03727",
+      "category": "prepared dataset or split"
+    },
+    {
+      "path": "splits/ratings32_validation_indices.npy",
+      "bytes": 25684008,
+      "zip_crc32": "a1b40532",
+      "category": "prepared dataset or split"
+    },
+    {
+      "path": "splits/ratings_test.bin",
+      "bytes": 441281460,
+      "zip_crc32": "3d48d1e0",
+      "category": "prepared dataset or split"
+    },
+    {
+      "path": "splits/ratings_validation.bin",
+      "bytes": 418011828,
+      "zip_crc32": "79bb3b8d",
+      "category": "prepared dataset or split"
+    },
+    {
+      "path": "splits/ratings_validation_indices.npy",
+      "bytes": 16065728,
+      "zip_crc32": "c54ec30e",
+      "category": "prepared dataset or split"
+    }
+  ]
+}

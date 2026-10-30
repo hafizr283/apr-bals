@@ -24,7 +24,7 @@ class EvidenceChecks(unittest.TestCase):
         self.addCleanup(self.temp.cleanup)
         self.root = Path(self.temp.name)
         self.manifest = json.loads((ROOT / "docs/evidence_manifest.json").read_text(encoding="utf-8"))
-        files = set(self.manifest["sources"]) | set(self.manifest["documents"])
+        files = set(self.manifest["sources"]) | set(self.manifest["documents"]) | set(self.manifest.get("binary_sources", {}))
         files |= {"docs/evidence_manifest.json", "scripts/verify_paper_evidence.py"}
         for name in files:
             target = self.root / name
@@ -48,7 +48,8 @@ class EvidenceChecks(unittest.TestCase):
         before = hashes()
         result = self.check()
         self.assertEqual(result.returncode, 0, result.stderr)
-        self.assertEqual(result.stdout.count("WARNING: declared missing external raw log:"), 25)
+        self.assertEqual(result.stdout.count("WARNING: declared missing external raw log:"), 0)
+        self.assertIn("84 raw trajectories, 20 momentum pairs", result.stdout)
         self.assertIn("PASS: archived evidence consistent", result.stdout)
         self.assertEqual(before, hashes())
 
@@ -58,6 +59,33 @@ class EvidenceChecks(unittest.TestCase):
         result = self.check()
         self.assertNotEqual(result.returncode, 0)
         self.assertIn("numerical mismatch", result.stderr)
+
+    def test_declared_missing_log_warns_but_unexpected_missing_fails(self):
+        record = next(r for r in self.manifest["external_raw"].values() if r["status"] == "available")
+        record["status"] = "missing"
+        (self.root / record["path"]).unlink()
+        self.manifest["sources"].pop(record["path"])
+        self.manifest["external_raw_available"] -= 1
+        # The fixture is a deliberate partial archive, with its ledger regenerated.
+        data = evidence.calculate(self.root, self.manifest)
+        blocks = evidence.rendered_blocks(self.root, self.manifest, data)
+        import re
+        p = self.root / "docs/evidence.md"
+        t = p.read_text(encoding="utf-8")
+        t = re.sub(r"(<!-- evidence:gaps:start -->\n).*?(\n<!-- evidence:gaps:end -->)",
+                   lambda m: m[1] + blocks["gaps"] + m[2], t, flags=re.S)
+        p.write_text(t, encoding="utf-8")
+        self.manifest["documents"]["docs/evidence.md"] = evidence.fingerprint(t)
+        (self.root / "docs/evidence_manifest.json").write_text(json.dumps(self.manifest), encoding="utf-8")
+        result = self.check()
+        self.assertEqual(result.returncode, 0, result.stderr)
+        self.assertEqual(result.stdout.count("WARNING: declared missing external raw log:"), 1)
+
+    def test_recovered_target_manifest_mismatch_fails(self):
+        self.edit("part2/new_results/external_targets.json", lambda s: s.replace('0.80', '0.81', 1))
+        result = self.check()
+        self.assertNotEqual(result.returncode, 0)
+        self.assertIn("external target manifest mismatch", result.stderr)
 
     def test_duplicate_csv_key_fails(self):
         self.edit("part2/new_results/external_time_to_target.csv",

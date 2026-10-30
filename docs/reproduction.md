@@ -16,12 +16,12 @@ python -m unittest discover -s tests -p 'test_evidence.py'
 ```
 
 The first command is offline and read-only. Expected output is explicit warnings for
-declared gaps followed by `PASS: archived evidence consistent; ...`. Unexpected missing
+scope limitations followed by `PASS: archived evidence consistent; ...`. Unexpected missing
 files, duplicate keys, numerical disagreement, broken references or documentation drift
 exit nonzero. Tests use isolated temporary fixtures; they do not alter archived results.
 
 The [manifest](evidence_manifest.json) defines sources, protocols, keys, coverage,
-declared missing logs, expected metrics, document fingerprints and pinned source lines.
+raw-log coverage, expected metrics, document fingerprints and pinned source lines.
 Fingerprint comparisons normalize line endings. A successful check establishes
 consistency within its [stated scope](evidence.md#claim-to-source-matrix), not GPU reproduction.
 
@@ -44,6 +44,8 @@ TF32 controls require compatible hardware; the October sm_86 recipe should not b
 copied unchanged to T4. Historical T4 coverage does not validate all October controls.
 Disk and memory needs depend on datasets and generated factors; large binary files
 are intentionally excluded from Git. Obtain datasets under their original terms.
+The [artifact guide](artifacts.md) provides the existing ZIP link, exact size/checksum,
+excluded-file inventory and recommendations for a durable journal deposit.
 
 ## Inputs and preparation
 
@@ -82,10 +84,12 @@ files, validation indices `.npy`, and a manifest. Only available small metadata 
 included here. The original test's historical exposure remains a limitation.
 
 External evaluation also needs masked `warm_validation.bin`, CCD inputs, SGD train/test
-inputs and mask manifests. The referenced `prepare_external.py`, `verify_external.py`
-and `verify_splits.py` helpers are absent from the tracked October directory.
-The saved [mask manifests](../part2/new_results/external_inputs/) record retained/removed
-ratings, but are not replacements for the missing preparation implementation.
+inputs and mask manifests. The restored [prepare_external.py](../part2/new_results/prepare_external.py),
+[verify_external.py](../part2/new_results/verify_external.py) and
+[verify_splits.py](../part2/new_results/verify_splits.py) retain the original interfaces.
+Preparation imports root-level helpers via an old parent-directory assumption; resolve
+that layout before execution. Saved [mask manifests](../part2/new_results/external_inputs/)
+record retained/removed ratings. These restored scripts have not been run here.
 
 ## Build recipes
 
@@ -140,21 +144,21 @@ They are not a recommended sequential launcher: prerequisites remain unresolved.
 |---|---|---|---|
 | `python part2/new_results/run_experiments.py` | Original binaries, split binaries, October source; four-way, momentum, selection, held-out runs | Build logs, raw `.txt`, command `.json`, selection JSONs | Hardcoded `/home/pc/Desktop/2007080`, nvcc path and GPU1; existing `bin/` and `logs/` expected; writes into archive. |
 | `python part2/new_results/run_followups.py` | Control binaries, original data, probes | Tuning/control/Gram/BF16/ladder files and completion marker | Waits for old `/proc/14817`; prebuilt dependencies; modifies `src/wmma_kernels.cuh`; overwrites some results. |
-| `python part2/new_results/run_external.py` | Warm-validation inputs, selections, prebuilt `ship_k*`, ALS/CCD/SGD executables and CPU predictor | External raw logs, command JSON, CCD selection JSON, final prediction logs, `logs/external.done` | Waits indefinitely for `logs/followups.done`; old binary-relative paths and missing preparation helpers; no clean build chain. |
+| `python part2/new_results/run_external.py` | Warm-validation inputs, selections, prebuilt `ship_k*`, ALS/CCD/SGD executables and CPU predictor | External raw logs, command JSON, CCD selection JSON, final prediction logs, `logs/external.done` | Waits indefinitely for `logs/followups.done`; old binary-relative and helper import paths; no validated clean build chain. |
 | `python part2/new_results/summarize.py` | Available raw logs and selection records | CSVs and `SUMMARY.md` | Rewrites evidence and can propagate stale unconditional prose; not a checker. |
-| `python part2/new_results/summarize_external.py` | External logs plus `external_targets.json` | External CSVs and narrative tables | Target manifest absent; rewrites CSVs; do not reconstruct alleged preregistration from observed results. |
+| `python part2/new_results/summarize_external.py` | External logs plus `external_targets.json` | External CSVs and narrative tables | Target manifest restored; rewrites CSVs; a saved declaration alone does not establish independent preregistration. |
 
-The referenced `plot_results.py` is also absent. Existing figures may be intermediate;
-this phase verifies documentation against evidence without regenerating paper figures.
+The restored [plot_results.py](../part2/new_results/plot_results.py) writes figures from
+CSV summaries. Existing figures may be intermediate; no paper figures were regenerated.
 Completion markers are synchronization artifacts, not proof that all planned runs exist.
 
 External settings include APR beta 0.3, exact evaluation each sweep; ALS six CG steps,
 X_BATCH=1 and THETA_BATCH=3; CCD `-T 1`, tiles a=b=100000 with separately selected lambda;
 SGD rank128, lambda 0.05, alpha 0.08, beta 0.3, workers 256/384/512/512 by dataset.
 Consult command metadata and the [external protocol](../part2/new_results/EXTERNAL_PROTOCOL.md)
-before recreating a run. The missing target manifest means the timing of target
-selection cannot be independently established from that file; the checker uses CSV
-targets as archived facts, not as proof of preregistration.
+before recreating a run. The recovered [target manifest](../part2/new_results/external_targets.json)
+records targets and a prior-declaration note; the checker compares its targets with
+the CSVs. That saved note does not independently establish when preregistration occurred.
 
 ## Baseline provenance
 
@@ -163,7 +167,7 @@ targets as archived facts, not as proof of preregistration.
 | cuMF_als | [Upstream](https://github.com/cuMF/cumf_als), vendored in [cumf_als-master](../cumf_als-master/). CUDA sparse-API port, test-grid correction, empty-entity guard, every-sweep evaluation and cumulative wall instrumentation. It is not an untouched upstream executable. |
 | cuMF_CCD | [Upstream](https://github.com/cuMF/cumf_ccd), vendored in [cumf_ccd-master](../cumf_ccd-master/). CUDA compatibility changes, cumulative timing and double host error summation. The old `iter ... time` field is a different timer. |
 | cuMF_SGD | [Upstream](https://github.com/cuMF/cumf_sgd), vendored in [cumf_sgd-master](../cumf_sgd-master/). Per-epoch launch/synchronization, GPU validation and fixed seeds with nondeterministic Hogwild scheduling. Evaluation instrumentation changes overhead. |
-| Local BALS | [only_scalar_fp32.cu](../only_scalar_fp32.cu). October's runner refers to absent `src/bals.cu`; a separate [chunked-source copy](../part2/new_results/chunked_src/bals.cu) is retained but cannot silently substitute for it. Local reimplementation; the external protocol specifies reorder-only mapping, weighted lambda, FP32 and no momentum. |
+| Local BALS | [only_scalar_fp32.cu](../only_scalar_fp32.cu). October's [src/bals.cu](../part2/new_results/src/bals.cu) is restored from the archive; a separate [chunked-source copy](../part2/new_results/chunked_src/bals.cu) is a distinct variant. Local reimplementation; the external protocol specifies reorder-only mapping, weighted lambda, FP32 and no momentum. |
 
 Existing third-party attribution and license files remain in their original locations.
 Root and October source snapshots are different artifacts; use the saved source hashes
@@ -173,14 +177,14 @@ rank mismatch, warm mask and shared-host conditions must accompany timing compar
 
 ## What remains for full reproduction
 
-The primary October `src/` directory is incomplete: `justapr.cu` includes absent
-`common.cuh`, `wmma_kernels.cuh` and `cholesky_kernels.cuh`; the external runner also
-references missing `src/bals.cu`. Other experimental source directories contain
-fragments, not established complete build trees. Root headers or another variant's
-files cannot silently substitute for the missing campaign sources.
+The four previously missing October source files and five helper/config files are
+restored. The recovered `src/wmma_kernels.cuh` matches the final archived SHA-256
+in `artifact_sha256.json`, rather than the older original/root header. Source presence
+does not establish a clean build; follow-up runners patch files and depend on existing
+binaries, working directories and completion markers.
 
-Resolve paths and working directories, restore missing preparation/verification helpers
-and target provenance, establish a clean build chain for each external port, obtain
+Resolve paths and working directories, establish source/target provenance and
+a clean build chain for each external port, obtain
 the excluded inputs under their terms, and verify saved masks/splits and source hashes.
 Then run campaigns into separate output locations with explicit hardware, seeds,
 checking rules and repeats. Those repairs and GPU experiments are outside this phase.

@@ -77,8 +77,8 @@ Neither is an October external-baseline experiment.
 
 | Historical experiment | Result under the original protocol | Evidence |
 |---|---|---|
-| August RTX 3060 paired harness | 100 runs across 20 configurations; maximum relative wall-speedup standard deviation 0.44% | [Archived summary](https://github.com/hafizr283/apr-bals/blob/e798aa242dc5026247426bd96ca6055be26b2354/results/PAPER_MEASUREMENTS_20260803/variance_5x_summary.txt?plain=1#L29-L30) |
-| T4, Netflix K96 | 10.78× wall speedup over the shared-binary FP32 leg; FP32 solvers, original stopping rule | [Raw wall times](https://github.com/hafizr283/apr-bals/blob/e798aa242dc5026247426bd96ca6055be26b2354/results/t4_latest_res_22_7_2026/T4_MAIN_WL_20260721_210336/netflix_k96.txt?plain=1#L42-L60) |
+| August RTX 3060 paired harness | 100 runs across 20 configurations; maximum relative wall-speedup standard deviation 0.44% | [Archived summary](https://github.com/hafizr283/apr-bals/blob/437e10e55c066e50c6077043313eec2fdaf46247/results/PAPER_MEASUREMENTS_20260803/variance_5x_summary.txt?plain=1#L29-L30) |
+| T4, Netflix K96 | 10.78× wall speedup over the shared-binary FP32 leg; FP32 solvers, original stopping rule | [Raw wall times](https://github.com/hafizr283/apr-bals/blob/437e10e55c066e50c6077043313eec2fdaf46247/results/t4_latest_res_22_7_2026/T4_MAIN_WL_20260721_210336/netflix_k96.txt?plain=1#L42-L60) |
 
 See [historical evidence and its scope](docs/evidence.md#historical-evidence)
 for the retained results, source logs, solver settings, and repetition counts.
@@ -106,13 +106,14 @@ identifies the protocol for each experiment family.
 | Per-sweep time | Cost of an iteration; it does not measure time to a common accuracy. |
 | Wall time to convergence | Time until the configured stopping rule; the rule and checking interval matter. |
 
-The external CSV has **84 records**, with **59 available raw trajectory logs**.
-Momentum has **six complete pairs**. Other October families have partial tables.
+The external CSV has **84 records**, with **84 available raw trajectory logs**.
+Momentum has **twenty complete pairs**. The restored four-way and cumulative tables
+contain all 80 and six planned records, respectively.
 The [coverage table](docs/evidence.md#coverage) separates available records from
 planned runs and distinguishes numerical replay from inventory-only checks.
 
-The October directory is an evidence archive with known gaps.
-It is not a record of a fully completed campaign.
+The October source/evidence copy has been restored from the full archive.
+Recorded coverage does not establish that every possible experiment or reproduction is complete.
 
 ## Check the archived results
 
@@ -127,7 +128,7 @@ This CPU-only check uses the Python standard library and the
 ratios, accuracy differences, CCD selections, and available momentum crossings.
 It also checks declared coverage, available run summaries, fingerprints, and links.
 
-Expected outcome: explicit `WARNING:` lines for declared evidence gaps, then
+Expected outcome: explicit `WARNING:` lines for scope limitations, then
 `PASS: archived evidence consistent; ...`. A successful check confirms consistency
 of the archived evidence within the documented coverage.
 
@@ -146,12 +147,15 @@ October commands, build flags, required inputs, expected outputs, and execution 
 Its hardware table records campaign-specific GPU, driver, and CUDA information.
 
 The existing runners include machine-specific paths, dependencies on prebuilt
-binaries, completion-marker waits, and missing preparation helpers or target manifests.
+binaries and completion-marker waits. Preparation helpers and the target manifest
+are now restored; their original path/import assumptions still require adaptation.
 Some runners overwrite evidence or modify experimental source files.
 They are not a validated one-command reproduction package.
 
 Inspecting archived evidence and rerunning GPU training are separate operations.
 Full reproduction from datasets and a clean build has not been validated here.
+The [large-artifact guide](docs/artifacts.md) provides the external ZIP link, checksum,
+excluded-file inventory and recommended journal archive arrangement.
 
 ## Repository layout
 
@@ -182,7 +186,7 @@ do not establish October external speedups on T4 or support arbitrary GPUs and r
 
 Warm-validation masking excludes cold-start cases from the headline comparisons.
 The original ordering can route some entities differently from a fresh degree sort.
-Partial evidence, single-run timing, and the original test's historical exposure
+Replay scope, single-run timing, and the original test's historical exposure
 limit the conclusions that can be drawn from this archive.
 
 cuMF_als is a guarded CUDA port, cuMF_CCD has local timing and reduction changes,
