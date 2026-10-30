@@ -170,7 +170,7 @@ the CSVs. That saved note does not independently establish when preregistration 
 | Local BALS | [only_scalar_fp32.cu](../only_scalar_fp32.cu). October's [src/bals.cu](../part2/new_results/src/bals.cu) is restored from the archive; a separate [chunked-source copy](../part2/new_results/chunked_src/bals.cu) is a distinct variant. Local reimplementation; the external protocol specifies reorder-only mapping, weighted lambda, FP32 and no momentum. |
 
 Existing third-party attribution and license files remain in their original locations.
-Root and October source snapshots are different artifacts; use the saved source hashes
+Root and October source snapshots are different artifacts; use the historical source hashes
 and per-run commands to establish provenance. Training-loop wall includes training
 RMSE for APR/BALS/ALS but held-out evaluation only for CCD/SGD. That cost difference,
 rank mismatch, warm mask and shared-host conditions must accompany timing comparisons.
@@ -276,10 +276,13 @@ the final October results. Repoint inputs explicitly in a separate figure update
 ## What remains for full reproduction
 
 The four previously missing October source files and five helper/config files are
-restored. The recovered `src/wmma_kernels.cuh` matches the final archived SHA-256
-in `artifact_sha256.json`, rather than the older original/root header. Source presence
-does not establish a clean build; follow-up runners patch files and depend on existing
-binaries, working directories and completion markers.
+restored. At restoration commit `437e10e`, the recovered `src/wmma_kernels.cuh` matched
+the final archived SHA-256 in `artifact_sha256.json`, rather than the older root header.
+Later comment and diagnostic-reference edits change maintained source hashes; use
+that restoration commit or the external archive for historical byte comparisons,
+and the [evidence manifest](evidence_manifest.json) for current text fingerprints.
+Source presence does not establish a clean build; follow-up runners patch files and
+depend on existing binaries, working directories and completion markers.
 
 Resolve paths and working directories, establish source/target provenance and
 a clean build chain for each external port, obtain

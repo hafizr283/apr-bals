@@ -1,4 +1,4 @@
-// bench_mp.cu — FIXLOG SYNC-2026-07-20 checklist step 1: numeric sanity +
+// bench_mp.cu -- numerical validation and timing:
 // ms/launch for cholesky_solve_tiled_mp (FP16/BF16 tiles, ±refine) and
 // cholesky_stale_refine against the production FP32 tiled kernel and a CPU
 // fp64 reference, on 60k synthetic SPD systems (same generator as

@@ -352,9 +352,13 @@ binary storage. Datasets, factors, models, executables and caches remain exclude
 from Git. Diagnostic failure messages and 22 explicitly undefined fallback-summary
 NaN cells are preserved; these are not finite performance results or success claims.
 
-The restored `src/wmma_kernels.cuh` differs from the root/original source, but its
-SHA-256 matches the final [archived source inventory](../part2/new_results/artifact_sha256.json).
-The October copy is retained without substituting the older root header. Fallback
+At [restoration commit `437e10e`](https://github.com/hafizr283/apr-bals/commit/437e10e55c066e50c6077043313eec2fdaf46247),
+`src/wmma_kernels.cuh` matched the final [archived source inventory](../part2/new_results/artifact_sha256.json),
+and differed from the older root header. Later comment/docstring cleanup preserves
+executable code and source line counts; only unsupported-rank diagnostic references
+also changed. Current edited source bytes therefore differ from historical hashes.
+The archived hashes remain unchanged; the [evidence manifest](evidence_manifest.json)
+fingerprints the maintained copies. No source variant was substituted. Fallback
 and K96 summary tables are indexed as context, without new headline claims.
 
 The checker is offline and read-only. It validates relative links, Markdown headings,

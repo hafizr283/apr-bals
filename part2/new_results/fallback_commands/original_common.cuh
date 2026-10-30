@@ -41,11 +41,11 @@ using namespace nvcuda;
 //   (2) The scalar kernel's register tiling needs TRp*RR_C >= K with TRp<=32.
 //       RR_C only reaches the needed value at the five supported K; anything
 //       else (K=80) silently computes a truncated LHS -> wrong RMSE.
-// K=80 wasted a full debugging session for exactly this reason. Fail loudly
-// at compile time instead. To ADD a K: instantiate the wmma<KT>/wmma_giant<KT>
-// templates AND verify RR_C coverage, THEN extend this list. See FIXLOG.md.
+// Reject unsupported ranks at compile time. Before adding a rank, instantiate
+// the wmma<KT>/wmma_giant<KT> templates and verify the scalar kernel's RR_C
+// coverage, then extend the supported-rank list below.
 #if (K_DIM != 16) && (K_DIM != 32) && (K_DIM != 48) && (K_DIM != 64) && (K_DIM != 96)
-#error "Unsupported K_DIM. APR-BALS supports only K in {16,32,48,64,96}. Other values (e.g. 80,128) silently produce a wrong LHS and route all work to the scalar path. See the supported-K guard note in common.cuh / FIXLOG.md."
+#error "Unsupported K_DIM. APR-BALS supports only K in {16,32,48,64,96}. Other values (e.g. 80,128) silently produce a wrong LHS and route all work to the scalar path. See the supported-K guard note in common.cuh."
 #endif
 #ifndef DENSE_NNZ_THRESH
 #define DENSE_NNZ_THRESH 4

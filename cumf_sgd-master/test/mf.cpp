@@ -3152,7 +3152,7 @@ try
     mf_float std_dev = 0;
     mf_float scale = 1;
 
-    //Copy data, why?
+    // Deep-copy rating arrays when requested; otherwise share the input arrays.
     if(param.copy_data)
     {
         struct deleter
@@ -3177,7 +3177,7 @@ try
     util.collect_info(*tr, avg, std_dev);
 
 
-    //what does scale mean?
+    // Scale regression ratings by their standard deviation, with a 1e-4 floor.
     if(param.fun == P_L2_MFR ||
        param.fun == P_L1_MFR ||
        param.fun == P_KL_MFR)
@@ -3188,14 +3188,14 @@ try
     printf("scale   :%.3f\n",scale);
     printf("\n\n");
 
-    //Generate map and perform "random_shuffle"
-    //what does random_shuffle do? Make blocks fair? The function comes from the std.
+    // Generate random user/item permutations and their inverse maps.
+    // These maps reorder ratings before partitioning and restore output IDs.
     p_map = Utility::gen_random_map(tr->m);
     q_map = Utility::gen_random_map(tr->n);
     inv_p_map = Utility::gen_inv_map(p_map);
     inv_q_map = Utility::gen_inv_map(q_map);
 
-    //What is omega_p, omega_q?
+    // Per-user and per-item rating counts, populated by grid_problem below.
     omega_p = vector<mf_int>(tr->m, 0);
     omega_q = vector<mf_int>(tr->n, 0);
 

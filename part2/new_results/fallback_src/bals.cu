@@ -17,7 +17,7 @@
 // whether the 2nd LHS buffer fits -> nbuf=1 vs 2 -> different pipelining):
 //   - d_X_half / d_Y_half (FP16 feature copies)
 //   - plain-CSR uploads (d_u_offsets/.../d_i_csr_vals, WMMA gather inputs)
-// Delete those two blocks if you want a lean build instead of a faithful one.
+// Removing these buffers changes the matched baseline memory footprint and may alter pipelining.
 //
 // Removed (mixed-path only, no effect on the baseline leg):
 //   - wmma_kernels.cuh launches and their cudaFuncSetAttribute calls

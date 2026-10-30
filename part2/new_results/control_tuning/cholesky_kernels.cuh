@@ -294,7 +294,7 @@ __global__ void cholesky_solve_packed_mw(float* __restrict__ d_LHS_all, float* _
 //     instead of 16 warp-serial substitution steps.
 //   * d_map holds the host-precomputed load scatter (upper-tri memory index ->
 //     tiled smem offset): ldg+ldg+sts instead of ~20 decode instructions.
-// Row stride 17 inside tiles kills bank conflicts on column walks. Summation
+// Row stride 17 inside tiles reduces bank conflicts on column walks. Summation
 // order differs from packed (blocked vs column-at-a-time), so results match
 // to FP32 reorder noise, NOT bit-identical; baseline and APR use the same
 // solver so the comparison stays apples-to-apples.

@@ -144,7 +144,7 @@ __global__ void updateXWithCGKernel(float * A, float * x, float * b, const int b
         //r=r-alpha*Ap;
 		sharedr[threadIdx.x] = 
 			sharedr[threadIdx.x] - alpha[0] * sharedap[threadIdx.x];
-		//NOT needed?
+
 		//__syncthreads();
 		#ifdef DEBUG
 		__syncthreads();
@@ -194,7 +194,7 @@ __global__ void updateXWithCGKernel(float * A, float * x, float * b, const int b
 		#endif
 		if(rsnew[0]<CG_ERROR)
 			break;
-		//NOT needed?
+
 		//__syncthreads();
 		//beta
 		if(threadIdx.x == 0){
@@ -342,7 +342,7 @@ __global__ void updateXWithCGKernel3(half * A, float * x, float * b, const int b
         //r=r-alpha*Ap;
 		sharedr[threadIdx.x] = 
 			sharedr[threadIdx.x] - alpha[0] * sharedap[threadIdx.x];
-		//NOT needed?
+
 		//__syncthreads();
 		#ifdef DEBUG
 		__syncthreads();
@@ -392,7 +392,7 @@ __global__ void updateXWithCGKernel3(half * A, float * x, float * b, const int b
 		#endif
 		if(rsnew[0]<CG_ERROR)
 			break;
-		//NOT needed?
+
 		//__syncthreads();
 		//beta
 		if(threadIdx.x == 0){
@@ -548,7 +548,7 @@ __global__ void updateXWithCGKernel2(float * A, float * x, float * b, const int 
 			sharedr[k] = 
 				sharedr[k] - alpha[0] * sharedap[k];
 		}
-		//NOT needed?
+
 		//__syncthreads();
 		#ifdef DEBUG
 		__syncthreads();
@@ -600,7 +600,7 @@ __global__ void updateXWithCGKernel2(float * A, float * x, float * b, const int 
 		#endif
 		if(rsnew[0]<CG_ERROR)
 			break;
-		//NOT needed?
+
 		//__syncthreads();
 		//beta
 		if(threadIdx.x == 0){
@@ -1108,7 +1108,7 @@ alsUpdateFeature100(const int batch_offset,
 				sharedx[k] = sharedx[k] + alpha[0] * sharedp[k];
 				//r=r-alpha*Ap;
 				sharedr[k] = sharedr[k] - alpha[0] * sharedap[k];
-				//NOT needed?
+
 				//__syncthreads();
 			}
 			__syncthreads();
@@ -1152,7 +1152,7 @@ alsUpdateFeature100(const int batch_offset,
 			#endif
 			if(rsnew[0]<CG_ERROR)
 				break;
-			//NOT needed?
+
 			//__syncthreads();
 			//beta
 			if(threadIdx.x == 0){

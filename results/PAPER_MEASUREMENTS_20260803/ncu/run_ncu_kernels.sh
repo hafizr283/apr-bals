@@ -1,9 +1,9 @@
 #!/usr/bin/env bash
 # =============================================================================
-#  Paper item 3 — the LAST two missing reviewer numbers:
+#  Profile dense, giant, sparse, and solver kernels to measure:
 #     (1) hardware tensor-pipe utilization
-#     (2) ACHIEVED occupancy   (theoretical occupancy is already done, no root:
-#                               see ../occupancy/theoretical_occupancy.txt)
+#     (2) achieved occupancy (compare with the analytical upper bounds in
+#                             ../occupancy/theoretical_occupancy.txt)
 #
 #  HOW TO RUN (one command, from anywhere):
 #     sudo /home/pc/Desktop/2007080/latent_factorr_experimen/comparing_baseline/results/PAPER_MEASUREMENTS_20260803/ncu/run_ncu_kernels.sh
@@ -45,8 +45,8 @@ fi
 [ "$fail" -eq 0 ] || { echo "preflight failed, nothing was run."; exit 1; }
 
 # ---- metrics ----------------------------------------------------------------
-# The first two ARE the reviewer's two missing numbers; the rest are cheap
-# context collected in the same pass (no extra kernel replays).
+# The first two metrics measure tensor-pipe utilization and achieved occupancy.
+# The remaining metrics provide resource and throughput context.
 M="sm__pipe_tensor_op_hmma_cycles_active.avg.pct_of_peak_sustained_active,\
 sm__warps_active.avg.pct_of_peak_sustained_active,\
 launch__registers_per_thread,launch__occupancy_limit_registers,\

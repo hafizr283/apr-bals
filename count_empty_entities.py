@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-count_empty_entities.py -- review item 1.3 forensics.
+count_empty_entities.py -- training-entity coverage and masked test RMSE.
 
 Counts, per dataset, how many items (and users) receive ZERO training ratings
 after the frozen 80/20 split, and how many held-out test ratings reference
@@ -16,7 +16,7 @@ rejoin the held-out accuracy comparison instead of being dropped from it.
 
 Usage
 -----
-  # census only (this is the number the paper needs)
+  # census of entities with no training ratings
   python count_empty_entities.py ratings10.bin ratings.bin ratings32.bin \
                                  netflix_ratings.bin ratings100.bin
 

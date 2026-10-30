@@ -16,11 +16,11 @@ __global__ void convert_fp32_to_fp16(const float* __restrict__ src,
 
 #if WMMA_TF32
 // ---------------------------------------------------------------------------
-// TF32 dense Gram kernel — MEASUREMENT-ONLY, added 2026-08-04 for the
-// reviewer's precision-isolating ablation (item 2). Compiled ONLY under
-// -DWMMA_TF32=1; with the flag off this file is textually unchanged, so every
-// shipped binary stays byte-identical (verified by md5 against a pre-change
-// build).
+// TF32 dense Gram kernel for precision-control experiments.
+// This implementation is compiled when WMMA_TF32 is nonzero; the default
+// FP16 path is defined below. Compare the tensor-core and scalar paths under
+// the same experiment protocol, accounting for the staging and instruction
+// differences described here.
 //
 // Purpose: separate "tensor pipe" from "reduced precision". The FP16 kernel
 // below changes BOTH at once relative to scalar FP32, so it cannot answer how

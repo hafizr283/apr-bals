@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
-# run_t4_everything.sh — reproduce every result table/figure in the TPDS paper
-# on a Tesla T4 (Colab), mirroring the exact protocols already validated on
-# the RTX 3060 this session. Run from inside the uploaded `comparing_baseline/`
+# run_t4_everything.sh -- historical experiment suite for Tesla T4 (Colab),
+# using the RTX 3060 comparison protocols listed below. Individual sections
+# require their documented inputs. Run from the uploaded `comparing_baseline/`
 # directory. Each PART is independently toggleable and writes its own
 # timestamped folder under results/, matching the project's existing
 # convention documented in results/README.md, so nothing overwrites prior runs.

@@ -2,15 +2,15 @@
 """
 Theoretical occupancy of the APR-BALS dense Gram kernels on sm_86 (RTX 3060).
 
-WHY THIS EXISTS: the reviewer's item 3 asks for registers/thread AND occupancy.
-Registers/thread come straight from ptxas. ACHIEVED occupancy needs `ncu`, which
-is root-blocked on this box (ERR_NVGPUCTRPERM). THEORETICAL occupancy, however,
-is fully determined by ptxas output + the documented sm_86 limits + the launch
-config, so it can be computed exactly with no profiler and no privilege. That is
-what this script does. It is an ANALYTICAL result, not a measurement -- it is an
-upper bound on achieved occupancy, and it is labelled as such everywhere.
+Theoretical occupancy is calculated from ptxas resource usage, documented
+sm_86 limits, and the kernel launch configuration. This analytical calculation
+does not require a GPU profiler or access to performance counters.
+Achieved occupancy is a separate runtime measurement obtained with `ncu`;
+counter access may require administrator permissions (ERR_NVGPUCTRPERM).
+The values computed here are resource-based upper bounds on achieved occupancy,
+not measurements of kernel execution.
 
-INPUTS (none of them guessed):
+INPUT SOURCES:
   - regs/thread and static smem/block: ptxas -v, archived beside this script in
     ptxas_ship_allK.txt (ship recipe) and ptxas_tf32_allK.txt (-DWMMA_TF32=1).
   - threads/block = WARPS_PER_BLOCK*32 = 128, from the launch sites in
