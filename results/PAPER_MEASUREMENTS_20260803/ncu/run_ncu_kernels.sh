@@ -93,4 +93,4 @@ elif grep -qi 'sm__pipe_tensor_op_hmma' "$OUT"; then
 else
   echo "RESULT: ran, but no tensor metric found — check the file for errors."
 fi
-echo "Tell Claude it is done; it will parse this file into SUMMARY.md / FIXLOG.md."
+echo "Profiling complete. Review the counter reports in the output directory."

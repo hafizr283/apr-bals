@@ -108,19 +108,6 @@ def main():
         r = lookup[(scope, case, solver)]
         selected.append((label, method, ir, r))
 
-    md = ["# FP32 fallback results", "",
-          "Median of three serial GPU-1 runs. Each run uses 30 fixed sweeps at Netflix K=96. Failure rates use 14,938,770 entity-solves per run.", "",
-          "| Protocol | Solver behavior | IR | FP16 failures | Failure rate | FP32 recovered | FP32 failed | Validation RMSE | Test RMSE | Wall (s) | Overhead vs zero |",
-          "|---|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|"]
-    for label, method, ir, r in selected:
-        validation = "--" if math.isnan(r["validation_rmse_median"]) else f'{r["validation_rmse_median"]:.6f}'
-        recovery = "--" if math.isnan(r["fp32_recovery_percent"]) else f'{r["fp32_recoveries_median"]:.0f} ({r["fp32_recovery_percent"]:.1f}%)'
-        overhead = r.get("wall_overhead_vs_zero_percent", math.nan)
-        overhead_s = "--" if math.isnan(overhead) else f"{overhead:+.3f}%"
-        md.append(f'| {label} | {method} | {ir} | {r["fp16_failures_median"]:.0f} [{r["fp16_failures_min"]}, {r["fp16_failures_max"]}] | {r["fp16_failure_percent"]:.6f}% | {recovery} | {r["fp32_failures_max"]} | {validation} | {r["test_rmse_median"]:.6f} | {r["wall_median_s"]:.5f} | {overhead_s} |')
-    md += ["", "Negative overhead estimates mean the fallback build was marginally faster in that three-run sample. They are treated as no measurable overhead, not as a speedup."]
-    (R / "FP32_FALLBACK_TABLE.md").write_text("\n".join(md) + "\n")
-
     tex = [r"\begin{table*}[t]", r"\centering", r"\caption{FP32 solver fallback at Netflix $K=96$ (median of three GPU-1 runs, 30 sweeps).}",
            r"\label{tab:fp32-fallback}", r"\begin{tabular}{llrrrrrr}", r"\toprule",
            r"Protocol & Solver & FP16 fail (\%) & FP32 rec. & FP32 fail & Val. RMSE & Test RMSE & Wall (s) \\", r"\midrule"]
@@ -141,8 +128,8 @@ def main():
                                 R / "fallback_src/justapr.cu", R / "run_fp32_fallback.py",
                                 R / "run_fp32_fallback_legacy.py")},
              "csv_sha256": {PRIMARY.name: sha256(PRIMARY), LEGACY.name: sha256(LEGACY)}}
-    deliverables = (R / "fp32_fallback_summary.csv", R / "FP32_FALLBACK_PROTOCOL.md",
-                    R / "FP32_FALLBACK_TABLE.md", R / "paper_tables/fp32_fallback.tex")
+    deliverables = (R / "fp32_fallback_summary.csv", R / "paper_tables/fp32_fallback.tex")
+    audit["protocol_document"] = "docs/reproduction.md#fp32-fallback-protocol"
     audit["deliverable_sha256"] = {str(p.relative_to(R)): sha256(p) for p in deliverables}
     (R / "fp32_fallback_audit.json").write_text(json.dumps(audit, indent=2) + "\n")
     if not audit["all_passed"]:

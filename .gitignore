@@ -124,3 +124,24 @@ __pycache__/
 .vscode/
 .idea/
 tpds_latex/
+
+# Historical discussion and duplicate prose are kept outside the working repository.
+/BENCHMARKING.md
+/FIXLOG.md
+/idea_extractor.md
+/part2/new_results/CUMULATIVE_PROTOCOL.md
+/part2/new_results/EXTERNAL_PROTOCOL.md
+/part2/new_results/EXTERNAL_RESULTS.md
+/part2/new_results/FP32_FALLBACK_PROTOCOL.md
+/part2/new_results/FP32_FALLBACK_TABLE.md
+/part2/new_results/HANDOFF.md
+/part2/new_results/NUMERICAL_AUDIT.md
+/part2/new_results/REVIEW_CHECKLIST.md
+/part2/new_results/SUMMARY.md
+/part2/new_results/figures/STATUS.md
+/part2/new_results/manuscript/figures/README.md
+/results/PAPER_MEASUREMENTS_20260803/PROSE_REVISIONS_5_extended.md
+/results/PAPER_MEASUREMENTS_20260803/SUMMARY.md
+/results/RUNNING_SUMMARY.md
+/part2/new_results/write_handoff.py
+/part2/new_results/review.txt

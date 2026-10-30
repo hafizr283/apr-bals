@@ -13,15 +13,14 @@ This commit contains restored source snapshots, complete CSVs and recovered raw 
 |---|---|---|
 | H80 | Original per-user approximately 80/20 train/test split, seed 42, frequency-reordered IDs. Historical paired harness: weighted lambda 0.048, cuMF-scale initialization, FP32 solvers in both legs, no momentum, training-delta stopping checked every five sweeps. | [Preprocessor](../preprocess.cpp), [runner](../run_rmse_comparison.sh), [variance summary](../results/PAPER_MEASUREMENTS_20260803/variance_5x_summary.txt) |
 | O70 | Approximately 70/10/20: validation carved from old training, seed 20261014, preserving original test ratings. New validation selection is distinct from historical test-selected lambda. | [Split code](../part2/new_results/make_validation_split.py), [saved verification](../part2/new_results/splits/verification.json) |
-| E70 | O70 training, shared warm-validation mask. Targets: ML-10M 0.80, ML-20M 0.79, ML-32M 0.78, Netflix 0.84. APR/ALS/CCD/BALS: 30 sweeps; SGD: 40 epochs. Timers include each method's evaluation. | [Protocol](../part2/new_results/EXTERNAL_PROTOCOL.md), [CSV](../part2/new_results/external_time_to_target.csv), [mask metadata](../part2/new_results/external_inputs/) |
+| E70 | O70 training, shared warm-validation mask. Targets: ML-10M 0.80, ML-20M 0.79, ML-32M 0.78, Netflix 0.84. APR/ALS/CCD/BALS: 30 sweeps; SGD: 40 epochs. Timers include each method's evaluation. | [Protocol](reproduction.md#external-evaluation-protocol), [CSV](../part2/new_results/external_time_to_target.csv), [mask metadata](../part2/new_results/external_inputs/) |
 | M80 | Original split; shipped solver policy; beta 0 versus 0.3, fixed 30 sweeps, exact evaluation every sweep. First adjacent absolute training-RMSE change below 0.001 defines crossing. | [Runner](../part2/new_results/run_experiments.py), [crossings](../part2/new_results/momentum_crossings.csv) |
 | N80 | Original-split numerical controls. Four-way: 20 fixed sweeps, FP32 solver, no momentum or giant tier. BF16 and accumulation interventions have separate flags and budgets. | [Runner](../part2/new_results/run_experiments.py), [follow-ups](../part2/new_results/run_followups.py), [BF16 controls](../part2/new_results/run_bf16_controls.py) |
-| C80 | Original-split ladder, Netflix K96, lambda 0.048; per-sweep delta stopping with cap 30. Only available rows are indexed here. | [Ladder protocol](../part2/new_results/CUMULATIVE_PROTOCOL.md), [CSV](../part2/new_results/cumulative.csv) |
+| C80 | Original-split ladder, Netflix K96, lambda 0.048; per-sweep delta stopping with cap 30. All six recorded stages are indexed here. | [Ladder protocol](#cumulative-stage-definitions), [CSV](../part2/new_results/cumulative.csv) |
 
 APR/CCD/BALS ranks are 16, 32, 48, 64, 96. Corresponding ALS F values are
 20, 30, 50, 60, 100. The CSV's ALS `K` denotes the APR comparison rank, not actual F.
-SGD K128 is compared only with APR K96. The archived protocol's phrase “all four
-rank-dependent systems” is imprecise: only ALS uses the mismatched K/F mapping.
+SGD K128 is compared only with APR K96. Only ALS uses the mismatched K/F mapping; APR, CCD and BALS use matched ranks.
 
 The original test was historically inspected for tuning. A later validation carve-out
 cannot establish a previously untouched test. Warm-validation masking does not
@@ -251,16 +250,104 @@ can enable momentum and a rank-specific solver. The shared-binary harness tests 
 different comparison. Legacy LHS/RHS events can overlap solver work, so they are
 not isolated kernel times.
 
+## Cumulative stage definitions
+
+The six recorded configurations use the October source tree, Netflix K96, lambda
+0.048, weighted regularization and fixed initialization. Adjacent training-RMSE
+change below 0.001 defines convergence, with a 30-sweep cap. These are convergence
+times rather than fixed-sweep timings; the [CSV](../part2/new_results/cumulative.csv)
+records each stopping count and raw final summary.
+
+| Stage | Configuration and interpretation |
+|---|---|
+| `ladder_atomic` | Atomic FP32 Gram, FP32 solver, exact evaluation, no momentum. |
+| `ladder_sameflow` | Staged FP32 warp/entity FMA; no dense Gram atomics, giant tier disabled, FP32 solver. |
+| `ladder_fp32` | Dense FP16 tensor path **and** giant tier enabled, FP32 solver. This transition combines changes. |
+| `ladder_fp16solve` | Previous configuration with FP16 solver tiles and no refinement. |
+| `ladder_fastcheck` | Previous configuration with mixed-precision rating evaluation; the convergence measurement changes. |
+| `ladder_momentum` | Previous configuration with beta 0.3 momentum. |
+
+Wall time includes each stage's evaluation cost. Lambda fusion and asynchronous
+staging are not separately switched, and monotonic speedup was not a condition for
+retaining results. Use four-way controls for the precision/dataflow comparison;
+do not interpret every ladder transition as a single isolated optimization.
+
+## Numerical interpretation
+
+The [FP64 probes](../part2/new_results/gram_errors.csv) compare actual atomic FP32,
+same-dataflow FP32, dense FP16 and giant FP16 kernels on identical trained factors.
+They retain the selected entities' original 32-row tile neighborhoods so atomic job
+grouping is preserved. Only unregularized upper triangles consumed by the solver
+are compared. Independently trained factor matrices would confound this comparison.
+
+The scalar kernel accumulates segments in registers and atomically flushes per-job
+sums; it does not atomically add each rating separately. For a unique user-item
+matrix, a conservative componentwise absolute bound for this hierarchy is
+`[(1+gamma_YB)(1+gamma_8)(1+gamma_J)-1] * abs(F).T @ abs(F)`, where
+`gamma_n = n*u/(1-n*u)`, `u = 2^-24`, and `J` counts contributing jobs.
+Cancellation can make relative entrywise error large, so the probes report
+upper-triangle Frobenius error and normalized maximum absolute error. The measured
+atomic FP32 path has lower Gram error than the tensor paths; the accuracy shift is
+not evidence that atomic FP32 builds less accurate Grams.
+
+[Chunk-reset controls](../part2/new_results/accumulation_control.csv) zero each
+16-row MMA fragment, then combine chunks with FP32 scalar additions. Rounded operands,
+tile order, RHS, solver and budget are retained. Together with the
+[rounded-FMA controls](../part2/new_results/rounding_control.csv), these separate
+operand quantization from persistent tensor accumulation. The tested bias and RMSE
+shift are properties of this implementation/hardware, not universal regularization
+or a portable tensor rounding guarantee. The diagnostics remain inventory/fingerprint
+checks in the CPU checker; their binary factor inputs are held externally.
+
+Ampere TF32 and FP16 have ten stored fraction bits; TF32 has the wider FP32 exponent
+range. FP32 has 23 stored fraction bits. See the
+[NVIDIA TF32 description](https://developer.nvidia.com/blog/accelerating-ai-training-with-tf32-tensor-cores/)
+and [PTX specification](https://docs.nvidia.com/cuda/archive/11.5.1/parallel-thread-execution/index.html).
+An FP32 accumulator type alone does not guarantee scalar IEEE-FMA accumulation order.
+
+K96 same-dataflow tuning selected a zero-spill outer-contraction control using timing,
+not accuracy. [Tuning records](../part2/new_results/control_tuning_runs/),
+[initial results](../part2/new_results/control_tuning_initial/) and
+[SASS audit](../part2/new_results/sameflow_sass_audit.json) preserve the choice.
+Staging width and prefetch differ across paths, so this remains a structural control.
+
+[BF16 controls](../part2/new_results/bf16_matched_comparison.csv) change both Gram
+operand and solver types; they do not isolate which change prevents a failure.
+Retain zeroed-solve counts and failure cases. GPU0 accuracy diagnostics cannot be
+compared with GPU1 timings as a performance experiment. The separate
+[FP32 fallback protocol](reproduction.md#fp32-fallback-protocol) documents retries
+and the tested limits of the safety claim. Original-split and new-split absolute
+RMSEs remain distinct throughout these controls.
+
+Legacy LHS/RHS events can join overlapping solve streams, so `gram_s` in the older
+summaries means a compute phase, not isolated Gram-kernel time. Per-sweep cumulative
+wall measurements are used for target crossings instead of mean-sweep multiplication.
+
+## Historical implementation context
+
+The [full-rank BALS ladder](../results/PAPER_MEASUREMENTS_20260803/bals_ladder_all_K.txt)
+retains both beneficial and adverse symmetric-tiling results. A rank-specific gain
+must not be generalized to the full grid. Register limits, padding and occupancy are
+separate contributors; see [occupancy records](../results/PAPER_MEASUREMENTS_20260803/occupancy/)
+and [precision controls](../results/PAPER_MEASUREMENTS_20260803/precision_isolation_3way/).
+
+[Threshold sweeps](../results/PAPER_MEASUREMENTS_20260803/threshold_sweep/),
+[host-cost studies](../results/PAPER_MEASUREMENTS_20260803/host_factor_per_rank/),
+[kernel shares](../results/PAPER_MEASUREMENTS_20260803/nsys_kernel_shares.txt) and
+[hardware counters](../results/PAPER_MEASUREMENTS_20260803/ncu/) retain their measured
+conditions. Failed profiler attempts are preserved as diagnostics; use successful
+counter captures for hardware conclusions. These historical studies do not change
+the October masks, stopping rules or timing-variance limitations.
+
 ## Retention and maintenance
 
-The entry page and October index supersede earlier headline prose. Archived
-`SUMMARY.md`, `NUMERICAL_AUDIT.md`, `CUMULATIVE_PROTOCOL.md`, `BENCHMARKING.md`,
-`FIXLOG.md`, figures and manuscript snapshots can describe more than the available
-tables support. They remain historical context, not independent proof of completion.
+The entry page and October index link the maintained scientific guides. Experiment
+protocols and interpretation are consolidated here and in the reproduction guide.
+Figures and manuscript snapshots retain their original provenance and may predate
+final measurements; use the CSVs and raw logs for numerical claims.
 
-The original set of 99 exposed small metadata/diagnostic files remains indexed.
-The full-archive restoration added 533 absent small files and replaced 15 incomplete
-CSV/narrative files. See the [artifact guide](artifacts.md) for archive identity and
+The small metadata/diagnostic evidence remains indexed. See the
+[artifact guide](artifacts.md) for archive identity and
 binary storage. Datasets, factors, models, executables and caches remain excluded
 from Git. Diagnostic failure messages and 22 explicitly undefined fallback-summary
 NaN cells are preserved; these are not finite performance results or success claims.

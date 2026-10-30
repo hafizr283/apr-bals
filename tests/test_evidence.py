@@ -1,7 +1,9 @@
 """Failure tests operate on a small, isolated evidence-only checkout."""
 import hashlib
+import csv
 import importlib.util
 import json
+import math
 import os
 from pathlib import Path
 import shutil
@@ -134,6 +136,40 @@ class EvidenceChecks(unittest.TestCase):
         result = self.check()
         self.assertNotEqual(result.returncode, 0)
         self.assertIn("numerical mismatch", result.stderr)
+
+    def test_public_markdown_inventory(self):
+        # Inspect only Git-visible files; local manuscript/scratch directories may be ignored.
+        result = subprocess.run(["git", "ls-files", "--cached", "--others", "--exclude-standard", "-z"],
+                                cwd=ROOT, text=True, capture_output=True, check=True)
+        actual = {p for p in result.stdout.split("\0") if p.endswith(".md") and (ROOT / p).is_file()}
+        self.assertEqual(actual, set(self.manifest["public_markdown"]))
+
+    def test_summarizers_preserve_numerical_records_without_markdown(self):
+        paths = ("part2/new_results/summarize.py", "part2/new_results/summarize_external.py")
+        names = [n for n in self.manifest["tables"] if not n.startswith("fp32_fallback")]
+        def records(name):
+            with (self.root / "part2/new_results" / name).open(encoding="utf-8-sig", newline="") as f:
+                rows = list(csv.DictReader(f))
+            keys = self.manifest["tables"][name]["keys"]
+            return {tuple(row[k] for k in keys): row for row in rows}
+        before = {name: records(name) for name in names}
+        markdown = {str(p.relative_to(self.root)) for p in self.root.rglob("*.md")}
+        for path in paths:
+            result = subprocess.run([sys.executable, path], cwd=self.root, text=True, capture_output=True)
+            self.assertEqual(result.returncode, 0, result.stderr)
+        self.assertEqual(markdown, {str(p.relative_to(self.root)) for p in self.root.rglob("*.md")})
+        for name, expected in before.items():
+            actual = records(name)
+            self.assertEqual(expected.keys(), actual.keys(), name)
+            numeric = self.manifest["tables"][name]["numeric"]
+            for key, row in expected.items():
+                for column, value in row.items():
+                    got = actual[key][column]
+                    if column in numeric and value and got:
+                        self.assertTrue(math.isclose(float(value), float(got), rel_tol=1e-10, abs_tol=1e-9),
+                                        (name, key, column, value, got))
+                    else:
+                        self.assertEqual(value, got, (name, key, column))
 
 
 if __name__ == "__main__":

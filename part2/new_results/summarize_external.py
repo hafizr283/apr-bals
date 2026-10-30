@@ -2,12 +2,12 @@
 import csv,re,json
 from pathlib import Path
 R=Path(__file__).resolve().parent
-T=json.loads((R/'external_targets.json').read_text())['targets']
+T=json.loads((R/'external_targets.json').read_text(encoding="utf-8"))['targets']
 rows=[];curves={}
 for p in (R/'external').glob('*.txt'):
  m=re.match(r'(ml10m|ml20m|ml32m|netflix)_(apr|als|ccd|bals|sgd)_k(\d+)',p.stem)
  if not m:continue
- ds,method,k=m.groups();k=int(k);s=p.read_text()
+ ds,method,k=m.groups();k=int(k);s=p.read_text(encoding="utf-8")
  if method=='ccd':
   c=[(int(i),float(r),float(t)/1000) for i,r,t in re.findall(r'iter (\d+) time [\d.]+ RMSE ([\d.eE+-]+)\s+CUMULATIVE_WALL_MS ([\d.eE+-]+)',s)]
  elif method=='sgd':
@@ -21,10 +21,7 @@ for p in (R/'external').glob('*.txt'):
 if rows:
  with open(R/'external_time_to_target.csv','w') as f:
   w=csv.DictWriter(f,fieldnames=rows[0]);w.writeheader();w.writerows(rows)
-lines=['# External common-target comparison','', 'All curves use the same warm-validation ratings per dataset. Targets were saved in `external_targets.json` before these runs. Timings include periodic evaluation, exclude preprocessing/loading, and use the implementations\' instrumented training loops. Rank mismatch remains explicit. New source changes are documented in `EXTERNAL_PROTOCOL.md`.','', '| Dataset | Method | APR comparison rank | Target | First sweep | Seconds | Final validation RMSE |','|---|---|---:|---:|---:|---:|---:|']
-for r in sorted(rows,key=lambda r:(r['dataset'],r['K'],r['method'])):
- lines.append(f"| {r['dataset']} | {r['method']} | {r['K']} | {r['target']} | {r['first_sweep'] or 'unreached'} | {str(round(r['seconds_to_target'],4)) if r['reached'] else 'censored'} | {r['final_validation_rmse']:.6f} |")
-(R/'EXTERNAL_RESULTS.md').write_text('\n'.join(lines)+'\n');print(len(rows),'external curves')
+print(len(rows), 'external curves; CSV outputs updated')
 headline=[]
 for ds in T:
  selected={r['method']:r for r in rows if r['dataset']==ds and ((r['method']=='sgd' and r['K']==128) or (r['method']!='sgd' and r['K']==96))}

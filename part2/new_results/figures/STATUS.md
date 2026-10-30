@@ -1,1 +1,0 @@
-Existing figures are intermediate artifacts. The user requested no further plotting on 2026-10-14. In particular, four_way.pdf predates the final K96 control tuning. Use current CSV tables and SUMMARY.md for final values; do not insert these stale figures as final measurements.

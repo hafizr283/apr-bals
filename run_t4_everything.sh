@@ -4,7 +4,7 @@
 # the RTX 3060 this session. Run from inside the uploaded `comparing_baseline/`
 # directory. Each PART is independently toggleable and writes its own
 # timestamped folder under results/, matching the project's existing
-# convention (FIXLOG.md / RUNNING_SUMMARY.md), so nothing overwrites prior runs.
+# convention documented in results/README.md, so nothing overwrites prior runs.
 #
 #   PART 1 -> Table VI + VII, Fig 41/42/43/44/45  (main_experiment.cu, own FP32 baseline)
 #   PART 2 -> Table (cuMF_ALS per-K/F)             (justapr ship recipe vs cuMF_als)

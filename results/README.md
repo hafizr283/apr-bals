@@ -27,8 +27,8 @@ Per-sweep time, wall time to convergence and first validation-target time also d
 Shared-binary, standalone APR, local BALS and external ports answer distinct questions.
 
 The [evidence guide](../docs/evidence.md) contains the supported claim matrix and CPU
-check scope. Older summaries remain historical narrative and may include stale ranges,
-protocol assumptions or unfinished plans. Retention does not endorse every statement.
+check scope. Historical measurement directories retain their raw outputs.
+Protocol interpretation and implementation caveats are consolidated in the guides.
 
 Historical variance is not assigned to October single runs. No results are removed
 to improve a reported range or hide negative outcomes.

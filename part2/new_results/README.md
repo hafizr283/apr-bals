@@ -19,7 +19,7 @@ ALS F100** and **0.2% versus CCD K96**, using each baseline's RMSE as denominato
 APR is slightly worse than CCD on ML-10M and better on the other datasets.
 See [source rows, calculations and direction](../../docs/evidence.md#final-validation-accuracy).
 
-[External CSV](external_time_to_target.csv) · [Protocol](EXTERNAL_PROTOCOL.md) · [Raw files](external/) · [Mask metadata](external_inputs/)
+[External CSV](external_time_to_target.csv) · [Protocol](../../docs/reproduction.md#external-evaluation-protocol) · [Raw files](external/) · [Mask metadata](external_inputs/)
 
 ## Momentum and numerical controls
 
@@ -93,9 +93,9 @@ binaries and completion markers. Restored helpers retain original path assumptio
 [reproduction guide](../../docs/reproduction.md#october-runner-map) documents those gaps.
 `summarize.py` and `summarize_external.py` are not read-only checkers.
 
-Earlier narrative summaries and figures remain context. Some describe planned or
-broader experiments than the stored CSVs support. This index and the evidence guide
-supersede their headline ranges and completion descriptions.
+Protocol details and numerical interpretation are consolidated in the evidence and
+reproduction guides. Figures can predate final tuning; see
+[figure provenance](../../docs/reproduction.md#figure-provenance) before using them.
 
 See [large artifacts and dataset access](../../docs/artifacts.md) for the ZIP download,
 SHA-256 checksum, excluded binary inventory and journal storage recommendation.

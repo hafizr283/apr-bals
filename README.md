@@ -193,8 +193,8 @@ cuMF_als is a guarded CUDA port, cuMF_CCD has local timing and reduction changes
 and cuMF_SGD has per-epoch evaluation and synchronization instrumentation.
 The BALS comparison is a local reimplementation, not an independently released
 BALS executable. See the [baseline provenance](docs/reproduction.md#baseline-provenance)
-and the archived [external protocol](part2/new_results/EXTERNAL_PROTOCOL.md).
+and the [external evaluation protocol](docs/reproduction.md#external-evaluation-protocol).
 
 Existing upstream attribution and third-party license files remain with the vendored
-implementations. Historical narrative files are retained as context; use the evidence
-guide to determine which statements have current, inspectable support.
+implementations. Scientific protocols and interpretation are consolidated in the
+evidence and reproduction guides, with direct links to the archived measurements.

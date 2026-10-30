@@ -32,7 +32,7 @@ consistency within its [stated scope](evidence.md#claim-to-source-matrix), not G
 | July historical primary | RTX 3060, sm_86 | CUDA 12.0 / 580.159.03 | [Historical README snapshot](https://github.com/hafizr283/apr-bals/tree/e798aa242dc5026247426bd96ca6055be26b2354#2-requirements); campaign metadata, not a new hardware query. |
 | August repeat-run study | RTX 3060, GPU1 on a two-device host | CUDA 12.9 / 580.173.02 | [Historical toolchain table](https://github.com/hafizr283/apr-bals/tree/e798aa242dc5026247426bd96ca6055be26b2354#2-requirements5-L69), [variance summary](../results/PAPER_MEASUREMENTS_20260803/variance_5x_summary.txt). |
 | Historical T4 | Tesla T4, sm_75, Colab | Exact CUDA/driver pair not established by the curated sources | [T4 logs](../results/t4_latest_res_22_7_2026/); do not substitute the desktop toolchain. |
-| October external | RTX 3060, sm_86, GPU1; another RTX 3060 on same host | CUDA 12.9, nvcc V12.9.41 / 580.178.04 | [environment.json](../part2/new_results/environment.json), [execution conditions](../part2/new_results/EXTERNAL_PROTOCOL.md). GPU0 diagnostics/desktop can share host resources. |
+| October external | RTX 3060, sm_86, GPU1; another RTX 3060 on same host | CUDA 12.9, nvcc V12.9.41 / 580.178.04 | [environment.json](../part2/new_results/environment.json), [execution conditions](#external-evaluation-protocol). GPU0 diagnostics/desktop can share host resources. |
 
 Training requires Linux, Bash/Python as applicable, a compatible NVIDIA driver and
 CUDA toolkit, `nvcc`, and a host C++ compiler supported by that CUDA release. The
@@ -145,8 +145,8 @@ They are not a recommended sequential launcher: prerequisites remain unresolved.
 | `python part2/new_results/run_experiments.py` | Original binaries, split binaries, October source; four-way, momentum, selection, held-out runs | Build logs, raw `.txt`, command `.json`, selection JSONs | Hardcoded `/home/pc/Desktop/2007080`, nvcc path and GPU1; existing `bin/` and `logs/` expected; writes into archive. |
 | `python part2/new_results/run_followups.py` | Control binaries, original data, probes | Tuning/control/Gram/BF16/ladder files and completion marker | Waits for old `/proc/14817`; prebuilt dependencies; modifies `src/wmma_kernels.cuh`; overwrites some results. |
 | `python part2/new_results/run_external.py` | Warm-validation inputs, selections, prebuilt `ship_k*`, ALS/CCD/SGD executables and CPU predictor | External raw logs, command JSON, CCD selection JSON, final prediction logs, `logs/external.done` | Waits indefinitely for `logs/followups.done`; old binary-relative and helper import paths; no validated clean build chain. |
-| `python part2/new_results/summarize.py` | Available raw logs and selection records | CSVs and `SUMMARY.md` | Rewrites evidence and can propagate stale unconditional prose; not a checker. |
-| `python part2/new_results/summarize_external.py` | External logs plus `external_targets.json` | External CSVs and narrative tables | Target manifest restored; rewrites CSVs; a saved declaration alone does not establish independent preregistration. |
+| `python part2/new_results/summarize.py` | Available raw logs and selection records | CSV summaries | Rewrites evidence; protocol interpretation remains in the maintained guides. Not a checker. |
+| `python part2/new_results/summarize_external.py` | External logs plus `external_targets.json` | External and K96 comparison CSVs | Target manifest restored; rewrites CSVs; a saved declaration alone does not establish independent preregistration. |
 
 The restored [plot_results.py](../part2/new_results/plot_results.py) writes figures from
 CSV summaries. Existing figures may be intermediate; no paper figures were regenerated.
@@ -155,7 +155,7 @@ Completion markers are synchronization artifacts, not proof that all planned run
 External settings include APR beta 0.3, exact evaluation each sweep; ALS six CG steps,
 X_BATCH=1 and THETA_BATCH=3; CCD `-T 1`, tiles a=b=100000 with separately selected lambda;
 SGD rank128, lambda 0.05, alpha 0.08, beta 0.3, workers 256/384/512/512 by dataset.
-Consult command metadata and the [external protocol](../part2/new_results/EXTERNAL_PROTOCOL.md)
+Consult command metadata and the [external protocol](#external-evaluation-protocol)
 before recreating a run. The recovered [target manifest](../part2/new_results/external_targets.json)
 records targets and a prior-declaration note; the checker compares its targets with
 the CSVs. That saved note does not independently establish when preregistration occurred.
@@ -174,6 +174,104 @@ Root and October source snapshots are different artifacts; use the saved source 
 and per-run commands to establish provenance. Training-loop wall includes training
 RMSE for APR/BALS/ALS but held-out evaluation only for CCD/SGD. That cost difference,
 rank mismatch, warm mask and shared-host conditions must accompany timing comparisons.
+
+## External evaluation protocol
+
+The October evaluation uses approximately 70% training, 10% validation and 20%
+preserved original test ratings. Every external method sees the same warm-validation
+mask: both entities must occur in training. The mask changes evaluation only;
+[input manifests](../part2/new_results/external_inputs/) record retained/removed ratings.
+Test results and validation-target curves answer separate questions. Non-finite
+predictions are not silently removed, and warm masking does not establish cold-start accuracy.
+
+APR uses validation-selected lambda, beta 0.3, FP32 solves below K96 and FP16 tiled
+solves at K96. Training and validation RMSE are evaluated in FP32 each sweep.
+The 30-sweep curves support crossings computed afterward from validation targets.
+Local BALS uses frequency reordering, APR's initialization scale and weighted lambda,
+FP32 arithmetic, no momentum, reorder-only mapping and exact per-sweep evaluation.
+
+The guarded cuMF_als port uses items-by-users orientation, CUDA sparse-API replacements,
+buffers allocated outside timing, a test-grid tail correction, six CG steps,
+X_BATCH=1 and THETA_BATCH=3. Its FP16 operand/CG switches are disabled. Empty-entity
+factors are zeroed after each CG batch; error reduction uses double accumulation.
+
+CCD selects lambda from {0.02, 0.04, 0.05, 0.058, 0.08, 0.12} by K96/sweep30
+warm-validation RMSE and carries it across ranks. Settings are `-T 1`, tiles
+a=b=100000 and 30 sweeps. Host error summation is double. Its legacy compute timer
+is distinct from the cumulative training-loop wall timer used for target crossings.
+
+SGD uses rank128, lambda 0.05, alpha 0.08, beta 0.3, 40 epochs and workers
+256/384/512/512 for ML-10M/20M/32M/Netflix. Each epoch advances `current_iter` while
+retaining factors and random state. Per-epoch kernel launches introduce synchronization
+relative to the original persistent kernel. Validation uses the training ID permutation
+and rating scale, with FP64 squared-error accumulation; final scores are checked against
+the saved-model CPU predictor. Seed 20261014 does not eliminate Hogwild race nondeterminism.
+
+APR/CCD/BALS use K=16,32,48,64,96. ALS uses F=20,30,50,60,100 for those comparisons;
+SGD K128 is compared only with APR K96. All training-loop timers include each method's
+evaluation; APR/BALS/ALS also compute training RMSE whereas CCD/SGD evaluate held-out
+ratings only. Loading and preparation are excluded. These overheads and mismatched
+ranks remain part of the comparison, which has no new timing repetition estimate.
+
+External performance runs used GPU1 while independent accuracy/numerical diagnostics
+ran on GPU0 on the same two-RTX-3060 host. GPU0 also served the desktop. Its diagnostic
+times are not performance comparisons; shared CPU, memory and PCIe contention can
+affect GPU1 timings. The split retains original IDs, so contiguous dispatch prefixes
+can include entities below their degree thresholds. The disjoint paths still cover
+entities once; [dispatch_audit.json](../part2/new_results/dispatch_audit.json) quantifies
+the routing limitation. A fresh sort would require a separate measured configuration.
+
+## FP32 fallback protocol
+
+The [fallback source](../part2/new_results/fallback_src/) retries failed FP16 entity
+solves with checked FP32 tiled Cholesky. The original [source](../part2/new_results/src/)
+remains the zero-on-failure control. The fallback preserves the RHS, records batch-local
+failed entity IDs, and launches the retry in the same solver stream. It checks finite
+positive pivots and finite outputs; an unrecovered FP32 failure is counted before zeroing.
+
+The recorded build identifies itself as `FP32-FALLBACK-2026-10-15`, targets `sm_86`,
+and uses weighted ALS-WR, cuMF-scale initialization, K96, momentum, exact FP32 RMSE
+and 30 fixed sweeps. Each comparison cell has three serial GPU1 repetitions.
+
+| Configuration | Split and controls |
+|---|---|
+| Stable Netflix | New split; selected lambda 0.04, beta 0.3, no refinement; fallback, legacy zeroing and FP32 controls. |
+| Difficult Netflix | New split; lambda 0.048, beta 0.5; zero/one refinement, with all-FP32 reference. |
+| Original-split stress | Original 80/20; lambda 0.048, beta 0.5; zero/one refinement. Keep these absolute RMSEs separate from the new split. |
+
+The counter identities are `total = fp16_success + fp16_failure`,
+`fp16_failure = fp32_attempt`, and `fp32_attempt = fp32_recovery + fp32_failure`.
+`SOLVER_STREAM_MS` covers LHS readiness through the solve/retry and can overlap Gram
+work; it is not an additive decomposition of wall time. Factor dumps occur after timing.
+The saved run audit checks factors/predictions for finiteness and CPU/GPU scoring agreement.
+Evidence supports the documented configurations only, not universal solver safety.
+Millisecond-scale negative overhead estimates are not established speedups.
+
+The existing interfaces are `python part2/new_results/run_fp32_fallback.py`,
+`python part2/new_results/run_fp32_fallback_legacy.py` and
+`python part2/new_results/analyze_fp32_fallback.py`. Runners rebuild and write artifacts;
+the analyzer checks logs and writes summary CSV, LaTeX and JSON. Their path/toolchain
+requirements still apply; none was used to launch training during documentation cleanup.
+See [primary runs](../part2/new_results/fp32_fallback_runs.csv),
+[original-split runs](../part2/new_results/fp32_fallback_legacy_runs.csv),
+[commands](../part2/new_results/fallback_commands/), [logs](../part2/new_results/fallback_logs/)
+and [saved audit](../part2/new_results/fp32_fallback_audit.json).
+The CPU paper checker inventories these fallback summaries; its general trajectory
+replay coverage is stated separately in the evidence guide.
+
+## Figure provenance
+
+October figures are intermediate artifacts; in particular `four_way.pdf` predates
+the final K96 control tuning. Use current CSVs and verify a figure against them before
+publication. Cleaning documentation does not regenerate or validate the paper figures.
+
+The archived manuscript reads its own `manuscript/figures/` directory. Same-named
+figures from another thesis/paper tree are not interchangeable. Its
+[generation scripts](../part2/new_results/manuscript/figures/) retain the original
+paths: architecture/tier diagrams came from `generate_figures2.py`, primary result
+figures from `generate_figures4.py`, and CCD/BALS figures from `generate_figures3.py`.
+These mappings describe that historical manuscript, not a claim that its figures use
+the final October results. Repoint inputs explicitly in a separate figure update.
 
 ## What remains for full reproduction
 
